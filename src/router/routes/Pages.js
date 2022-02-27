@@ -11,6 +11,14 @@ const PagesRoutes = [
     }
   },
   {
+    path: '/signup',
+    component: lazy(() => import('../../custom-views/Signup/SignUpView')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
     path: '/pages/login-basic',
     component: lazy(() => import('../../views/pages/authentication/LoginBasic')),
     layout: 'BlankLayout'
