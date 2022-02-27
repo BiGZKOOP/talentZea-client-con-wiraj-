@@ -1,0 +1,31 @@
+.signup-body {
+    background-size: cover;
+    background-attachment: fixed;
+    /*background-image: url("https://wallpaperaccess.com/full/3871329.jpg");*/
+    background-image: url("https://static.vecteezy.com/system/resources/previews/001/971/939/non_2x/abstract-minimalist-creative-background-with-copy-space-for-text-and-modern-art-shapes-digital-college-horizontal-design-for-social-media-vector.jpg");
+}
+
+.signup-inner {
+    border: 2px dashed whitesmoke;
+    background-blend-mode: darken;
+    background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05))
+}
+
+.double-input {
+    width: 50%;
+    margin: 5px;
+}
+
+.input-container {
+    flex-direction: row;
+}
+
+@media (max-width:578px) {
+    .double-input {
+        width: 50%;
+    }
+
+    .input-container {
+        flex-direction: row;
+    }
+}

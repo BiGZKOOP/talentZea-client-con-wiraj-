@@ -107,6 +107,10 @@ const Login = () => {
         }
     }
 
+    const routeToSignup = () => {
+        history.push("/signup")
+    }
+
     return (
         <div className='auth-wrapper auth-cover login-back'>
             <div className='auth-inner m-0 d-center'>
@@ -152,15 +156,15 @@ const Login = () => {
                                     )}
                                 />
                             </div>
-                            <div className="text-right f-Londrina mt-2 mb-1">
+                            <div className="text-right f-Londrina mt-2 mb-1 pointer">
                                 <h5 className="text-primary">forgot password ?</h5>
                             </div>
                             <Button type='submit' color='primary' block className="p-1 mt-2 mb-3">
                                 Sign in
                             </Button>
                             <div className="text-center mt-2 mb-1 f-Londrina">
-                                <h4>New to the talentZea ?
-                                    <span className="text-primary p-0 pointer"> signup here.</span>
+                                <h4 className="clickable">New to the talentZea ?
+                                    <span className="text-primary p-0 pointer" onClick={routeToSignup}> signup here.</span>
                                 </h4>
                             </div>
                         </Form>

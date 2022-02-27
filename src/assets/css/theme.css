@@ -2,10 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
 
-.text-medium {
-    font-size: 18px;
-}
-
 .bg-grey {
     background-color: #e3e3e3;
 }
@@ -162,6 +158,10 @@
 }
 
 /*text*/
+.text-medium {
+    font-size: 16px;
+}
+
 .text-right {
     text-align: right;
 }
@@ -180,6 +180,21 @@
 
 .f-shippori {
     font-family: 'Shippori Antique B1', sans-serif;
+}
+
+/*special-animations*/
+.clickable {
+    transition: 0.2s;
+}
+
+.clickable:hover {
+    transition: 0.3s;
+    transform: scale(1.1, 1.1);
+}
+
+.clickable:active {
+    transition: 0.3s;
+    transform: scale(0.97, 0.97);
 }
 
 @media all and (max-width: 540px) {
