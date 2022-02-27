@@ -2,11 +2,24 @@ import {CardText, CardTitle, Col, Form, Label, Input, Row} from "reactstrap"
 import {fireAlertMessage} from "../../utility/custom-util"
 import {useFormik} from "formik"
 import {setScreenIndex} from "../../custom-views/Signup/actions"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
+import {useEffect} from "react"
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 const SignupCustomerData = () => {
 
     const dispatch = useDispatch()
+
+    const {allCountries} = useSelector(state => state.signUpReducer)
+
+    useEffect(() => {
+        console.log(allCountries)
+    }, [allCountries])
+
+    const changeScreens = () => {
+        dispatch(setScreenIndex(2))
+    }
 
     const validate = (values) => {
         if (!values.name) {
@@ -31,10 +44,13 @@ const SignupCustomerData = () => {
         }
         if (!values.phoneNumber) {
             fireAlertMessage("phone number is required !!!")
+            return
         }
         if (!values.dob) {
             fireAlertMessage("DOB is required !!!")
+            return
         }
+        changeScreens()
     }
 
     // eslint-disable-next-line no-unused-vars
@@ -50,30 +66,27 @@ const SignupCustomerData = () => {
         },
         onSubmit: (values) => {
             validate(values)
+            alert("submit data !!!")
         }
     })
-
-    const changeScreens = () => {
-        dispatch(setScreenIndex(2))
-    }
 
     return <div className='auth-inner m-0 d-center'>
         <Col
             className='d-flex align-items-center flex-column shadow-lg bg-transparent signup-inner radius-20 auth-bg px-2 p-5'
-            lg='10' sm='12'>
+            lg='8' sm='12'>
             <Col className='px-xl-2 mx-auto' sm='12' md='6' lg='12'>
                 <CardTitle tag='h1' className='fw-bold mb-1 text-center f-Londrina'>
-                    <h1 className="text-dark">LET'S GET TO KNOW YOU</h1>
+                    <h1 className="text-light sign-topic">LET'S GET TO KNOW YOU</h1>
                 </CardTitle>
-                <CardText className='mb-2 text-center f-courgette'><h4 className="text-dark">Let's get you
+                <CardText className='mb-2 text-center f-courgette'><h4 className="text-light topic">Let's get you
                     started up</h4></CardText>
             </Col>
             <Col className="w-100">
-                <Form>
+                <Form onSubmit={formik.handleSubmit}>
                     <Col className="col-12 mb-3">
                         <Label
                             for="fullName"
-                            className="font-bold f-shippori text-dark text-medium mb-1">Full Name</Label>
+                            className="f-shippori text-light text-medium mb-1 sign-labels">Full Name</Label>
                         <Input
                             type="text"
                             name="name"
@@ -87,7 +100,7 @@ const SignupCustomerData = () => {
                         <Col className="double-input mb-3">
                             <Label
                                 for="email"
-                                className="font-bold f-shippori text-dark text-medium mb-1">Email</Label>
+                                className="f-shippori text-light text-medium mb-1 sign-labels">Email</Label>
                             <Input
                                 type="email"
                                 name="email"
@@ -100,7 +113,7 @@ const SignupCustomerData = () => {
                         <Col className="double-input mb-3">
                             <Label
                                 for="nic"
-                                className="font-bold f-shippori text-dark text-medium mb-1">NIC</Label>
+                                className="sign-labels f-shippori text-light text-medium mb-1">NIC</Label>
                             <Input
                                 type="text"
                                 name="nic"
@@ -115,7 +128,7 @@ const SignupCustomerData = () => {
                         <Col className="double-input mb-3">
                             <Label
                                 for="email"
-                                className="font-bold f-shippori text-dark text-medium mb-1">Country code</Label>
+                                className="sign-labels f-shippori text-light text-medium mb-1">Country code</Label>
                             <Input
                                 type="text"
                                 name="countryCode"
@@ -128,35 +141,39 @@ const SignupCustomerData = () => {
                         <Col className="double-input mb-3">
                             <Label
                                 for="nic"
-                                className="font-bold f-shippori text-dark text-medium mb-1">Country</Label>
+                                className="sign-labels f-shippori text-light text-medium mb-1">Country</Label>
                             <Input
-                                type="text"
+                                type="select"
                                 name="country"
                                 id="country"
-                                placeHolder="Enter your country"
                                 onChange={formik.handleChange}
                                 value={formik.values.country}
-                            />
+                                onBlur={formik.handleBlur}
+                                className="sign-up-custom-input"
+                            >
+                                <option style={{fontSize: "12px"}} value="">
+                                    Select sector
+                                </option>
+                                {allCountries &&
+                                allCountries.map((e, index) => {
+                                    return (
+                                        <option
+                                            key={index}
+                                            style={{fontSize: "12px"}}
+                                            value={e}
+                                        >
+                                            {e}
+                                        </option>
+                                    )
+                                })}
+                            </Input>
                         </Col>
                     </div>
-                    <div className="d-flex input-container">
-                        <Col className="double-input mb-3">
-                            <Label
-                                for="email"
-                                className="font-bold f-shippori text-dark text-medium mb-1">Phone number</Label>
-                            <Input
-                                type="tel"
-                                name="phoneNumber"
-                                id="phoneNumber"
-                                placeHolder="+94123456789"
-                                onChange={formik.handleChange}
-                                value={formik.values.phoneNumber}
-                            />
-                        </Col>
+                    <div className="d-flex input-container phone-dob-row">
                         <Col className="double-input mb-3">
                             <Label
                                 for="nic"
-                                className="font-bold f-shippori text-dark text-medium mb-1">DOB</Label>
+                                className="sign-labels f-shippori text-light text-medium mb-1">DOB</Label>
                             <Input
                                 type="text"
                                 name="dob"
@@ -166,11 +183,21 @@ const SignupCustomerData = () => {
                                 value={formik.values.dob}
                             />
                         </Col>
+                        <Col className="double-input mb-3">
+                            <Label
+                                for="email"
+                                className="sign-labels f-shippori text-light text-medium mb-1">Phone number</Label>
+                            <PhoneInput
+                                country={"sg"}
+                                value={formik.values.phoneNumber}
+                                onChange={(phone) => (formik.values.phoneNumber = phone)}
+                            />
+                        </Col>
                     </div>
                     <div>
                         <Col className="d-center">
                             <button
-                                onClick={changeScreens}
+                                type="submit"
                                 className="btn btn-primary">
                                 LET'S GO AHEAD...
                             </button>

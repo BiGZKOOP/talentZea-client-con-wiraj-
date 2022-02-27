@@ -2,12 +2,20 @@
 import '@styles/react/pages/page-authentication.scss'
 import "../../assets/css/signup.css"
 import WelcomeComp from "../../custom-components/Signup/WelcomeComp"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import SignupCustomerData from "../../custom-components/Signup/SignupCustomerData"
 import EnterPasswordUsername from "../../custom-components/Signup/EnterPasswordUsername"
 import {fireAlertMessage} from "../../utility/custom-util"
+import {useEffect} from "react"
+import {getAllCountriesListen} from "./actions"
 
 const SignUpView = () => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getAllCountriesListen())
+    }, [])
 
     const {screenIndex} = useSelector(state => state.signUpReducer)
 

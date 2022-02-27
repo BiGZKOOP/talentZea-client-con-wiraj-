@@ -1,7 +1,8 @@
 import * as actionTypes from "./actionTypes"
 
 const init = {
-    screenIndex: 0
+    screenIndex: 0,
+    allCountries: []
 }
 
 const signUpReducer = (state = init, action) => {
@@ -13,6 +14,12 @@ const signUpReducer = (state = init, action) => {
             return {
                 ...state,
                 screenIndex: index
+            }
+        case actionTypes.GET_ALL_COUNTRIES_SUCCESS:
+            const {data} = action
+            return {
+                ...state,
+                allCountries: data
             }
         default: return state
     }

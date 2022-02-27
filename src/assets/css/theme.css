@@ -185,6 +185,7 @@
 /*special-animations*/
 .clickable {
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .clickable:hover {
