@@ -175,7 +175,7 @@ const SignupCustomerData = () => {
                                 for="nic"
                                 className="sign-labels f-shippori text-light text-medium mb-1">DOB</Label>
                             <Input
-                                type="text"
+                                type="date"
                                 name="dob"
                                 id="dob"
                                 placeHolder="Enter your DOB"
