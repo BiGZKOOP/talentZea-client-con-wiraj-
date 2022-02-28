@@ -108,11 +108,11 @@ const NavbarBookmarks = props => {
   const handleBookmarkUpdate = id => dispatch(updateBookmarked(id))
 
   // ** Function to handle Bookmarks visibility
-  const handleBookmarkVisibility = () => {
-    setOpenSearch(!openSearch)
-    setValue('')
-    handleClearQueryInStore()
-  }
+  // const handleBookmarkVisibility = () => {
+  //   setOpenSearch(!openSearch)
+  //   setValue('')
+  //   handleClearQueryInStore()
+  // }
 
   // ** Function to handle Input change
   const handleInputChange = e => {
@@ -149,9 +149,9 @@ const NavbarBookmarks = props => {
         {renderBookmarks()}
         {renderExtraBookmarksDropdown()}
         <NavItem className='nav-item d-none d-lg-block'>
-          <NavLink className='bookmark-star' onClick={handleBookmarkVisibility}>
-            <Icon.Star className='ficon text-warning' />
-          </NavLink>
+          {/*<NavLink className='bookmark-star' onClick={handleBookmarkVisibility}>*/}
+          {/*  <Icon.Star className='ficon text-warning' />*/}
+          {/*</NavLink>*/}
           <div className={classnames('bookmark-input search-input', { show: openSearch })}>
             <div className='bookmark-input-icon'>
               <Icon.Search size={14} />

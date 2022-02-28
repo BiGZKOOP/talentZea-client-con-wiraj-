@@ -107,6 +107,10 @@ const Login = () => {
         }
     }
 
+    const routeToSignup = () => {
+        history.push("/signup")
+    }
+
     return (
         <div className='auth-wrapper auth-cover login-back'>
             <div className='auth-inner m-0 d-center'>
@@ -152,79 +156,21 @@ const Login = () => {
                                     )}
                                 />
                             </div>
-                            <div className="text-right f-Londrina mt-2 mb-1">
+                            <div className="text-right f-Londrina mt-2 mb-1 pointer">
                                 <h5 className="text-primary">forgot password ?</h5>
                             </div>
                             <Button type='submit' color='primary' block className="p-1 mt-2 mb-3">
                                 Sign in
                             </Button>
                             <div className="text-center mt-2 mb-1 f-Londrina">
-                                <h4>New to the talentZea ?
-                                    <span className="text-primary p-0"> signup here.</span>
+                                <h4 className="clickable">New to the talentZea ?
+                                    <span className="text-primary p-0 pointer" onClick={routeToSignup}> signup here.</span>
                                 </h4>
                             </div>
                         </Form>
                     </Col>
                 </Col>
             </div>
-            {/*<Row className='auth-inner m-0'>*/}
-            {/*    <Link className='brand-logo' to='/' onClick={e => e.preventDefault()}>*/}
-            {/*        <h2 className='brand-text text-primary ms-1'>BigZkoop.com</h2>*/}
-            {/*    </Link>*/}
-            {/*    <Col className='d-none d-lg-flex align-items-center p-5' lg='8' sm='12'>*/}
-            {/*        <div className='w-100 d-lg-flex align-items-center justify-content-center px-5'>*/}
-            {/*            <img className='img-fluid' src={source} alt='Login Cover'/>*/}
-            {/*        </div>*/}
-            {/*    </Col>*/}
-            {/*    <Col className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>*/}
-            {/*        <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>*/}
-            {/*            <CardTitle tag='h2' className='fw-bold mb-1'>*/}
-            {/*                CBO වෙත සාදරයෙන් පිළිගනිමු !*/}
-            {/*            </CardTitle>*/}
-            {/*            <CardText className='mb-2'>කරුණාකර ඔබගේ ගිණුමට ඇතුලත් වන්න.</CardText>*/}
-            {/*            <Form className='auth-login-form mt-2' onSubmit={handleSubmit(onSubmit)}>*/}
-            {/*                <div className='mb-1'>*/}
-            {/*                    <Label className='form-label' for='login-email'>*/}
-            {/*                        Email*/}
-            {/*                    </Label>*/}
-            {/*                    <Controller*/}
-            {/*                        id='loginEmail'*/}
-            {/*                        name='loginEmail'*/}
-            {/*                        control={control}*/}
-            {/*                        render={({field}) => (*/}
-            {/*                            <Input*/}
-            {/*                                autoFocus*/}
-            {/*                                type='email'*/}
-            {/*                                placeholder='john@example.com'*/}
-            {/*                                invalid={errors.loginEmail && true}*/}
-            {/*                                {...field}*/}
-            {/*                            />*/}
-            {/*                        )}*/}
-            {/*                    />*/}
-            {/*                </div>*/}
-            {/*                <div className='mb-1'>*/}
-            {/*                    <div className='d-flex justify-content-between'>*/}
-            {/*                        <Label className='form-label' for='login-password'>*/}
-            {/*                            Password*/}
-            {/*                        </Label>*/}
-            {/*                    </div>*/}
-            {/*                    <Controller*/}
-            {/*                        id='password'*/}
-            {/*                        name='password'*/}
-            {/*                        control={control}*/}
-            {/*                        render={({field}) => (*/}
-            {/*                            <InputPasswordToggle className='input-group-merge'*/}
-            {/*                                                 invalid={errors.password && true} {...field} />*/}
-            {/*                        )}*/}
-            {/*                    />*/}
-            {/*                </div>*/}
-            {/*                <Button type='submit' color='primary' block>*/}
-            {/*                    Sign in*/}
-            {/*                </Button>*/}
-            {/*            </Form>*/}
-            {/*        </Col>*/}
-            {/*    </Col>*/}
-            {/*</Row>*/}
         </div>
     )
 }
