@@ -162,6 +162,10 @@
     font-size: 16px;
 }
 
+.text-small {
+    font-size: 15px;
+}
+
 .text-right {
     text-align: right;
 }
@@ -182,6 +186,10 @@
     font-family: 'Shippori Antique B1', sans-serif;
 }
 
+.line-h-3 {
+    line-height: 30px;
+}
+
 /*special-animations*/
 .clickable {
     transition: 0.2s;
@@ -198,6 +206,7 @@
     transform: scale(0.97, 0.97);
 }
 
+
 @media all and (max-width: 540px) {
     .width-24 {
         width: 100%;
@@ -206,5 +215,15 @@
 
     .sm-mb-2 {
         margin-bottom: 20px;
+    }
+
+    .text-sm-c-center {
+        text-align: center;
+    }
+
+    .d-center-sm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

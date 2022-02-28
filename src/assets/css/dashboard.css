@@ -1,0 +1,9 @@
+.dashboard-img {
+    width: 75%;
+}
+
+@media (max-width:578px) {
+    .dashboard-img {
+        width: 100%;
+    }
+}
