@@ -39,7 +39,7 @@ const Dashboard = () => {
                     </Col>
                 </Col>
             </Row>
-            <Row className="mt-5 mb-2">
+            <Row className="mt-5 mb-5">
                 <Col className="d-center">
                     <AirpodsSvg/>
                 </Col>
