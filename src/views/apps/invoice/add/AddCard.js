@@ -10,6 +10,7 @@ import axios from 'axios'
 import Flatpickr from 'react-flatpickr'
 import { SlideDown } from 'react-slidedown'
 import { X, Plus, Hash } from 'react-feather'
+// eslint-disable-next-line no-unused-vars
 import Select, { components } from 'react-select'
 
 // ** Reactstrap Imports
@@ -217,7 +218,7 @@ const AddCard = () => {
 
         <hr className='invoice-spacing' />
 
-        {/* Address and Contact */}
+        {/* Address and Contract */}
         <CardBody className='invoice-padding pt-0'>
           <Row className='row-bill-to invoice-spacing'>
             <Col className='col-bill-to ps-0' xl='8'>
@@ -282,7 +283,7 @@ const AddCard = () => {
             </Col>
           </Row>
         </CardBody>
-        {/* /Address and Contact */}
+        {/* /Address and Contract */}
 
         {/* Product Details */}
         <CardBody className='invoice-padding invoice-product-details'>

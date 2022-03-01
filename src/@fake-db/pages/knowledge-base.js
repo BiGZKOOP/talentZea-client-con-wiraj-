@@ -121,7 +121,7 @@ const data = {
       questions: [
         {
           id: 0,
-          question: 'Can I Contact A Salés Rep?',
+          question: 'Can I Contract A Salés Rep?',
           slug: 'can-i-contact-a-salés-rep'
         },
         {
@@ -154,7 +154,7 @@ const data = {
       questions: [
         {
           id: 0,
-          question: 'How Do I Contact Legal?',
+          question: 'How Do I Contract Legal?',
           slug: 'how-do-i-contact-legal'
         },
         {

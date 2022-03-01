@@ -2,8 +2,31 @@
     width: 75%;
 }
 
+.dashboard-work-card {
+    width: 25%;
+}
+
+.dash-card {
+    width: 23%;
+}
+
+.service-back {
+    background-image: url("https://wallpaperaccess.com/full/1761719.jpg");
+    background-blend-mode: darken;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 @media (max-width:578px) {
     .dashboard-img {
+        width: 100%;
+    }
+
+    .dashboard-work-card {
+        width: 100%;
+    }
+
+    .dash-card {
         width: 100%;
     }
 }

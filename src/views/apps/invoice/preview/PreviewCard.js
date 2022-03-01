@@ -83,7 +83,7 @@ const PreviewCard = ({ data }) => {
 
       <hr className='invoice-spacing' />
 
-      {/* Address and Contact */}
+      {/* Address and Contract */}
       <CardBody className='invoice-padding pt-0'>
         <Row className='invoice-spacing'>
           <Col className='p-0' xl='8'>
@@ -125,7 +125,7 @@ const PreviewCard = ({ data }) => {
           </Col>
         </Row>
       </CardBody>
-      {/* /Address and Contact */}
+      {/* /Address and Contract */}
 
       {/* Invoice Description */}
       <Table responsive>
