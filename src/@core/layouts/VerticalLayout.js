@@ -241,7 +241,7 @@ const VerticalLayout = props => {
         {footer ? (
           footer
         ) : (
-          <FooterComponent
+          < FooterComponent
             footerType={footerType}
             footerClasses={footerClasses}
           />

@@ -1,7 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
+/*webkit styles*/
+::-webkit-scrollbar {
+    width: 7px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff2e4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #5abfd9;
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5cb8fa;
+}
+
+/*sizes*/
+.w-23 {
+    width: 23%;
+}
+
+/*colors*/
 .bg-grey {
     background-color: #e3e3e3;
 }
@@ -152,6 +179,10 @@
     object-fit: cover;
 }
 
+.divider-img {
+    width: 10%;
+}
+
 /*borders*/
 .right-border {
     border-right: 1px black;
@@ -160,6 +191,10 @@
 /*text*/
 .text-medium {
     font-size: 16px;
+}
+
+.text-small {
+    font-size: 15px;
 }
 
 .text-right {
@@ -182,6 +217,18 @@
     font-family: 'Shippori Antique B1', sans-serif;
 }
 
+.f-lobster {
+    font-family: 'Lobster', cursive;
+}
+
+.f-indie-flower {
+    font-family: 'Indie Flower', cursive;
+}
+
+.line-h-3 {
+    line-height: 30px;
+}
+
 /*special-animations*/
 .clickable {
     transition: 0.2s;
@@ -198,6 +245,36 @@
     transform: scale(0.97, 0.97);
 }
 
+.scalable {
+    transition: 0.2s ease-in;
+}
+
+.scalable:hover {
+    transition: 0.3s ease-out;
+    transform: scale(1.1, 1.1);
+}
+
+.rotatable {
+    transition: 0.2s ease-out;
+}
+
+.rotatable:hover {
+    transition: 0.2s ease-in;
+    transform: rotate(5deg);
+}
+
+/*footer*/
+.footer-icon {
+    cursor: pointer;
+    color: whitesmoke;
+    transition: 0.1s;
+}
+
+.footer-icon:hover {
+    transition: 0.2s;
+    color: #ff7693;
+}
+
 @media all and (max-width: 540px) {
     .width-24 {
         width: 100%;
@@ -206,5 +283,23 @@
 
     .sm-mb-2 {
         margin-bottom: 20px;
+    }
+
+    .text-sm-c-center {
+        text-align: center;
+    }
+
+    .d-center-sm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .divider-img {
+        width: 50%;
+    }
+
+    .w-sm-100 {
+        width: 100%;
     }
 }
