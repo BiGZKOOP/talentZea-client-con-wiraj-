@@ -46,6 +46,6 @@
     }
 
     .phone-dob-row {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 }
