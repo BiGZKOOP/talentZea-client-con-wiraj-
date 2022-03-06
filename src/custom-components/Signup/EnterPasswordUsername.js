@@ -1,12 +1,16 @@
-import {CardText, CardTitle, Col, Form, Input, Label, Row} from "reactstrap"
+import {CardText, CardTitle, Col, Form, Input, Label, Progress, Row, Spinner} from "reactstrap"
 import {fireAlertMessage} from "../../utility/custom-util"
 import {useFormik} from "formik"
-import {setScreenIndex} from "../../custom-views/Signup/actions"
-import {useDispatch} from "react-redux"
+import {signupListen} from "../../custom-views/Signup/actions"
+import {useDispatch, useSelector} from "react-redux"
+import {useHistory} from "react-router-dom"
 
 const EnterPasswordUsername = () => {
 
     const dispatch = useDispatch()
+    const history = useHistory()
+
+    const {signupLoad} = useSelector(state => state.signUpReducer)
 
     const validate = (values) => {
         if (!values.username) {
@@ -15,12 +19,16 @@ const EnterPasswordUsername = () => {
         }
         if (!values.password) {
             fireAlertMessage("password is required !!!")
+            return
         }
         if (!values.rePassword) {
             fireAlertMessage("password is required !!!")
+            return
         }
         if (values.password !== values.rePassword) {
             fireAlertMessage("passwords do not match !!!")
+        } else {
+            dispatch(signupListen({username: values.username, password: values.password}))
         }
     }
 
@@ -32,12 +40,12 @@ const EnterPasswordUsername = () => {
             rePassword: ""
         },
         onSubmit: (values) => {
-            validate(values)
+            if (!signupLoad) validate(values)
         }
     })
 
     const changeScreens = () => {
-        dispatch(setScreenIndex(1))
+        history.push("/login")
     }
 
     return <div className='auth-inner m-0 d-center'>
@@ -52,7 +60,7 @@ const EnterPasswordUsername = () => {
                     started up</h4></CardText>
             </Col>
             <Col className="w-100">
-                <Form>
+                <Form onSubmit={formik.handleSubmit}>
                     <Row>
                         <Col>
                             <Label
@@ -98,14 +106,19 @@ const EnterPasswordUsername = () => {
                             />
                         </Col>
                     </Row>
-                    <Col className="d-center mt-4">
+                    {
+                        signupLoad && <Col className="d-center mt-2">
+                            <Spinner color="light"/>
+                        </Col>
+                    }
+                    <Col className="d-center mt-2">
                         <button className="btn btn-danger">CREATE YOUR ACCOUNT</button>
                     </Col>
                     <Col className="d-center mt-2">
                         <p
                             onClick={changeScreens}
                             className="text-info font-bold clickable">
-                            BACK TO THE DETAILS
+                            BACK TO LOGIN
                         </p>
                     </Col>
                 </Form>
