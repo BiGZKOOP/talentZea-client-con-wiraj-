@@ -22,7 +22,7 @@ const OtpSend = () => {
         dispatch(sendOtpListen(username, otp, history))
     }
 
-    return <div className='auth-inner m-0 d-center'>
+    return <div className='auth-inner signup-body m-0 d-center'>
         <Col
             className='d-flex align-items-center shadow-lg bg-transparent signup-prev-inner radius-20 auth-bg px-2 p-5'
             lg='4' sm='2'>

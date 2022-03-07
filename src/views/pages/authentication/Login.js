@@ -1,4 +1,5 @@
 // ** React Imports
+// eslint-disable-next-line no-unused-vars
 import {useContext, Fragment, useEffect} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import "../../../assets/css/login.css"
@@ -8,16 +9,16 @@ import "../../../assets/css/login.css"
 import source from "../../../assets/images/custom_images/water.jpg"
 
 // ** Custom Hooks
-import useJwt from '@src/auth/jwt/useJwt'
+// import useJwt from '@src/auth/jwt/useJwt'
 
 // ** Third Party Components
-import {useDispatch} from 'react-redux'
-import {toast, Slide} from 'react-toastify'
+import {useDispatch, useSelector} from 'react-redux'
+// import {toast, Slide} from 'react-toastify'
 import {useForm, Controller} from 'react-hook-form'
 import {Facebook, Twitter, Mail, GitHub, HelpCircle, Coffee} from 'react-feather'
 
 // ** Actions
-import {handleLogin} from '@store/authentication'
+// import {handleLogin} from '@store/authentication'
 
 // ** Context
 import {AbilityContext} from '@src/utility/context/Can'
@@ -27,14 +28,27 @@ import Avatar from '@components/avatar'
 import InputPasswordToggle from '@components/input-password-toggle'
 
 // ** Utils
+// eslint-disable-next-line no-unused-vars
 import {getHomeRouteForLoggedInUser} from '@utils'
 
 // ** Reactstrap Imports
-import {Row, Col, Form, Input, Label, Alert, Button, CardText, CardTitle, UncontrolledTooltip} from 'reactstrap'
+import {
+    Row,
+    Col,
+    Form,
+    Input,
+    Label,
+    Alert,
+    Button,
+    CardText,
+    CardTitle,
+    UncontrolledTooltip,
+    Spinner
+} from 'reactstrap'
 
 // ** Styles
 import '@styles/react/pages/page-authentication.scss'
-import {loginListen} from "./redux/actions"
+import {LoginListenAction} from "../../../custom-views/Signup/actions"
 import {getStreet} from "../../../utility/configCalling/actions"
 
 const ToastContent = ({name, role}) => (
@@ -57,14 +71,17 @@ const defaultValues = {
 }
 
 const Login = () => {
+
+    const {signupLoad} = useSelector(state => state.signUpReducer)
+
     // ** Hooks
     const dispatch = useDispatch()
     const history = useHistory()
-    const ability = useContext(AbilityContext)
+    // const ability = useContext(AbilityContext)
     const {
         // eslint-disable-next-line no-unused-vars
         control,
-        setError,
+        // setError,
         // eslint-disable-next-line no-unused-vars
         handleSubmit,
         // eslint-disable-next-line no-unused-vars
@@ -72,39 +89,40 @@ const Login = () => {
     } = useForm({defaultValues})
 
     useEffect(() => {
-        dispatch(loginListen())
         dispatch(getStreet(1))
-    },  [])
+    }, [])
 
     // eslint-disable-next-line no-unused-vars
     const onSubmit = data => {
         if (Object.values(data).every(field => field.length > 0)) {
-            useJwt
-                .login({email: data.loginEmail, password: data.password})
-                .then(res => {
-                    const data = {
-                        ...res.data.userData,
-                        accessToken: res.data.accessToken,
-                        refreshToken: res.data.refreshToken
-                    }
-                    dispatch(handleLogin(data))
-                    ability.update(res.data.userData.ability)
-                    history.push(getHomeRouteForLoggedInUser(data.role))
-                    toast.success(
-                        <ToastContent name={data.fullName || data.username || 'John Doe'} role={data.role || 'admin'}/>,
-                        {icon: false, transition: Slide, hideProgressBar: true, autoClose: 2000}
-                    )
-                })
-                .catch(err => console.log(err))
-        } else {
-            for (const key in data) {
-                if (data[key].length === 0) {
-                    setError(key, {
-                        type: 'manual'
-                    })
-                }
-            }
+            dispatch(LoginListenAction(data.loginEmail, data.password, history))
+            // useJwt
+            //     .login({email: data.loginEmail, password: data.password})
+            //     .then(res => {
+            //         const data = {
+            //             ...res.data.userData,
+            //             accessToken: res.data.accessToken,
+            //             refreshToken: res.data.refreshToken
+            //         }
+            //         dispatch(handleLogin(data))
+            //         ability.update(res.data.userData.ability)
+            //         history.push(getHomeRouteForLoggedInUser(data.role))
+            //         toast.success(
+            //             <ToastContent name={data.fullName || data.username || 'Udara j'} role={data.role || 'admin'}/>,
+            //             {icon: false, transition: Slide, hideProgressBar: true, autoClose: 2000}
+            //         )
+            //     })
+            //     .catch(err => console.log(err))
         }
+        // else {
+        //     for (const key in data) {
+        //         if (data[key].length === 0) {
+        //             setError(key, {
+        //                 type: 'manual'
+        //             })
+        //         }
+        //     }
+        // }
     }
 
     const routeToSignup = () => {
@@ -114,7 +132,9 @@ const Login = () => {
     return (
         <div className='auth-wrapper auth-cover login-back'>
             <div className='auth-inner m-0 d-center'>
-                <Col className='d-flex align-items-center shadow-lg bg-transparent login-inner radius-20 auth-bg px-2 p-5' lg='4' sm='2'>
+                <Col
+                    className='d-flex align-items-center shadow-lg login-inner  radius-20 auth-bg px-2 p-5'
+                    lg='4' sm='2'>
                     <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
                         <CardTitle tag='h2' className='fw-bold mb-1 text-center text-dark f-Londrina'>
                             <h1>WELCOME TO THE TALENT ZEA</h1>
@@ -159,15 +179,24 @@ const Login = () => {
                             <div className="text-right f-Londrina mt-2 mb-1 pointer">
                                 <h5 className="text-primary">forgot password ?</h5>
                             </div>
+                            {
+                                signupLoad && <Col className="d-center mt-2">
+                                    <Spinner color="dark"/>
+                                </Col>
+                            }
                             <Button type='submit' color='primary' block className="p-1 mt-2 mb-3">
                                 Sign in
                             </Button>
                             <div className="text-center mt-2 mb-1 f-Londrina">
                                 <h4 className="clickable">New to the talentZea ?
-                                    <span className="text-primary p-0 pointer" onClick={routeToSignup}> signup here.</span>
+                                    <span className="text-primary p-0 pointer"
+                                          onClick={routeToSignup}> signup here.</span>
                                 </h4>
                             </div>
                         </Form>
+                        <div className="text-center mt-2 mb-1 f-Londrina">
+                            <h4 className="clickable" onClick={() => history.push("/dashboard")}>Back to homepage</h4>
+                        </div>
                     </Col>
                 </Col>
             </div>

@@ -4,7 +4,10 @@ const DashboardRoutes = [
   // Dashboards
   {
     path: '/dashboard',
-    component: lazy(() => import('../../custom-views/dashboard/Dashboard'))
+    component: lazy(() => import('../../custom-views/dashboard/Dashboard')),
+    meta: {
+      authRoute: true
+    }
   }
 ]
 

@@ -48,7 +48,7 @@ const EnterPasswordUsername = () => {
         history.push("/login")
     }
 
-    return <div className='auth-inner m-0 d-center'>
+    return <div className='auth-inner signup-body m-0 d-center'>
         <Col
             className='d-flex align-items-center flex-column shadow-lg bg-transparent signup-prev-inner radius-20 auth-bg px-2 p-5'
             lg='4' sm='12'>
@@ -59,7 +59,7 @@ const EnterPasswordUsername = () => {
                 <CardText className='mb-2 text-center f-courgette'><h4 className="text-light">Let's get you
                     started up</h4></CardText>
             </Col>
-            <Col className="w-100">
+            <Col className="w-100 mt-2">
                 <Form onSubmit={formik.handleSubmit}>
                     <Row>
                         <Col>
@@ -111,13 +111,13 @@ const EnterPasswordUsername = () => {
                             <Spinner color="light"/>
                         </Col>
                     }
-                    <Col className="d-center mt-2">
+                    <Col className="d-center mt-4">
                         <button className="btn btn-danger">CREATE YOUR ACCOUNT</button>
                     </Col>
                     <Col className="d-center mt-2">
                         <p
                             onClick={changeScreens}
-                            className="text-info font-bold clickable">
+                            className="text-light font-bold clickable">
                             BACK TO LOGIN
                         </p>
                     </Col>

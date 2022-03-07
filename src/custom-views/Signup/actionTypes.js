@@ -20,3 +20,9 @@ export const SIGNUP_LOADING_END = "Signup/SIGNUP_LOADING_END"
 
 export const VERIFY_LOADING_START = "Signup/VERIFY_LOADING_START"
 export const VERIFY_LOADING_END = "Signup/VERIFY_LOADING_END"
+
+export const LOGIN_LISTEN = "Signup/LOGIN_LISTEN"
+export const LOGIN_SUCCESS = "Signup/LOGIN_SUCCESS"
+
+export const SIGNOUT_LISTEN = "Signup/SIGNOUT_LISTEN"
+export const SIGNOUT_SUCCESS = "Signup/SIGNOUT_SUCCESS"

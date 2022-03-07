@@ -31,7 +31,7 @@ const SignUpView = () => {
     }
 
     return (
-        <div className='auth-wrapper auth-cover signup-body'>
+        <div className='auth-wrapper auth-cover'>
             {handleScreens()}
         </div>
     )
