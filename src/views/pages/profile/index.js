@@ -86,12 +86,12 @@ const Profile = () => {
 
     return (
         <Fragment>
-            <Breadcrumbs breadCrumbTitle='Profile' breadCrumbParent='Pages' breadCrumbActive='Profile'/>
+            <Breadcrumbs breadCrumbTitle='Profile' breadCrumbParent='dashboard' breadCrumbActive='Profile'/>
             {data !== null ? (
                 <div id='user-profile'>
                     <Row>
                         <Col sm='12'>
-                            <ProfileHeader data={data.header}/>
+                            <ProfileHeader index={2}/>
                         </Col>
                     </Row>
                     <section id='profile-info'>

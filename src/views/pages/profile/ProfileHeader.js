@@ -1,72 +1,25 @@
-// ** React Imports
-import { useState } from 'react'
-
-// ** Icons Imports
-import { AlignJustify, Rss, Info, Image, Users, Edit } from 'react-feather'
-
 // ** Reactstrap Imports
-import { Card, CardImg, Collapse, Navbar, Nav, NavItem, NavLink, Button } from 'reactstrap'
+import { Card, CardImg} from 'reactstrap'
+import ClientNav from "../../../custom-components/ClientDashboard/ClientNav"
 
-const ProfileHeader = ({ data }) => {
-  // ** States
-  const [isOpen, setIsOpen] = useState(false)
-
-  const toggle = () => setIsOpen(!isOpen)
+const ProfileHeader = ({index}) => {
 
   return (
     <Card className='profile-header mb-2'>
-      <CardImg src={data.coverImg} alt='User Profile Image' top />
+      <CardImg height={"400px"} className="object-fit" src={"https://wallpaperaccess.com/full/967674.jpg"} alt='User Profile Image' top />
       <div className='position-relative'>
         <div className='profile-img-container d-flex align-items-center'>
-          <div className='profile-img'>
-            <img className='rounded img-fluid' src={data.avatar} alt='Card image' />
+          <div className='profile-img object-fit border-white'>
+            <img className='rounded img-fluid object-fit' width="200px" height="200px" src={"https://cdn.vox-cdn.com/thumbor/48ExsWf9xBecr-aK18m01PRLVio=/95x601:1280x1460/1400x933/filters:focal(538x858:742x1062):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/66699060/mgidarccontentnick.comc008fa9d_d.0.png"} alt='Card image' />
           </div>
           <div className='profile-title ms-3'>
-            <h2 className='text-white'>{data.username}</h2>
-            <p className='text-white'>{data.designation}</p>
+            <h2 className='text-white'>Janith malli</h2>
+            <p className='text-white'>Software enginner</p>
           </div>
         </div>
       </div>
       <div className='profile-header-nav'>
-        <Navbar container={false} className='justify-content-end justify-content-md-between w-100' expand='md' light>
-          <Button color='' className='btn-icon navbar-toggler' onClick={toggle}>
-            <AlignJustify size={21} />
-          </Button>
-          <Collapse isOpen={isOpen} navbar>
-            <div className='profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0'>
-              <Nav className='mb-0' pills>
-                <NavItem>
-                  <NavLink className='fw-bold' active>
-                    <span className='d-none d-md-block'>Feed</span>
-                    <Rss className='d-block d-md-none' size={14} />
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className='fw-bold'>
-                    <span className='d-none d-md-block'>About</span>
-                    <Info className='d-block d-md-none' size={14} />
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className='fw-bold'>
-                    <span className='d-none d-md-block'>Photos</span>
-                    <Image className='d-block d-md-none' size={14} />
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className='fw-bold'>
-                    <span className='d-none d-md-block'>Friends</span>
-                    <Users className='d-block d-md-none' size={14} />
-                  </NavLink>
-                </NavItem>
-              </Nav>
-              <Button color='primary'>
-                <Edit className='d-block d-md-none' size={14} />
-                <span className='fw-bold d-none d-md-block'>Edit</span>
-              </Button>
-            </div>
-          </Collapse>
-        </Navbar>
+          <ClientNav index={index}/>
       </div>
     </Card>
   )

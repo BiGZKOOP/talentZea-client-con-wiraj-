@@ -9,11 +9,11 @@ const themeConfig = {
   layout: {
     isRTL: false,
     skin: 'dark', // light, dark, bordered, semi-dark
-    routerTransition: 'fadeInLeft', // fadeIn, fadeInLeft, zoomIn, none or check this for more transition https://animate.style/
+    routerTransition: 'fadeIn', // fadeIn, fadeInLeft, zoomIn, none or check this for more transition https://animate.style/
     type: 'horizontal', // vertical, horizontal
     contentWidth: 'full', // full, boxed
     menu: {
-      isHidden: false,
+      isHidden: true,
       isCollapsed: false
     },
     navbar: {

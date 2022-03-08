@@ -284,6 +284,18 @@
     color: #8912dd !important;
 }
 
+.bg-purple {
+    background-color: #b756ef;
+}
+
+.bg-purple-dark {
+    background-color: #b756ef !important;
+}
+
+.border-white {
+    border: 2px solid whitesmoke;
+}
+
 @media all and (max-width: 540px) {
     .width-24 {
         width: 100%;
