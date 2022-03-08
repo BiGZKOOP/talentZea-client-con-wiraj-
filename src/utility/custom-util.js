@@ -7,3 +7,11 @@ export const fireAlertMessage = (msg) => {
         "error"
     )
 }
+
+export const fireAlertCustom = (title, msg, icon) => {
+    Swal.fire(
+        title,
+        msg,
+        icon
+    )
+}

@@ -1,9 +1,11 @@
 .login-back {
-    background-image: url("https://i.pinimg.com/originals/3e/23/da/3e23daededad161550ca58300caaa898.jpg");
+    /*background-image: url("https://i.pinimg.com/originals/3e/23/da/3e23daededad161550ca58300caaa898.jpg");*/
+    background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);
     background-attachment: fixed;
     background-size: cover;
 }
 
 .login-inner {
     border: 2px dashed #505050;
+    background-image: linear-gradient(to right bottom, #2a0b41, #27093e, #25063b, #220438, #200135);
 }

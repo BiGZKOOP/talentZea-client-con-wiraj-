@@ -105,3 +105,33 @@ export const signupSendingLoadingEnd = () => {
         type: actionTypes.SIGNUP_LOADING_END
     }
 }
+
+//Login actions
+export const LoginListenAction = (username, password, history) => {
+    return {
+        type: actionTypes.LOGIN_LISTEN,
+        username,
+        password,
+        history
+    }
+}
+
+export const LoginSuccessAction = () => {
+    return {
+        type: actionTypes.LOGIN_SUCCESS
+    }
+}
+
+//Signout actions
+export const signoutListen = (history) => {
+    return {
+        type:actionTypes.SIGNOUT_LISTEN,
+        history
+    }
+}
+
+export const signoutSuccess = () => {
+    return {
+        type: actionTypes.SIGNOUT_SUCCESS
+    }
+}

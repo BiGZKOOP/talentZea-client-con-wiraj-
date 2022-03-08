@@ -47,7 +47,10 @@ const signUpReducer = (state = init, action) => {
                 signupLoad: false
             }
         case actionTypes.SEND_OTP_SUCCESS:
-            return state
+            return {
+                ...state,
+                screenIndex: 0
+            }
         default:
             return state
     }

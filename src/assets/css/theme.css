@@ -275,6 +275,15 @@
     color: #ff7693;
 }
 
+/*colors*/
+.text-purple {
+    color: #b756ef !important;
+}
+
+.text-purple-dark {
+    color: #8912dd !important;
+}
+
 @media all and (max-width: 540px) {
     .width-24 {
         width: 100%;

@@ -9,6 +9,7 @@ import {
     signupSuccess
 } from "./actions"
 import {Auth} from "aws-amplify"
+import {fireAlertCustom} from "../../utility/custom-util"
 
 const getAllCountriesAsync = async () => {
 
@@ -23,6 +24,14 @@ const signupAsync = async (username, password) => {
 
 const sendOTPasync = async (username, otp) => {
     return await Auth.confirmSignUp(username, otp)
+}
+
+const loginUserAsync = async (username, password) => {
+    return await Auth.signIn(username, password)
+}
+
+const signoutAsync = async () => {
+    return await Auth.signOut()
 }
 
 ///ASYNC FINISHED///
@@ -47,7 +56,9 @@ export function* signupUserCB(action) {
     try {
         yield put(signupSendingLoadingStart())
         const data = yield call(signupAsync, username, password)
-        if (data) yield put(signupSuccess(username))
+        if (data) {
+            yield put(signupSuccess(username))
+        }
     } catch (err) {
         console.error(err)
     } finally {
@@ -63,6 +74,7 @@ export function* sendOtpCB(action) {
         yield put(signupSendingLoadingStart())
         yield call(sendOTPasync, username, otp)
         yield put(sendOtpSuccess())
+        fireAlertCustom("Hooray...!!", "You can log now !", "success")
     } catch (err) {
         console.error(err)
     } finally {
@@ -71,10 +83,39 @@ export function* sendOtpCB(action) {
     }
 }
 
+export function* loginListenCB(action) {
+
+    const {username, password, history} = action
+    try {
+        yield put(signupSendingLoadingStart())
+        yield call(loginUserAsync, username, password)
+        window.localStorage.setItem("user", "logged")
+        history.push("/dashboard")
+    } catch (err) {
+        console.log(err)
+    } finally {
+        yield put(signupSendingLoadingEnd())
+    }
+}
+
+export function* signoutListenCB(action) {
+    // eslint-disable-next-line no-unused-vars
+    const {history} = action
+    try {
+        yield call(signoutAsync)
+        window.localStorage.removeItem("user")
+        location.reload()
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 function* watchSignupSagas() {
     yield takeLatest(actionTypes.GET_ALL_COUNTRIES_LISTEN, getAllCountriesCB)
     yield takeLatest(actionTypes.SIGNUP_LISTEN, signupUserCB)
     yield takeLatest(actionTypes.SEND_OTP_LISTEN, sendOtpCB)
+    yield takeLatest(actionTypes.LOGIN_LISTEN, loginListenCB)
+    yield takeLatest(actionTypes.SIGNOUT_LISTEN, signoutListenCB)
 }
 
 const signupSagas = [watchSignupSagas]
