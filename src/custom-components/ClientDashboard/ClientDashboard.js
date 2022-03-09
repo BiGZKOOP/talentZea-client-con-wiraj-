@@ -23,51 +23,20 @@ const ClientDashboard = () => {
                 </Col>
                 <Col>
                     <div className="mb-2">
-                        <h3>Order Timeline</h3>
+                        <h3>Order List (2)</h3>
                     </div>
                     <Card className="overflow-auto p-2" style={{height:"310px"}}>
                         <ClientDashboardOrderCard />
                     </Card>
                 </Col>
             </Row>
-            <Col lg={3} sm={12}>
-                <div className="mb-2">
-                    <h3>User Details</h3>
-                </div>
-                <Card className="p-2">
-                    <div className="d-flex justify-content-between">
-                        <p>Order date:-</p>
-                        <p className="ml-2 text-success font-bold">2022.01.01</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>End date:-</p>
-                        <p className="ml-2 text-info font-bold">2022.01.01</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>Order status:-</p>
-                        <p className="font-bold text-danger">Pending</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>Category:-</p>
-                        <p className="ml-2">Graphics designing</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>Sub Category:-</p>
-                        <p className="ml-2">Logo Designing</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>Order cost:-</p>
-                        <p className="ml-2 font-bold">Rs. 12,000 /=</p>
-                    </div>
-                </Card>
-            </Col>
-            <Col lg={9} sm={12}>
+            <Col lg={12} sm={12}>
                 <div className="p-0 m-0">
                     <h3>Order History</h3>
                 </div>
                 <Row className="p-2 overflow-auto">
                     <Col lg={4} sm={12}>
-                        <Card className="m-0 p-0">
+                        <Card className="scalable">
                             <CardBody className="d-center flex-column">
                                 <SuccessOrderSVG />
                                 <h4 className="f-Londrina mt-2">Complete Order count</h4>
@@ -76,7 +45,7 @@ const ClientDashboard = () => {
                         </Card>
                     </Col>
                     <Col className="mt-lg-0 mt-2" lg={4} sm={12}>
-                        <Card>
+                        <Card className="scalable">
                             <CardBody className="d-center flex-column">
                                 <PendingOrderSVG />
                                 <h4 className="f-Londrina mt-2">Pending Order count</h4>
@@ -85,7 +54,7 @@ const ClientDashboard = () => {
                         </Card>
                     </Col>
                     <Col lg={4} sm={12}>
-                        <Card>
+                        <Card className="scalable">
                             <CardBody className="d-center flex-column">
                                 <CanceledOrderSVG />
                                 <h4 className="f-Londrina mt-2">Canceled Order count</h4>
