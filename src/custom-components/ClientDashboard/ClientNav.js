@@ -1,17 +1,24 @@
 import {Button, Collapse, Nav, Navbar, NavItem, NavLink} from "reactstrap"
 import {AlignJustify, Edit, Image, Info, Rss, Users} from "react-feather"
 import {useState} from "react"
-import {useHistory} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux"
+import {handleScreenIndex} from "../../custom-views/ClientProfile/actions"
 
-const ClientNav = ({index}) => {
+const ClientNav = () => {
+
+    const {screenIndex} = useSelector(state => state.clientProfileReducer)
 
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => setIsOpen(!isOpen)
-    const history = useHistory()
+    const dispatch = useDispatch()
 
     // eslint-disable-next-line no-unused-vars
     const linkActive = (indexNumber) => {
-        return index === indexNumber
+        return screenIndex === indexNumber
+    }
+
+    const handleScreen = (index) => {
+        dispatch(handleScreenIndex(index))
     }
 
 
@@ -25,7 +32,7 @@ const ClientNav = ({index}) => {
                     <NavItem>
                         <NavLink
                             onClick={() => {
-                                history.push("client-dashboard")
+                                handleScreen(1)
                             }}
                             className='fw-bold' active={linkActive(1)}>
                             <span className='d-none d-md-block'>Dashboard</span>
@@ -35,17 +42,19 @@ const ClientNav = ({index}) => {
                     <NavItem>
                         <NavLink
                             onClick={() => {
-                                history.push("client-order-history")
+                                handleScreen(2)
                             }}
-                            className='fw-bold' active={linkActive(3)}>
+                            className='fw-bold' active={linkActive(2)}>
                             <span className='d-none d-md-block'>Order History</span>
                             <Info className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink onClick={() => {
-                            history.push("profile")
-                        }} className='fw-bold' active={linkActive(2)}>
+                        <NavLink
+                            onClick={() => {
+                                handleScreen(3)
+                            }}
+                            className='fw-bold' active={linkActive(3)}>
                             <span className='d-none d-md-block'>Profile Update</span>
                             <Rss className='d-block d-md-none' size={14}/>
                         </NavLink>

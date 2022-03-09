@@ -19,14 +19,6 @@ const PagesRoutes = [
     }
   },
   {
-    path: '/pages/client-dashboard',
-    component: lazy(() => import('../../custom-views/ClientDashboard/ClientDashboard'))
-  },
-  {
-    path: '/pages/client-order-history',
-    component: lazy(() => import('../../custom-views/ClientOrders/ClientOrders'))
-  },
-  {
     path: '/pages/login-basic',
     component: lazy(() => import('../../views/pages/authentication/LoginBasic')),
     layout: 'BlankLayout'
@@ -104,7 +96,7 @@ const PagesRoutes = [
   },
   {
     path: '/pages/profile',
-    component: lazy(() => import('../../views/pages/profile'))
+    component: lazy(() => import('../../custom-views/ClientProfile'))
   },
   {
     path: '/pages/faq',

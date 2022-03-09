@@ -1,6 +1,6 @@
 // ** Reactstrap Imports
 import { Card, CardImg} from 'reactstrap'
-import ClientNav from "../../../custom-components/ClientDashboard/ClientNav"
+import ClientNav from "../../custom-components/ClientDashboard/ClientNav"
 
 const ProfileHeader = ({index}) => {
 

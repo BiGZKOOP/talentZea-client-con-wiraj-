@@ -1,20 +1,7 @@
-import {Fragment} from "react"
-import Breadcrumbs from '@components/breadcrumbs'
 import {Card, Col, Row} from "reactstrap"
-import ProfileHeader from "../../views/pages/profile/ProfileHeader"
 
 const ClientOrders = () => {
     return <Row>
-        <Breadcrumbs breadCrumbTitle='Profile' breadCrumbParent='dashboard' breadCrumbActive='Profile'/>
-            <div id='user-profile'>
-                <Row>
-                    <Col sm='12'>
-                        <ProfileHeader index={3}/>
-                    </Col>
-                </Row>
-                <section id='profile-info'>
-                </section>
-            </div>
         <Row className="mt-2">
             <Col lg={3} sm={12}>
                 <div className="mb-1">

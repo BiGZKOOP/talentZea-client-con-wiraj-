@@ -1,0 +1,1 @@
+export const SET_SCREEN_INDEX = "clientProfile/SET_SCREEN_INDEX"
