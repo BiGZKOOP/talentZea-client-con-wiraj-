@@ -25,19 +25,11 @@ const ClientNav = ({index}) => {
                     <NavItem>
                         <NavLink
                             onClick={() => {
-                                history.push("pages/client-dashboard")
+                                history.push("client-dashboard")
                             }}
                             className='fw-bold' active={linkActive(1)}>
                             <span className='d-none d-md-block'>Dashboard</span>
                             <Info className='d-block d-md-none' size={14}/>
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink onClick={() => {
-                            history.push("profile")
-                        }} className='fw-bold' active={linkActive(2)}>
-                            <span className='d-none d-md-block'>Profile</span>
-                            <Rss className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
                     <NavItem>
@@ -48,6 +40,14 @@ const ClientNav = ({index}) => {
                             className='fw-bold' active={linkActive(3)}>
                             <span className='d-none d-md-block'>Order History</span>
                             <Info className='d-block d-md-none' size={14}/>
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink onClick={() => {
+                            history.push("profile")
+                        }} className='fw-bold' active={linkActive(2)}>
+                            <span className='d-none d-md-block'>Profile Update</span>
+                            <Rss className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
                 </Nav>

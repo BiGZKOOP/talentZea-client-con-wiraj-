@@ -19,12 +19,8 @@ const PagesRoutes = [
     }
   },
   {
-    path: '/client-dashboard',
-    component: lazy(() => import('../../custom-views/ClientDashboard/ClientDashboard')),
-    layout: 'BlankLayout',
-    meta: {
-      authRoute: true
-    }
+    path: '/pages/client-dashboard',
+    component: lazy(() => import('../../custom-views/ClientDashboard/ClientDashboard'))
   },
   {
     path: '/pages/client-order-history',

@@ -10,11 +10,11 @@ const themeConfig = {
     isRTL: false,
     skin: 'dark', // light, dark, bordered, semi-dark
     routerTransition: 'fadeIn', // fadeIn, fadeInLeft, zoomIn, none or check this for more transition https://animate.style/
-    type: 'horizontal', // vertical, horizontal
+    type: 'vertical', // vertical, horizontal
     contentWidth: 'full', // full, boxed
     menu: {
       isHidden: true,
-      isCollapsed: false
+      isCollapsed: true
     },
     navbar: {
       // ? For horizontal menu, navbar type will work for navMenu type

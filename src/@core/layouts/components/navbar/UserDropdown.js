@@ -55,7 +55,7 @@ const UserDropdown = () => {
                 <Avatar img={userAvatar} imgHeight='40' imgWidth='40' status='online'/>
             </DropdownToggle>
             <DropdownMenu end className="pb-0">
-                <DropdownItem tag={Link} to='/pages/profile'>
+                <DropdownItem tag={Link} to='/pages/client-dashboard'>
                     <User size={14} className='me-75'/>
                     <span className='align-middle'>Profile</span>
                 </DropdownItem>
