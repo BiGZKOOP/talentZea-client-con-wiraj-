@@ -15,6 +15,7 @@ import configReducer from "../utility/configCalling/reducer"
 import loginReducer from "../views/pages/authentication/redux/reducer"
 import signUpReducer from "../custom-views/Signup/reducer"
 import {combineReducers} from "redux"
+import clientProfileReducer from "../custom-views/ClientProfile/reducer"
 
 const rootReducer = combineReducers({
     auth,
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
     permissions,
     configReducer,
     loginReducer,
-    signUpReducer
+    signUpReducer,
+    clientProfileReducer
 })
 
 export default rootReducer

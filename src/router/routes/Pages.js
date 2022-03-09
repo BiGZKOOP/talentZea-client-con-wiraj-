@@ -96,7 +96,7 @@ const PagesRoutes = [
   },
   {
     path: '/pages/profile',
-    component: lazy(() => import('../../views/pages/profile'))
+    component: lazy(() => import('../../custom-views/ClientProfile'))
   },
   {
     path: '/pages/faq',
