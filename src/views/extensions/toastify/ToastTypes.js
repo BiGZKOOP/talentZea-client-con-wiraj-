@@ -11,7 +11,7 @@ import { Bell, Check, X, AlertTriangle, Info } from 'react-feather'
 // ** Reactstrap Imports
 import { Card, CardHeader, CardBody, CardTitle, Button } from 'reactstrap'
 
-const PrimaryToast = () => (
+export const PrimaryToast = () => (
   <Fragment>
     <div className='toastify-header'>
       <div className='title-wrapper'>
@@ -26,6 +26,23 @@ const PrimaryToast = () => (
       </span>
     </div>
   </Fragment>
+)
+
+export const Clipboard_success_toast = () => (
+    <Fragment>
+        <div className='toastify-header'>
+            <div className='title-wrapper'>
+                <Avatar size='sm' color='success' icon={<Bell size={12} />} />
+                <h6 className='toast-title text-success'>Success !</h6>
+            </div>
+            <small className='text-muted'>now</small>
+        </div>
+        <div className='toastify-body'>
+      <span role='img' aria-label='toast-text'>
+        👋 You had copied your personal ref. link. You can share your link now.
+      </span>
+        </div>
+    </Fragment>
 )
 
 const SuccessToast = () => (

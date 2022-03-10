@@ -15,7 +15,7 @@ const Footer = () => {
             <p className='clearfix mb-0'>
       <span className='float-md-start d-block d-md-inline-block mt-25 f-Londrina text-medium'>
         COPYRIGHT © {new Date().getFullYear()}{' '}
-          <span className="text-danger font-large-1 font-bold">Talent Zea</span>
+          <span className="text-purple font-large-1 font-bold">Talent Zea</span>
         <span className='d-none d-sm-inline-block'>, All rights Reserved</span>
       </span>
             </p>
