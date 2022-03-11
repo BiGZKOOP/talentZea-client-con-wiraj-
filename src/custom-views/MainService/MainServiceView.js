@@ -5,15 +5,18 @@ import "../../assets/css/serviceViews.css"
 import "../../assets/css/dashboard.css"
 import OurWorkMainService from "../../custom-components/MainService/OurWorkMainService"
 import ContactSVG from "../../assets/custom_images/svg/ContactSVG"
+import {useHistory} from "react-router-dom"
 
 const MainServiceView = () => {
+
+    const history = useHistory()
     
     return <Row>
         <div className="p-1 mb-5  mb-lg-0">
             <MainNav index={2}/>
         </div>
         <div className="mt-4 mb-5 d-center flex-column">
-            <div className="main-img">
+            <div className="main-img floating-img">
                 <CreativeSvg/>
             </div>
             <h1 className="text-center mt-4 f-Londrina text-primary topic-header">GRAPHICS DESIGNING</h1>
@@ -36,7 +39,7 @@ const MainServiceView = () => {
                     </CardFooter>
                     <CardFooter className="d-center">
                         <button
-                            onClick={() => history.push("/service/:id")}
+                            onClick={() => history.push("/sub-service/1212")}
                             className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
@@ -53,7 +56,9 @@ const MainServiceView = () => {
                         </p>
                     </CardFooter>
                     <CardFooter className="d-center">
-                        <button className="btn btn-outline-foursquare">
+                        <button
+                            onClick={() => history.push("/sub-service/1212")}
+                            className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
                     </CardFooter>
@@ -69,7 +74,9 @@ const MainServiceView = () => {
                         </p>
                     </CardFooter>
                     <CardFooter className="d-center">
-                        <button className="btn btn-outline-foursquare">
+                        <button
+                            onClick={() => history.push("/sub-service/1212")}
+                            className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
                     </CardFooter>
@@ -85,7 +92,9 @@ const MainServiceView = () => {
                         </p>
                     </CardFooter>
                     <CardFooter className="d-center">
-                        <button className="btn btn-outline-foursquare">
+                        <button
+                            onClick={() => history.push("/sub-service/1212")}
+                            className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
                     </CardFooter>
@@ -101,7 +110,9 @@ const MainServiceView = () => {
                         </p>
                     </CardFooter>
                     <CardFooter className="d-center">
-                        <button className="btn btn-outline-foursquare">
+                        <button
+                            onClick={() => history.push("/sub-service/1212")}
+                            className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
                     </CardFooter>

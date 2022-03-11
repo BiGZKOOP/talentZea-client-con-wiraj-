@@ -22,7 +22,7 @@ const Dashboard = () => {
                 <MainNav index={1}/>
             </div>
             <Row className="mt-lg-5">
-                <Col className="d-center" lg={6} sm={12}>
+                <Col className="d-center swingimg" lg={6} sm={12}>
                     <FreeLancerSvg/>
                 </Col>
                 <Col lg={6} sm={12} className="mt-5 mt-lg-0">
@@ -46,8 +46,8 @@ const Dashboard = () => {
                     </Col>
                 </Col>
             </Row>
-            <Row className="mt-5 mb-5">
-                <Col className="d-center">
+            <Row className="mt-5">
+                <Col className="d-center bounce-img">
                     <AirpodsSvg/>
                 </Col>
             </Row>
@@ -121,7 +121,7 @@ const Dashboard = () => {
                 </Row>
             </Row>
             <Row className="d-flex flex-column d-center mt-5">
-                <Col className="d-center"  lg={3} sm={10}>
+                <Col className="d-center floating-img"  lg={3} sm={10}>
                     <ThinkingSvg/>
                 </Col>
                 <Col className="mt-3">
@@ -146,7 +146,7 @@ const Dashboard = () => {
                         </CardFooter>
                         <CardFooter className="d-center">
                             <button
-                                onClick={() => history.push("/service/:id")}
+                                onClick={() => history.push("/service/13123")}
                                 className="btn btn-outline-foursquare">
                                 SHOW ME...
                             </button>
@@ -163,7 +163,9 @@ const Dashboard = () => {
                             </p>
                         </CardFooter>
                         <CardFooter className="d-center">
-                            <button className="btn btn-outline-foursquare">
+                            <button
+                                onClick={() => history.push("/service/12121")}
+                                className="btn btn-outline-foursquare">
                                 SHOW ME...
                             </button>
                         </CardFooter>
@@ -179,7 +181,9 @@ const Dashboard = () => {
                             </p>
                         </CardFooter>
                         <CardFooter className="d-center">
-                            <button className="btn btn-outline-foursquare">
+                            <button
+                                onClick={() => history.push("/service/97879")}
+                                className="btn btn-outline-foursquare">
                                 SHOW ME...
                             </button>
                         </CardFooter>
@@ -197,7 +201,7 @@ const Dashboard = () => {
                 </Row>
             </Col>
             <div className="mt-5">
-                <Col className="d-center">
+                <Col className="d-center bounce-img">
                     <HandcraftsSvg />
                 </Col>
                 <Col  className="mt-5 mb-5">
