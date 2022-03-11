@@ -195,7 +195,7 @@ const Login = () => {
                             </div>
                         </Form>
                         <div className="text-center mt-2 mb-1 f-Londrina">
-                            <h4 className="clickable" onClick={() => history.push("/dashboard")}>Back to homepage</h4>
+                            <h4 className="clickable" onClick={() => history.push("/pages/profile")}>Back to homepage</h4>
                         </div>
                     </Col>
                 </Col>

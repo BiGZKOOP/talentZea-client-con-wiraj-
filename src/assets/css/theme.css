@@ -197,6 +197,10 @@
     font-size: 15px;
 }
 
+.text-topic {
+    font-size: 40px;
+}
+
 .text-right {
     text-align: right;
 }
@@ -332,11 +336,19 @@
         font-size: 12px;
     }
 
+    .text-medium {
+        font-size: 16px;
+    }
+
     .brand-name {
         display: block;
     }
 
     .d-sm-flex-cust {
         display: flex;
+    }
+
+    .text-topic {
+        font-size: 30px;
     }
 }
