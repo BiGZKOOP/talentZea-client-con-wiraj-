@@ -15,12 +15,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #c478ff;
+    background: #21dec9;
     border-radius: 30px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #ab1ffa;
+    background: #08b6a9;
 }
 
 /*sizes*/
@@ -296,6 +296,10 @@
     border: 2px solid whitesmoke;
 }
 
+.brand-name {
+    display: none;
+}
+
 @media all and (max-width: 540px) {
     .width-24 {
         width: 100%;
@@ -326,5 +330,13 @@
 
     .text-small {
         font-size: 12px;
+    }
+
+    .brand-name {
+        display: block;
+    }
+
+    .d-sm-flex-cust {
+        display: flex;
     }
 }

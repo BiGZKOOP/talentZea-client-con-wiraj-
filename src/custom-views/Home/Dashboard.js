@@ -9,11 +9,15 @@ import Contract from "../../assets/custom_images/svg/Contract"
 import ThinkingSvg from "../../assets/custom_images/svg/Thinking.svg"
 import HandcraftsSvg from "../../assets/custom_images/svg/Handcrafts.svg"
 import Faq from "../../views/pages/faq"
+import MainNav from "../../custom-components/MainNav/MainNav"
 
 const Dashboard = () => {
 
     return (
         <Row>
+            <Card className="p-1 mb-5  mb-lg-0">
+                <MainNav />
+            </Card>
             <Row className="mt-lg-5">
                 <Col className="d-center" lg={6} sm={12}>
                     <FreeLancerSvg/>
