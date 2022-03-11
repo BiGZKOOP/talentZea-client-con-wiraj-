@@ -24,9 +24,10 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { updateBookmarked, handleSearchQuery } from '@store/navbar'
 
+// eslint-disable-next-line no-unused-vars
 const NavbarBookmarks = props => {
   // ** Props
-  const { setMenuVisibility } = props
+  // const { setMenuVisibility } = props
 
   // ** State
   const [value, setValue] = useState('')
@@ -138,13 +139,13 @@ const NavbarBookmarks = props => {
 
   return (
     <Fragment>
-      <ul className='navbar-nav d-xl-none'>
-        <NavItem className='mobile-menu me-auto'>
-          <NavLink className='nav-menu-main menu-toggle hidden-xs is-active' onClick={() => setMenuVisibility(true)}>
-            <Icon.Menu className='ficon' />
-          </NavLink>
-        </NavItem>
-      </ul>
+      {/*<ul className='navbar-nav d-xl-none'>*/}
+      {/*  <NavItem className='mobile-menu me-auto'>*/}
+      {/*    <NavLink className='nav-menu-main menu-toggle hidden-xs is-active' onClick={() => setMenuVisibility(true)}>*/}
+      {/*      <Icon.Menu className='ficon' />*/}
+      {/*    </NavLink>*/}
+      {/*  </NavItem>*/}
+      {/*</ul>*/}
       <ul className='nav navbar-nav bookmark-icons'>
         {renderBookmarks()}
         {renderExtraBookmarksDropdown()}

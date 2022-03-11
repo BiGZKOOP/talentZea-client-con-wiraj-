@@ -9,11 +9,18 @@ import Contract from "../../assets/custom_images/svg/Contract"
 import ThinkingSvg from "../../assets/custom_images/svg/Thinking.svg"
 import HandcraftsSvg from "../../assets/custom_images/svg/Handcrafts.svg"
 import Faq from "../../views/pages/faq"
+import MainNav from "../../custom-components/MainNav/MainNav"
+import {useHistory} from "react-router-dom"
 
 const Dashboard = () => {
 
+    const history = useHistory()
+
     return (
         <Row>
+            <div className="p-1 mb-5  mb-lg-0">
+                <MainNav index={1}/>
+            </div>
             <Row className="mt-lg-5">
                 <Col className="d-center" lg={6} sm={12}>
                     <FreeLancerSvg/>
@@ -138,7 +145,9 @@ const Dashboard = () => {
                             </p>
                         </CardFooter>
                         <CardFooter className="d-center">
-                            <button className="btn btn-outline-foursquare">
+                            <button
+                                onClick={() => history.push("/service/:id")}
+                                className="btn btn-outline-foursquare">
                                 SHOW ME...
                             </button>
                         </CardFooter>

@@ -15,12 +15,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #5abfd9;
+    background: #21dec9;
     border-radius: 30px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #5cb8fa;
+    background: #08b6a9;
 }
 
 /*sizes*/
@@ -197,6 +197,10 @@
     font-size: 15px;
 }
 
+.text-topic {
+    font-size: 40px;
+}
+
 .text-right {
     text-align: right;
 }
@@ -296,6 +300,10 @@
     border: 2px solid whitesmoke;
 }
 
+.brand-name {
+    display: none;
+}
+
 @media all and (max-width: 540px) {
     .width-24 {
         width: 100%;
@@ -326,5 +334,21 @@
 
     .text-small {
         font-size: 12px;
+    }
+
+    .text-medium {
+        font-size: 16px;
+    }
+
+    .brand-name {
+        display: block;
+    }
+
+    .d-sm-flex-cust {
+        display: flex;
+    }
+
+    .text-topic {
+        font-size: 30px;
     }
 }
