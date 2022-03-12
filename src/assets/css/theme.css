@@ -337,7 +337,7 @@
     }
 
     .text-medium {
-        font-size: 16px;
+        font-size: 13px;
     }
 
     .brand-name {
@@ -350,5 +350,11 @@
 
     .text-topic {
         font-size: 30px;
+    }
+
+    .d-sm-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

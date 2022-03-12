@@ -11,7 +11,6 @@ const MainNav = ({index}) => {
 
     // eslint-disable-next-line no-unused-vars
     const linkActive = (indexNumber) => {
-        console.log(index)
         return index === indexNumber
     }
 

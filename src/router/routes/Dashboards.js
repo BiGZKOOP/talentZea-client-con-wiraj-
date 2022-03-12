@@ -15,6 +15,13 @@ const DashboardRoutes = [
         meta: {
             authRoute: true
         }
+    },
+    {
+        path: '/sub-service/:id',
+        component: lazy(() => import('../../custom-views/SubServiceView/SubServiceView')),
+        meta: {
+            authRoute: true
+        }
     }
 ]
 

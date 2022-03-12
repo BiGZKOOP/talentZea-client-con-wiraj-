@@ -101,7 +101,7 @@ const Faqs = ({ data }) => {
               alt='illustration'
               src={illustration}
               style={{ transform: 'scaleX(1)' }}
-              className='img-fluid d-none d-md-block'
+              className='img-fluid d-none d-md-block scaleImg'
             />
           </div>
         </Col>

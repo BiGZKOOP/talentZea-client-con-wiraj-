@@ -38,7 +38,7 @@ const ClientDashboard = () => {
                                                                                               className="mr-1"/> copy
                 </button>
             </Col>
-            <Row>
+            <Row className="d-sm-center">
                 <Col sm={12} lg={7}>
                     <div className="mb-2">
                         <h3>Order Timeline</h3>
