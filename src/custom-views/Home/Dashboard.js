@@ -1,4 +1,16 @@
-import {Card, CardBody, CardFooter, CardHeader, Col, Row} from "reactstrap"
+import {
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    Col, DropdownItem, DropdownMenu, DropdownToggle,
+    Label,
+    ListGroup,
+    ListGroupItem, Modal,
+    ModalBody,
+    ModalHeader,
+    Row, UncontrolledDropdown
+} from "reactstrap"
 import FreeLancerSvg from "../../assets/custom_images/svg/FreeLancer.svg"
 import "../../assets/css/dashboard.css"
 import AirpodsSvg from "../../assets/custom_images/svg/Airpods.svg"
@@ -11,10 +23,37 @@ import HandcraftsSvg from "../../assets/custom_images/svg/Handcrafts.svg"
 import Faq from "../../views/pages/faq"
 import MainNav from "../../custom-components/MainNav/MainNav"
 import {useHistory} from "react-router-dom"
+import AudioBtn from "../../custom-components/audioControl/AudioBtn"
+import {Link, Music, Users} from "react-feather"
+import {useEffect, useState} from "react"
+import Headset from "../../assets/custom_images/svg/Headset"
+import {useDispatch, useSelector} from "react-redux"
+import {audioHandle, audioModelLoad} from "../../custom-components/audioControl/action"
 
 const Dashboard = () => {
 
     const history = useHistory()
+    const dispatch = useDispatch()
+    const [show, setShow] = useState(false)
+    const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
+
+    useEffect(() => {
+        if (!loaded) setShow(!show)
+        dispatch(audioModelLoad())
+    }, [])
+
+    const playAudioHandle = async () => {
+        dispatch(audioHandle(!playAudio))
+        if (playAudio) await welcomeAudio.pause()
+        else await welcomeAudio.play()
+        welcomeAudio.volume = 0.2
+        setShow(!show)
+    }
+
+    const transitionAudio = () => {
+        fairyAudio.play()
+        fairyAudio.volume = 0.4
+    }
 
     return (
         <Row>
@@ -53,7 +92,8 @@ const Dashboard = () => {
             </Row>
             <Row>
                 <Col>
-                    <h1 className="f-Londrina font-large-2 text-center">Why <span className="text-primary">Talent Zea</span> ?</h1>
+                    <h1 className="f-Londrina font-large-2 text-center">Why <span
+                        className="text-primary">Talent Zea</span> ?</h1>
                     <p className="text-small f-shippori line-h-3 text-center">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
@@ -121,7 +161,7 @@ const Dashboard = () => {
                 </Row>
             </Row>
             <Row className="d-flex flex-column d-center mt-5">
-                <Col className="d-center floating-img"  lg={3} sm={10}>
+                <Col className="d-center floating-img" lg={3} sm={10}>
                     <ThinkingSvg/>
                 </Col>
                 <Col className="mt-3">
@@ -146,7 +186,10 @@ const Dashboard = () => {
                         </CardFooter>
                         <CardFooter className="d-center">
                             <button
-                                onClick={() => history.push("/service/13123")}
+                                onClick={() => {
+                                    transitionAudio()
+                                    history.push("/service/13123")
+                                }}
                                 className="btn btn-outline-foursquare">
                                 SHOW ME...
                             </button>
@@ -164,7 +207,10 @@ const Dashboard = () => {
                         </CardFooter>
                         <CardFooter className="d-center">
                             <button
-                                onClick={() => history.push("/service/12121")}
+                                onClick={() => {
+                                    transitionAudio()
+                                    history.push("/service/12121")
+                                }}
                                 className="btn btn-outline-foursquare">
                                 SHOW ME...
                             </button>
@@ -182,7 +228,10 @@ const Dashboard = () => {
                         </CardFooter>
                         <CardFooter className="d-center">
                             <button
-                                onClick={() => history.push("/service/97879")}
+                                onClick={() => {
+                                    transitionAudio()
+                                    history.push("/service/97879")
+                                }}
                                 className="btn btn-outline-foursquare">
                                 SHOW ME...
                             </button>
@@ -202,15 +251,37 @@ const Dashboard = () => {
             </Col>
             <div className="mt-5">
                 <Col className="d-center bounce-img">
-                    <HandcraftsSvg />
+                    <HandcraftsSvg/>
                 </Col>
-                <Col  className="mt-5 mb-5">
-                    <h1  className="text-center f-Londrina font-large-2">What do you need to know ?</h1>
+                <Col className="mt-5 mb-5">
+                    <h1 className="text-center f-Londrina font-large-2">What do you need to know ?</h1>
                 </Col>
                 <Col className="mt-3 text-center">
-                    <Faq />
+                    <Faq/>
                 </Col>
             </div>
+            <AudioBtn/>
+            {/*//////////////////////*/}
+            {/*Modal starts form here*/}
+            {/*//////////////////////*/}
+            <Modal isOpen={show} toggle={() => setShow(!show)} className='modal-dialog-centered modal-sm'>
+                <ModalHeader className='bg-primary' toggle={() => setShow(!show)}></ModalHeader>
+                <ModalBody className='px-sm-5 mx-50 pb-4'>
+                    <div className="floating-img mt-2">
+                        <Headset/>
+                    </div>
+                    <div className="text-center mt-3">
+                        <h1 className="f-Londrina">Welcome User...!</h1>
+                        <h5 className="f-Londrina">(For better experience enable the music)</h5>
+                        <button
+                            onClick={playAudioHandle}
+                            className="btn btn-outline-danger mt-1"><Music/></button>
+                    </div>
+                </ModalBody>
+            </Modal>
+            {/*//////////////////////*/}
+            {/*Modal ended*/}
+            {/*//////////////////////*/}
         </Row>
     )
 }

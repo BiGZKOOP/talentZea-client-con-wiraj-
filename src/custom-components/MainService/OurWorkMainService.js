@@ -11,9 +11,15 @@ import img6 from '@src/assets/images/banner/banner-35.jpg'
 import img7 from '@src/assets/images/banner/banner-36.jpg'
 import img8 from '@src/assets/images/banner/banner-37.jpg'
 import img9 from '@src/assets/images/banner/banner-38.jpg'
+import {useEffect} from "react"
+import {scrollToTopUTIL} from "../../utility/Utils"
 
 
 const OurWorkMainService = ({ isRtl }) => {
+
+    useEffect(() => {
+        scrollToTopUTIL()
+    }, [])
 
     const params = {
         slidesPerView: 5,
