@@ -6,11 +6,22 @@ import "../../assets/css/dashboard.css"
 import OurWorkMainService from "../../custom-components/MainService/OurWorkMainService"
 import ContactSVG from "../../assets/custom_images/svg/ContactSVG"
 import {useHistory} from "react-router-dom"
+import AudioBtn from "../../custom-components/audioControl/AudioBtn"
+import {useSelector} from "react-redux"
+import SuccessOrderSVG from "../../assets/custom_images/svg/SuccessOrderSVG"
+import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
 
 const MainServiceView = () => {
 
     const history = useHistory()
-    
+    const {fairyAudio} = useSelector(state => state.audioReducer)
+
+    const transitionAudio = () => {
+        fairyAudio.play()
+        fairyAudio.volume = 0.4
+    }
+
+
     return <Row>
         <div className="p-1 mb-5  mb-lg-0">
             <MainNav index={2}/>
@@ -39,7 +50,10 @@ const MainServiceView = () => {
                     </CardFooter>
                     <CardFooter className="d-center">
                         <button
-                            onClick={() => history.push("/sub-service/1212")}
+                            onClick={() => {
+                                transitionAudio()
+                                history.push("/sub-service/1212")
+                            }}
                             className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
@@ -57,7 +71,10 @@ const MainServiceView = () => {
                     </CardFooter>
                     <CardFooter className="d-center">
                         <button
-                            onClick={() => history.push("/sub-service/1212")}
+                            onClick={() => {
+                                transitionAudio()
+                                history.push("/sub-service/1212")
+                            }}
                             className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
@@ -75,8 +92,10 @@ const MainServiceView = () => {
                     </CardFooter>
                     <CardFooter className="d-center">
                         <button
-                            onClick={() => history.push("/sub-service/1212")}
-                            className="btn btn-outline-foursquare">
+                            onClick={() => {
+                                transitionAudio()
+                                history.push("/sub-service/1212")
+                            }} className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
                     </CardFooter>
@@ -93,8 +112,10 @@ const MainServiceView = () => {
                     </CardFooter>
                     <CardFooter className="d-center">
                         <button
-                            onClick={() => history.push("/sub-service/1212")}
-                            className="btn btn-outline-foursquare">
+                            onClick={() => {
+                                transitionAudio()
+                                history.push("/sub-service/1212")
+                            }} className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
                     </CardFooter>
@@ -111,8 +132,10 @@ const MainServiceView = () => {
                     </CardFooter>
                     <CardFooter className="d-center">
                         <button
-                            onClick={() => history.push("/sub-service/1212")}
-                            className="btn btn-outline-foursquare">
+                            onClick={() => {
+                                transitionAudio()
+                                history.push("/sub-service/1212")
+                            }} className="btn btn-outline-foursquare">
                             SHOW ME...
                         </button>
                     </CardFooter>
@@ -134,20 +157,22 @@ const MainServiceView = () => {
                 <p className="f-Londrina text-topic text-center">Some of our works...</p>
             </div>
             <div>
-                <OurWorkMainService />
+                <OurWorkMainService/>
             </div>
         </Row>
         <Row className=" d-center mt-5 mb-5">
-            <div className="d-center main-img mb-2">
-                <ContactSVG />
+            <div className="d-center main-img mb-2 floating-img">
+                <FriendlySvg/>
             </div>
-            <div className="mb-3">
-                <h1 className="text-center f-indie-flower text-contact">Feel free to contact us for any question you have !</h1>
+            <div className="mb-2 mt-1">
+                <h1 className="text-center f-Londrina text-contact">Feel free to contact us for any question you
+                    have !</h1>
             </div>
             <div className="d-center">
                 <button className="btn btn-foursquare">Contact Us</button>
             </div>
         </Row>
+        <AudioBtn/>
     </Row>
 }
 
