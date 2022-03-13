@@ -1,0 +1,51 @@
+.signup-body {
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);
+}
+
+.signup-inner {
+    border: 2px dashed #505050;
+    background-blend-mode: darken;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))
+}
+
+.signup-prev-inner {
+    border: 2px dashed #9b59b6;
+    background-image: linear-gradient(to right bottom, #320e4c, #310e49, #300f47, #2e0f44, #2d0f42);
+}
+
+.double-input {
+    width: 50%;
+    margin: 5px;
+}
+
+.input-container {
+    flex-direction: row;
+}
+
+.phone-dob-row {
+    display: flex;
+}
+
+.sign-topic {
+    font-size: 30px;
+}
+
+.sign-labels {
+    font-size: 14px;
+}
+
+@media (max-width:578px) {
+    .double-input {
+        width: 50%;
+    }
+
+    .input-container {
+        flex-direction: row;
+    }
+
+    .phone-dob-row {
+        flex-direction: column-reverse;
+    }
+}

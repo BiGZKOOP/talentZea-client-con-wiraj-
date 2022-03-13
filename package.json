@@ -18,6 +18,7 @@
     "animate.css": "^4.1.1",
     "apexcharts": "^3.29.0",
     "apexcharts-clevision": "^3.28.3",
+    "aws-amplify": "^4.3.15",
     "axios": "^0.24.0",
     "axios-mock-adapter": "^1.19.0",
     "bootstrap": "5.1.0",
@@ -62,6 +63,7 @@
     "react-i18next": "^11.13.0",
     "react-paginate": "^7.0.0",
     "react-perfect-scrollbar": "^1.5.5",
+    "react-phone-input-2": "^2.15.0",
     "react-player": "^2.6.2",
     "react-rating": "^2.0.5",
     "react-redux": "^7.2.0",
@@ -93,6 +95,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "deploy": "npm run build && aws s3 sync build/ s3://talentzea-client",
     "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js src/**/*.jsx",
@@ -105,6 +108,7 @@
     "@types/sortablejs": "^1.10.6",
     "eslint": "^7.11.0",
     "eslint-plugin-import": "^2.22.0",
+    "react-router": "^6.2.2",
     "sass-loader": "8.0.2"
   },
   "browserslist": {

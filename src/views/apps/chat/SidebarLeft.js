@@ -101,7 +101,7 @@ const SidebarLeft = props => {
     }
   }
 
-  // ** Renders Contact
+  // ** Renders Contract
   const renderContacts = () => {
     if (contacts && contacts.length) {
       if (query.length && !filteredContacts.length) {

@@ -1,11 +1,28 @@
-import { lazy } from 'react'
+import {lazy} from 'react'
 
 const DashboardRoutes = [
-  // Dashboards
-  {
-    path: '/dashboard',
-    component: lazy(() => import('../../custom-views/dashboard/Dashboard'))
-  }
+    // Dashboards
+    {
+        path: '/home',
+        component: lazy(() => import('../../custom-views/Home/Dashboard')),
+        meta: {
+            authRoute: true
+        }
+    },
+    {
+        path: '/service/:id',
+        component: lazy(() => import('../../custom-views/MainService/MainServiceView')),
+        meta: {
+            authRoute: true
+        }
+    },
+    {
+        path: '/sub-service/:id',
+        component: lazy(() => import('../../custom-views/SubServiceView/SubServiceView')),
+        meta: {
+            authRoute: true
+        }
+    }
 ]
 
 export default DashboardRoutes

@@ -17,7 +17,7 @@ import {
 export default [
     {
         id: 'dashboard',
-        title: 'මුල් පිටුව ',
+        title: 'Homes',
         icon: <Home size={12}/>,
         navLink: '/dashboard'
     }

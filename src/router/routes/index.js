@@ -6,7 +6,7 @@ import DashboardRoutes from './Dashboards'
 const TemplateTitle = '%s - Vuexy React Admin Template'
 
 // ** Default Route
-const DefaultRoute = '/dashboard/ecommerce'
+const DefaultRoute = '/home'
 
 // ** Merge Routes
 const Routes = [

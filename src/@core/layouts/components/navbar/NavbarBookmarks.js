@@ -24,9 +24,10 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { updateBookmarked, handleSearchQuery } from '@store/navbar'
 
+// eslint-disable-next-line no-unused-vars
 const NavbarBookmarks = props => {
   // ** Props
-  const { setMenuVisibility } = props
+  // const { setMenuVisibility } = props
 
   // ** State
   const [value, setValue] = useState('')
@@ -108,11 +109,11 @@ const NavbarBookmarks = props => {
   const handleBookmarkUpdate = id => dispatch(updateBookmarked(id))
 
   // ** Function to handle Bookmarks visibility
-  const handleBookmarkVisibility = () => {
-    setOpenSearch(!openSearch)
-    setValue('')
-    handleClearQueryInStore()
-  }
+  // const handleBookmarkVisibility = () => {
+  //   setOpenSearch(!openSearch)
+  //   setValue('')
+  //   handleClearQueryInStore()
+  // }
 
   // ** Function to handle Input change
   const handleInputChange = e => {
@@ -138,20 +139,20 @@ const NavbarBookmarks = props => {
 
   return (
     <Fragment>
-      <ul className='navbar-nav d-xl-none'>
-        <NavItem className='mobile-menu me-auto'>
-          <NavLink className='nav-menu-main menu-toggle hidden-xs is-active' onClick={() => setMenuVisibility(true)}>
-            <Icon.Menu className='ficon' />
-          </NavLink>
-        </NavItem>
-      </ul>
+      {/*<ul className='navbar-nav d-xl-none'>*/}
+      {/*  <NavItem className='mobile-menu me-auto'>*/}
+      {/*    <NavLink className='nav-menu-main menu-toggle hidden-xs is-active' onClick={() => setMenuVisibility(true)}>*/}
+      {/*      <Icon.Menu className='ficon' />*/}
+      {/*    </NavLink>*/}
+      {/*  </NavItem>*/}
+      {/*</ul>*/}
       <ul className='nav navbar-nav bookmark-icons'>
         {renderBookmarks()}
         {renderExtraBookmarksDropdown()}
         <NavItem className='nav-item d-none d-lg-block'>
-          <NavLink className='bookmark-star' onClick={handleBookmarkVisibility}>
-            <Icon.Star className='ficon text-warning' />
-          </NavLink>
+          {/*<NavLink className='bookmark-star' onClick={handleBookmarkVisibility}>*/}
+          {/*  <Icon.Star className='ficon text-warning' />*/}
+          {/*</NavLink>*/}
           <div className={classnames('bookmark-input search-input', { show: openSearch })}>
             <div className='bookmark-input-icon'>
               <Icon.Search size={14} />

@@ -1,0 +1,18 @@
+.audio-btn {
+    border-radius: 100px;
+    padding: 10px;
+    position: fixed;
+    bottom: 60px;
+    right: 28px;
+    width: 45px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 2px dashed #9021d2;
+}
+
+.audio-btn:hover {
+    transition: 0.3s;
+    background-color: #057be1;
+    color: white;
+    border: none;
+}

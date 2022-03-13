@@ -3,6 +3,7 @@ import Avatar from '@components/avatar'
 import Timeline from '@components/timeline'
 
 // ** Images
+// eslint-disable-next-line no-unused-vars
 import pdf from '@src/assets/images/icons/file-icons/pdf.png'
 import ceo from '@src/assets/images/portrait/small/avatar-s-7.jpg'
 
@@ -10,7 +11,7 @@ import ceo from '@src/assets/images/portrait/small/avatar-s-7.jpg'
 import { Card, CardHeader, CardTitle, CardBody } from 'reactstrap'
 
 // ** Timeline Data
-const data = [
+export const time_linedata = [
   {
     title: 'User login',
     content: 'User login at 2:12pm',
@@ -36,19 +37,19 @@ const data = [
     content: 'Add files to new design folder',
     meta: '2 days ago',
     color: 'info'
-  },
-  {
-    title: 'Create Invoices for client',
-    content: 'Create new Invoices and send to Leona Watkins',
-    meta: '12 mins ago',
-    color: 'danger',
-    customContent: (
-      <div className='d-flex align-items-center'>
-        <img className='me-1' src={pdf} alt='pdf' height='23' />
-        <h6 className='mb-0'>invoice.pdf</h6>
-      </div>
-    )
   }
+  // {
+  //   title: 'Create Invoices for client',
+  //   content: 'Create new Invoices and send to Leona Watkins',
+  //   meta: '12 mins ago',
+  //   color: 'danger',
+  //   customContent: (
+  //     <div className='d-flex align-items-center'>
+  //       <img className='me-1' src={pdf} alt='pdf' height='23' />
+  //       <h6 className='mb-0'>invoice.pdf</h6>
+  //     </div>
+  //   )
+  // }
 ]
 
 const UserTimeline = () => {
@@ -58,7 +59,7 @@ const UserTimeline = () => {
         <CardTitle tag='h4'>User Activity Timeline</CardTitle>
       </CardHeader>
       <CardBody className='pt-1'>
-        <Timeline data={data} className='ms-50' />
+        <Timeline data={time_linedata} className='ms-50' />
       </CardBody>
     </Card>
   )

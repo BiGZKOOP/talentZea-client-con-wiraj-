@@ -13,23 +13,29 @@ import dataTables from '@src/views/tables/data-tables/store'
 import permissions from '@src/views/apps/roles-permissions/store'
 import configReducer from "../utility/configCalling/reducer"
 import loginReducer from "../views/pages/authentication/redux/reducer"
+import signUpReducer from "../custom-views/Signup/reducer"
 import {combineReducers} from "redux"
+import clientProfileReducer from "../custom-views/ClientProfile/reducer"
+import audioReducer from "../custom-components/audioControl/reducer"
 
 const rootReducer = combineReducers({
-  auth,
-  todo,
-  chat,
-  email,
-  users,
-  navbar,
-  layout,
-  invoice,
-  calendar,
-  ecommerce,
-  dataTables,
-  permissions,
-  configReducer,
-  loginReducer
+    auth,
+    todo,
+    chat,
+    email,
+    users,
+    navbar,
+    layout,
+    invoice,
+    calendar,
+    ecommerce,
+    dataTables,
+    permissions,
+    configReducer,
+    loginReducer,
+    signUpReducer,
+    clientProfileReducer,
+    audioReducer
 })
 
 export default rootReducer
