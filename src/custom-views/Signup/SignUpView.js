@@ -27,7 +27,7 @@ const SignUpView = () => {
             case 1:
                 return <UserDetails />
             case 2:
-                return verifySend ? <OtpSend /> : <EnterPasswordUsername/>
+                return verifySend ? <OtpSend widthLG={4}/> : <EnterPasswordUsername/>
             default:
                 fireAlertMessage("An error occurred")
         }

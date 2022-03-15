@@ -4,7 +4,7 @@ import {useFormik} from "formik"
 import {setScreenIndex, signupListen} from "../../custom-views/Signup/actions"
 import {useDispatch, useSelector} from "react-redux"
 import {useHistory} from "react-router-dom"
-import {useEffect} from "react"
+import {useEffect, useState} from "react"
 
 const EnterPasswordUsername = () => {
 
@@ -12,6 +12,8 @@ const EnterPasswordUsername = () => {
     const history = useHistory()
 
     const {signupLoad, userRegDetails} = useSelector(state => state.signUpReducer)
+    // eslint-disable-next-line no-unused-vars
+    const [load, setLoad] = useState(false)
 
     //Use to cook the registration object. This will merge the userdetails and the user cred.
     const cookObject = (username, password) => {
@@ -50,7 +52,7 @@ const EnterPasswordUsername = () => {
     // eslint-disable-next-line no-unused-vars
     const formik = useFormik({
         initialValues: {
-            username: "",
+            username: "sss",
             password: "",
             rePassword: ""
         },
@@ -61,6 +63,7 @@ const EnterPasswordUsername = () => {
 
     useEffect(() => {
         formik.values.username = userRegDetails.email
+        setLoad(true)
     }, [])
 
     const changeScreens = () => {

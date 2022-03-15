@@ -63,7 +63,7 @@ export function* signupUserCB(action) {
         yield put(signupSendingLoadingStart())
         const data = yield call(signupAsync, details)
         if (data) {
-            yield put(signupSuccess(data.username))
+            yield put(signupSuccess(details.email))
         } else fireAlertCustom("Hmm...", "Looks like you have already signed up", "error")
 
     } catch (err) {

@@ -4,7 +4,7 @@ const init = {
     screenIndex: 0,
     allCountries: [],
     verifySend: false,
-    username:"",
+    username: "",
     signupLoad: false,
     userRegDetails: {}
 }
@@ -53,7 +53,7 @@ const signUpReducer = (state = init, action) => {
                 screenIndex: 0
             }
         case actionTypes.USER_DATA_ADD_LISTEN:
-            return  {
+            return {
                 ...state,
                 userRegDetails: action.userData
             }
