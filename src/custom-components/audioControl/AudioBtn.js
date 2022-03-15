@@ -15,6 +15,7 @@ const AudioBtn = () => {
         if (playAudio) await welcomeAudio.pause()
         else await welcomeAudio.play()
         welcomeAudio.volume = 0.2
+        welcomeAudio.loop = true
     }
 
     return <Card onClick={playAudioHandle} className="audio-btn d-center clickable">

@@ -2,12 +2,12 @@ import MainNav from "../../custom-components/MainNav/MainNav"
 import CreativeSvg from "../../assets/custom_images/svg/Creative.svg"
 import {Card, CardFooter, Col, Row} from "reactstrap"
 import OurWorkMainService from "../../custom-components/MainService/OurWorkMainService"
-import ContactSVG from "../../assets/custom_images/svg/ContactSVG"
 import "../../assets/css/serviceViews.css"
 import "../../assets/css/dashboard.css"
 import SubServicePricing from "../../custom-components/SubServices/SubServicePricing"
 import {useHistory} from "react-router-dom"
 import SubServiceWelcomeSVG from "../../assets/custom_images/svg/SubServiceWelcomeSVG"
+import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
 
 const SubServiceView = () => {
 
@@ -40,10 +40,10 @@ const SubServiceView = () => {
         </Row>
         <SubServicePricing />
         <Row className=" d-center mt-5 mb-5">
-            <div className="d-center main-img mb-2">
-                <ContactSVG />
+            <div className="d-center floating-img main-img mb-2">
+                <FriendlySvg/>
             </div>
-            <div className="mb-3">
+            <div className="mb-2 mt-1   ">
                 <h1 className="text-center f-indie-flower text-contact">Feel free to contact us for any question you have !</h1>
             </div>
             <div className="d-center">

@@ -4,8 +4,9 @@ const init = {
     screenIndex: 0,
     allCountries: [],
     verifySend: false,
-    username:"",
-    signupLoad: false
+    username: "",
+    signupLoad: false,
+    userRegDetails: {}
 }
 
 const signUpReducer = (state = init, action) => {
@@ -34,7 +35,7 @@ const signUpReducer = (state = init, action) => {
                 ...state,
                 username: action.username,
                 verifySend: true,
-                screenIndex: 1
+                screenIndex: 2
             }
         case actionTypes.SIGNUP_LOADING_START:
             return {
@@ -50,6 +51,11 @@ const signUpReducer = (state = init, action) => {
             return {
                 ...state,
                 screenIndex: 0
+            }
+        case actionTypes.USER_DATA_ADD_LISTEN:
+            return {
+                ...state,
+                userRegDetails: action.userData
             }
         default:
             return state

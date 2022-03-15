@@ -1,6 +1,6 @@
 // ** React Imports
 // eslint-disable-next-line no-unused-vars
-import {useContext, Fragment, useEffect} from 'react'
+import {useContext, Fragment, useEffect, useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import "../../../assets/css/login.css"
 
@@ -15,7 +15,7 @@ import source from "../../../assets/images/custom_images/water.jpg"
 import {useDispatch, useSelector} from 'react-redux'
 // import {toast, Slide} from 'react-toastify'
 import {useForm, Controller} from 'react-hook-form'
-import {Facebook, Twitter, Mail, GitHub, HelpCircle, Coffee} from 'react-feather'
+import {Facebook, Twitter, Mail, GitHub, HelpCircle, Coffee, Music} from 'react-feather'
 
 // ** Actions
 // import {handleLogin} from '@store/authentication'
@@ -43,13 +43,14 @@ import {
     CardText,
     CardTitle,
     UncontrolledTooltip,
-    Spinner
+    Spinner, Modal, ModalHeader, ModalBody
 } from 'reactstrap'
 
 // ** Styles
 import '@styles/react/pages/page-authentication.scss'
 import {LoginListenAction} from "../../../custom-views/Signup/actions"
 import {getStreet} from "../../../utility/configCalling/actions"
+import OtpSend from "../../../custom-components/Signup/OtpSend"
 
 const ToastContent = ({name, role}) => (
     <Fragment>
@@ -73,6 +74,7 @@ const defaultValues = {
 const Login = () => {
 
     const {signupLoad} = useSelector(state => state.signUpReducer)
+    const [show, setShow] = useState(false)
 
     // ** Hooks
     const dispatch = useDispatch()
@@ -132,10 +134,9 @@ const Login = () => {
     return (
         <div className='auth-wrapper auth-cover login-back'>
             <div className='auth-inner m-0 d-center'>
-                <Col
-                    className='d-flex align-items-center shadow-lg login-inner  radius-20 auth-bg px-2 p-5'
-                    lg='4' sm='2'>
-                    <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
+                <div
+                    className='d-flex align-items-center justify-content-center shadow-lg radius-20 auth-bg px-2 p-5 col-lg-4 col-10'>
+                    <Col className='px-xl-2' sm='12' md='6' lg='12'>
                         <CardTitle tag='h2' className='fw-bold mb-1 text-center text-dark f-Londrina'>
                             <h1>WELCOME TO THE TALENT ZEA</h1>
                         </CardTitle>
@@ -197,9 +198,21 @@ const Login = () => {
                         <div className="text-center mt-2 mb-1 f-Londrina">
                             <h4 className="clickable" onClick={() => history.push("/pages/profile")}>Back to homepage</h4>
                         </div>
+                        <div className="text-center mt-2 mb-1 f-Londrina">
+                            <h4 className="clickable" onClick={() => setShow(!show)}>Verify User</h4>
+                        </div>
                     </Col>
-                </Col>
+                </div>
             </div>
+            <Modal isOpen={show} toggle={() => setShow(!show)} className='modal-dialog-centered modal-md'>
+                <ModalHeader className='bg-primary' toggle={() => setShow(!show)} />
+                <ModalBody className='px-sm-5 mx-50 pb-4 mt-2'>
+                    <OtpSend widthLG={12}/>
+                </ModalBody>
+            </Modal>
+            {/*//////////////////////*/}
+            {/*Modal ended*/}
+            {/*//////////////////////*/}
         </div>
     )
 }

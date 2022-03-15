@@ -23,10 +23,10 @@ export const getAllCountriesSuccess = (data) => {
 }
 
 //SIGNUP ACTIONS
-export const signupListen = (cred) => {
+export const signupListen = (details) => {
     return {
         type: actionTypes.SIGNUP_LISTEN,
-        cred,
+        details,
         history
     }
 }
@@ -133,5 +133,13 @@ export const signoutListen = (history) => {
 export const signoutSuccess = () => {
     return {
         type: actionTypes.SIGNOUT_SUCCESS
+    }
+}
+
+//User details add
+export const userDetailsAddListen = (userData) => {
+    return {
+        type: actionTypes.USER_DATA_ADD_LISTEN,
+        userData
     }
 }

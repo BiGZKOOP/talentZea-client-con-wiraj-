@@ -47,6 +47,7 @@ const Dashboard = () => {
         if (playAudio) await welcomeAudio.pause()
         else await welcomeAudio.play()
         welcomeAudio.volume = 0.2
+        welcomeAudio.loop = true
         setShow(!show)
     }
 
