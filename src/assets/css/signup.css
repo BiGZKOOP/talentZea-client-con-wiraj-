@@ -1,18 +1,14 @@
 .signup-body {
     background-size: cover;
     background-attachment: fixed;
-    background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);
+    /*background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);*/
+    background-image: url("https://cdn.wallpapersafari.com/18/64/HbXt9T.jpg");
 }
 
 .signup-inner {
     border: 2px dashed #505050;
     background-blend-mode: darken;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))
-}
-
-.signup-prev-inner {
-    border: 2px dashed #9b59b6;
-    background-image: linear-gradient(to right bottom, #320e4c, #310e49, #300f47, #2e0f44, #2d0f42);
 }
 
 .double-input {

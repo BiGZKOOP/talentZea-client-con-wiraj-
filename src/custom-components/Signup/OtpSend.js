@@ -24,13 +24,13 @@ const OtpSend = () => {
 
     return <div className='auth-inner signup-body m-0 d-center'>
         <Col
-            className='d-flex align-items-center shadow-lg bg-transparent signup-prev-inner radius-20 auth-bg px-2 p-5'
+            className='d-flex align-items-center shadow-lg radius-20 auth-bg px-2 p-5'
             lg='4' sm='2'>
             <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
                 <div className="d-center flex-column">
                     <div className="mb-2 text-center">
-                        <h1 className="text-light f-Londrina">We sent you an OTP</h1>
-                        <h4 className="text-light f-Londrina">Enter the OTP to verify</h4>
+                        <h1 className="f-Londrina">We sent you an OTP</h1>
+                        <h4 className="f-Londrina">Enter the OTP to verify</h4>
                     </div>
                     <div>
                         <Input
@@ -41,7 +41,7 @@ const OtpSend = () => {
                             <Spinner color="light"/>
                         </Col>
                     }
-                    <div>
+                    <div className="mt-1">
                         <button
                             onClick={handleVerification}
                             className="d-flex justify-content-center pointer mt-2 btn-danger btn">
@@ -50,7 +50,7 @@ const OtpSend = () => {
                     </div>
                     <button
                         onClick={routeToLogin}
-                        className="d-flex text-medium justify-content-center pointer mt-2 btn-transparent clickable text-light f-indie-flower btn">
+                        className="d-flex text-medium justify-content-center pointer mt-1 btn-transparent clickable f-indie-flower btn">
                         Back to login
                     </button>
                 </div>

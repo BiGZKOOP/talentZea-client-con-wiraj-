@@ -133,7 +133,7 @@ const Login = () => {
         <div className='auth-wrapper auth-cover login-back'>
             <div className='auth-inner m-0 d-center'>
                 <Col
-                    className='d-flex align-items-center shadow-lg login-inner  radius-20 auth-bg px-2 p-5'
+                    className='d-flex align-items-center shadow-lg radius-20 auth-bg px-2 p-5'
                     lg='4' sm='2'>
                     <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
                         <CardTitle tag='h2' className='fw-bold mb-1 text-center text-dark f-Londrina'>
@@ -196,6 +196,9 @@ const Login = () => {
                         </Form>
                         <div className="text-center mt-2 mb-1 f-Londrina">
                             <h4 className="clickable" onClick={() => history.push("/pages/profile")}>Back to homepage</h4>
+                        </div>
+                        <div className="text-center mt-2 mb-1 f-Londrina">
+                            <h4 className="clickable" onClick={() => history.push("/verify")}>Verify User</h4>
                         </div>
                     </Col>
                 </Col>

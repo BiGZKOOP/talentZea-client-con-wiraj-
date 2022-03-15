@@ -84,7 +84,7 @@ const Router = () => {
              ** If user is not Logged in & route.meta.authRoute, !route.meta.publicRoute are undefined
              ** Then redirect user to login
              */
-            return <Redirect to='/dashboard'/>
+            return <Redirect to='/home'/>
         } else {
             // ** If none of the above render component
             return <route.component {...props} />

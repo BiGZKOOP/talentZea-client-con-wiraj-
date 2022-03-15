@@ -8,23 +8,26 @@ import {fireAlertMessage} from "../../utility/custom-util"
 import {useEffect} from "react"
 import {getAllCountriesListen} from "./actions"
 import OtpSend from "../../custom-components/Signup/OtpSend"
+import UserDetails from "../../custom-components/Signup/UserDetails"
 
 const SignUpView = () => {
 
     const dispatch = useDispatch()
+    const {screenIndex, verifySend} = useSelector(state => state.signUpReducer)
 
     useEffect(() => {
         dispatch(getAllCountriesListen())
     }, [])
 
-    const {screenIndex, verifySend} = useSelector(state => state.signUpReducer)
 
     const handleScreens = () => {
         switch (screenIndex) {
             case 0:
                 return <WelcomeComp/>
             case 1:
-                return verifySend ? <OtpSend/> : <EnterPasswordUsername/>
+                return <UserDetails />
+            case 2:
+                return verifySend ? <OtpSend /> : <EnterPasswordUsername/>
             default:
                 fireAlertMessage("An error occurred")
         }

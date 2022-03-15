@@ -18,8 +18,11 @@ const getAllCountriesAsync = async () => {
     }).catch(err => console.error(err))
 }
 
-const signupAsync = async (username, password) => {
-    return await Auth.signUp(username, password).catch(err => console.error(err))
+const signupAsync = async (details) => {
+    return await axios.post("/authentication/register", details).then(res => res).catch(err => {
+        console.error(err)
+        return false
+    })
 }
 
 const sendOTPasync = async (username, otp) => {
@@ -27,7 +30,10 @@ const sendOTPasync = async (username, otp) => {
 }
 
 const loginUserAsync = async (username, password) => {
-    return await Auth.signIn(username, password)
+    return await Auth.signIn(username, password).catch((err) => {
+        fireAlertCustom("hmmm...", err.message, "error")
+        return false
+    })
 }
 
 const signoutAsync = async () => {
@@ -51,15 +57,17 @@ export function* getAllCountriesCB() {
 
 export function* signupUserCB(action) {
 
-    const {username, password} = action.cred
+    const {details} = action
 
     try {
         yield put(signupSendingLoadingStart())
-        const data = yield call(signupAsync, username, password)
+        const data = yield call(signupAsync, details)
         if (data) {
-            yield put(signupSuccess(username))
-        }
+            yield put(signupSuccess(data.username))
+        } else fireAlertCustom("Hmm...", "Looks like you have already signed up", "error")
+
     } catch (err) {
+        fireAlertCustom("Hmm...", "Something went wrong", "error")
         console.error(err)
     } finally {
         yield put(signupSendingLoadingEnd())
@@ -88,9 +96,11 @@ export function* loginListenCB(action) {
     const {username, password, history} = action
     try {
         yield put(signupSendingLoadingStart())
-        yield call(loginUserAsync, username, password)
-        window.localStorage.setItem("user", "logged")
-        history.push("/dashboard")
+        const res = yield call(loginUserAsync, username, password)
+        if (res) {
+            window.localStorage.setItem("user", "logged")
+            history.push("/pages/profile")
+        }
     } catch (err) {
         console.log(err)
     } finally {
