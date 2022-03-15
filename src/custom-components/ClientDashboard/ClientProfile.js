@@ -1,4 +1,4 @@
-import {Col, Form, Input, Label} from "reactstrap"
+import {Card, Col, Form, Input, Label} from "reactstrap"
 import PhoneInput from "react-phone-input-2"
 import {useSelector} from "react-redux"
 import {useEffect} from "react"
@@ -61,7 +61,7 @@ const ClientProfile = () => {
     })
 
 
-    return <Col lg={12}>
+    return <Card className="p-2">
         <Form onSubmit={formik.handleSubmit}>
             <Col className="col-12 mb-3">
                 <Label
@@ -178,7 +178,7 @@ const ClientProfile = () => {
                 <input type="submit" className="btn btn-primary" value="Update your profile"/>
             </div>
         </Form>
-    </Col>
+    </Card>
 }
 
 export default ClientProfile

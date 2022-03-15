@@ -18,6 +18,7 @@ import ClientDashboard from "../../custom-components/ClientDashboard/ClientDashb
 import {useSelector} from "react-redux"
 import ClientOrders from "../../custom-components/ClientDashboard/ClientOrders"
 import ClientProfile from "../../custom-components/ClientDashboard/ClientProfile"
+import AudioBtn from "../../custom-components/audioControl/AudioBtn"
 
 const Profile = () => {
 
@@ -49,6 +50,7 @@ const Profile = () => {
                         </Row>
                     </section>
                 </div>
+            <AudioBtn />
         </Fragment>
     )
 }
