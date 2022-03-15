@@ -1,12 +1,13 @@
 import * as actionTypes from "./actionTypes"
 import {call, put, takeLatest} from "redux-saga/effects"
-import axios from "axios"
+import axios from "../../axios/axios"
 import {getIDToken} from "../../utility/Utils"
 import {signupSendingLoadingStart} from "../Signup/actions"
 
+// eslint-disable-next-line no-unused-vars
 const profileDetailsUpdateAsync = async (data) => {
     
-    return await axios.patch("/customer", data, {
+    return await axios.patch("/customer/update/b82258f6-d372-4b0d-a192-4d86dc357260", data, {
         headers: {Authorization: `Bearer ${await getIDToken()}`}
     }).then(res => res).catch(err => console.error(err))
 }
