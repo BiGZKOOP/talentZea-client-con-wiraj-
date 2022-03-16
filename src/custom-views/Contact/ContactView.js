@@ -13,6 +13,7 @@ const ContactView = () => {
         </div>
         <div className="text-center f-Londrina">
             <h1 className="font-large-2">Get in touch with us</h1>
+            <h4>Your <span className="text-primary">ideas</span> truly matters for us !</h4>
         </div>
         <Col className="mt-4">
             <div className="mt-2 d-flex justify-content-between contact-card mb-4">
@@ -23,7 +24,7 @@ const ContactView = () => {
                             <h5 className="f-shippori mt-2">Feel free to contact us for any question you have.</h5>
                         </div>
                         <div className="mt-4 floating-img">
-                            <FriendlySvg />
+                            <FriendlySvg/>
                         </div>
                         <div className="mt-4">
                             <Card className="p-2 scalable">
@@ -55,19 +56,20 @@ const ContactView = () => {
                         <CardBody>
                             <div>
                                 <Label className="text-medium">Your email</Label>
-                                <Input placeholder="123@example.com"/>
+                                <Input placeholder="123@example.com" className="bg-light-grey"/>
                             </div>
                             <div className="mt-3">
                                 <Label className="text-medium">Your name</Label>
-                                <Input className="" placeholder="John Doe"/>
+                                <Input className="bg-light-grey" placeholder="John Doe"/>
                             </div>
                             <div className="mt-3">
                                 <Label className="text-medium">Mail topic</Label>
-                                <Input placeholder="I would like to know about..."/>
+                                <Input placeholder="I would like to know about..." className="bg-light-grey"/>
                             </div>
                             <div className="mt-3">
                                 <Label className="text-medium">Your email</Label>
-                                <Input type="textarea" placeholder="Hi user ! we would really love to hear what you have to say."/>
+                                <Input type="textarea" className="bg-light-grey"
+                                       placeholder="Hi user ! we would really love to hear what you have to say."/>
                             </div>
                             <div className="mt-3 d-flex justify-content-end">
                                 <div className="w-25">
@@ -79,7 +81,7 @@ const ContactView = () => {
                 </div>
             </div>
         </Col>
-        <AudioBtn />
+        <AudioBtn/>
     </Row>
 }
 
