@@ -1,5 +1,5 @@
 import {Button, Collapse, Nav, Navbar, NavItem, NavLink} from "reactstrap"
-import {AlignJustify, Info, Rss} from "react-feather"
+import {AlignJustify, Briefcase, Home, Info, Phone, Rss} from "react-feather"
 import {useState} from "react"
 import {useHistory} from "react-router-dom"
 
@@ -31,15 +31,15 @@ const MainNav = ({index}) => {
                             onClick={() => history.push("/home")}
                             className='fw-bold' active={linkActive(1)}>
                             <span className='d-none d-md-block'>Home</span>
-                            <Info className='d-block d-md-none' size={14}/>
+                            <Home className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink
-                            onClick={() => history.push("/our-works")}
+                            onClick={() => history.push("/service/13123")}
                             className='fw-bold' active={linkActive(2)}>
                             <span className='d-none d-md-block'>Our Works</span>
-                            <Info className='d-block d-md-none' size={14}/>
+                            <Briefcase className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
                     <NavItem>
@@ -47,7 +47,7 @@ const MainNav = ({index}) => {
                             onClick={() => history.push("/contact")}
                             className='fw-bold' active={linkActive(3)}>
                             <span className='d-none d-md-block'>Contact</span>
-                            <Rss className='d-block d-md-none' size={14}/>
+                            <Phone className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
                 </Nav>
