@@ -1,0 +1,13 @@
+.contact-card {
+    display: flex;
+}
+
+.contact-card-left {
+
+}
+
+@media (max-width: 578px) {
+    .contact-card {
+        flex-direction: column-reverse;
+    }
+}
