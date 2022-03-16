@@ -193,6 +193,10 @@
 }
 
 /*text*/
+.text-large {
+    font-size: 30px;
+}
+
 .text-medium {
     font-size: 16px;
 }
@@ -235,6 +239,10 @@
 
 .line-h-3 {
     line-height: 30px;
+}
+
+.word-break-all {
+    word-break: break-all;
 }
 
 /*special-animations*/
@@ -342,6 +350,10 @@
 
     .text-medium {
         font-size: 13px;
+    }
+
+    .text-large {
+        font-size: 20px;
     }
 
     .brand-name {

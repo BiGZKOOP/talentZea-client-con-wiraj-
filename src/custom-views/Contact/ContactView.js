@@ -51,9 +51,9 @@ const ContactView = () => {
             <h4>Your <span className="text-primary">ideas</span> truly matters for us !</h4>
         </div>
         <Col className="mt-4">
-            <div className="mt-2 d-flex justify-content-between contact-card mb-4">
-                <div className="d-flex w-100">
-                    <div className="w-25 p-2 contact-card-left">
+            <div className="mt-2 mb-4">
+                <div className="contact-card w-100">
+                    <div className="p-2 contact-card-left">
                         <div>
                             <h3 className="f-shippori">Contact infomation</h3>
                             <h5 className="f-shippori mt-2">Feel free to contact us for any question you have.</h5>
@@ -84,7 +84,7 @@ const ContactView = () => {
                             </Card>
                         </div>
                     </div>
-                    <Card className="w-75 ml-4 ml-sm-0">
+                    <Card className="contact-card-right">
                         <CardHeader className="mb-2 bg-primary">
                             <li className="f-Londrina font-large-1 text-light">We would love to hear from you !</li>
                         </CardHeader>
@@ -128,7 +128,7 @@ const ContactView = () => {
                                            placeholder="Hi user ! we would really love to hear what you have to say."/>
                                 </div>
                                 <div className="mt-3 d-flex justify-content-end">
-                                    <div className="w-25">
+                                    <div className="send-btn">
                                         <Input type="submit" className="btn btn-primary pt-2 pb-2" value="SEND"/>
                                     </div>
                                 </div>
