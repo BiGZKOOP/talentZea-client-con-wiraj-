@@ -1,72 +1,44 @@
-import {Col, Form, Input, Label} from "reactstrap"
+import {Card, Col, Form, Input, Label} from "reactstrap"
 import PhoneInput from "react-phone-input-2"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {useEffect} from "react"
-import {fireAlertMessage} from "../../utility/custom-util"
 import {useFormik} from "formik"
+import {profileUpdateListen} from "../../custom-views/ClientProfile/actions"
 
 const ClientProfile = () => {
 
     const {allCountries} = useSelector(state => state.signUpReducer)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         console.log(allCountries)
     }, [allCountries])
 
-    const validate = (values) => {
-        if (!values.name) {
-            fireAlertMessage("name is required !!!")
-            return
-        }
-        if (!values.email) {
-            fireAlertMessage("email is required !!!")
-            return
-        }
-        if (!values.nic) {
-            fireAlertMessage("nic is required !!!")
-            return
-        }
-        if (!values.countryCode) {
-            fireAlertMessage("Country code is required !!!")
-            return
-        }
-        if (!values.country) {
-            fireAlertMessage("country is required !!!")
-            return
-        }
-        if (!values.phoneNumber) {
-            fireAlertMessage("phone number is required !!!")
-            return
-        }
-        if (!values.dob) {
-            fireAlertMessage("DOB is required !!!")
-        }
-    }
-
-    // eslint-disable-next-line no-unused-vars
     const formik = useFormik({
         initialValues: {
             name: "",
             email: "",
-            nic: "",
+            nicNumber: "",
             countryCode: "",
             country: "",
             phoneNumber: "",
             dob: ""
         },
         onSubmit: (values) => {
-            validate(values)
-            alert("submit data !!!")
+            delete Object(values).country
+            dispatch(profileUpdateListen({
+                ...values,
+                address: "asdasd"
+            }))
         }
     })
 
-
-    return <Col lg={12}>
+    return <Card className="p-2">
         <Form onSubmit={formik.handleSubmit}>
             <Col className="col-12 mb-3">
                 <Label
                     for="fullName"
-                    className="f-shippori text-light text-medium mb-1 sign-labels">Full Name</Label>
+                    className="f-shippori text-medium mb-1 sign-labels">Full Name</Label>
                 <Input
                     type="text"
                     name="name"
@@ -80,7 +52,7 @@ const ClientProfile = () => {
                 <Col className="double-input mb-3">
                     <Label
                         for="email"
-                        className="f-shippori text-light text-medium mb-1 sign-labels">Email</Label>
+                        className="f-shippori text-medium mb-1 sign-labels">Email</Label>
                     <Input
                         type="email"
                         name="email"
@@ -92,15 +64,15 @@ const ClientProfile = () => {
                 </Col>
                 <Col className="double-input mb-3">
                     <Label
-                        for="nic"
-                        className="sign-labels f-shippori text-light text-medium mb-1">NIC</Label>
+                        for="nicNumber"
+                        className="sign-labels f-shippori text-medium mb-1">NIC</Label>
                     <Input
                         type="text"
-                        name="nic"
-                        id="nic"
+                        name="nicNumber"
+                        id="nicNumber"
                         placeHolder="Enter your NIC"
                         onChange={formik.handleChange}
-                        value={formik.values.nic}
+                        value={formik.values.nicNumber}
                     />
                 </Col>
             </div>
@@ -108,7 +80,7 @@ const ClientProfile = () => {
                 <Col className="double-input mb-3">
                     <Label
                         for="email"
-                        className="sign-labels f-shippori text-light text-medium mb-1">Country code</Label>
+                        className="sign-labels f-shippori text-medium mb-1">Country code</Label>
                     <Input
                         type="text"
                         name="countryCode"
@@ -120,8 +92,8 @@ const ClientProfile = () => {
                 </Col>
                 <Col className="double-input mb-3">
                     <Label
-                        for="nic"
-                        className="sign-labels f-shippori text-light text-medium mb-1">Country</Label>
+                        for="country"
+                        className="sign-labels f-shippori text-medium mb-1">Country</Label>
                     <Input
                         type="select"
                         name="country"
@@ -152,8 +124,8 @@ const ClientProfile = () => {
             <div className="d-flex input-container phone-dob-row">
                 <Col className="double-input mb-3">
                     <Label
-                        for="nic"
-                        className="sign-labels f-shippori text-light text-medium mb-1">DOB</Label>
+                        for="dob"
+                        className="sign-labels f-shippori text-medium mb-1">DOB</Label>
                     <Input
                         type="date"
                         name="dob"
@@ -166,7 +138,7 @@ const ClientProfile = () => {
                 <Col className="double-input mb-3 ml-2">
                     <Label
                         for="email"
-                        className="sign-labels f-shippori text-light text-medium mb-1">Phone number</Label>
+                        className="sign-labels f-shippori text-medium mb-1">Phone number</Label>
                     <PhoneInput
                         country={'us'}
                         value={formik.values.phoneNumber}
@@ -178,7 +150,7 @@ const ClientProfile = () => {
                 <input type="submit" className="btn btn-primary" value="Update your profile"/>
             </div>
         </Form>
-    </Col>
+    </Card>
 }
 
 export default ClientProfile

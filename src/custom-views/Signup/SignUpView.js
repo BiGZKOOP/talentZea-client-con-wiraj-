@@ -2,22 +2,15 @@
 import '@styles/react/pages/page-authentication.scss'
 import "../../assets/css/signup.css"
 import WelcomeComp from "../../custom-components/Signup/WelcomeComp"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import EnterPasswordUsername from "../../custom-components/Signup/EnterPasswordUsername"
 import {fireAlertMessage} from "../../utility/custom-util"
-import {useEffect} from "react"
-import {getAllCountriesListen} from "./actions"
 import OtpSend from "../../custom-components/Signup/OtpSend"
 import UserDetails from "../../custom-components/Signup/UserDetails"
 
 const SignUpView = () => {
 
-    const dispatch = useDispatch()
     const {screenIndex, verifySend} = useSelector(state => state.signUpReducer)
-
-    useEffect(() => {
-        dispatch(getAllCountriesListen())
-    }, [])
 
 
     const handleScreens = () => {

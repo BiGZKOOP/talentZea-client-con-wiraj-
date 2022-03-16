@@ -1,5 +1,7 @@
 // ** Checks if an object is empty (returns boolean)
 
+import {Auth} from "aws-amplify"
+
 export const isObjEmpty = obj => Object.keys(obj).length === 0
 
 // ** Returns K format from a number
@@ -84,8 +86,14 @@ export const selectThemeColors = theme => ({
     }
 })
 
+//Use this to scroll top to the dom when route
 export const scrollToTopUTIL = () => {
     setTimeout(() => {
         window.scrollTo({top: 0, behavior: 'smooth'})
     }, 0)
+}
+
+//Use this to get the cognito id token\
+export const getIDToken = async () => {
+    return Auth.currentSession().then((res) => res.getIdToken().getJwtToken())
 }
