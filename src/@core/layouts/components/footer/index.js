@@ -12,11 +12,11 @@ const Footer = () => {
                 <Mail className="mr-1"/>
                 <Phone className="mr-1"/>
             </div>
-            <p className='clearfix mb-0'>
+            <p className='clearfix mb-0 word-break-all'>
       <span className='float-md-start d-block d-md-inline-block mt-25 f-Londrina text-medium'>
         COPYRIGHT © {new Date().getFullYear()}{' '}
-          <span className="text-purple font-large-1 font-bold">Talent Zea</span>
-        <span className='d-none d-sm-inline-block'>, All rights Reserved</span>
+          <span className="text-purple font-bold text-large">Talent Zea</span>
+          , All rights Reserved
       </span>
             </p>
         </Card>

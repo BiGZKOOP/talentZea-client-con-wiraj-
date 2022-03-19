@@ -9,7 +9,7 @@ import Avatar from '@components/avatar'
 import {isUserLoggedIn} from '@utils'
 
 // ** Store & Actions
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {handleLogout} from '@store/authentication'
 
 // ** Third Party Components
@@ -27,6 +27,7 @@ const UserDropdown = () => {
     const dispatch = useDispatch()
 
     // ** State
+    const {user} = useSelector(state => state.loginReducer)
     const [userData, setUserData] = useState(null)
 
     //** ComponentDidMount
@@ -42,6 +43,8 @@ const UserDropdown = () => {
         dispatch(signoutListen(history))
     }
 
+    console.log(user)
+
     //** Vars
     const userAvatar = (userData && userData.avatar) || defaultAvatar
 
@@ -49,8 +52,8 @@ const UserDropdown = () => {
         <UncontrolledDropdown tag='li' className='dropdown-user nav-item'>
             <DropdownToggle href='/' tag='a' className='nav-link dropdown-user-link' onClick={e => e.preventDefault()}>
                 <div className='user-nav d-sm-flex d-none'>
-                    <span className='user-name fw-bold'>{(userData && userData['username']) || 'John Doe'}</span>
-                    <span className='user-status'>{(userData && userData.role) || 'Admin'}</span>
+                    <span className='user-name fw-bold'>{(user && user?.name) || 'Anonymous'}</span>
+                    <span className='user-status'>customer</span>
                 </div>
                 <Avatar img={userAvatar} imgHeight='40' imgWidth='40' status='online'/>
             </DropdownToggle>

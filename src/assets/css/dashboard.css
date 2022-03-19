@@ -1,3 +1,7 @@
+.main-topic {
+    font-size: 80px;
+}
+
 .dashboard-img {
     width: 75%;
 }
@@ -28,5 +32,9 @@
 
     .dash-card {
         width: 100%;
+    }
+
+    .main-topic {
+        font-size: 40px;
     }
 }
