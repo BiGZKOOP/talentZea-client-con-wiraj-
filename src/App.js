@@ -13,6 +13,7 @@ Amplify.configure(awsconfig)
 
 const App = () => {
 
+    // eslint-disable-next-line no-unused-vars
     // const {userLoad} = useSelector(state => state.loginReducer)
 
     const dispatch = useDispatch()

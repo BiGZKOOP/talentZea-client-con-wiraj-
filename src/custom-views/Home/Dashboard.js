@@ -38,7 +38,11 @@ const Dashboard = () => {
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
 
     useEffect(() => {
-        if (!loaded) setShow(!show)
+        if (!loaded) {
+            setTimeout(function () {
+                setShow(!show)
+            }, 4000)
+        }
         dispatch(audioModelLoad())
     }, [])
 
@@ -61,27 +65,19 @@ const Dashboard = () => {
             <div className="p-1 mb-5  mb-lg-0">
                 <MainNav index={1}/>
             </div>
-            <Row className="mt-lg-5">
-                <Col className="d-center swingimg" lg={6} sm={12}>
-                    <FreeLancerSvg/>
-                </Col>
-                <Col lg={6} sm={12} className="mt-5 mt-lg-0">
-                    <h1 className="f-Londrina font-large-2 text-sm-c-center">We create memories here</h1>
-                    <p className="text-medium f-shippori line-h-3 text-sm-c-center">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.
-                    </p>
-                    <Col className="d-flex d-center-sm">
-                        <button className="btn btn-outline-primary mr-3 text-medium">
-                            See our work
-                        </button>
-                        <button className="btn btn-danger mt-lg-0 text-medium">
-                            Let's do a project
+            <Row className="mt-lg-5 d-center order-item-card">
+                <Col lg={10} sm={12} className="mt-5 mt-lg-0 d-center flex-column">
+                    <Col className="d-center swingimg mb-3" lg={4} sm={12}>
+                        <FreeLancerSvg/>
+                    </Col>
+                    <h1 className="f-Londrina main-topic text-sm-c-center animate__animated animate__slideInLeft">WE
+                        MAKE <span className="text-primary">DREAM</span> LIKE <span className="text-purple">DESIGNS</span> HERE</h1>
+                    <h2 className="text-center f-Londrina animate__animated animate__slideInRight">
+                        We design #MEMORIES here !
+                    </h2>
+                    <Col className="d-flex d-center-sm mt-2">
+                        <button className="btn btn-danger mt-lg-0 text-medium animate__animated animate__zoomInUp">
+                            Let's Start !
                         </button>
                     </Col>
                 </Col>
