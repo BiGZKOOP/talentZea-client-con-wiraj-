@@ -70,9 +70,9 @@ const Dashboard = () => {
                     <Col className="d-center swingimg mb-3" lg={4} sm={12}>
                         <FreeLancerSvg/>
                     </Col>
-                    <h1 className="f-Londrina main-topic text-sm-c-center animate__animated animate__slideInLeft">WE
+                    <h1 className="f-Londrina main-topic text-sm-c-center animate__animated animate__bounceInLeft">WE
                         MAKE <span className="text-primary">DREAM</span> LIKE <span className="text-purple">DESIGNS</span> HERE</h1>
-                    <h2 className="text-center f-Londrina animate__animated animate__slideInRight">
+                    <h2 className="text-center f-Londrina animate__animated animate__bounceInRight">
                         We design #MEMORIES here !
                     </h2>
                     <Col className="d-flex d-center-sm mt-2">
