@@ -7,7 +7,7 @@ import {signupSendingLoadingStart} from "../Signup/actions"
 // eslint-disable-next-line no-unused-vars
 const profileDetailsUpdateAsync = async (data) => {
     
-    return await axios.patch("/customer/update/b82258f6-d372-4b0d-a192-4d86dc357260", data, {
+    return await axios.patch("/customer/update/369afa60-a9cb-4e3d-bfb4-c20d61089a50", data, {
         headers: {Authorization: `Bearer ${await getIDToken()}`}
     }).then(res => res).catch(err => console.error(err))
 }

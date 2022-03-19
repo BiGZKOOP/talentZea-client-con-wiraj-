@@ -7,17 +7,21 @@ import awsconfig from "./aws-exports"
 import {useEffect} from "react"
 import {getAllCountriesListen} from "./custom-views/Signup/actions"
 import {useDispatch} from "react-redux"
+import {getCurrentUserListen} from "./views/pages/authentication/redux/actions"
 
 Amplify.configure(awsconfig)
 
 const App = () => {
-    
+
+    // const {userLoad} = useSelector(state => state.loginReducer)
+
     const dispatch = useDispatch()
-    
+
     useEffect(() => {
+        dispatch(getCurrentUserListen())
         dispatch(getAllCountriesListen())
     }, [])
-    
+
     return <Router/>
 }
 

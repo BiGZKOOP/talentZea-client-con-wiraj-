@@ -19,8 +19,20 @@ const getAllCountriesAsync = async () => {
 }
 
 const signupAsync = async (details) => {
-    return await axios.post("/authentication/register", details).then(res => res).catch(err => {
-        console.error(err)
+    return Auth.signUp({
+        username: details.email,
+        password: details.password
+    }).then(async () => {
+        delete details.password
+        return await axios.post("/customer", details).then(res => res).catch(err => {
+            console.error(err)
+            return false
+        })
+    }).catch((err) => {
+        fireAlertCustom("Hmm...", err.message, "error")
+        return false
+    }).catch((err) => {
+        fireAlertCustom("Hmm...", err.message, "error")
         return false
     })
 }
@@ -64,8 +76,7 @@ export function* signupUserCB(action) {
         const data = yield call(signupAsync, details)
         if (data) {
             yield put(signupSuccess(details.email))
-        } else fireAlertCustom("Hmm...", "Looks like you have already signed up", "error")
-
+        }
     } catch (err) {
         fireAlertCustom("Hmm...", "Something went wrong", "error")
         console.error(err)
