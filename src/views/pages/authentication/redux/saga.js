@@ -4,7 +4,7 @@ import axios from '../../../../Axios.js'
 import qs from 'qs'
 import {Auth} from "aws-amplify"
 import {getIDToken} from "../../../../utility/Utils"
-import {getCurrentUserSuccess} from "./actions"
+import {getCurrentUserSuccess, loginSuccess} from "./actions"
 
 // eslint-disable-next-line no-unused-vars
 const loginAsync = async (user) => {
@@ -34,8 +34,9 @@ const getCurrentUserAsync = async () => {
 export function* loginUserCB() {
 
     try {
-        const data = yield call(loginAsync, "buddini")
+        const data = yield call(loginAsync)
         console.log(data)
+        yield put(loginSuccess())
     } catch (e) {
         console.error(e)
     }

@@ -3,13 +3,14 @@ import {call, takeLatest, put} from "redux-saga/effects"
 import * as actionTypes from "./actionTypes"
 import {
     getAllCountriesSuccess,
-    sendOtpSuccess,
+    sendOtpSuccess, signoutSuccess,
     signupSendingLoadingEnd,
     signupSendingLoadingStart,
     signupSuccess
 } from "./actions"
 import {Auth} from "aws-amplify"
 import {fireAlertCustom} from "../../utility/custom-util"
+import {getCurrentUserListen} from "../../views/pages/authentication/redux/actions"
 
 const getAllCountriesAsync = async () => {
 
@@ -109,6 +110,7 @@ export function* loginListenCB(action) {
         yield put(signupSendingLoadingStart())
         const res = yield call(loginUserAsync, username, password)
         if (res) {
+            yield put(getCurrentUserListen())
             window.localStorage.setItem("user", "logged")
             history.push("/pages/profile")
         }
@@ -122,8 +124,10 @@ export function* loginListenCB(action) {
 export function* signoutListenCB(action) {
     // eslint-disable-next-line no-unused-vars
     const {history} = action
+
     try {
         yield call(signoutAsync)
+        yield put(signoutSuccess())
         window.localStorage.removeItem("user")
         location.reload()
     } catch (err) {

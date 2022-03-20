@@ -65,7 +65,7 @@ const Dashboard = () => {
             <div className="p-1 mb-5  mb-lg-0">
                 <MainNav index={1}/>
             </div>
-            <Row className="mt-lg-5 d-center order-item-card">
+            <Row className="mt-lg-5 d-center">
                 <Col lg={10} sm={12} className="mt-5 mt-lg-0 d-center flex-column">
                     <Col className="d-center swingimg mb-3" lg={4} sm={12}>
                         <FreeLancerSvg/>
