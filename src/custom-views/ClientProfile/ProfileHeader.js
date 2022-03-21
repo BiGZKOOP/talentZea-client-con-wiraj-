@@ -1,8 +1,19 @@
 // ** Reactstrap Imports
 import {Card, CardImg} from 'reactstrap'
 import ClientNav from "../../custom-components/ClientDashboard/ClientNav"
+import {useState} from "react"
+import {useDispatch} from "react-redux"
+import {profileImageUpdateListen} from "./actions"
 
 const ProfileHeader = ({index}) => {
+
+    // eslint-disable-next-line no-unused-vars
+    const [profileImg, setProfileImg] = useState("")
+    const dispatch = useDispatch()
+
+    const uploadProfileImage = (file) => {
+        dispatch(profileImageUpdateListen(file[0]))
+    }
 
     return (
         <Card className='profile-header mb-2'>
@@ -19,7 +30,7 @@ const ProfileHeader = ({index}) => {
                                  src={"https://cdn.vox-cdn.com/thumbor/48ExsWf9xBecr-aK18m01PRLVio=/95x601:1280x1460/1400x933/filters:focal(538x858:742x1062):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/66699060/mgidarccontentnick.comc008fa9d_d.0.png"}
                                  alt='Card image'/>
                         </label>
-                        <input hidden type="file" id="profImg"/>
+                        <input onChange={e => uploadProfileImage(e.target.files)} hidden type="file" id="profImg"/>
                     </div>
                     <div className='profile-title ms-3'>
                         <h2 className='text-white'>Janith malli</h2>
