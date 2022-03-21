@@ -20,6 +20,7 @@ const ClientProfile = () => {
         initialValues: {
             name: "",
             email: "",
+            address: "",
             nicNumber: "",
             countryCode: "",
             country: "",
@@ -29,8 +30,7 @@ const ClientProfile = () => {
         onSubmit: (values) => {
             delete Object(values).country
             dispatch(profileUpdateListen({
-                ...values,
-                address: "asdasd"
+                ...values
             }))
         }
     })
@@ -38,6 +38,7 @@ const ClientProfile = () => {
     const populateFormik = () => {
         formik.values.name = user.name
         formik.values.email = user.email
+        formik.values.address = user.address
         formik.values.nicNumber = user.nicNumber
         formik.values.countryCode = user.countryCode
         formik.values.country = user.country
@@ -64,6 +65,19 @@ const ClientProfile = () => {
                     placeHolder="Enter your full name"
                     onChange={formik.handleChange}
                     value={formik.values.name}
+                />
+            </Col>
+            <Col className="col-12 mb-3">
+                <Label
+                    for="address"
+                    className="f-shippori text-medium mb-1 sign-labels">Full Name</Label>
+                <Input
+                    type="textarea"
+                    name="address"
+                    id="address"
+                    placeHolder="Enter your full name"
+                    onChange={formik.handleChange}
+                    value={formik.values.address}
                 />
             </Col>
             <div className="d-flex input-container">
