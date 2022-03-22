@@ -3,13 +3,13 @@ import {call, put, takeLatest} from "redux-saga/effects"
 import axios from "../../axios/axios"
 import {getIDToken} from "../../utility/Utils"
 import {signupSendingLoadingEnd, signupSendingLoadingStart} from "../Signup/actions"
-import {fireAlertCustom, getBase64} from "../../utility/custom-util"
+import {deleteAttrFromObject, fireAlertCustom, jsonToFormData} from "../../utility/custom-util"
 import {getCurrentUserListen} from "../../views/pages/authentication/redux/actions"
 
 // eslint-disable-next-line no-unused-vars
 const profileDetailsUpdateAsync = async (data) => {
-    
-    return await axios.patch("/customer/update/369afa60-a9cb-4e3d-bfb4-c20d61089a50", data, {
+
+    return await axios.patch(`/customer/update/${data._id}`, data, {
         headers: {Authorization: `Bearer ${await getIDToken()}`}
     }).then(res => {
         fireAlertCustom("Yeeeha !!", "Your profile is up to date", "success")
@@ -17,11 +17,19 @@ const profileDetailsUpdateAsync = async (data) => {
     }).catch(err => console.error(err))
 }
 
-export const profileImageUpdateAsync = async (data) => {
-    const file = await getBase64(data)
-    const submission = file.base64
-    return await axios.patch("/customer", submission, {
-        headers: {Authorization: `Bearer ${await getIDToken()}`}
+export const profileImageUpdateAsync = async (data, id) => {
+
+    //Removing the ID
+    deleteAttrFromObject(data, "_id")
+
+    //Converting json to formData
+    const formData = jsonToFormData(data)
+
+    return await axios.patch(`/customer/update/${id}`, formData, {
+        headers: {
+            Authorization: `Bearer ${await getIDToken()}`,
+            'content-type': 'application/x-www-form-urlencoded'
+        }
     }).then(res => {
         fireAlertCustom("Yeeeha !!", "Your profile image is up to date", "success")
         return res
@@ -29,7 +37,7 @@ export const profileImageUpdateAsync = async (data) => {
 }
 
 export const coverImageUpdateAsync = async (data) => {
-    return await axios.patch("/customer", data, {
+    return await axios.patch(`/customer/update/${data._id}`, data, {
         headers: {Authorization: `Bearer ${await getIDToken()}`}
     }).then(res => {
         fireAlertCustom("Yeeeha !!", "Your cover image is up to date", "success")
@@ -60,7 +68,7 @@ export function* profileImageUpdateCB(action) {
     const {data} = action
     try {
         yield put(signupSendingLoadingStart())
-        const res = yield call(profileImageUpdateAsync, data)
+        const res = yield call(profileImageUpdateAsync, data, data._id)
         console.log(res)
     } catch (err) {
         console.error(err)

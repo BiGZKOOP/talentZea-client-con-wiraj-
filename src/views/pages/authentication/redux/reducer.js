@@ -3,7 +3,8 @@ import {SIGNOUT_SUCCESS} from "../../../../custom-views/Signup/actionTypes"
 
 const init = {
     user: {},
-    userLoad: false
+    userLoad: false,
+    mainServices: []
 }
 
 const loginReducer = (state = init, action) => {
@@ -27,6 +28,12 @@ const loginReducer = (state = init, action) => {
             return {
                 ...state,
                 userLoad: true
+            }
+        }
+        case actionTypes.GET_ALL_MAIN_SERVICES_SUCCESS: {
+            return {
+                ...state,
+                mainServices: action.data
             }
         }
         default:

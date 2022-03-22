@@ -45,3 +45,17 @@ export const getBase64 = (file) => {
         }
     })
 }
+
+//Use this to delete object attr
+export const deleteAttrFromObject = (obj, attr) => {
+    delete obj[attr]
+    return obj
+}
+
+export const jsonToFormData = (obj) => {
+    const formData = new FormData()
+    Object.keys(obj).map(e => {
+        formData.append(e, obj[e])
+    })
+    return formData
+}

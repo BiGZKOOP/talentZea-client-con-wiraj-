@@ -36,19 +36,18 @@ const ClientProfile = () => {
     })
 
     const populateFormik = () => {
-        formik.values.name = user.name
-        formik.values.email = user.email
-        formik.values.address = user.address
-        formik.values.nicNumber = user.nicNumber
-        formik.values.countryCode = user.countryCode
-        formik.values.country = user.country
-        formik.values.phoneNumber = user.phoneNumber
-        formik.values.dob = user.dob
+        formik.values.name = user?.name
+        formik.values.email = user?.email
+        formik.values.address = user?.address
+        formik.values.nicNumber = user?.nicNumber
+        formik.values.countryCode = user?.countryCode
+        formik.values.country = user?.countryCode
+        formik.values.phoneNumber = user?.phoneNumber
+        formik.values.dob = user?.dob
     }
 
     useEffect(() => {
         populateFormik()
-        console.log(user)
         setLoad(false)
     }, [])
 
