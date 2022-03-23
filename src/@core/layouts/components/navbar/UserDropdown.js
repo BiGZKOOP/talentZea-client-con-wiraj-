@@ -43,8 +43,6 @@ const UserDropdown = () => {
         dispatch(signoutListen(history))
     }
 
-    console.log(user)
-
     //** Vars
     const userAvatar = (userData && userData.avatar) || defaultAvatar
 

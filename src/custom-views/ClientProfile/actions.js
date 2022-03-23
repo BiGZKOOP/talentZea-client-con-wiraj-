@@ -26,11 +26,12 @@ export const profileUpdateSuccess = () => {
 }
 
 //Profile Image update
-export const profileImageUpdateListen = (data) => {
+export const profileImageUpdateListen = (data, file) => {
 
     return {
         type: actionTypes.PROFILE_IMG_UPDATE_LISTEN,
-        data
+        data,
+        file
     }
 }
 
@@ -42,10 +43,11 @@ export const profileImageUpdateSuccess = () => {
 }
 
 //Profile cover image update
-export const coverImageUpdateListen = (data) => {
+export const coverImageUpdateListen = (data, file) => {
     return {
         type: actionTypes.COVER_IMG_UPDATE_LISTEN,
-        data
+        data,
+        file
     }
 }
 

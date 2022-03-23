@@ -32,3 +32,19 @@ export const getCurrentUserSuccess = (data) => {
         data
     }
 }
+
+//Use this get main services
+export const getMainServicesListen = () => {
+
+    return {
+        type: actionTypes.GET_ALL_MAIN_SERVICES_LISTEN
+    }
+}
+
+export const getMainServicesSuccess = (data) => {
+
+    return {
+        type: actionTypes.GET_ALL_MAIN_SERVICES_SUCCESS,
+        data
+    }
+}

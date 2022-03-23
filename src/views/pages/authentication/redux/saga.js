@@ -4,7 +4,8 @@ import axios from '../../../../Axios.js'
 import qs from 'qs'
 import {Auth} from "aws-amplify"
 import {getIDToken} from "../../../../utility/Utils"
-import {getCurrentUserSuccess} from "./actions"
+import {getCurrentUserSuccess, getMainServicesSuccess, loginSuccess} from "./actions"
+import {fireAlertCustom} from "../../../../utility/custom-util"
 
 // eslint-disable-next-line no-unused-vars
 const loginAsync = async (user) => {
@@ -27,6 +28,10 @@ const getCurrentUserAsync = async () => {
     })
 }
 
+const getMainServicesAsync = async () => {
+
+    return await axios.get("/main-service").then(res =>  res).catch(err => console.error(err))
+}
 //////////////////////////
 //////ASYNC Finished//////
 //////////////////////////
@@ -34,8 +39,9 @@ const getCurrentUserAsync = async () => {
 export function* loginUserCB() {
 
     try {
-        const data = yield call(loginAsync, "buddini")
+        const data = yield call(loginAsync)
         console.log(data)
+        yield put(loginSuccess())
     } catch (e) {
         console.error(e)
     }
@@ -45,7 +51,21 @@ export function* getCurrentUserCB() {
 
     try {
         const res = yield call(getCurrentUserAsync)
-        yield put(getCurrentUserSuccess(res.data.userExit))
+        yield put(getCurrentUserSuccess(res.data.data))
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+export function* getMainServicesCB() {
+
+    try {
+        const res = yield call(getMainServicesAsync)
+        if (res.status === 200) {
+            yield put(getMainServicesSuccess(res.data))
+        } else {
+            fireAlertCustom("Ooops", res.message, "error")
+        }
     } catch (err) {
         console.error(err)
     }
@@ -54,6 +74,7 @@ export function* getCurrentUserCB() {
 function* watchLoginSagas() {
     yield takeLatest(actionTypes.LOGIN_LISTEN, loginUserCB)
     yield takeLatest(actionTypes.GET_CURRENT_USER_LISTEN, getCurrentUserCB)
+    yield takeLatest(actionTypes.GET_ALL_MAIN_SERVICES_LISTEN, getMainServicesCB)
 }
 
 const loginSagas = [watchLoginSagas]

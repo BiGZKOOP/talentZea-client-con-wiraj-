@@ -17,6 +17,7 @@ import signUpReducer from "../custom-views/Signup/reducer"
 import {combineReducers} from "redux"
 import clientProfileReducer from "../custom-views/ClientProfile/reducer"
 import audioReducer from "../custom-components/audioControl/reducer"
+import mainServiceReducer from "../custom-views/MainService/reducer"
 
 const rootReducer = combineReducers({
     auth,
@@ -35,7 +36,8 @@ const rootReducer = combineReducers({
     loginReducer,
     signUpReducer,
     clientProfileReducer,
-    audioReducer
+    audioReducer,
+    mainServiceReducer
 })
 
 export default rootReducer

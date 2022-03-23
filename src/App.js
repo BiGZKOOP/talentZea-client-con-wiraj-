@@ -7,18 +7,16 @@ import awsconfig from "./aws-exports"
 import {useEffect} from "react"
 import {getAllCountriesListen} from "./custom-views/Signup/actions"
 import {useDispatch} from "react-redux"
-import {getCurrentUserListen} from "./views/pages/authentication/redux/actions"
+import {getCurrentUserListen, getMainServicesListen} from "./views/pages/authentication/redux/actions"
 
 Amplify.configure(awsconfig)
 
 const App = () => {
 
-    // eslint-disable-next-line no-unused-vars
-    // const {userLoad} = useSelector(state => state.loginReducer)
-
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(getMainServicesListen())
         dispatch(getCurrentUserListen())
         dispatch(getAllCountriesListen())
     }, [])

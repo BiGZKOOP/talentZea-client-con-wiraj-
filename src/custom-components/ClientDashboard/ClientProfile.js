@@ -1,23 +1,26 @@
-import {Card, Col, Form, Input, Label} from "reactstrap"
+import {Card, Col, Form, Input, Label, Spinner} from "reactstrap"
 import PhoneInput from "react-phone-input-2"
 import {useDispatch, useSelector} from "react-redux"
-import {useEffect} from "react"
+import {useEffect, useState} from "react"
 import {useFormik} from "formik"
 import {profileUpdateListen} from "../../custom-views/ClientProfile/actions"
 
 const ClientProfile = () => {
 
+    ///Use selectors
     const {allCountries} = useSelector(state => state.signUpReducer)
-    const dispatch = useDispatch()
+    const {user} = useSelector(state => state.loginReducer)
+    const {signupLoad} = useSelector(state => state.signUpReducer)
 
-    useEffect(() => {
-        console.log(allCountries)
-    }, [allCountries])
+    const dispatch = useDispatch()
+    // eslint-disable-next-line no-unused-vars
+    const [load, setLoad] = useState(true)
 
     const formik = useFormik({
         initialValues: {
             name: "",
             email: "",
+            address: "",
             nicNumber: "",
             countryCode: "",
             country: "",
@@ -27,11 +30,26 @@ const ClientProfile = () => {
         onSubmit: (values) => {
             delete Object(values).country
             dispatch(profileUpdateListen({
-                ...values,
-                address: "asdasd"
+                ...values
             }))
         }
     })
+
+    const populateFormik = () => {
+        formik.values.name = user?.name
+        formik.values.email = user?.email
+        formik.values.address = user?.address
+        formik.values.nicNumber = user?.nicNumber
+        formik.values.countryCode = user?.countryCode
+        formik.values.country = user?.countryCode
+        formik.values.phoneNumber = user?.phoneNumber
+        formik.values.dob = user?.dob
+    }
+
+    useEffect(() => {
+        populateFormik()
+        setLoad(false)
+    }, [])
 
     return <Card className="p-2">
         <Form onSubmit={formik.handleSubmit}>
@@ -46,6 +64,19 @@ const ClientProfile = () => {
                     placeHolder="Enter your full name"
                     onChange={formik.handleChange}
                     value={formik.values.name}
+                />
+            </Col>
+            <Col className="col-12 mb-3">
+                <Label
+                    for="address"
+                    className="f-shippori text-medium mb-1 sign-labels">Full Name</Label>
+                <Input
+                    type="textarea"
+                    name="address"
+                    id="address"
+                    placeHolder="Enter your full name"
+                    onChange={formik.handleChange}
+                    value={formik.values.address}
                 />
             </Col>
             <div className="d-flex input-container">
@@ -146,8 +177,11 @@ const ClientProfile = () => {
                     />
                 </Col>
             </div>
-            <div className="d-flex justify-content-end">
-                <input type="submit" className="btn btn-primary" value="Update your profile"/>
+            <div className="d-flex align-items-center justify-content-end">
+                <button type="submit" className="btn text-medium d-center btn-primary">
+                    Update your profile
+                    {signupLoad && <Spinner className="ml-2" />}
+                </button>
             </div>
         </Form>
     </Card>
