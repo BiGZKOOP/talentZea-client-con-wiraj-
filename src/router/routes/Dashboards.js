@@ -5,6 +5,7 @@ const DashboardRoutes = [
     {
         path: '/home',
         component: lazy(() => import('../../custom-views/Home/Dashboard')),
+        layout: 'BlankLayout',
         meta: {
             authRoute: true
         }

@@ -2,7 +2,7 @@ import {CardText, CardTitle, Col} from "reactstrap"
 import {useHistory} from "react-router-dom"
 import {useDispatch} from "react-redux"
 import {setScreenIndex} from "../../custom-views/Signup/actions"
-import Skate from "../../assets/custom_images/svg/Skate"
+import SignupWelcomeSVG from "../../assets/custom_images/svg/SignupWelcomeSVG"
 
 const WelcomeComp = () => {
 
@@ -20,23 +20,25 @@ const WelcomeComp = () => {
 
     return <div className='auth-inner signup-body m-0 d-center'>
         <Col
-            className='d-flex align-items-center shadow-lg signup-prev-inner radius-20 auth-bg px-2 p-5'
+            className='d-flex align-items-center shadow-lg radius-20 auth-bg px-2 p-5'
             lg='4' sm='2'>
             <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
-                <div className="d-center">
-                    <Skate />
+                <div className="d-center floating-img">
+                    <div className="w-75">
+                        <SignupWelcomeSVG />
+                    </div>
                 </div>
                 <div className="d-center mt-4">
                     <button
                         onClick={changeScreens}
-                        className="btn btn-instagram p-1">
+                        className="btn btn-primary p-1">
                         CLICK HERE TO START THE JOURNEY !
                     </button>
                 </div>
                 <div
                     onClick={routeToLogin}
                     className="d-flex justify-content-center pointer mt-2">
-                    <p className="text-light font-bold clickable">
+                    <p className="text-primary font-bold clickable">
                         Back to login
                     </p>
                 </div>

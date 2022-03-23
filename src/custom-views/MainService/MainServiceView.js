@@ -7,19 +7,31 @@ import OurWorkMainService from "../../custom-components/MainService/OurWorkMainS
 import ContactSVG from "../../assets/custom_images/svg/ContactSVG"
 import {useHistory} from "react-router-dom"
 import AudioBtn from "../../custom-components/audioControl/AudioBtn"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import SuccessOrderSVG from "../../assets/custom_images/svg/SuccessOrderSVG"
 import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
+import {useEffect} from "react"
+import {getMainServicesListen} from "./actions"
 
 const MainServiceView = () => {
 
     const history = useHistory()
+    const dispatch = useDispatch()
+
+    const pathname = window.location.pathname
+
+    const id = pathname.split("/service/")[1]
+
     const {fairyAudio} = useSelector(state => state.audioReducer)
 
     const transitionAudio = () => {
         fairyAudio.play()
         fairyAudio.volume = 0.4
     }
+    
+    useEffect(() => {
+        dispatch(getMainServicesListen(id))
+    }, [])
 
 
     return <Row>
@@ -127,6 +139,7 @@ const MainServiceView = () => {
                     <CardFooter>
                         <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                            has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                             has been the industry's standard dummy text ever since the 1500s,
                         </p>
                     </CardFooter>
@@ -157,7 +170,7 @@ const MainServiceView = () => {
                 <p className="f-Londrina text-topic text-center">Some of our works...</p>
             </div>
             <div>
-                <OurWorkMainService/>
+                <OurWorkMainService/>z
             </div>
         </Row>
         <Row className=" d-center mt-5 mb-5">

@@ -2,16 +2,12 @@ import {
     Card,
     CardBody,
     CardFooter,
-    CardHeader,
-    Col, DropdownItem, DropdownMenu, DropdownToggle,
-    Label,
-    ListGroup,
-    ListGroupItem, Modal,
+    Col,
+    Modal,
     ModalBody,
     ModalHeader,
-    Row, UncontrolledDropdown
+    Row, Spinner, UncontrolledDropdown
 } from "reactstrap"
-import FreeLancerSvg from "../../assets/custom_images/svg/FreeLancer.svg"
 import "../../assets/css/dashboard.css"
 import AirpodsSvg from "../../assets/custom_images/svg/Airpods.svg"
 import CreativeSvg from "../../assets/custom_images/svg/Creative.svg"
@@ -24,21 +20,27 @@ import Faq from "../../views/pages/faq"
 import MainNav from "../../custom-components/MainNav/MainNav"
 import {useHistory} from "react-router-dom"
 import AudioBtn from "../../custom-components/audioControl/AudioBtn"
-import {Link, Music, Users} from "react-feather"
+import {Facebook, Instagram, Link, Mail, Music, Phone, Users} from "react-feather"
 import {useEffect, useState} from "react"
 import Headset from "../../assets/custom_images/svg/Headset"
 import {useDispatch, useSelector} from "react-redux"
 import {audioHandle, audioModelLoad} from "../../custom-components/audioControl/action"
+import logo from "../../assets/custom_images/logo.png"
 
 const Dashboard = () => {
 
     const history = useHistory()
     const dispatch = useDispatch()
     const [show, setShow] = useState(false)
+    const [logoStyle, setLogoStyle] = useState("fadein-anim delay-8")
+    // eslint-disable-next-line no-unused-vars
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
+    const {mainServices, mainServicesLoad} = useSelector(state => state.loginReducer)
 
     useEffect(() => {
-        if (!loaded) setShow(!show)
+            setTimeout(function () {
+                setLogoStyle("animate__animated animate__bounce")
+            }, 9500)
         dispatch(audioModelLoad())
     }, [])
 
@@ -58,40 +60,50 @@ const Dashboard = () => {
 
     return (
         <Row>
-            <div className="p-1 mb-5  mb-lg-0">
-                <MainNav index={1}/>
-            </div>
-            <Row className="mt-lg-5">
-                <Col className="d-center swingimg" lg={6} sm={12}>
-                    <FreeLancerSvg/>
-                </Col>
-                <Col lg={6} sm={12} className="mt-5 mt-lg-0">
-                    <h1 className="f-Londrina font-large-2 text-sm-c-center">We create memories here</h1>
-                    <p className="text-medium f-shippori line-h-3 text-sm-c-center">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.
-                    </p>
-                    <Col className="d-flex d-center-sm">
-                        <button className="btn btn-outline-primary mr-3 text-medium">
-                            See our work
-                        </button>
-                        <button className="btn btn-danger mt-lg-0 text-medium">
-                            Let's do a project
-                        </button>
+            <Row className="position-relative full-page overflow-hidden">
+                <div className="full-page header-behind position-absolute"/>
+                <div className="d-flex mb-5 position-absolute header-footer">
+                    <Facebook className="mb-2 footer-icon animate__animated animate__bounceInLeft f-icon-delay-1"
+                              size={25}/>
+                    <Instagram className="mb-2 footer-icon animate__animated animate__bounceInLeft f-icon-delay-2"
+                               size={25}/>
+                    <Mail className="mb-2 footer-icon animate__animated animate__bounceInLeft f-icon-delay-3"
+                          size={25}/>
+                    <Phone className="footer-icon animate__animated animate__bounceInLeft f-icon-delay-4" size={25}/>
+                </div>
+                <div className="p-1 mb-5 mb-lg-0 w-100 ml-1 position-sticky">
+                    <MainNav index={1}/>
+                </div>
+                <div className="mt-lg-5 d-flex justify-content-center mb-5">
+                    <Col lg={10} sm={12} className="ml-3 mt-lg-0 ml-lg-0 d-center flex-column">
+                        <Col className={`logo-header zindex-4 mb-2 ${logoStyle}`}>
+                            <img width="100%"
+                                 src={logo}/>
+                        </Col>
+                        <h1 className="f-Londrina main-topic text-sm-c-center text-light">
+                            <span className="fadein-anim delay-5">WE MAKE</span> <span
+                            className="text-primary shivering-anim delay-1">DREAM</span> <span
+                            className="fadein-anim delay-5">LIKE</span> <span
+                            className="text-purple shivering-anim delay-3">DESIGNS</span> <span
+                            className="fadein-anim delay-5">HERE</span></h1>
+                        <h2 className="text-center f-Londrina animate__animated animate__bounceInRight delay-5 text-light">
+                            We design #MEMORIES here !
+                        </h2>
+                        <Col className="mt-2">
+                            <button
+                                className="btn btn-danger mt-lg-0 text-medium animate__animated animate__zoomInUp delay-5">
+                                Let's Start !
+                            </button>
+                        </Col>
                     </Col>
-                </Col>
+                </div>
             </Row>
             <Row className="mt-5">
                 <Col className="d-center bounce-img">
                     <AirpodsSvg/>
                 </Col>
             </Row>
-            <Row>
+            <Row className="sticky-top-custom">
                 <Col>
                     <h1 className="f-Londrina font-large-2 text-center">Why <span
                         className="text-primary">Talent Zea</span> ?</h1>
@@ -175,69 +187,36 @@ const Dashboard = () => {
                     <h1 className="f-Londrina font-large-2">OUR SERVICES</h1>
                 </Col>
                 <Row className="p-2 mt-3 radius-10  d-center flex-wrap d-flex">
-                    <Card className="dash-card m-2 scalable">
-                        <div className="pt-2">
-                            <h2 className="text-center f-Londrina">GRAPHICS DESIGNING</h2>
+                    {
+                        !mainServicesLoad && <div className="d-center flex-column animate__animated animate__bounce">
+                            <Spinner className="text-primary mb-2"/>
+                            <h1 className="text-primary">Loading...</h1>
                         </div>
-                        <CardFooter>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </CardFooter>
-                        <CardFooter className="d-center">
-                            <button
-                                onClick={() => {
-                                    transitionAudio()
-                                    history.push("/service/13123")
-                                }}
-                                className="btn btn-outline-foursquare">
-                                SHOW ME...
-                            </button>
-                        </CardFooter>
-                    </Card>
-                    <Card className="dash-card m-2 scalable">
-                        <div className="pt-2">
-                            <h2 className="text-center f-Londrina">WEB DEVELOPING</h2>
-                        </div>
-                        <CardFooter>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </CardFooter>
-                        <CardFooter className="d-center">
-                            <button
-                                onClick={() => {
-                                    transitionAudio()
-                                    history.push("/service/12121")
-                                }}
-                                className="btn btn-outline-foursquare">
-                                SHOW ME...
-                            </button>
-                        </CardFooter>
-                    </Card>
-                    <Card className="dash-card m-2 scalable">
-                        <div className="pt-2">
-                            <h2 className="text-center f-Londrina">MOBILE APP DEVELOPING</h2>
-                        </div>
-                        <CardFooter>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </CardFooter>
-                        <CardFooter className="d-center">
-                            <button
-                                onClick={() => {
-                                    transitionAudio()
-                                    history.push("/service/97879")
-                                }}
-                                className="btn btn-outline-foursquare">
-                                SHOW ME...
-                            </button>
-                        </CardFooter>
-                    </Card>
+                    }
+                    {
+                        mainServicesLoad && mainServices?.map(e => {
+                            return <Card className="dash-card m-2 scalable">
+                                <div className="pt-2">
+                                    <h2 className="text-center f-Londrina">{e?.mainTopic}</h2>
+                                </div>
+                                <CardFooter>
+                                    <p>
+                                        {e?.mainTopicDescription}
+                                    </p>
+                                </CardFooter>
+                                <CardFooter className="d-center">
+                                    <button
+                                        onClick={() => {
+                                            transitionAudio()
+                                            history.push(`/service/${e?._id}`)
+                                        }}
+                                        className="btn btn-outline-foursquare">
+                                        SHOW ME...
+                                    </button>
+                                </CardFooter>
+                            </Card>
+                        })
+                    }
                     <Card className="dash-card m-2 bg-instagram text-light rotatable">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina text-light">COMING MORE...</h2>

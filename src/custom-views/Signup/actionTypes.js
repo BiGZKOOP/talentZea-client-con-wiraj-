@@ -26,3 +26,5 @@ export const LOGIN_SUCCESS = "Signup/LOGIN_SUCCESS"
 
 export const SIGNOUT_LISTEN = "Signup/SIGNOUT_LISTEN"
 export const SIGNOUT_SUCCESS = "Signup/SIGNOUT_SUCCESS"
+
+export const USER_DATA_ADD_LISTEN = "Signup/USER_DATA_ADD_LISTEN"

@@ -1,0 +1,36 @@
+.contact-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-card-left {
+    width: 25%;
+}
+
+.contact-card-right {
+    width: 75%;
+    margin-left: 40px;
+}
+
+.send-btn {
+    width: 25%;
+}
+
+@media (max-width: 578px) {
+    .contact-card {
+        flex-direction: column;
+    }
+
+    .contact-card-left {
+        width: 100%;
+    }
+
+    .contact-card-right {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .send-btn {
+        width: 100%;
+    }
+}
