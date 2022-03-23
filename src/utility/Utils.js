@@ -1,5 +1,4 @@
 // ** Checks if an object is empty (returns boolean)
-
 import {Auth} from "aws-amplify"
 
 export const isObjEmpty = obj => Object.keys(obj).length === 0
@@ -92,7 +91,6 @@ export const scrollToTopUTIL = () => {
         window.scrollTo({top: 0, behavior: 'smooth'})
     }, 0)
 }
-
 //Use this to get the cognito id token\
 export const getIDToken = async () => {
     return Auth.currentSession().then((res) => res.getIdToken().getJwtToken())
