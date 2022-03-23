@@ -62,7 +62,7 @@ export function* getMainServicesCB() {
     try {
         const res = yield call(getMainServicesAsync)
         if (res.status === 200) {
-            yield put(getMainServicesSuccess(res.data.data))
+            yield put(getMainServicesSuccess(res.data))
         } else {
             fireAlertCustom("Ooops", res.message, "error")
         }
