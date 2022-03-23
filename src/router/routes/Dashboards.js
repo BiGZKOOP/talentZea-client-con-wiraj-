@@ -13,6 +13,7 @@ const DashboardRoutes = [
     {
         path: '/service/:id',
         component: lazy(() => import('../../custom-views/MainService/MainServiceView')),
+        layout: 'BlankLayout',
         meta: {
             authRoute: true
         }
@@ -20,6 +21,7 @@ const DashboardRoutes = [
     {
         path: '/sub-service/:id',
         component: lazy(() => import('../../custom-views/SubServiceView/SubServiceView')),
+        layout: 'BlankLayout',
         meta: {
             authRoute: true
         }

@@ -26,6 +26,7 @@ import Headset from "../../assets/custom_images/svg/Headset"
 import {useDispatch, useSelector} from "react-redux"
 import {audioHandle, audioModelLoad} from "../../custom-components/audioControl/action"
 import logo from "../../assets/custom_images/logo.png"
+import Footer from "../../@core/layouts/components/footer"
 
 const Dashboard = () => {
 
@@ -115,7 +116,7 @@ const Dashboard = () => {
                     </p>
                 </Col>
                 <Row className="mt-5 d-flex justify-content-around w-100 ml-1">
-                    <Card className="dash-card scalable">
+                    <Card className="dash-card scalable bg-semi-dark">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina">#CREATIVE</h2>
                         </div>
@@ -129,7 +130,7 @@ const Dashboard = () => {
                             </p>
                         </CardFooter>
                     </Card>
-                    <Card className="dash-card scalable">
+                    <Card className="dash-card scalable bg-semi-dark">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina">#FRIENDLY</h2>
                         </div>
@@ -143,7 +144,7 @@ const Dashboard = () => {
                             </p>
                         </CardFooter>
                     </Card>
-                    <Card className="dash-card scalable">
+                    <Card className="dash-card scalable bg-semi-dark">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina">#SKILLFUL</h2>
                         </div>
@@ -157,7 +158,7 @@ const Dashboard = () => {
                             </p>
                         </CardFooter>
                     </Card>
-                    <Card className="dash-card scalable">
+                    <Card className="dash-card scalable bg-semi-dark">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina">#24/7 AVAILABLE</h2>
                         </div>
@@ -195,7 +196,7 @@ const Dashboard = () => {
                     }
                     {
                         mainServicesLoad && mainServices?.map(e => {
-                            return <Card className="dash-card m-2 scalable">
+                            return <Card className="dash-card m-2 scalable bg-semi-dark">
                                 <div className="pt-2">
                                     <h2 className="text-center f-Londrina">{e?.mainTopic}</h2>
                                 </div>
@@ -217,9 +218,9 @@ const Dashboard = () => {
                             </Card>
                         })
                     }
-                    <Card className="dash-card m-2 bg-instagram text-light rotatable">
+                    <Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">
                         <div className="pt-2">
-                            <h2 className="text-center f-Londrina text-light">COMING MORE...</h2>
+                            <h2 className="text-center f-Londrina text-light ">COMING MORE...</h2>
                         </div>
                         <CardFooter>
                             <p>
@@ -235,9 +236,6 @@ const Dashboard = () => {
                 </Col>
                 <Col className="mt-5 mb-5">
                     <h1 className="text-center f-Londrina font-large-2">What do you need to know ?</h1>
-                </Col>
-                <Col className="mt-3 text-center">
-                    <Faq/>
                 </Col>
             </div>
             <AudioBtn/>
@@ -262,6 +260,7 @@ const Dashboard = () => {
             {/*//////////////////////*/}
             {/*Modal ended*/}
             {/*//////////////////////*/}
+            <Footer />
         </Row>
     )
 }
