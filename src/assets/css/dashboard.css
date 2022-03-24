@@ -56,6 +56,18 @@
     animation-delay: 6.6s;
 }
 
+.header-topic-delay-1 {
+    animation-delay: 5s;
+}
+
+.header-topic-delay-2 {
+    animation-delay: 5.2s;
+}
+
+.header-topic-delay-3 {
+    animation-delay: 5.4s;
+}
+
 .brand-nav-img {
     display: block;
 }
