@@ -43,7 +43,7 @@ const ClientDashboard = () => {
                     <div className="mb-2">
                         <h3>Order Timeline</h3>
                     </div>
-                    <Card className="mb-5 p-2">
+                    <Card className="mb-5 p-2 bg-semi-dark">
                         <Timeline data={time_linedata}/>
                     </Card>
                 </Col>
@@ -51,7 +51,7 @@ const ClientDashboard = () => {
                     <div className="mb-2">
                         <h3>Order List (2)</h3>
                     </div>
-                    <Card className="overflow-auto p-2" style={{height: "310px"}}>
+                    <Card className="overflow-auto p-2 bg-semi-dark" style={{height: "310px"}}>
                         <ClientDashboardOrderCard/>
                     </Card>
                 </Col>
@@ -62,7 +62,7 @@ const ClientDashboard = () => {
                 </div>
                 <Row className="p-2 overflow-auto">
                     <Col lg={4} sm={12}>
-                        <Card className="scalable">
+                        <Card className="scalable bg-semi-dark">
                             <CardBody className="d-center flex-column">
                                 <SuccessOrderSVG/>
                                 <h4 className="f-Londrina mt-2">Complete Order count</h4>
@@ -71,7 +71,7 @@ const ClientDashboard = () => {
                         </Card>
                     </Col>
                     <Col className="mt-lg-0 mt-2" lg={4} sm={12}>
-                        <Card className="scalable">
+                        <Card className="scalable bg-semi-dark">
                             <CardBody className="d-center flex-column">
                                 <PendingOrderSVG/>
                                 <h4 className="f-Londrina mt-2">Pending Order count</h4>
@@ -80,7 +80,7 @@ const ClientDashboard = () => {
                         </Card>
                     </Col>
                     <Col lg={4} sm={12}>
-                        <Card className="scalable">
+                        <Card className="scalable bg-semi-dark">
                             <CardBody className="d-center flex-column">
                                 <CanceledOrderSVG/>
                                 <h4 className="f-Londrina mt-2">Canceled Order count</h4>

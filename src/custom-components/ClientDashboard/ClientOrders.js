@@ -7,7 +7,7 @@ const ClientOrders = () => {
                 <div className="mb-1">
                     <h3>Order details</h3>
                 </div>
-                <Card className="p-2">
+                <Card className="p-2 bg-semi-dark">
                     <div className="d-flex justify-content-between">
                         <p>Order date:-</p>
                         <p className="ml-2 text-success font-bold">2022.01.01</p>
@@ -38,18 +38,18 @@ const ClientOrders = () => {
                 <div className="mb-1">
                     <h3>Order History</h3>
                 </div>
-                <Card className="p-2 overflow-auto">
+                <Card className="p-2 overflow-auto bg-semi-dark">
                     <table className="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">order date</th>
-                            <th scope="col">End date</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Sub Category</th>
-                            <th scope="col">cost</th>
-                            <th scope="col"></th>
+                            <th scope="col" className="bg-semi-dark">Order ID</th>
+                            <th scope="col" className="bg-semi-dark">order date</th>
+                            <th scope="col" className="bg-semi-dark">End date</th>
+                            <th scope="col" className="bg-semi-dark">Status</th>
+                            <th scope="col" className="bg-semi-dark">Category</th>
+                            <th scope="col" className="bg-semi-dark">Sub Category</th>
+                            <th scope="col" className="bg-semi-dark">cost</th>
+                            <th scope="col" className="bg-semi-dark"></th>
                         </tr>
                         </thead>
                         <tbody>

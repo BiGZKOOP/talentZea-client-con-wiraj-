@@ -19,6 +19,8 @@ import {useSelector} from "react-redux"
 import ClientOrders from "../../custom-components/ClientDashboard/ClientOrders"
 import ClientProfile from "../../custom-components/ClientDashboard/ClientProfile"
 import AudioBtn from "../../custom-components/audioControl/AudioBtn"
+import MainNav from "../../custom-components/MainNav/MainNav"
+import Footer from "../../@core/layouts/components/footer"
 
 const Profile = () => {
 
@@ -37,8 +39,9 @@ const Profile = () => {
 
     return (
         <Fragment>
-            <Breadcrumbs breadCrumbTitle='Profile' breadCrumbParent='dashboard' breadCrumbActive='Profile'/>
-                <div id='user-profile'>
+            <div className="p-1 mb-5 mb-lg-0 w-100 position-sticky">
+                <MainNav index={2}/>
+            </div>                <div id='user-profile'>
                     <Row>
                         <Col sm='12'>
                             <ProfileHeader index={2}/>
@@ -51,6 +54,7 @@ const Profile = () => {
                     </section>
                 </div>
             <AudioBtn />
+            <Footer />
         </Fragment>
     )
 }
