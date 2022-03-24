@@ -1,5 +1,5 @@
 import MainNav from "../../custom-components/MainNav/MainNav"
-import {Card, CardFooter, Col, Row} from "reactstrap"
+import {Card, CardFooter, Col, Row, Spinner} from "reactstrap"
 import CreativeSvg from "../../assets/custom_images/svg/Creative.svg"
 import "../../assets/css/serviceViews.css"
 import "../../assets/css/dashboard.css"
@@ -12,6 +12,8 @@ import SuccessOrderSVG from "../../assets/custom_images/svg/SuccessOrderSVG"
 import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
 import {useEffect} from "react"
 import {getMainServicesListen} from "./actions"
+import Footer from "../../@core/layouts/components/footer"
+import ContactComp from "../../custom-components/contact-comp"
 
 const MainServiceView = () => {
 
@@ -23,139 +25,84 @@ const MainServiceView = () => {
     const id = pathname.split("/service/")[1]
 
     const {fairyAudio} = useSelector(state => state.audioReducer)
+    // eslint-disable-next-line no-unused-vars
+    const {subServices, subServiceLoad} = useSelector(state => state.mainServiceReducer)
 
     const transitionAudio = () => {
         fairyAudio.play()
         fairyAudio.volume = 0.4
     }
-    
+
     useEffect(() => {
         dispatch(getMainServicesListen(id))
+        console.log(subServices)
     }, [])
+
+    const validateSubService = () => {
+
+        return subServices.length > 0
+    }
+    
+    const getImageArray = () => {
+
+        if (validateSubService()) {
+            const {image1, image2, image3} = subServices[0].mainService.image
+            return [image1, image2, image3]
+        }
+    }
 
 
     return <Row>
-        <div className="p-1 mb-5  mb-lg-0">
+        <div className="p-1 mb-5 mb-lg-0 w-100 sticky-top-custom">
             <MainNav index={2}/>
         </div>
         <div className="mt-4 mb-5 d-center flex-column">
             <div className="main-img floating-img">
                 <CreativeSvg/>
             </div>
-            <h1 className="text-center mt-4 f-Londrina text-primary topic-header">GRAPHICS DESIGNING</h1>
+            <h1 className="text-center mt-4 f-Londrina text-primary topic-header">{
+                subServices.length > 0 ? subServices[0].mainService.mainTopic : "...."
+            }</h1>
             <h2 className="f-indie-flower">We create memories here !</h2>
         </div>
-        <div className="mt-5">
-            <p className="f-Londrina text-topic text-center">What we do here ?</p>
-        </div>
-        <Col className="mt-1 d-flex">
-            <Row className="p-2 radius-10  d-center flex-wrap d-flex">
-                <Card className="dash-card m-2 scalable">
-                    <div className="pt-2">
-                        <h2 className="text-center f-Londrina">LOGO DESIGNING</h2>
+        <Col className="mt-5">
+            <Col className="text-center">
+                <h1 className="f-Londrina font-large-2">OUR SERVICES</h1>
+            </Col>
+            <Row className="p-2 mt-3 radius-10  d-center flex-wrap d-flex">
+                {
+                    !subServiceLoad && <div className="d-center flex-column animate__animated animate__bounce">
+                        <Spinner className="text-primary mb-2"/>
+                        <h1 className="text-primary">Loading...</h1>
                     </div>
-                    <CardFooter>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s,
-                        </p>
-                    </CardFooter>
-                    <CardFooter className="d-center">
-                        <button
-                            onClick={() => {
-                                transitionAudio()
-                                history.push("/sub-service/1212")
-                            }}
-                            className="btn btn-outline-foursquare">
-                            SHOW ME...
-                        </button>
-                    </CardFooter>
-                </Card>
-                <Card className="dash-card m-2 scalable">
+                }
+                {
+                    subServiceLoad && subServices?.map((e, index) => {
+                        return <Card className="dash-card m-2 scalable bg-semi-dark">
+                            <div className="pt-2">
+                                <h2 className="text-center f-Londrina">{e?.mainTopic}</h2>
+                            </div>
+                            <CardFooter>
+                                <p>
+                                    {e?.description}
+                                </p>
+                            </CardFooter>
+                            <CardFooter className="d-center">
+                                <button
+                                    onClick={() => {
+                                        transitionAudio()
+                                        history.push(`/sub-service/${index}`)
+                                    }}
+                                    className="btn btn-outline-foursquare">
+                                    SHOW ME...
+                                </button>
+                            </CardFooter>
+                        </Card>
+                    })
+                }
+                <Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">
                     <div className="pt-2">
-                        <h2 className="text-center f-Londrina">COVER DESIGNING</h2>
-                    </div>
-                    <CardFooter>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s,
-                        </p>
-                    </CardFooter>
-                    <CardFooter className="d-center">
-                        <button
-                            onClick={() => {
-                                transitionAudio()
-                                history.push("/sub-service/1212")
-                            }}
-                            className="btn btn-outline-foursquare">
-                            SHOW ME...
-                        </button>
-                    </CardFooter>
-                </Card>
-                <Card className="dash-card m-2 scalable">
-                    <div className="pt-2">
-                        <h2 className="text-center f-Londrina">MOCKUP DESIGNING</h2>
-                    </div>
-                    <CardFooter>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s,
-                        </p>
-                    </CardFooter>
-                    <CardFooter className="d-center">
-                        <button
-                            onClick={() => {
-                                transitionAudio()
-                                history.push("/sub-service/1212")
-                            }} className="btn btn-outline-foursquare">
-                            SHOW ME...
-                        </button>
-                    </CardFooter>
-                </Card>
-                <Card className="dash-card m-2 scalable">
-                    <div className="pt-2">
-                        <h2 className="text-center f-Londrina">MOCKUP DESIGNING</h2>
-                    </div>
-                    <CardFooter>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s,
-                        </p>
-                    </CardFooter>
-                    <CardFooter className="d-center">
-                        <button
-                            onClick={() => {
-                                transitionAudio()
-                                history.push("/sub-service/1212")
-                            }} className="btn btn-outline-foursquare">
-                            SHOW ME...
-                        </button>
-                    </CardFooter>
-                </Card>
-                <Card className="dash-card m-2 scalable">
-                    <div className="pt-2">
-                        <h2 className="text-center f-Londrina">MOCKUP DESIGNING</h2>
-                    </div>
-                    <CardFooter>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s,
-                        </p>
-                    </CardFooter>
-                    <CardFooter className="d-center">
-                        <button
-                            onClick={() => {
-                                transitionAudio()
-                                history.push("/sub-service/1212")
-                            }} className="btn btn-outline-foursquare">
-                            SHOW ME...
-                        </button>
-                    </CardFooter>
-                </Card>
-                <Card className="dash-card m-2 bg-instagram text-light rotatable">
-                    <div className="pt-2">
-                        <h2 className="text-center f-Londrina text-light">COMING MORE...</h2>
+                        <h2 className="text-center f-Londrina text-light ">COMING MORE...</h2>
                     </div>
                     <CardFooter>
                         <p>
@@ -170,22 +117,12 @@ const MainServiceView = () => {
                 <p className="f-Londrina text-topic text-center">Some of our works...</p>
             </div>
             <div>
-                <OurWorkMainService/>z
+                <OurWorkMainService images={getImageArray()}/>
             </div>
         </Row>
-        <Row className=" d-center mt-5 mb-5">
-            <div className="d-center main-img mb-2 floating-img">
-                <FriendlySvg/>
-            </div>
-            <div className="mb-2 mt-1">
-                <h1 className="text-center f-Londrina text-contact">Feel free to contact us for any question you
-                    have !</h1>
-            </div>
-            <div className="d-center">
-                <button className="btn btn-foursquare">Contact Us</button>
-            </div>
-        </Row>
+        <ContactComp />
         <AudioBtn/>
+        <Footer />
     </Row>
 }
 

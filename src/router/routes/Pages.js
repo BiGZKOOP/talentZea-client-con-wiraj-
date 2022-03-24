@@ -24,6 +24,7 @@ const PagesRoutes = [
     {
         path: '/contact',
         component: lazy(() => import('../../custom-views/Contact/ContactView')),
+        layout: 'BlankLayout',
         meta: {
             authRoute: true
         }
@@ -109,7 +110,8 @@ const PagesRoutes = [
     },
     {
         path: '/pages/profile',
-        component: lazy(() => import('../../custom-views/ClientProfile'))
+        component: lazy(() => import('../../custom-views/ClientProfile')),
+        layout: 'BlankLayout'
     },
     {
         path: '/pages/faq',

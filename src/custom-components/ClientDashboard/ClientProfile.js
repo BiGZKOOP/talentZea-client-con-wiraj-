@@ -51,7 +51,7 @@ const ClientProfile = () => {
         setLoad(false)
     }, [])
 
-    return <Card className="p-2">
+    return <Card className="p-2 ">
         <Form onSubmit={formik.handleSubmit}>
             <Col className="col-12 mb-3">
                 <Label

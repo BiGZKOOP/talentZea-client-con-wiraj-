@@ -1,14 +1,14 @@
-import {call, takeLatest} from "redux-saga/effects"
+import {call, put, takeLatest} from "redux-saga/effects"
 import * as actionTypes from "./actionTypes"
 import axios from "../../axios/axios"
 import {getIDToken} from "../../utility/Utils"
 import {fireAlertCustom} from "../../utility/custom-util"
+import {getMainServiceSuccess} from "./actions"
 
 export const getSubServiceByIdAsync = async (id) => {
     return await axios.get(`/sub-service/main/${id}`, {
         headers: {Authorization: `Bearer ${await getIDToken()}`}
     }).then(res => {
-        fireAlertCustom("Yeeehas !!", "Your cover image is up to date", "success")
         return res
     }).catch(err => console.error(err))
 }
@@ -23,7 +23,7 @@ export function* getMainServicesCB(action) {
     try {
         const res = yield call(getSubServiceByIdAsync, id)
         if (res.status === 200) {
-            console.log(res)
+            yield put(getMainServiceSuccess(res.data))
         } else {
             fireAlertCustom("Oops !", res.message, "error")
         }
