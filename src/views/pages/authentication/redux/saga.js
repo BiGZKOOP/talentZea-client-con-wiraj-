@@ -15,7 +15,7 @@ const loginAsync = async (user) => {
     params.append("username", "1234")
     return axios.post(`/login`, qs.stringify({username: "Bashana", password: "1234"}), {
         headers: {'content-type': 'application/x-www-form-urlencoded'}
-    }).then(res => console.log(res)).catch(err => console.log(err))
+    }).then(res => console.log(res)).catch(err => console.error(err))
 }
 
 const getCurrentUserAsync = async () => {
