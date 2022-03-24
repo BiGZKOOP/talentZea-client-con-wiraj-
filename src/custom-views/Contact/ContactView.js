@@ -7,8 +7,14 @@ import AudioBtn from "../../custom-components/audioControl/AudioBtn"
 import {useFormik} from "formik"
 import {fireAlertError} from "../../utility/custom-util"
 import Footer from "../../@core/layouts/components/footer"
+import {useEffect} from "react"
+import {scrollToTopUTIL} from "../../utility/Utils"
 
 const ContactView = () => {
+    
+    useEffect(() => {
+        scrollToTopUTIL()
+    }, [])
 
     const validate = (values) => {
 
