@@ -19,8 +19,8 @@
 }
 
 .header-behind {
-    background-image: linear-gradient(to right, #161d31, #171f37, #19223c, #1a2442, #1c2748);
-    /*background-color: crimson;*/
+    /*background-image: linear-gradient(to right, #161d31, #171f37, #19223c, #1a2442, #1c2748);*/
+    background-color: #181818;
     animation-duration: 1s;
     animation-timing-function: ease-in;
     animation-name: behindSlider;
@@ -56,7 +56,9 @@
     animation-delay: 6.6s;
 }
 
-/*Animations*/
+.brand-nav-img {
+    display: block;
+}
 
 /*This is the hero back div animation*/
 @keyframes behindSlider {
@@ -93,5 +95,9 @@
 
     .logo-header {
         width: 100%;
+    }
+
+    .brand-nav-img {
+        display: none;
     }
 }

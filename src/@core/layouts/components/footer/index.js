@@ -4,7 +4,7 @@ import {Card} from "reactstrap"
 
 const Footer = () => {
     return (
-        <Card className="m-0 bg-tumblr container-fluid text-light p-1 d-center">
+        <Card className="m-0 bg-tumblr container-fluid text-light p-1 d-center bg-semi-dark">
             <p className="f-Londrina">Connect with us</p>
             <div className="d-flex mb-2">
                 <Facebook className="mr-1 footer-icon"/>

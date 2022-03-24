@@ -3,6 +3,8 @@ import {AlignJustify, Briefcase, Home, Info, Phone, Rss} from "react-feather"
 import {useState} from "react"
 import {useHistory} from "react-router-dom"
 import logo from "../../assets/custom_images/logo.png"
+import UserDropdown from "../../@core/layouts/components/navbar/UserDropdown"
+import Avatar from "../../@core/components/avatar"
 
 const MainNav = ({index}) => {
 
@@ -21,13 +23,16 @@ const MainNav = ({index}) => {
         <div className="brand-name ml-2 ml-lg-0">
             <img width="100px" className="object-fit" src={logo}/>
         </div>
-        <Button color='dark' className='btn-icon navbar-toggler' onClick={toggle}>
+        <Button color='dark' className='btn-icon navbar-toggler mr-2' onClick={toggle}>
             <AlignJustify size={21}/>
         </Button>
         <Collapse isOpen={isOpen} navbar>
-            <div className='profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0'>
+            <div className='profile-tabs d-flex justify-content-between w-100 flex-wrap mt-1 mt-md-0'>
+                <div className="ml-2 ml-lg-0 brand-nav-img">
+                    <img width="100px" className="object-fit" src={logo}/>
+                </div>
                 <Nav className='mb-0' pills>
-                    <NavItem>
+                    <NavItem className="ml-5">
                         <NavLink
                             onClick={() => history.push("/home")}
                             className='fw-bold' active={linkActive(1)}>
@@ -35,14 +40,7 @@ const MainNav = ({index}) => {
                             <Home className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
-                    <NavItem>
-                        <NavLink
-                            onClick={() => history.push("/service/13123")}
-                            className='fw-bold' active={linkActive(2)}>
-                            <span className='d-none d-md-block text-light'>Our Works</span>
-                            <Briefcase className='d-block d-md-none' size={14}/>
-                        </NavLink>
-                    </NavItem>
+
                     <NavItem>
                         <NavLink
                             onClick={() => history.push("/contact")}
@@ -52,6 +50,9 @@ const MainNav = ({index}) => {
                         </NavLink>
                     </NavItem>
                 </Nav>
+                <div className="clickable mr-2">
+                    <Avatar img={"https://cdn.vox-cdn.com/thumbor/8eRpMBfVFeMnzzTz95UZQnnqqtE=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20103707/Screen_Shot_2020_07_21_at_9.38.25_AM.png"} imgHeight='40' imgWidth='40' status='online'/>
+                </div>
             </div>
         </Collapse>
     </Navbar>
