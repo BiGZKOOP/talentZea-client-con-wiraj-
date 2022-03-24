@@ -1,13 +1,11 @@
 import {call, put, takeLatest} from "redux-saga/effects"
 import * as actionTypes from "./actionTypes"
 import axios from "../../axios/axios"
-import {getIDToken} from "../../utility/Utils"
 import {fireAlertCustom} from "../../utility/custom-util"
 import {getMainServiceSuccess} from "./actions"
 
 export const getSubServiceByIdAsync = async (id) => {
     return await axios.get(`/sub-service/main/${id}`, {
-        headers: {Authorization: `Bearer ${await getIDToken()}`}
     }).then(res => {
         return res
     }).catch(err => console.error(err))
