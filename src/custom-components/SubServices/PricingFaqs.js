@@ -9,13 +9,13 @@ const PricingFaqs = ({ data }) => {
       <Row className='mt-75 mb-2'>
         <Col className='mx-auto' sm='12' lg={{ size: 10, offset: 2 }}>
           <UncontrolledAccordion className='accordion-margin mt-2'>
-            {data.map((r, index) => {
+            {data?.map((r, index) => {
               return (
                 <AccordionItem key={index + 1}>
                   <AccordionHeader tag='h2' targetId={String(index + 1)}>
                     {r.question}
                   </AccordionHeader>
-                  <AccordionBody accordionId={String(index + 1)}>{r.ans}</AccordionBody>
+                  <AccordionBody accordionId={String(index + 1)}>{r.answers}</AccordionBody>
                 </AccordionItem>
               )
             })}

@@ -1,16 +1,34 @@
-import {Button, Collapse, Nav, Navbar, NavItem, NavLink} from "reactstrap"
-import {AlignJustify, Briefcase, Home, Info, Phone, Rss} from "react-feather"
-import {useState} from "react"
-import {useHistory} from "react-router-dom"
+import {Button, Collapse, DropdownItem, Nav, Navbar, NavItem, NavLink} from "reactstrap"
+import {AlignJustify, Briefcase, Home, Info, Key, LogIn, LogOut, Phone, Power, Rss} from "react-feather"
+import {useEffect, useState} from "react"
+import {Link, useHistory} from "react-router-dom"
 import logo from "../../assets/custom_images/logo.png"
 import UserDropdown from "../../@core/layouts/components/navbar/UserDropdown"
 import Avatar from "../../@core/components/avatar"
+import {isUserLoggedIn} from '@utils'
+import {useDispatch} from "react-redux"
+// import {handleLogout} from '@store/authentication'
+import {signoutListen} from "../../custom-views/Signup/actions"
 
 const MainNav = ({index}) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => setIsOpen(!isOpen)
+    const dispatch = useDispatch()
+
+    // eslint-disable-next-line no-unused-vars
+    const [userData, setUserData] = useState(null)
     const history = useHistory()
+
+    useEffect(() => {
+        if (isUserLoggedIn() !== null) {
+            setUserData(JSON.parse(localStorage.getItem('userData')))
+        }
+    }, [])
+
+    const HandlesignoutUser = () => {
+        dispatch(signoutListen(history))
+    }
 
     // eslint-disable-next-line no-unused-vars
     const linkActive = (indexNumber) => {
@@ -28,7 +46,9 @@ const MainNav = ({index}) => {
         </Button>
         <Collapse isOpen={isOpen} navbar>
             <div className='profile-tabs d-flex justify-content-between w-100 flex-wrap mt-1 mt-md-0'>
-                <div className="ml-2 ml-lg-0 brand-nav-img">
+                <div className="ml-2 ml-lg-0 brand-nav-img clickable"
+                     onClick={() => history.push("/")}
+                >
                     <img width="100px" className="object-fit" src={logo}/>
                 </div>
                 <Nav className='mb-0' pills>
@@ -50,8 +70,28 @@ const MainNav = ({index}) => {
                         </NavLink>
                     </NavItem>
                 </Nav>
-                <div className="clickable mr-2">
-                    <Avatar img={"https://cdn.vox-cdn.com/thumbor/8eRpMBfVFeMnzzTz95UZQnnqqtE=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20103707/Screen_Shot_2020_07_21_at_9.38.25_AM.png"} imgHeight='40' imgWidth='40' status='online'/>
+                <div className="d-flex align-items-center">
+                    <div className="mr-2">
+                        {
+                            isUserLoggedIn() && <div className="w-100 clickable cursor-pointer"
+                                                     onClick={() => HandlesignoutUser()}>
+                                <Power color="crimson"/>
+                            </div>
+                        }
+                        {
+                            !isUserLoggedIn() &&
+                            <div className="w-100 clickable cursor-pointer"
+                                 onClick={() => history.push("/login")}>
+                                <LogIn color="#7367f0" size={30}/>
+                            </div>
+                        }
+                    </div>
+                    <div className="clickable mr-2">
+                        <Avatar
+                            onClick={() => history.push("/pages/profile")}
+                            img={"https://cdn.vox-cdn.com/thumbor/8eRpMBfVFeMnzzTz95UZQnnqqtE=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20103707/Screen_Shot_2020_07_21_at_9.38.25_AM.png"}
+                            imgHeight='40' imgWidth='40' status='online'/>
+                    </div>
                 </div>
             </div>
         </Collapse>

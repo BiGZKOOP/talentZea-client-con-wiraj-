@@ -104,7 +104,7 @@ const Dashboard = () => {
                     <AirpodsSvg/>
                 </Col>
             </Row>
-            <Row className="sticky-top-custom">
+            <Row className="sticky-top-custom h-100">
                 <Col>
                     <h1 className="f-Londrina font-large-2 text-center">Why <span
                         className="text-primary">Talent Zea</span> ?</h1>

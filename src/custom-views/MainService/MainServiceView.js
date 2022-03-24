@@ -12,6 +12,7 @@ import SuccessOrderSVG from "../../assets/custom_images/svg/SuccessOrderSVG"
 import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
 import {useEffect} from "react"
 import {getMainServicesListen} from "./actions"
+import Footer from "../../@core/layouts/components/footer"
 
 const MainServiceView = () => {
 
@@ -36,9 +37,22 @@ const MainServiceView = () => {
         console.log(subServices)
     }, [])
 
+    const validateSubService = () => {
+
+        return subServices.length > 0
+    }
+    
+    const getImageArray = () => {
+
+        if (validateSubService()) {
+            const {image1, image2, image3} = subServices[0].mainService.image
+            return [image1, image2, image3]
+        }
+    }
+
 
     return <Row>
-        <div className="p-1 mb-5 mb-lg-0 w-100 position-sticky">
+        <div className="p-1 mb-5 mb-lg-0 w-100 sticky-top-custom">
             <MainNav index={2}/>
         </div>
         <div className="mt-4 mb-5 d-center flex-column">
@@ -62,7 +76,7 @@ const MainServiceView = () => {
                     </div>
                 }
                 {
-                    subServiceLoad && subServices?.map(e => {
+                    subServiceLoad && subServices?.map((e, index) => {
                         return <Card className="dash-card m-2 scalable bg-semi-dark">
                             <div className="pt-2">
                                 <h2 className="text-center f-Londrina">{e?.mainTopic}</h2>
@@ -76,7 +90,7 @@ const MainServiceView = () => {
                                 <button
                                     onClick={() => {
                                         transitionAudio()
-                                        history.push(`/service/${e?._id}`)
+                                        history.push(`/sub-service/${index}`)
                                     }}
                                     className="btn btn-outline-foursquare">
                                     SHOW ME...
@@ -102,7 +116,7 @@ const MainServiceView = () => {
                 <p className="f-Londrina text-topic text-center">Some of our works...</p>
             </div>
             <div>
-                <OurWorkMainService/>
+                <OurWorkMainService images={getImageArray()}/>
             </div>
         </Row>
         <Row className=" d-center mt-5 mb-5">
@@ -118,6 +132,7 @@ const MainServiceView = () => {
             </div>
         </Row>
         <AudioBtn/>
+        <Footer />
     </Row>
 }
 

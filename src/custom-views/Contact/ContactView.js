@@ -6,6 +6,7 @@ import {Mail, PhoneCall} from "react-feather"
 import AudioBtn from "../../custom-components/audioControl/AudioBtn"
 import {useFormik} from "formik"
 import {fireAlertError} from "../../utility/custom-util"
+import Footer from "../../@core/layouts/components/footer"
 
 const ContactView = () => {
 
@@ -25,9 +26,8 @@ const ContactView = () => {
         }
         if (!values.message) {
             fireAlertError("Oops", "You have to write your message !")
-            return
+            // return
         }
-        alert("omkay")
     }
 
     const formik = useFormik({
@@ -84,9 +84,9 @@ const ContactView = () => {
                             </Card>
                         </div>
                     </div>
-                    <Card className="contact-card-right">
+                    <Card className="contact-card-right mr-2">
                         <CardHeader className="mb-2 bg-primary">
-                            <li className="f-Londrina font-large-1 text-light">We would love to hear from you !</li>
+                            <li className="f-Londrina text-large text-light">We would love to hear from you !</li>
                         </CardHeader>
                         <CardBody>
                             <Form onSubmit={formik.handleSubmit}>
@@ -139,6 +139,7 @@ const ContactView = () => {
             </div>
         </Col>
         <AudioBtn/>
+        <Footer />
     </Row>
 }
 
