@@ -82,11 +82,11 @@ const Dashboard = () => {
                                  src={logo}/>
                         </Col>
                         <h1 className="f-Londrina main-topic text-sm-c-center text-light">
-                            <span className="fadein-anim delay-5">WE MAKE</span> <span
+                            <span className="fadein-anim header-topic-delay-1">WE MAKE</span> <span
                             className="text-primary shivering-anim delay-1">DREAM</span> <span
-                            className="fadein-anim delay-5">LIKE</span> <span
+                            className="fadein-anim header-topic-delay-2">LIKE</span> <span
                             className="text-purple shivering-anim delay-3">DESIGNS</span> <span
-                            className="fadein-anim delay-5">HERE</span></h1>
+                            className="fadein-anim header-topic-delay-3">HERE</span></h1>
                         <h2 className="text-center f-Londrina animate__animated animate__bounceInRight delay-5 text-light">
                             We design #MEMORIES here !
                         </h2>
@@ -104,7 +104,7 @@ const Dashboard = () => {
                     <AirpodsSvg/>
                 </Col>
             </Row>
-            <Row className="sticky-top-custom h-100">
+            <Row className="sticky-top-custom">
                 <Col>
                     <h1 className="f-Londrina font-large-2 text-center">Why <span
                         className="text-primary">Talent Zea</span> ?</h1>
