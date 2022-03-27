@@ -17,7 +17,7 @@ const ClientDashboard = () => {
     const [ref, setRef] = useState("")
 
     useEffect(() => {
-        setRef("http://localhost:3000/pages/profile?ref=121212")
+        setRef("http://localhost:3000/home?ref=udaraj")
     })
 
     const copyToClipBoard = () => {

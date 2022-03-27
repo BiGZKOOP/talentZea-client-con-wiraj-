@@ -11,6 +11,7 @@ import {
 import {Auth} from "aws-amplify"
 import {fireAlertCustom} from "../../utility/custom-util"
 import {getCurrentUserListen} from "../../views/pages/authentication/redux/actions"
+import Cookies from "universal-cookie"
 
 const getAllCountriesAsync = async () => {
 
@@ -74,6 +75,14 @@ export function* signupUserCB(action) {
 
     try {
         yield put(signupSendingLoadingStart())
+
+        const cookies = new Cookies()
+        const refGet = cookies.get("ref")
+
+        if (refGet) {
+            // details.referralID = refGet
+        }
+
         const data = yield call(signupAsync, details)
         if (data) {
             yield put(signupSuccess(details.email))
