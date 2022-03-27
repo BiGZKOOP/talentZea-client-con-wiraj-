@@ -27,6 +27,9 @@ import {useDispatch, useSelector} from "react-redux"
 import {audioHandle, audioModelLoad} from "../../custom-components/audioControl/action"
 import logo from "../../assets/custom_images/logo.png"
 import Footer from "../../@core/layouts/components/footer"
+import {useParams} from "react-router"
+import queryString from "query-string"
+import Cookies from 'universal-cookie'
 
 const Dashboard = () => {
 
@@ -38,12 +41,23 @@ const Dashboard = () => {
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
     const {mainServices, mainServicesLoad} = useSelector(state => state.loginReducer)
 
-    useEffect(() => {
-            setTimeout(function () {
-                setLogoStyle("animate__animated animate__bounce")
-            }, 9500)
-        dispatch(audioModelLoad())
-    }, [])
+    // const location = useLocation()
+    // eslint-disable-next-line no-unused-vars
+    const params = useParams()
+    const queryParams = queryString.parse(window.location.search)
+
+    const fetchFromUrl = () => {
+        const ref = queryParams["ref"]
+        const cookies = new Cookies()
+
+        const refGet = cookies.get("ref")
+
+        if (!refGet) {
+            cookies.set("ref", ref, {
+                maxAge: 259200
+            })
+        }
+    }
 
     const playAudioHandle = async () => {
         dispatch(audioHandle(!playAudio))
@@ -58,6 +72,15 @@ const Dashboard = () => {
         fairyAudio.play()
         fairyAudio.volume = 0.4
     }
+
+
+    useEffect(() => {
+        fetchFromUrl()
+        setTimeout(function () {
+            setLogoStyle("animate__animated animate__bounce")
+        }, 9500)
+        dispatch(audioModelLoad())
+    }, [])
 
     return (
         <Row>
@@ -260,7 +283,7 @@ const Dashboard = () => {
             {/*//////////////////////*/}
             {/*Modal ended*/}
             {/*//////////////////////*/}
-            <Footer />
+            <Footer/>
         </Row>
     )
 }
