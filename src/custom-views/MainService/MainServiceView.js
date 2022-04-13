@@ -50,7 +50,7 @@ const MainServiceView = () => {
     else {
         return <Row>
             <div className="p-1 mb-5 mb-lg-0 w-100 sticky-top-custom">
-                <MainNav index={2}/>
+                <MainNav index={4}/>
             </div>
             <div className="mt-4 mb-5 d-center flex-column">
                 <div className="main-img floating-img">
