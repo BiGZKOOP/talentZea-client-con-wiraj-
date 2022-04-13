@@ -71,7 +71,7 @@ export function* getSingleSubServiceByIDCB(action) {
     try {
         yield put(handleGetMainServiceByIDLoader(true))
         const res = yield call(getSingleSubServiceByIDAsync, payload)
-        yield put(getSubServiceByIDSuccess(res.data.data))
+        yield put(getSubServiceByIDSuccess(res.data))
     } catch (err) {
         console.error(err.message)
     } finally {
@@ -82,6 +82,7 @@ export function* getSingleSubServiceByIDCB(action) {
 function* watchMainServiceSagas() {
     yield takeLatest(actionTypes.GET_SUB_SERVICES_LISTEN, getMainServicesCB)
     yield takeLatest(actionTypes.GET_MAIN_SERVICE_BY_ID_LISTEN, getMainServiceByIDCB)
+    yield takeLatest(actionTypes.GET_SUB_SERVICE_BY_ID_LISTEN, getSingleSubServiceByIDCB)
 }
 
 const mainServiceSagas = [watchMainServiceSagas]

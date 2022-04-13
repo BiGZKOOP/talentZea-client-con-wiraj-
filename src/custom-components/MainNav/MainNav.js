@@ -69,6 +69,15 @@ const MainNav = ({index}) => {
                             <Phone className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
+
+                    <NavItem>
+                        <NavLink
+                            onClick={() => history.push("/home/#service")}
+                            className='fw-bold' active={linkActive(3)}>
+                            <span className='d-none d-md-block text-light'>Service</span>
+                            <Phone className='d-block d-md-none' size={14}/>
+                        </NavLink>
+                    </NavItem>
                 </Nav>
                 <div className="d-flex align-items-center">
                     <div className="mr-2">

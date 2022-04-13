@@ -74,7 +74,7 @@ const MainServiceView = () => {
                 <Row className="p-2 mt-3 radius-10  d-center flex-wrap d-flex">
                     {
                         singleSubService?.subMainService?.map((e, index) => {
-                            return <Card className="dash-card m-2 scalable bg-semi-dark">
+                            return <Card key={index} className="dash-card m-2 scalable bg-semi-dark">
                                 <div className="pt-2">
                                     <h2 className="text-center f-Londrina">{e?.mainTopic}</h2>
                                 </div>
@@ -87,7 +87,7 @@ const MainServiceView = () => {
                                     <button
                                         onClick={() => {
                                             transitionAudio()
-                                            history.push(`/sub-service/${index}`)
+                                            history.push(`/sub-service/${e._id}`)
                                         }}
                                         className="btn btn-outline-foursquare">
                                         SHOW ME...

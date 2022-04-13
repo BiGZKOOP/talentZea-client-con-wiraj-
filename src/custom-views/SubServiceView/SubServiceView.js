@@ -8,10 +8,12 @@ import SubServicePricing from "../../custom-components/SubServices/SubServicePri
 import {useHistory} from "react-router-dom"
 import SubServiceWelcomeSVG from "../../assets/custom_images/svg/SubServiceWelcomeSVG"
 import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import AirpodsSvg from "../../assets/custom_images/svg/Airpods.svg"
 import Footer from "../../@core/layouts/components/footer"
 import ContactComp from "../../custom-components/contact-comp"
+import {useEffect} from "react"
+import {getSubServiceByIDListen} from "../MainService/actions"
 
 const SubServiceView = () => {
 
@@ -19,27 +21,23 @@ const SubServiceView = () => {
 
     const id = pathname.split("/sub-service/")[1]
 
-    const {subServices} = useSelector(state => state.mainServiceReducer)
+    const {singleSubServiceByID} = useSelector(state => state.mainServiceReducer)
 
-    // eslint-disable-next-line no-unused-vars
-    const service = subServices[id]
+    const dispatch = useDispatch()
 
-    console.log(subServices)
+    console.log(singleSubServiceByID)
 
     const history = useHistory()
 
-    const validateSubService = () => {
-
-        return subServices.length > 0
-    }
-
     const getImageArray = () => {
 
-        if (validateSubService()) {
-            const {image1, image2, image3} = subServices[0].mainService.image
-            return [image1, image2, image3]
-        }
+        return [singleSubServiceByID?.image?.image1, singleSubServiceByID?.image?.image2, singleSubServiceByID?.image?.image3]
     }
+
+
+    useEffect(() => {
+        dispatch(getSubServiceByIDListen(id))
+    }, [])
 
     return <Row>
         <div className="p-1 mb-5  mb-lg-0">
@@ -49,7 +47,7 @@ const SubServiceView = () => {
             <div className="main-img floating-img">
                 <SubServiceWelcomeSVG />
             </div>
-            <h1 className="text-center mt-4 f-Londrina text-primary topic-header">{service?.mainTopic}</h1>
+            <h1 className="text-center mt-4 f-Londrina text-primary topic-header">{singleSubServiceByID?.mainTopic}</h1>
             <h2 className="f-indie-flower">We create memories here !</h2>
             <div className="d-flex">
                 <button className="btn btn-danger text-medium mt-2 mr-2">PLACE ORDER</button>
@@ -58,7 +56,15 @@ const SubServiceView = () => {
                     className="btn btn-outline-primary text-medium mt-2">BACK TO SERVICES</button>
             </div>
         </div>
-        <Row className="mt-5 d-center">
+        <Row className="w-100 d-center mt-5">
+            <Row className="w-50 ">
+                <h1 className="text-center mb-3 f-Londrina">
+                    What we provide
+                </h1>
+                <p className="text-medium text-center">{singleSubServiceByID?.description}</p>
+            </Row>
+        </Row>
+        <Row className="mt-5 mb-5 d-center">
             <div className="mt-5 mb-3">
                 <p className="f-Londrina text-topic text-center">Some of our works...</p>
             </div>
@@ -66,15 +72,7 @@ const SubServiceView = () => {
                 <OurWorkMainService images={getImageArray()}/>
             </div>
         </Row>
-        <div className="d-center">
-            <AirpodsSvg />
-        </div>
-        <Row className="w-100 d-center mt-5 mb-5">
-            <Row className="w-50 ">
-                <p className="text-medium text-center">{service?.description}</p>
-            </Row>
-        </Row>
-        <SubServicePricing faq={service?.faq}/>
+        <SubServicePricing faq={singleSubServiceByID?.faq}/>
         <ContactComp />
         <Footer />
     </Row>
