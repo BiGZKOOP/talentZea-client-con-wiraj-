@@ -2,18 +2,30 @@ import {call, put, takeLatest} from "redux-saga/effects"
 import * as actionTypes from "./actionTypes"
 import axios from "../../axios/axios"
 import {fireAlertCustom} from "../../utility/custom-util"
-import {getMainServiceSuccess, handleGetMainServiceByIDLoader} from "./actions"
+import {
+    getMainServiceByIDSuccess,
+    getMainServiceSuccess,
+    getSubServiceByIDSuccess,
+    handleGetMainServiceByIDLoader
+} from "./actions"
 
-export const getSubServiceByIdAsync = async (id) => {
+const getSubServiceByIdAsync = async (id) => {
     return await axios.get(`/sub-service/main/${id}`, {
     }).then(res => {
         return res
     }).catch(err => console.error(err))
 }
 
-export const getMainServiceByIDAsync = async (id) => {
+const getMainServiceByIDAsync = async (id) => {
 
     return await axios.get(`/main-service/${id}`).then(res => res).catch(err => {
+        console.error(err.message)
+    })
+}
+
+const getSingleSubServiceByIDAsync = async (id) => {
+
+    return await axios.get(`/sub-service/${id}`).then(res => res).catch(err => {
         console.error(err.message)
     })
 }
@@ -44,7 +56,22 @@ export function* getMainServiceByIDCB(action) {
     try {
         yield put(handleGetMainServiceByIDLoader(true))
         const res = yield call(getMainServiceByIDAsync, payload)
-        yield getMainServiceSuccess(res.data.data)
+        yield put(getMainServiceByIDSuccess(res.data.data))
+    } catch (err) {
+        console.error(err.message)
+    } finally {
+        yield put(handleGetMainServiceByIDLoader(false))
+    }
+}
+
+export function* getSingleSubServiceByIDCB(action) {
+
+    const {payload} = action
+
+    try {
+        yield put(handleGetMainServiceByIDLoader(true))
+        const res = yield call(getSingleSubServiceByIDAsync, payload)
+        yield put(getSubServiceByIDSuccess(res.data.data))
     } catch (err) {
         console.error(err.message)
     } finally {

@@ -150,6 +150,10 @@
     border-radius: 10px;
 }
 
+.h-100-v {
+    height: 100vh;
+}
+
 /*layouts*/
 .fullContainer {
     width: 100%;

@@ -24,6 +24,8 @@ const SubServiceView = () => {
     // eslint-disable-next-line no-unused-vars
     const service = subServices[id]
 
+    console.log(subServices)
+
     const history = useHistory()
 
     const validateSubService = () => {
