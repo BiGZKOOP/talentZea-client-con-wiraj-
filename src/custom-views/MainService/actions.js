@@ -41,3 +41,20 @@ export const handleGetMainServiceByIDLoader = (state) => {
         payload: state
     }
 }
+
+//Use this to get the sub servics by id
+export const getSubServiceByIDListen = (id) => {
+
+    return {
+        type: actionTypes.GET_SUB_SERVICE_BY_ID_LISTEN,
+        payload: id
+    }
+}
+
+export const getSubServiceByIDSuccess = (data) => {
+
+    return {
+        type: actionTypes.GET_SUB_SERVICE_BY_ID_SUCCESS,
+        payload: data
+    }
+}

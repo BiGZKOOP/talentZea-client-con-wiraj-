@@ -206,7 +206,8 @@ const Dashboard = () => {
                     <h4 className="text-center f-indie-flower">-Talent Zea-</h4>
                 </Col>
             </Row>
-            <Col className="mt-5">
+            <Col className="mt-5" id="service">
+                <a name="service"/>
                 <Col className="text-center">
                     <h1 className="f-Londrina font-large-2">OUR SERVICES</h1>
                 </Col>

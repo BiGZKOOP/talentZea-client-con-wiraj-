@@ -4,7 +4,8 @@ const init = {
     subServiceLoad: false,
     singleSubLoad: false,
     singleSubService: {},
-    subServices: {}
+    subServices: {},
+    singleSubServiceByID: {}
 }
 
 const mainServiceReducer = (state = init, action) => {
@@ -25,6 +26,11 @@ const mainServiceReducer = (state = init, action) => {
             return {
                 ...state,
                 singleSubLoad: action.payload
+            }
+        case actionTypes.GET_SUB_SERVICE_BY_ID_SUCCESS:
+            return {
+                ...state,
+                singleSubServiceByID: action.payload
             }
         default:
             return state

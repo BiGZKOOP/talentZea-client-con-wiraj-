@@ -45,7 +45,7 @@ const OurWorkMainService = ({ isRtl, images }) => {
                 {
                     images?.map((image, index) => {
                         return <SwiperSlide>
-                            <img src={image} alt={`swiper ${index}`} className='img-fluid'/>
+                            <img src={image} height="300px" width="100%" alt={`swiper ${index}`} className='object-fit'/>
                         </SwiperSlide>
                     })
                 }
