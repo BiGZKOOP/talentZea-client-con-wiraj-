@@ -5,11 +5,14 @@ import {getIDToken} from "../../utility/Utils"
 import {signupSendingLoadingEnd, signupSendingLoadingStart} from "../Signup/actions"
 import {deleteAttrFromObject, fireAlertCustom, jsonToFormData} from "../../utility/custom-util"
 import {getCurrentUserListen} from "../../views/pages/authentication/redux/actions"
+import {imageUploadProgress} from "./actions"
 
 // eslint-disable-next-line no-unused-vars
-const profileDetailsUpdateAsync = async (data) => {
+const profileDetailsUpdateAsync = async (data, id) => {
 
-    return await axios.patch(`/customer/update/${data._id}`, data, {
+    const formData = jsonToFormData(data)
+
+    return await axios.patch(`/customer/update/${id}`, formData, {
         headers: {Authorization: `Bearer ${await getIDToken()}`}
     }).then(res => {
         fireAlertCustom("Yeeeha !!", "Your profile is up to date", "success")
@@ -17,7 +20,7 @@ const profileDetailsUpdateAsync = async (data) => {
     }).catch(err => console.error(err))
 }
 
-export const profileImageUpdateAsync = async (data, id) => {
+export const profileImageUpdateAsync = async (dispatch, data, id) => {
 
     //Removing the ID
     deleteAttrFromObject(data, "_id")
@@ -29,6 +32,12 @@ export const profileImageUpdateAsync = async (data, id) => {
         headers: {
             Authorization: `Bearer ${await getIDToken()}`,
             'content-type': 'application/x-www-form-urlencoded'
+        },
+        onUploadProgress: progressEvent => {
+            const size = data.image.size
+            const current = progressEvent.loaded
+            const percent = (current / size) * 100
+            dispatch(imageUploadProgress(Math.round(percent)))
         }
     }).then(res => {
         fireAlertCustom("Yeeeha !!", "Your profile image is up to date", "success")
@@ -54,8 +63,8 @@ export function* coverImageUpdateCB(action) {
     const {data} = action
     try {
         yield put(signupSendingLoadingStart())
-        const res = yield call(coverImageUpdateAsync, data)
-        console.log(res)
+        yield call(coverImageUpdateAsync, data)
+        yield put(getCurrentUserListen())
     } catch (err) {
         console.error(err)
     } finally {
@@ -65,25 +74,25 @@ export function* coverImageUpdateCB(action) {
 
 export function* profileImageUpdateCB(action) {
 
-    const {data} = action
+    const {data, dispatch} = action
     try {
         yield put(signupSendingLoadingStart())
-        const res = yield call(profileImageUpdateAsync, data, data._id)
-        console.log(res)
+        yield call(profileImageUpdateAsync, dispatch, data, data._id)
+        yield put(getCurrentUserListen())
     } catch (err) {
         console.error(err)
     } finally {
-        yield put(signupSendingLoadingStart())
+        yield put(signupSendingLoadingEnd())
     }
 }
 
 export function* profileUpdateCB(action) {
 
-    const {data} = action
+    const {data, id} = action
     try {
         yield put(signupSendingLoadingStart())
         yield put(signupSendingLoadingStart())
-        const res = yield call(profileDetailsUpdateAsync, data)
+        const res = yield call(profileDetailsUpdateAsync, data, id)
         if (res.status === 201) yield put(getCurrentUserListen())
     } catch (err) {
         console.error(err)

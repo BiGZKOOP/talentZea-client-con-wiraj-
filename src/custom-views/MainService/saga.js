@@ -2,13 +2,20 @@ import {call, put, takeLatest} from "redux-saga/effects"
 import * as actionTypes from "./actionTypes"
 import axios from "../../axios/axios"
 import {fireAlertCustom} from "../../utility/custom-util"
-import {getMainServiceSuccess} from "./actions"
+import {getMainServiceSuccess, handleGetMainServiceByIDLoader} from "./actions"
 
 export const getSubServiceByIdAsync = async (id) => {
     return await axios.get(`/sub-service/main/${id}`, {
     }).then(res => {
         return res
     }).catch(err => console.error(err))
+}
+
+export const getMainServiceByIDAsync = async (id) => {
+
+    return await axios.get(`/main-service/${id}`).then(res => res).catch(err => {
+        console.error(err.message)
+    })
 }
 
 ////////////////////
@@ -30,8 +37,24 @@ export function* getMainServicesCB(action) {
     }
 }
 
+export function* getMainServiceByIDCB(action) {
+
+    const {payload} = action
+
+    try {
+        yield put(handleGetMainServiceByIDLoader(true))
+        const res = yield call(getMainServiceByIDAsync, payload)
+        yield getMainServiceSuccess(res.data.data)
+    } catch (err) {
+        console.error(err.message)
+    } finally {
+        yield put(handleGetMainServiceByIDLoader(false))
+    }
+}
+
 function* watchMainServiceSagas() {
     yield takeLatest(actionTypes.GET_SUB_SERVICES_LISTEN, getMainServicesCB)
+    yield takeLatest(actionTypes.GET_MAIN_SERVICE_BY_ID_LISTEN, getMainServiceByIDCB)
 }
 
 const mainServiceSagas = [watchMainServiceSagas]

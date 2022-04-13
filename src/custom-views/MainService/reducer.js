@@ -2,6 +2,8 @@ import * as actionTypes from "./actionTypes"
 
 const init = {
     subServiceLoad: false,
+    singleSubLoad: false,
+    singleSubService: {},
     subServices: {}
 }
 
@@ -14,6 +16,16 @@ const mainServiceReducer = (state = init, action) => {
                 subServiceLoad: true
             }
         }
+        case actionTypes.GET_MAIN_SERVICE_BY_ID_SUCCESS:
+            return {
+                ...state,
+                singleSubService: action.payload
+            }
+        case actionTypes.HANDLE_GET_MAIN_SERVICE_BY_ID_LOADER:
+            return {
+                ...state,
+                singleSubLoad: action.payload
+            }
         default:
             return state
     }

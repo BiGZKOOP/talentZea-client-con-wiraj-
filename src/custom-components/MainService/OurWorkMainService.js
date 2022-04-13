@@ -2,15 +2,6 @@ import '@styles/react/libs/swiper/swiper.scss'
 import SwiperResponsive from "../../views/extensions/swiper/SwiperResponsive"
 import {Card, CardBody, CardHeader, CardTitle} from "reactstrap"
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react"
-// import img1 from '@src/assets/images/banner/banner-30.jpg'
-// import img2 from '@src/assets/images/banner/banner-31.jpg'
-// import img3 from '@src/assets/images/banner/banner-32.jpg'
-// import img4 from '@src/assets/images/banner/banner-33.jpg'
-// import img5 from '@src/assets/images/banner/banner-34.jpg'
-// import img6 from '@src/assets/images/banner/banner-35.jpg'
-// import img7 from '@src/assets/images/banner/banner-36.jpg'
-// import img8 from '@src/assets/images/banner/banner-37.jpg'
-// import img9 from '@src/assets/images/banner/banner-38.jpg'
 import {useEffect} from "react"
 import {scrollToTopUTIL} from "../../utility/Utils"
 
