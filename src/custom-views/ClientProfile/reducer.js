@@ -1,7 +1,8 @@
 import * as actionTypes from "./actionTypes"
 
 const init  = {
-    screenIndex: 1
+    screenIndex: 1,
+    progress: 0
 }
 
 const clientProfileReducer = (state = init, action) => {
@@ -11,6 +12,11 @@ const clientProfileReducer = (state = init, action) => {
             return {
                 ...state,
                 screenIndex: action.index
+            }
+        case actionTypes.IMAGE_UPLOAD_PROGRESS_LISTEN:
+            return {
+                ...state,
+                progress: action.progress
             }
         default:
             return state

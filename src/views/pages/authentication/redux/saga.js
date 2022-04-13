@@ -30,7 +30,7 @@ const getCurrentUserAsync = async () => {
 
 const getMainServicesAsync = async () => {
 
-    return await axios.get("/main-service").then(res =>  res).catch(err => console.error(err))
+    return await axios.get("/main-service").then(res => res).catch(err => console.error(err))
 }
 //////////////////////////
 //////ASYNC Finished//////

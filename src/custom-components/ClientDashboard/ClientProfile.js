@@ -31,7 +31,7 @@ const ClientProfile = () => {
             delete Object(values).country
             dispatch(profileUpdateListen({
                 ...values
-            }))
+            }, user._id))
         }
     })
 

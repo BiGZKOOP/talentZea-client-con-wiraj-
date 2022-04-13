@@ -17,7 +17,7 @@ const ProfileHeader = ({index}) => {
         dispatch(profileImageUpdateListen({
             ...user,
             image: file
-        }))
+        }, dispatch))
     }
     
     const handleFallBack = () => {

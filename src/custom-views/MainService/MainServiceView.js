@@ -65,6 +65,12 @@ const MainServiceView = () => {
             }</h1>
             <h2 className="f-indie-flower">We create memories here !</h2>
         </div>
+        <Row className="d-center mt-5 mb-5">
+            <h1 className="text-center mb-3 f-Londrina">What we provide...</h1>
+            <Row className="w-50 ">
+                <p className="text-medium lead text-center">"{subServices[0]?.mainService?.mainTopicDescription }"</p>
+            </Row>
+        </Row>
         <Col className="mt-5">
             <Col className="text-center">
                 <h1 className="f-Londrina font-large-2">OUR SERVICES</h1>
