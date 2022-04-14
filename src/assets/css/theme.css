@@ -144,6 +144,10 @@
     border-radius: 100px;
 }
 
+.full-round {
+    border-radius: 100%;
+}
+
 /*sizes*/
 .width-24 {
     width: 24%;
