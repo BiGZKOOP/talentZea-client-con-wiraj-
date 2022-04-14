@@ -4,6 +4,7 @@ import loginSagas from "../views/pages/authentication/redux/saga"
 import signupSagas from "../custom-views/Signup/saga"
 import profileSagas from "../custom-views/ClientProfile/saga"
 import mainServiceSagas from "../custom-views/MainService/saga"
+import orderDetailsSagas from "../custom-views/OrderDetailsView/saga"
 
 export default function* rootSaga() {
 
@@ -12,4 +13,5 @@ export default function* rootSaga() {
     yield all(signupSagas.map(s => fork(s)))
     yield all(profileSagas.map(s => fork(s)))
     yield all(mainServiceSagas.map(s => fork(s)))
+    yield all(orderDetailsSagas.map(s => fork(s)))
 }

@@ -1,6 +1,13 @@
 import {Card, CardBody, CardFooter, CardHeader} from "reactstrap"
+import {useHistory} from "react-router-dom"
 
 const ClientDashboardOrderCard = () => {
+
+    const history = useHistory()
+
+    const navToOrderDetailsView = () => {
+        history.push("/order/121212")
+    }
 
     return <div>
         <div className="w-100 order-item-card mb-3 radius-10">
@@ -26,7 +33,9 @@ const ClientDashboardOrderCard = () => {
             </CardBody>
             <CardFooter className="d-flex justify-content-between">
                 <h5 className="text-small">Amount: 120000/=</h5>
-                <button className="btn btn-primary text-small">Show details</button>
+                <button
+                    onClick={navToOrderDetailsView}
+                    className="btn btn-primary text-small">Show details</button>
             </CardFooter>
         </div>
     </div>
