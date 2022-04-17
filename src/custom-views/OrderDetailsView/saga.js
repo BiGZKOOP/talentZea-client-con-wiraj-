@@ -1,5 +1,5 @@
 import {call, put, takeLatest} from "redux-saga/effects"
-import {handleOrderByIDLoader} from "./actions"
+import {getOrderByIDSuccess, handleOrderByIDLoader} from "./actions"
 import axios from "../../axios/axios"
 import {fireAlertError} from "../../utility/custom-util"
 import * as actionTypes from "./constants"
@@ -25,7 +25,7 @@ export function* getOrderByIDCB(action) {
     try {
         yield put(handleOrderByIDLoader(true))
         const res = yield call(getOrderByIDAsync, payload)
-        console.log(res)
+        yield put(getOrderByIDSuccess(res.data))
     } catch (err) {
         fireAlertError("Oops...", err.message)
     } finally {
