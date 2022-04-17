@@ -122,13 +122,13 @@ const Dashboard = () => {
                     </Col>
                 </div>
             </Row>
-            <Row className="mt-5">
-                <Col className="d-center bounce-img">
-                    <AirpodsSvg/>
-                </Col>
-            </Row>
-            <Row className="sticky-top-custom">
-                <Col>
+            {/*<Row className="mt-5">*/}
+            {/*    <Col className="d-center bounce-img">*/}
+            {/*        <AirpodsSvg/>*/}
+            {/*    </Col>*/}
+            {/*</Row>*/}
+            <Row className="sticky-top-custom mt-5 d-center">
+                <Col lg={6} sm={12}>
                     <h1 className="f-Londrina font-large-2 text-center">Why <span
                         className="text-primary">Talent Zea</span> ?</h1>
                     <p className="text-small f-shippori line-h-3 text-center">

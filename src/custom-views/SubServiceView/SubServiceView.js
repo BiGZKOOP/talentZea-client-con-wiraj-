@@ -1,20 +1,18 @@
 import MainNav from "../../custom-components/MainNav/MainNav"
-import CreativeSvg from "../../assets/custom_images/svg/Creative.svg"
-import {Card, CardFooter, Col, Row} from "reactstrap"
+import {Modal, ModalBody, ModalHeader, Row} from "reactstrap"
 import OurWorkMainService from "../../custom-components/MainService/OurWorkMainService"
 import "../../assets/css/serviceViews.css"
 import "../../assets/css/dashboard.css"
 import SubServicePricing from "../../custom-components/SubServices/SubServicePricing"
 import {useHistory} from "react-router-dom"
 import SubServiceWelcomeSVG from "../../assets/custom_images/svg/SubServiceWelcomeSVG"
-import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
 import {useDispatch, useSelector} from "react-redux"
-import AirpodsSvg from "../../assets/custom_images/svg/Airpods.svg"
 import Footer from "../../@core/layouts/components/footer"
 import ContactComp from "../../custom-components/contact-comp"
-import {useEffect} from "react"
+import {useEffect, useState} from "react"
 import {getSubServiceByIDListen} from "../MainService/actions"
 import ServiceCookLoader from "../../custom-components/loaders/ServiceCookLoader"
+import PaymentForm from "../../custom-components/SubServices/PaymentForm"
 
 const SubServiceView = () => {
 
@@ -26,7 +24,7 @@ const SubServiceView = () => {
 
     const dispatch = useDispatch()
 
-    console.log(singleSubServiceByID)
+    const [show, setShow] = useState(false)
 
     const history = useHistory()
 
@@ -40,7 +38,7 @@ const SubServiceView = () => {
         dispatch(getSubServiceByIDListen(id))
     }, [])
 
-    if (singleSubLoad) return <ServiceCookLoader />
+    if (singleSubLoad) return <ServiceCookLoader/>
     else {
         return <Row>
             <div className="p-1 mb-5  mb-lg-0">
@@ -48,15 +46,18 @@ const SubServiceView = () => {
             </div>
             <div className="mt-4 mb-5 d-center flex-column">
                 <div className="main-img floating-img">
-                    <SubServiceWelcomeSVG />
+                    <SubServiceWelcomeSVG/>
                 </div>
                 <h1 className="text-center mt-4 f-Londrina text-primary topic-header">{singleSubServiceByID?.mainTopic}</h1>
                 <h2 className="f-indie-flower">We create memories here !</h2>
                 <div className="d-flex">
-                    <button className="btn btn-danger text-medium mt-2 mr-2">PLACE ORDER</button>
+                    <button
+                        onClick={() => setShow(!show)}
+                        className="btn btn-danger text-medium mt-2 mr-2">PLACE ORDER</button>
                     <button
                         onClick={() => history.goBack()}
-                        className="btn btn-outline-primary text-medium mt-2">BACK TO SERVICES</button>
+                        className="btn btn-outline-primary text-medium mt-2">BACK TO SERVICES
+                    </button>
                 </div>
             </div>
             <Row className="w-100 d-center mt-5">
@@ -76,8 +77,22 @@ const SubServiceView = () => {
                 </div>
             </Row>
             <SubServicePricing faq={singleSubServiceByID?.faq}/>
-            <ContactComp />
-            <Footer />
+            <ContactComp/>
+            <Footer/>
+
+            {/*//////////////////////*/}
+            {/*Modal starts form here*/}
+            {/*//////////////////////*/}
+            <Modal isOpen={show} toggle={() => setShow(!show)} className='modal-dialog-centered modal-md'>
+                <ModalHeader className='bg-primary' toggle={() => setShow(!show)}/>
+                <ModalBody className='px-sm-5 mx-50 pb-4'>
+                    <PaymentForm />
+                </ModalBody>
+            </Modal>
+            {/*//////////////////////*/}
+            {/*Modal ended*/}
+            {/*//////////////////////*/}
+
         </Row>
     }
 }

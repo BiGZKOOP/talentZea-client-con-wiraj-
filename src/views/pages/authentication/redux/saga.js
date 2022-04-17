@@ -19,6 +19,7 @@ const loginAsync = async (user) => {
 }
 
 const getCurrentUserAsync = async () => {
+
     return await Auth.currentAuthenticatedUser().then(async user => {
         return axios.get(`/customer/${user.attributes.email}`, {
             headers: {Authorization: `Bearer ${await getIDToken()}`}
