@@ -7,6 +7,7 @@ import ServiceCookLoader from "../../custom-components/loaders/ServiceCookLoader
 import {useEffect} from "react"
 import {getOrderByIDListen} from "./actions"
 import NoneDataComp from "../../custom-components/NoneDataComp"
+import Footer from "../../@core/layouts/components/footer"
 
 const OrderDetailsView = () => {
 
@@ -17,6 +18,8 @@ const OrderDetailsView = () => {
     const {orderByIDLoader, orderDetails} = useSelector(state => state.orderDetailsViewReducer)
     
     const dispatch = useDispatch()
+
+    console.log(orderDetails)
     
     useEffect(() => {
         dispatch(getOrderByIDListen(id))
@@ -33,7 +36,7 @@ const OrderDetailsView = () => {
                     <div className="d-flex justify-content-between mb-4">
                         <h1 className="f-Londrina"><span className="text-danger">Main Category</span> {">"} <span
                             className="text-primary">Sub Category</span></h1>
-                        <button className="btn btn-primary">$ 200 /=</button>
+                        <button className="btn btn-primary">$ {orderDetails.amount} /=</button>
                     </div>
                     <Row>
                         <Col sm={12} lg={7}>
@@ -63,6 +66,7 @@ const OrderDetailsView = () => {
                         </Card>
                     </Row>
                 </div>
+                <Footer />
             </div>
         } else {
             return <NoneDataComp />

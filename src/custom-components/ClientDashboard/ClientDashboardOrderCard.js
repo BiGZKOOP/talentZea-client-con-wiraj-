@@ -6,7 +6,7 @@ const ClientDashboardOrderCard = () => {
     const history = useHistory()
 
     const navToOrderDetailsView = () => {
-        history.push("/order/121212")
+        history.push("/order/62e86cda-b484-4448-b844-97b99eb88015")
     }
 
     return <div>
