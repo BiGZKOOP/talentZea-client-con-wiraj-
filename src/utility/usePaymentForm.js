@@ -78,7 +78,7 @@ function usePaymentForm(status, user, amount, dispatch, history) {
                 closeButton: false
             })
             handleOrderFinisher(dispatch)
-            history.push(`order/12121212`)
+            history.push(`/order/12121212`)
         }).catch(err => {
             handleOrderFinisher(dispatch)
             console.log(err.message)

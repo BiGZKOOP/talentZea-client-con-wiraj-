@@ -3,6 +3,7 @@ import {CardElement, PaymentElement} from '@stripe/react-stripe-js'
 import usePaymentForm from "../../utility/usePaymentForm"
 import {useDispatch, useSelector} from "react-redux"
 import {Spinner} from "reactstrap"
+import {useHistory} from "react-router-dom"
 
 const cardElementOptions = {
     style: {
@@ -35,8 +36,9 @@ const PaymentForm = () => {
     const {orderLoading, orderSuccess} = useSelector(state => state.orderDetailsViewReducer)
 
     const dispatch = useDispatch()
+    const history = useHistory()
 
-    const { handleSubmit } = usePaymentForm(0, user, 200, dispatch)
+    const { handleSubmit } = usePaymentForm(0, user, 200, dispatch, history)
 
     return (
         <form onSubmit={handleSubmit}>
