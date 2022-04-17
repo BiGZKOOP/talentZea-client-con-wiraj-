@@ -15,7 +15,7 @@ const ProfileHeader = ({index}) => {
 
     const uploadProfileImage = (file) => {
         dispatch(profileImageUpdateListen({
-            ...user,
+            id: user._id,
             image: file
         }, dispatch))
     }
