@@ -19,7 +19,20 @@ const OrderDetailsView = () => {
     
     const dispatch = useDispatch()
 
-    console.log(orderDetails)
+    const handleStatusPointer = () => {
+        switch (orderDetails.orderStatus) {
+            case 0:
+                return "warning"
+            case 1:
+                return "info"
+            case 2:
+                return "success"
+            case -1:
+                return "danger"
+            default:
+                return "dark"
+        }
+    }
     
     useEffect(() => {
         dispatch(getOrderByIDListen(id))
@@ -50,8 +63,8 @@ const OrderDetailsView = () => {
                         <Col lg={5}>
                             <div className="d-center h-100">
                                 <div className="d-flex align-items-baseline">
-                                    <div className="bg-danger full-round mr-1 p-0" style={{width: "15px", height:"15px"}}/>
-                                    <h1>Pending</h1>
+                                    <div className={`bg-${handleStatusPointer()} full-round mr-1 p-0`} style={{width: "15px", height:"15px"}}/>
+                                    <h1 className={`text-${handleStatusPointer()}`}>Pending</h1>
                                 </div>
                             </div>
                         </Col>
