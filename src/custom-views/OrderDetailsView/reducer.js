@@ -2,7 +2,9 @@ import * as actionTypes from "./constants"
 
 const init = {
     orderLoading: false,
-    orderSuccess: false
+    orderSuccess: false,
+    orderByIDLoader: false,
+    orderDetails: {}
 }
 
 const orderDetailsViewReducer = (state = init, action) => {
@@ -17,6 +19,16 @@ const orderDetailsViewReducer = (state = init, action) => {
             return {
                 ...state,
                 orderSuccess: action.payload
+            }
+        case actionTypes.HANDLE_GET_ORDER_BY_ID_LOADER:
+            return {
+                ...state,
+                orderByIDLoader: action.payload
+            }
+        case actionTypes.GET_ORDER_BY_ID_SUCCESS:
+            return {
+                ...state,
+                orderDetails: action.payload
             }
         default:
             return state
