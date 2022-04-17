@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {CardElement, PaymentElement} from '@stripe/react-stripe-js'
 import usePaymentForm from "../../utility/usePaymentForm"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
+import {Spinner} from "reactstrap"
 
 const cardElementOptions = {
     style: {
@@ -16,12 +17,26 @@ const cardElementOptions = {
     }
 }
 
+const ToastComponent = ({ title, icon, color }) => (
+    <Fragment>
+        <div className='toastify-header pb-0'>
+            <div className='title-wrapper'>
+                <Avatar size='sm' color={color} icon={icon} />
+                <h6 className='toast-title'>{title}</h6>
+            </div>
+        </div>
+    </Fragment>
+)
+
 const PaymentForm = () => {
 
     const {user} = useSelector(state => state.loginReducer)
+    // eslint-disable-next-line no-unused-vars
+    const {orderLoading, orderSuccess} = useSelector(state => state.orderDetailsViewReducer)
 
-    const { handleSubmit } = usePaymentForm(0, user)
+    const dispatch = useDispatch()
 
+    const { handleSubmit } = usePaymentForm(0, user, 200, dispatch)
 
     return (
         <form onSubmit={handleSubmit}>
@@ -30,7 +45,9 @@ const PaymentForm = () => {
                     options={cardElementOptions}
                     className="payment-input mt-1"/>
                 <div className="d-flex justify-content-end mt-2">
-                    <button className="btn btn-primary">Pay</button>
+                    <button className="btn btn-primary">{
+                        orderLoading ? <Spinner /> : "Pay"
+                    }</button>
                 </div>
             </div>
         </form>
