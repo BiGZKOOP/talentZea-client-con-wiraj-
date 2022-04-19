@@ -73,7 +73,7 @@ const SubServiceView = () => {
                     <p className="f-Londrina text-topic text-center">Some of our works...</p>
                 </div>
                 <div>
-                    <OurWorkMainService images={getImageArray()}/>
+                    <OurWorkMainService count={3} images={getImageArray()}/>
                 </div>
             </Row>
             <SubServicePricing faq={singleSubServiceByID?.faq}/>
