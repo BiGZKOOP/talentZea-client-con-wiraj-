@@ -329,16 +329,18 @@
     background-color: #b756ef !important;
 }
 
-.bg-semi-dark {
-    /*background-color: #2a2a2a !important;*/
-}
-
 .border-white {
     border: 2px solid whitesmoke;
 }
 
 .brand-name {
     display: none;
+}
+
+/*btn styles*/
+.btn-purple {
+    background-color: #b756ef !important;
+    color: white;
 }
 
 @media all and (max-width: 540px) {
@@ -383,6 +385,10 @@
 
     .text-large {
         font-size: 20px;
+    }
+
+    .text-center-sm {
+        text-align: center;
     }
 
     .brand-name {

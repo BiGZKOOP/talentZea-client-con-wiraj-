@@ -2,7 +2,7 @@ import {
     Card,
     CardBody,
     CardFooter,
-    Col,
+    Col, Input,
     Modal,
     ModalBody,
     ModalHeader,
@@ -25,7 +25,9 @@ import {useEffect, useState} from "react"
 import Headset from "../../assets/custom_images/svg/Headset"
 import {useDispatch, useSelector} from "react-redux"
 import {audioHandle, audioModelLoad} from "../../custom-components/audioControl/action"
+// eslint-disable-next-line no-unused-vars
 import logo from "../../assets/custom_images/logo.png"
+import video from "../../assets/videos/intro.mp4"
 import Footer from "../../@core/layouts/components/footer"
 import {useParams} from "react-router"
 import queryString from "query-string"
@@ -37,6 +39,7 @@ const Dashboard = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const [show, setShow] = useState(false)
+    // eslint-disable-next-line no-unused-vars
     const [logoStyle, setLogoStyle] = useState("fadein-anim delay-8")
     // eslint-disable-next-line no-unused-vars
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
@@ -89,9 +92,8 @@ const Dashboard = () => {
 
     return (
         <Row>
-            <Row className="position-relative full-page overflow-hidden">
-                <div className="full-page header-behind position-absolute"/>
-                <div className="d-flex mb-5 position-absolute header-footer">
+            <Row className="position-relative hero-header overflow-hidden">
+                <div className="d-flex mb-5 position-absolute header-footer sm-none">
                     <Facebook className="mb-2 footer-icon animate__animated animate__bounceInLeft f-icon-delay-1"
                               size={25}/>
                     <Instagram className="mb-2 footer-icon animate__animated animate__bounceInLeft f-icon-delay-2"
@@ -100,34 +102,26 @@ const Dashboard = () => {
                           size={25}/>
                     <Phone className="footer-icon animate__animated animate__bounceInLeft f-icon-delay-4" size={25}/>
                 </div>
-                <div className="p-1 mb-5 mb-lg-0 w-100 ml-1 position-sticky">
+                <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky">
                     <MainNav index={1}/>
                 </div>
-                <div className="mt-lg-5 d-flex justify-content-center mb-5">
-                    <Col lg={10} sm={12} className="ml-3 mt-lg-0 ml-lg-0 d-center flex-column">
-                        <Col className={`logo-header zindex-4 mb-2 ${logoStyle}`}>
-                            <img width="100%"
-                                 src={logo}/>
-                        </Col>
-                        <h1 className="f-Londrina main-topic text-sm-c-center text-light">
-                            <span className="fadein-anim header-topic-delay-1">WE MAKE</span> <span
-                            className="text-primary shivering-anim delay-1">DREAM</span> <span
-                            className="fadein-anim header-topic-delay-2">LIKE</span> <span
-                            className="text-purple shivering-anim delay-3">DESIGNS</span> <span
-                            className="fadein-anim header-topic-delay-3">HERE</span></h1>
-                        <h2 className="text-center f-Londrina animate__animated animate__bounceInRight delay-5 text-light">
-                            We design #MEMORIES here !
-                        </h2>
-                        <Col className="mt-2">
-                            <button
-                                className="btn btn-danger mt-lg-0 text-medium animate__animated animate__zoomInUp delay-5">
-                                Let's Start !
-                            </button>
-                        </Col>
+                <video autoPlay muted loop id="myVideo" className="animated-back sm-none">
+                    <source src={video} type="video/mp4" />
+                </video>
+                <div className="d-flex d-center zindex-4 hero-header m-0 position-absolute">
+                    <Col lg={10} sm={12} className="hero-inner-container hero-header-font position-absolute">
+                        <div>
+                            <h1 className="text-center-sm f-Londrina hero-header-font">Find the perfect freelance</h1>
+                            <h1 className="text-center-sm f-Londrina hero-header-font">services for your business</h1>
+                            <div className="mt-2 w-100 d-flex">
+                                <Input />
+                                <button className="btn btn-purple ml-1">Search</button>
+                            </div>
+                        </div>
                     </Col>
                 </div>
             </Row>
-            <Row className="sticky-top-custom mt-5 d-center">
+            <Row className="sticky-top-custom d-center mt-3">
                 <Col lg={6} sm={12}>
                     <h1 className="f-Londrina font-large-2 text-center">Why <span
                         className="text-primary">Talent Zea</span> ?</h1>
