@@ -30,6 +30,7 @@ import Footer from "../../@core/layouts/components/footer"
 import {useParams} from "react-router"
 import queryString from "query-string"
 import Cookies from 'universal-cookie'
+import OurWorkMainService from "../../custom-components/MainService/OurWorkMainService"
 
 const Dashboard = () => {
 
@@ -73,6 +74,10 @@ const Dashboard = () => {
         fairyAudio.volume = 0.4
     }
 
+    const getImageArray = (e) => {
+
+        return [e?.image?.image1, e?.image?.image2, e?.image?.image3]
+    }
 
     useEffect(() => {
         fetchFromUrl()
@@ -122,11 +127,6 @@ const Dashboard = () => {
                     </Col>
                 </div>
             </Row>
-            {/*<Row className="mt-5">*/}
-            {/*    <Col className="d-center bounce-img">*/}
-            {/*        <AirpodsSvg/>*/}
-            {/*    </Col>*/}
-            {/*</Row>*/}
             <Row className="sticky-top-custom mt-5 d-center">
                 <Col lg={6} sm={12}>
                     <h1 className="f-Londrina font-large-2 text-center">Why <span
@@ -220,15 +220,18 @@ const Dashboard = () => {
                     }
                     {
                         mainServicesLoad && mainServices?.map(e => {
-                            return <Card className="dash-card m-2 scalable bg-semi-dark">
+                            return <Card className="dash-card-v m-2 scalable bg-semi-dark">
                                 <div className="pt-2">
                                     <h2 className="text-center f-Londrina">{e?.mainTopic}</h2>
                                 </div>
-                                <CardFooter>
+                                <CardBody>
                                     <p>
                                         {e?.mainTopicDescription}
                                     </p>
-                                </CardFooter>
+                                    <div>
+                                        <OurWorkMainService count={1} images={getImageArray(e)}/>
+                                    </div>
+                                </CardBody>
                                 <CardFooter className="d-center">
                                     <button
                                         onClick={() => {

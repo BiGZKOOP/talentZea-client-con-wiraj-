@@ -1,5 +1,5 @@
 import MainNav from "../../custom-components/MainNav/MainNav"
-import {Card, CardFooter, Col, Row, Spinner} from "reactstrap"
+import {Card, CardBody, CardFooter, Col, Row, Spinner} from "reactstrap"
 import CreativeSvg from "../../assets/custom_images/svg/Creative.svg"
 import "../../assets/css/serviceViews.css"
 import "../../assets/css/dashboard.css"
@@ -71,18 +71,21 @@ const MainServiceView = () => {
                 <Col className="text-center">
                     <h1 className="f-Londrina font-large-2">OUR SERVICES</h1>
                 </Col>
-                <Row className="p-2 mt-3 radius-10  d-center flex-wrap d-flex">
+                <Row className="p-2 mt-3 radius-10 d-center flex-wrap d-flex">
                     {
                         singleSubService?.subMainService?.map((e, index) => {
-                            return <Card key={index} className="dash-card m-2 scalable bg-semi-dark">
+                            return <Card key={index} className="dash-card-v m-2 scalable bg-semi-dark">
                                 <div className="pt-2">
                                     <h2 className="text-center f-Londrina">{e?.mainTopic}</h2>
                                 </div>
-                                <CardFooter>
+                                <CardBody>
                                     <p>
                                         {e?.description}
                                     </p>
-                                </CardFooter>
+                                    <div>
+                                        <OurWorkMainService count={1} images={getImageArray()}/>
+                                    </div>
+                                </CardBody>
                                 <CardFooter className="d-center">
                                     <button
                                         onClick={() => {
@@ -113,7 +116,7 @@ const MainServiceView = () => {
                     <p className="f-Londrina text-topic text-center">Some of our works...</p>
                 </div>
                 <div>
-                    <OurWorkMainService images={getImageArray()}/>
+                    <OurWorkMainService count={3} images={getImageArray()}/>
                 </div>
             </Row>
             <ContactComp/>

@@ -14,13 +14,17 @@
     width: 23%;
 }
 
-.logo-header {
+.dash-card-v {
     width: 25%;
+}
+
+.logo-header {
+    width: 30%;
 }
 
 .header-behind {
     /*background-image: linear-gradient(to right, #161d31, #171f37, #19223c, #1a2442, #1c2748);*/
-    background-color: #181818;
+    background-color: #141b2c;
     animation-duration: 1s;
     animation-timing-function: ease-in;
     animation-name: behindSlider;

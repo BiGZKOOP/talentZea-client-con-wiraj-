@@ -17,3 +17,29 @@ export const handleOrderStateListen = (state) => {
         payload: state
     }
 }
+
+//Use this to get the orders by id
+export const getOrderByIDListen = (id) => {
+
+    return {
+        type: actionTypes.GET_ORDER_BY_ID_LISTEN,
+        payload: id
+    }
+}
+
+export const getOrderByIDSuccess = (data) => {
+
+    return {
+        type: actionTypes.GET_ORDER_BY_ID_SUCCESS,
+        payload: data
+    }
+}
+
+//Use this to handle the get order by id loader
+export const handleOrderByIDLoader = (state) => {
+
+    return {
+        type: actionTypes.HANDLE_GET_ORDER_BY_ID_LOADER,
+        payload: state
+    }
+}

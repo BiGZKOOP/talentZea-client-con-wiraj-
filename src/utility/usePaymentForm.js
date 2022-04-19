@@ -70,15 +70,16 @@ function usePaymentForm(status, user, amount, dispatch, history) {
                 'Content-Type': 'application/json'
             }
         }).then((res) => {
-            console.log(res)
-            toast.success(<ToastComponent id={"12121XasdD"} />, {
-                icon: false,
-                autoClose: 2000,
-                hideProgressBar: true,
-                closeButton: false
+            res.json().then(data => {
+                toast.success(<ToastComponent id={"12121XasdD"} />, {
+                    icon: false,
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeButton: false
+                })
+                handleOrderFinisher(dispatch)
+                history.push(`/order/${data.data._id}`)
             })
-            handleOrderFinisher(dispatch)
-            history.push(`/order/12121212`)
         }).catch(err => {
             handleOrderFinisher(dispatch)
             console.log(err.message)

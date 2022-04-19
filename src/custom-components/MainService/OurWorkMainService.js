@@ -6,7 +6,7 @@ import {useEffect} from "react"
 import {scrollToTopUTIL} from "../../utility/Utils"
 
 
-const OurWorkMainService = ({ isRtl, images }) => {
+const OurWorkMainService = ({ isRtl, images, count }) => {
 
     useEffect(() => {
         console.log(images)
@@ -14,22 +14,22 @@ const OurWorkMainService = ({ isRtl, images }) => {
     }, [])
 
     const params = {
-        slidesPerView: 3,
+        slidesPerView: count,
         spaceBetween: 50,
         pagination: {
             clickable: true
         },
         breakpoints: {
             1024: {
-                slidesPerView: 3,
+                slidesPerView: count,
                 spaceBetween: 40
             },
             768: {
-                slidesPerView: 3,
+                slidesPerView: count,
                 spaceBetween: 30
             },
             640: {
-                slidesPerView: 2,
+                slidesPerView: 1,
                 spaceBetween: 20
             },
             320: {
@@ -45,28 +45,12 @@ const OurWorkMainService = ({ isRtl, images }) => {
                 {
                     images?.map((image, index) => {
                         return <SwiperSlide>
-                            <img src={image} height="300px" width="100%" alt={`swiper ${index}`} className='object-fit'/>
+                            {
+                                image ? <img src={image} height="200px" width="100%" alt={`swiper ${index}`} className='object-fit'/> : <></>
+                            }
                         </SwiperSlide>
                     })
                 }
-                {/*<SwiperSlide>*/}
-                {/*    <img src={img4} alt='swiper 4' className='img-fluid'/>*/}
-                {/*</SwiperSlide>*/}
-                {/*<SwiperSlide>*/}
-                {/*    <img src={img5} alt='swiper 5' className='img-fluid'/>*/}
-                {/*</SwiperSlide>*/}
-                {/*<SwiperSlide>*/}
-                {/*    <img src={img6} alt='swiper 6' className='img-fluid'/>*/}
-                {/*</SwiperSlide>*/}
-                {/*<SwiperSlide>*/}
-                {/*    <img src={img7} alt='swiper 7' className='img-fluid'/>*/}
-                {/*</SwiperSlide>*/}
-                {/*<SwiperSlide>*/}
-                {/*    <img src={img8} alt='swiper 8' className='img-fluid'/>*/}
-                {/*</SwiperSlide>*/}
-                {/*<SwiperSlide>*/}
-                {/*    <img src={img9} alt='swiper 9' className='img-fluid'/>*/}
-                {/*</SwiperSlide>*/}
             </Swiper>
         </CardBody>
     </div>
