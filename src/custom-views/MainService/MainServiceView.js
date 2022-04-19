@@ -52,10 +52,10 @@ const MainServiceView = () => {
             <div className="p-1 mb-5 mb-lg-0 w-100 sticky-top-custom">
                 <MainNav index={4}/>
             </div>
-            <div className="ml-2 mt-4">
+            <Card className="ml-2 mt-4 p-1">
                 <h1 className="font-bold f-Londrina font-large-2 text-primary">{singleSubService?.requestMainService?.mainTopic}</h1>
                 <h5 className="lead">We create memories here</h5>
-            </div>
+            </Card>
             <Col className="mt-5">
                 <Col className="text-center">
                     <h1 className="f-Londrina font-large-1">OUR SERVICES</h1>
