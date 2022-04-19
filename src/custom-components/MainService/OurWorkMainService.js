@@ -39,8 +39,8 @@ const OurWorkMainService = ({ isRtl, images, count }) => {
         }
     }
 
-    return <div>
-        <CardBody>
+    return <div className="m-0 p-0">
+        <CardBody className="m-0 p-0">
             <Swiper dir={isRtl ? 'rtl' : 'ltr'} {...params}>
                 {
                     images?.map((image, index) => {
