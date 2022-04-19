@@ -36,7 +36,7 @@ const MainNav = ({index}) => {
     }
 
     return <Navbar container={false}
-                   className='d-flex justify-content-between justify-content-md-between w-100 bg-transparent'
+                   className='d-flex justify-content-between justify-content-md-between w-100 bg-transparent z-index-100'
                    expand='md' light>
         <div className="brand-name ml-2 ml-lg-0">
             <img width="100px" className="object-fit" src={logo}/>

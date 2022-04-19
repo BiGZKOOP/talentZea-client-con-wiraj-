@@ -343,6 +343,11 @@
     color: white;
 }
 
+/*z-index*/
+.z-index-100 {
+    z-index: 100;
+}
+
 @media all and (max-width: 540px) {
     .width-24 {
         width: 100%;
