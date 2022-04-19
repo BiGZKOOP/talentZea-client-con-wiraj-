@@ -114,85 +114,6 @@ const Dashboard = () => {
                     </Col>
                 </div>
             </Row>
-            {/*<Row className="sticky-top-custom d-center mt-3">*/}
-            {/*    <Col lg={6} sm={12}>*/}
-            {/*        <h1 className="f-Londrina font-large-2 text-center">Why <span*/}
-            {/*            className="text-primary">Talent Zea</span> ?</h1>*/}
-            {/*        <p className="text-small f-shippori line-h-3 text-center">*/}
-            {/*            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been*/}
-            {/*            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley*/}
-            {/*            of type and scrambled it to make a type specimen book. It has survived not only five centuries,*/}
-            {/*            but also the leap into electronic typesetting,*/}
-            {/*        </p>*/}
-            {/*    </Col>*/}
-            {/*    <Row className="mt-5 d-flex justify-content-around w-100 ml-1">*/}
-            {/*        <Card className="dash-card scalable bg-semi-dark">*/}
-            {/*            <div className="pt-2">*/}
-            {/*                <h2 className="text-center f-Londrina">#CREATIVE</h2>*/}
-            {/*            </div>*/}
-            {/*            <CardBody>*/}
-            {/*                <CreativeSvg/>*/}
-            {/*            </CardBody>*/}
-            {/*            <CardFooter>*/}
-            {/*                <p>*/}
-            {/*                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum*/}
-            {/*                    has been the industry's standard dummy text ever since the 1500s,*/}
-            {/*                </p>*/}
-            {/*            </CardFooter>*/}
-            {/*        </Card>*/}
-            {/*        <Card className="dash-card scalable bg-semi-dark">*/}
-            {/*            <div className="pt-2">*/}
-            {/*                <h2 className="text-center f-Londrina">#FRIENDLY</h2>*/}
-            {/*            </div>*/}
-            {/*            <CardBody>*/}
-            {/*                <FriendlySvg/>*/}
-            {/*            </CardBody>*/}
-            {/*            <CardFooter>*/}
-            {/*                <p>*/}
-            {/*                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum*/}
-            {/*                    has been the industry's standard dummy text ever since the 1500s,*/}
-            {/*                </p>*/}
-            {/*            </CardFooter>*/}
-            {/*        </Card>*/}
-            {/*        <Card className="dash-card scalable bg-semi-dark">*/}
-            {/*            <div className="pt-2">*/}
-            {/*                <h2 className="text-center f-Londrina">#SKILLFUL</h2>*/}
-            {/*            </div>*/}
-            {/*            <CardBody>*/}
-            {/*                <SkillSvg/>*/}
-            {/*            </CardBody>*/}
-            {/*            <CardFooter>*/}
-            {/*                <p>*/}
-            {/*                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum*/}
-            {/*                    has been the industry's standard dummy text ever since the 1500s,*/}
-            {/*                </p>*/}
-            {/*            </CardFooter>*/}
-            {/*        </Card>*/}
-            {/*        <Card className="dash-card scalable bg-semi-dark">*/}
-            {/*            <div className="pt-2">*/}
-            {/*                <h2 className="text-center f-Londrina">#24/7 AVAILABLE</h2>*/}
-            {/*            </div>*/}
-            {/*            <CardBody>*/}
-            {/*                <Contract/>*/}
-            {/*            </CardBody>*/}
-            {/*            <CardFooter>*/}
-            {/*                <p>*/}
-            {/*                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum*/}
-            {/*                    has been the industry's standard dummy text ever since the 1500s,*/}
-            {/*                </p>*/}
-            {/*            </CardFooter>*/}
-            {/*        </Card>*/}
-            {/*    </Row>*/}
-            {/*</Row>*/}
-            {/*<Row className="d-flex flex-column d-center mt-5">*/}
-            {/*    <Col className="d-center floating-img" lg={3} sm={10}>*/}
-            {/*        <ThinkingSvg/>*/}
-            {/*    </Col>*/}
-            {/*    <Col className="mt-3">*/}
-            {/*        <h2 className="text-center f-indie-flower">"COLORFUL IDEAS CAME FROM PEACEFUL MINDS"</h2>*/}
-            {/*        <h4 className="text-center f-indie-flower">-Talent Zea-</h4>*/}
-            {/*    </Col>*/}
-            {/*</Row>*/}
             <Col className="mt-5" id="service">
                 <a name="service"/>
                 <Col className="text-center">
@@ -218,12 +139,86 @@ const Dashboard = () => {
                     </Card>
                 </Row>
             </Col>
-            <div className="mt-5">
-                <Col className="mt-5 mb-5">
-                    <h1 className="text-center f-Londrina font-large-2">What do you need to know ?</h1>
+            <Row className="sticky-top-custom d-center mt-3">
+                <Col lg={6} sm={12}>
+                    <h1 className="f-Londrina font-large-2 text-center">Why <span
+                        className="text-primary">Talent Zea</span> ?</h1>
+                    <p className="text-small f-shippori line-h-3 text-center">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        but also the leap into electronic typesetting,
+                    </p>
                 </Col>
-            </div>
-            <AudioBtn/>
+                <Row className="mt-5 d-flex justify-content-around w-100 ml-1">
+                    <Card className="dash-card scalable bg-semi-dark">
+                        <div className="pt-2">
+                            <h2 className="text-center f-Londrina">#CREATIVE</h2>
+                        </div>
+                        <CardBody>
+                            <CreativeSvg/>
+                        </CardBody>
+                        <CardFooter>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s,
+                            </p>
+                        </CardFooter>
+                    </Card>
+                    <Card className="dash-card scalable bg-semi-dark">
+                        <div className="pt-2">
+                            <h2 className="text-center f-Londrina">#FRIENDLY</h2>
+                        </div>
+                        <CardBody>
+                            <FriendlySvg/>
+                        </CardBody>
+                        <CardFooter>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s,
+                            </p>
+                        </CardFooter>
+                    </Card>
+                    <Card className="dash-card scalable bg-semi-dark">
+                        <div className="pt-2">
+                            <h2 className="text-center f-Londrina">#SKILLFUL</h2>
+                        </div>
+                        <CardBody>
+                            <SkillSvg/>
+                        </CardBody>
+                        <CardFooter>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s,
+                            </p>
+                        </CardFooter>
+                    </Card>
+                    <Card className="dash-card scalable bg-semi-dark">
+                        <div className="pt-2">
+                            <h2 className="text-center f-Londrina">#24/7 AVAILABLE</h2>
+                        </div>
+                        <CardBody>
+                            <Contract/>
+                        </CardBody>
+                        <CardFooter>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s,
+                            </p>
+                        </CardFooter>
+                    </Card>
+                </Row>
+            </Row>
+            <Row className="d-flex flex-column d-center mt-5 mb-5">
+                <Col className="d-center floating-img" lg={3} sm={10}>
+                    <ThinkingSvg/>
+                </Col>
+                <Col className="mt-3">
+                    <h2 className="text-center f-indie-flower">"COLORFUL IDEAS CAME FROM PEACEFUL MINDS"</h2>
+                    <h4 className="text-center f-indie-flower">-Talent Zea-</h4>
+                </Col>
+            </Row>
+            {/*<AudioBtn/>*/}
             {/*//////////////////////*/}
             {/*Modal starts form here*/}
             {/*//////////////////////*/}
