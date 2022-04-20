@@ -50,7 +50,7 @@ const MainServiceSwipper = ({isRtl, count}) => {
             <Swiper dir={isRtl ? 'rtl' : 'ltr'} {...params}>
                 {
                     mainServicesLoad && mainServices?.map(e => {
-                        return <SwiperSlide className="sales-card">
+                        return <SwiperSlide className="sales-card cursor-pointer">
                             <Card
                                 onClick={() => {
                                     history.push(`/service/${e?._id}`)

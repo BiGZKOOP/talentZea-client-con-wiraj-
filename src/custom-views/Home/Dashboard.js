@@ -20,13 +20,14 @@ import Faq from "../../views/pages/faq"
 import MainNav from "../../custom-components/MainNav/MainNav"
 import {useHistory} from "react-router-dom"
 import AudioBtn from "../../custom-components/audioControl/AudioBtn"
-import {Facebook, Instagram, Link, Mail, Music, Phone, Users} from "react-feather"
+import {Check, Facebook, Instagram, Link, Mail, Music, Phone, Users} from "react-feather"
 import {useEffect, useState} from "react"
 import Headset from "../../assets/custom_images/svg/Headset"
 import {useDispatch, useSelector} from "react-redux"
 import {audioHandle, audioModelLoad} from "../../custom-components/audioControl/action"
 // eslint-disable-next-line no-unused-vars
 import logo from "../../assets/custom_images/logo.png"
+// eslint-disable-next-line no-unused-vars
 import video from "../../assets/videos/intro.mp4"
 import Footer from "../../@core/layouts/components/footer"
 import {useParams} from "react-router"
@@ -98,28 +99,41 @@ const Dashboard = () => {
                 <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-100">
                     <MainNav index={1}/>
                 </div>
-                <video autoPlay muted loop id="myVideo" className="animated-back sm-none">
-                    <source src={video} type="video/mp4" />
-                </video>
-                <div className="d-flex d-center zindex-4 hero-header m-0 position-absolute">
-                    <Col lg={10} sm={12} className="hero-inner-container hero-header-font position-absolute">
-                        <div>
-                            <h1 className="text-center-sm f-Londrina hero-header-font">Find the perfect freelance</h1>
-                            <h1 className="text-center-sm f-Londrina hero-header-font">services for your business</h1>
-                            <div className="mt-2 w-100 d-flex">
-                                <Input />
+                {/*<video autoPlay muted loop id="myVideo" className="animated-back sm-none">*/}
+                {/*    <source src={video} type="video/mp4"/>*/}
+                {/*</video>*/}
+                <Row className="d-flex hero-header m-0 position-absolute main-service-back">
+                    <Col lg={6} sm={12} className="hero-header-font h-100 d-center">
+                        <div className="z-index-100">
+                            <h1 className="text-center-sm f-Staatliches hero-header-font animate__animated animate__fadeInRight">Find
+                                the perfect
+                                <span className="text-purple"> freelance</span></h1>
+                            <h1 className="text-center-sm f-Staatliches hero-header-font animate__animated animate__fadeInLeft">services
+                                for your
+                                <span className="text-danger"> business</span></h1>
+                            <div className="mt-2 w-100 d-flex animate__animated animate__fadeInDown">
+                                <Input/>
                                 <button className="btn btn-purple ml-1">Search</button>
                             </div>
                         </div>
                     </Col>
-                </div>
+                    <Col lg={6} sm={12} className="animated-back sm-none d-center z-index-100">
+                        <div className="animate__animated animate__bounceInUp">
+                            <video autoPlay muted controls="controls" width="700" height="450" loop id="myVideo"
+                                   className="sm-none">
+                                {/*<video width="700" height="450" controls="controls" poster="image" preload="true">*/}
+                                <source src={video} type="video/mp4"/>
+                            </video>
+                        </div>
+                    </Col>
+                </Row>
             </Row>
-            <Col className="mt-5" id="service">
+            <Col className="main-service-container-back p-3" id="service">
                 <a name="service"/>
-                <Col className="text-center">
-                    <h1 className="f-Londrina font-large-1">OUR SERVICES</h1>
+                <Col className="">
+                    <h1 className="f-Londrina font-large-2 text-purple f-Staatliches"><Check/> Check our services</h1>
                 </Col>
-                <Row className="p-2 mt-3 radius-10  d-center flex-wrap d-flex">
+                <Row className="mt-1 radius-10  d-center flex-wrap d-flex">
                     {
                         !mainServicesLoad && <div className="d-center flex-column animate__animated animate__bounce">
                             <Spinner className="text-primary mb-2"/>
@@ -139,10 +153,10 @@ const Dashboard = () => {
                     </Card>
                 </Row>
             </Col>
-            <Row className="sticky-top-custom d-center mt-3">
+            <Row className="sticky-top-custom d-center pt-5 pb-5 lower-container-back">
                 <Col lg={6} sm={12}>
                     <h1 className="f-Londrina font-large-2 text-center">Why <span
-                        className="text-primary">Talent Zea</span> ?</h1>
+                        className="text-purple">Talent Zea</span> ?</h1>
                     <p className="text-small f-shippori line-h-3 text-center">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
@@ -151,65 +165,41 @@ const Dashboard = () => {
                     </p>
                 </Col>
                 <Row className="mt-5 d-flex justify-content-around w-100 ml-1">
-                    <Card className="dash-card scalable bg-semi-dark">
+                    <Card className="dash-card scalable bg-purple-dark">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina">#CREATIVE</h2>
                         </div>
                         <CardBody>
                             <CreativeSvg/>
                         </CardBody>
-                        <CardFooter>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </CardFooter>
                     </Card>
-                    <Card className="dash-card scalable bg-semi-dark">
+                    <Card className="dash-card scalable">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina">#FRIENDLY</h2>
                         </div>
                         <CardBody>
                             <FriendlySvg/>
                         </CardBody>
-                        <CardFooter>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </CardFooter>
                     </Card>
-                    <Card className="dash-card scalable bg-semi-dark">
+                    <Card className="dash-card scalable bg-purple-dark">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina">#SKILLFUL</h2>
                         </div>
                         <CardBody>
                             <SkillSvg/>
                         </CardBody>
-                        <CardFooter>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </CardFooter>
                     </Card>
-                    <Card className="dash-card scalable bg-semi-dark">
+                    <Card className="dash-card scalable">
                         <div className="pt-2">
                             <h2 className="text-center f-Londrina">#24/7 AVAILABLE</h2>
                         </div>
                         <CardBody>
                             <Contract/>
                         </CardBody>
-                        <CardFooter>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s,
-                            </p>
-                        </CardFooter>
                     </Card>
                 </Row>
             </Row>
-            <Row className="d-flex flex-column d-center mt-5 mb-5">
+            <Row className="d-flex flex-column d-center pt-5 pb-5 contact-container-back">
                 <Col className="d-center floating-img" lg={3} sm={10}>
                     <ThinkingSvg/>
                 </Col>

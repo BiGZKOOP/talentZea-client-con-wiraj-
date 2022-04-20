@@ -93,8 +93,52 @@
     height: 100vh;
 }
 
+.main-service-back {
+    background:
+            linear-gradient(
+                    rgba(0, 0, 0, 0.8),
+                    rgba(0, 0, 0, 0.8)
+            ),
+            url(https://images3.alphacoders.com/594/thumb-1920-594846.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.main-service-container-back {
+    background:
+            linear-gradient(
+                    rgba(0, 0, 0, 0.8),
+                    rgba(0, 0, 0, 0.8)
+            ),
+            url(https://wallpaperaccess.com/full/17262.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.lower-container-back {
+    background:
+            linear-gradient(
+                    rgba(0, 0, 0, 0.8),
+                    rgba(0, 0, 0, 0.8)
+            ),
+            url(https://wallpapercave.com/wp/wp2823503.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.contact-container-back {
+    background:
+            linear-gradient(
+                    rgba(0, 0, 0, 0.8),
+                    rgba(0, 0, 0, 0.8)
+            ),
+            url(https://pluviophile.net/wp-content/uploads/raindrops-umbrella-wallpaper.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .hero-header-font {
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .hero-inner-container {
@@ -102,11 +146,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-}
-
-.animated-back {
-    position: absolute;
-    z-index: -1;
+    z-index: 5;
 }
 
 /*This is the hero back div animation*/
