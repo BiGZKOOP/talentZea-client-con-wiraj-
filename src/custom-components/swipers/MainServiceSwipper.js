@@ -55,14 +55,14 @@ const MainServiceSwipper = ({isRtl, count}) => {
                                 onClick={() => {
                                     history.push(`/service/${e?._id}`)
                                 }}
-                                className="sales-card m-2 scalable bg-semi-dark m-0 p-0">
+                                className="sales-card m-2 scalable bg-semi-dark m-0 p-0 bg-light">
                                 <CardBody className="p-0">
                                     <div className="w-100">
                                         <OurWorkMainService count={1} images={getImageArray(e)}/>
                                     </div>
                                     <div className="d-flex align-items-end justify-content-between m-1">
                                         <div>
-                                            <h4 className="f-Londrina">{e?.mainTopic}</h4>
+                                            <h4 className="f-Londrina text-black-c">{e?.mainTopic}</h4>
                                         </div>
                                     </div>
                                 </CardBody>

@@ -36,7 +36,7 @@ const MainNav = ({index}) => {
     }
 
     return <Navbar container={false}
-                   className='d-flex justify-content-between justify-content-md-between w-100 bg-transparent z-index-100'
+                   className='d-flex justify-content-between bg-transparent justify-content-md-between w-100 z-index-1000'
                    expand='md' light>
         <div className="brand-name ml-2 ml-lg-0">
             <img width="100px" className="object-fit" src={logo}/>
@@ -56,7 +56,7 @@ const MainNav = ({index}) => {
                         <NavLink
                             onClick={() => history.push("/home")}
                             className='fw-bold' active={linkActive(1)}>
-                            <span className='d-none d-md-block text-light'>Home</span>
+                            <span className='d-none d-md-block '>Home</span>
                             <Home className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
@@ -65,7 +65,7 @@ const MainNav = ({index}) => {
                         <NavLink
                             onClick={() => history.push("/contact")}
                             className='fw-bold' active={linkActive(3)}>
-                            <span className='d-none d-md-block text-light'>Contact</span>
+                            <span className='d-none d-md-block text-black-c'>Contact</span>
                             <Phone className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
@@ -74,8 +74,8 @@ const MainNav = ({index}) => {
                         <NavLink
                             // onClick={() => history.push("/home#service")}
                             className='fw-bold' active={linkActive(4)}>
-                            <span className='d-none d-md-block text-light'>
-                                <a href="http://localhost:3000/home#service" className="text-decoration-none text-light">Service</a>
+                            <span className='d-none d-md-block '>
+                                <a href="http://localhost:3000/home#service" className="text-decoration-none text-black-c">Service</a>
                             </span>
 
                             <Phone className='d-block d-md-none' size={14}/>

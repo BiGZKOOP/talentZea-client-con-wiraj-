@@ -332,8 +332,8 @@
     color: #8912dd !important;
 }
 
-.text-black {
-    color: #0c102a;
+.text-black-c {
+    color: #707070 !important;
 }
 
 .bg-purple {
@@ -365,6 +365,10 @@
 
 .z-index-100 {
     z-index: 100;
+}
+
+.z-index-1000 {
+    z-index: 1000;
 }
 
 /*shadow styles*/

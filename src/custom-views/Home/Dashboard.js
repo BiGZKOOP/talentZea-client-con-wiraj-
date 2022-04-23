@@ -37,6 +37,7 @@ import MainServiceSwipper from "../../custom-components/swipers/MainServiceSwipp
 // eslint-disable-next-line no-unused-vars
 import {motion, useAnimation} from "framer-motion"
 import {useInView} from "react-intersection-observer"
+import BannerSVG from "../../assets/custom_images/svg/BannerSVG"
 
 const Dashboard = () => {
 
@@ -52,12 +53,12 @@ const Dashboard = () => {
 
     // eslint-disable-next-line no-unused-vars
     const {inView, entry, ref} = useInView({
-        threshold: 1
+        threshold: 0
     })
 
     // eslint-disable-next-line no-unused-vars
     const [ref2, inView2] = useInView({
-        threshold: 0
+        threshold: 0.5
     })
 
     const [ref3, inView3] = useInView({
@@ -86,6 +87,10 @@ const Dashboard = () => {
 
     const [ref9, inView9] = useInView()
 
+    const [ref10, inView10] = useInView({
+        threshold: 0.5
+    })
+
     const animationControl = useAnimation()
     const animationControl2 = useAnimation()
     const animationControl3 = useAnimation()
@@ -95,6 +100,7 @@ const Dashboard = () => {
     const animationControl7 = useAnimation() //last div
     const animationControl8 = useAnimation() //svg last
     const animationControl9 = useAnimation() //main service topic last
+    const animationControl10 = useAnimation() //main service topic last
 
     const queryParams = queryString.parse(window.location.search)
 
@@ -237,7 +243,7 @@ const Dashboard = () => {
             })
         } else {
             animationControl8.start({
-                opacity:0
+                opacity: 0
             })
         }
     }, [inView8])
@@ -246,33 +252,50 @@ const Dashboard = () => {
     useEffect(() => {
         if (inView9) {
             animationControl9.start({
-                x:0
+                x: 0
             })
         } else {
             animationControl9.start({
-                x:"-100vw"
+                x: "-100vw"
             })
         }
     }, [inView9])
 
+    //In View10 animations
+    useEffect(() => {
+        if (inView10) {
+            animationControl10.start({
+                x: 0,
+                filter: "none"
+            })
+        } else {
+            animationControl10.start({
+                x: "-100vw",
+                filter: "grayscale(100%)"
+            })
+        }
+    }, [inView10])
+
     return (
         <Row>
-            <Row className="position-relative hero-header overflow-hidden">
-                <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-100">
+            <Row className="hero-header overflow-hidden position-relative">
+                <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-1000">
                     <MainNav index={1}/>
                 </div>
-                {/*<video autoPlay muted loop id="myVideo" className="animated-back sm-none">*/}
-                {/*    <source src={video} type="video/mp4"/>*/}
-                {/*</video>*/}
-                <Row className="d-flex hero-header m-0 position-absolute main-service-back">
-                    <Col lg={6} sm={12} className="hero-header-font h-100 d-center">
+                <motion.div
+                    initial={{
+                        x: "grayscale(100%)"
+                    }}
+                    className="d-flex hero-header m-0 main-service-back position-absolute">
+                    <Col lg={6} sm={12} className="hero-header-font h-100 d-center z-index-1000">
                         <motion.div
                             initial={{
-                                filter: "grayscale(100%)"
+                                filter: "grayscale(100%)",
+                                rotate: "0deg"
                             }}
                             animate={animationControl4}
-                            ref={ref4} className="z-index-100">
-                            <h1 className="text-center-sm f-Staatliches text-light hero-header-font animate__animated animate__fadeInRight">Find
+                            ref={ref4} className="">
+                            <h1 className="text-center-sm text-light f-Staatliches hero-header-font animate__animated animate__fadeInRight">Find
                                 the perfect
                                 <span className="text-purple"> freelance</span></h1>
                             <h1 className="text-center-sm text-light f-Staatliches hero-header-font animate__animated animate__fadeInLeft">services
@@ -291,14 +314,14 @@ const Dashboard = () => {
                             }}
                             animate={animationControl4}
                             className="animate__animated animate__bounceInUp">
-                            <video autoPlay muted controls="controls" width="700" height="450" loop id="myVideo"
-                                   className="sm-none">
+                            <motion.video autoPlay muted controls="controls" width="700" height="450" loop id="myVideo"
+                                          className="sm-none">
                                 {/*<video width="700" height="450" controls="controls" poster="image" preload="true">*/}
                                 <source src={video} type="video/mp4"/>
-                            </video>
+                            </motion.video>
                         </motion.div>
                     </Col>
-                </Row>
+                </motion.div>
             </Row>
             <div ref={ref5}>
                 <motion.div
@@ -315,12 +338,14 @@ const Dashboard = () => {
                                     x: "-100vw"
                                 }}
                                 animate={animationControl9}>
-                                <h1 className="f-Londrina font-large-2 text-purple f-Staatliches"><Check/> Check our services</h1>
+                                <h1 className="f-Londrina font-large-2 text-purple f-Staatliches"><Check/> Check our
+                                    services</h1>
                             </motion.div>
                         </div>
                         <Row className="mt-1 radius-10  d-center flex-wrap d-flex">
                             {
-                                !mainServicesLoad && <div className="d-center flex-column animate__animated animate__bounce">
+                                !mainServicesLoad &&
+                                <div className="d-center flex-column animate__animated animate__bounce">
                                     <Spinner className="text-primary mb-2"/>
                                     <h1 className="text-primary">Loading...</h1>
                                 </div>
@@ -354,7 +379,7 @@ const Dashboard = () => {
                     }}
                     animate={animationControl6}
                 >
-                    <Row className="sticky-top-custom d-center pt-5 pb-5 lower-container-back">
+                    <Row className="sticky-top-custom d-center pt-5 pb-5 lower-container-back text-black-c">
                         <Col lg={6} sm={12}>
                             <div
                                 ref={ref}>
@@ -364,12 +389,15 @@ const Dashboard = () => {
                                     }}
                                     animate={animationControl}
                                 >
-                                    <h1 className="f-Londrina font-large-2 text-center">Why <span
+                                    <h1 className="f-Londrina font-large-2 text-center text-black-c">Why <span
                                         className="text-purple">Talent Zea</span> ?</h1>
                                     <p className="text-small f-shippori line-h-3 text-center">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been
+                                        the industry's standard dummy text ever since the 1500s, when an unknown printer
+                                        took a galley
+                                        of type and scrambled it to make a type specimen book. It has survived not only
+                                        five centuries,
                                         but also the leap into electronic typesetting,
                                     </p>
                                 </motion.div>
@@ -397,7 +425,7 @@ const Dashboard = () => {
                             <div className="dash-card">
                                 <motion.div
                                     initial={{
-                                        opacity:0
+                                        opacity: 0
                                     }}
                                     animate={animationControl2}>
                                     <Card className="scalable bg-foursquare">
@@ -432,7 +460,7 @@ const Dashboard = () => {
                                         opacity: 0
                                     }}
                                     animate={animationControl2}>
-                                    <Card className="scalable bg-info">
+                                    <Card className="scalable bg-primary">
                                         <div className="pt-2">
                                             <h2 className="text-center f-Londrina">#24/7 AVAILABLE</h2>
                                         </div>
@@ -467,12 +495,42 @@ const Dashboard = () => {
                             </motion.div>
                         </div>
                         <Col className="mt-3">
-                            <h2 className="text-center f-indie-flower">"COLORFUL IDEAS CAME FROM PEACEFUL MINDS"</h2>
-                            <h4 className="text-center f-indie-flower">-Talent Zea-</h4>
+                            <h2 className="text-center f-indie-flower text-black-c">"COLORFUL IDEAS CAME FROM PEACEFUL
+                                MINDS"</h2>
+                            <h4 className="text-center f-indie-flower text-black-c">-Talent Zea-</h4>
                         </Col>
                     </Row>
                 </div>
             </div>
+            <Row className="m-4">
+                <div ref={ref10} className="d-center">
+                    <Col lg={10} className="m-0 p-0">
+                        <motion.div
+                            initial={{
+                                x: "100vw",
+                                filter: "grayscale(100%)"
+                            }}
+                            animate={animationControl10}
+                        >
+                            <Card className="m-0 banner-container p-2 bg-transparent">
+                                <CardBody className="m-0 d-flex justify-content-between">
+                                    <div className="d-flex justify-content-center flex-column">
+                                        <h1 className="text-light font-large-2 f-Staatliches">MAKE YOUR PROJECT <span
+                                            className="text-danger">SHINE</span>.</h1>
+                                        <h1 className="text-light f-courgette">just one click away <button
+                                            className="btn btn-primary font-monospace">Contact us</button></h1>
+                                        <p className="text-light mt-3">Get a <span
+                                            className="text-success">professional touch</span> into your project.</p>
+                                    </div>
+                                    <Col lg={4} className="animate__animated animate__bounce">
+                                        <BannerSVG/>
+                                    </Col>
+                                </CardBody>
+                            </Card>
+                        </motion.div>
+                    </Col>
+                </div>
+            </Row>
             {/*<AudioBtn/>*/}
             {/*//////////////////////*/}
             {/*Modal starts form here*/}
