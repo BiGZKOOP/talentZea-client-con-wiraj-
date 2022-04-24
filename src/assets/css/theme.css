@@ -424,6 +424,10 @@
         font-size: 20px;
     }
 
+    .text-mid-large {
+        font-size: 18px;
+    }
+
     .text-center-sm {
         text-align: center;
     }

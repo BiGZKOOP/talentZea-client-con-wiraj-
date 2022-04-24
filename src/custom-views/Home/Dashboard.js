@@ -103,6 +103,9 @@ const Dashboard = () => {
     const animationControl8 = useAnimation() //svg last
     const animationControl9 = useAnimation() //main service topic last
     const animationControl10 = useAnimation() //main service topic last
+    const animationControl11 = useAnimation() //bubble animation in header
+    const animationControl12 = useAnimation() //Client banner animation
+
 
     const queryParams = queryString.parse(window.location.search)
 
@@ -149,6 +152,39 @@ const Dashboard = () => {
             })
         }
     }, [inView])
+
+    useEffect(() => {
+        if (inView4) {
+            animationControl12.start({
+                x: 0
+            })
+        } else {
+            animationControl12.start({
+                x: "-100vw"
+            })
+        }
+    }, [inView4])
+
+    useEffect(() => {
+        if (inView3) {
+            animationControl12.start({
+                x: 0
+            })
+        }
+    }, [inView3])
+
+
+    useEffect(() => {
+        if (inView4) {
+            animationControl11.start({
+                opacity: 1
+            })
+        } else {
+            animationControl11.start({
+                opacity: 0
+            })
+        }
+    }, [inView4])
 
     //In View2 animations
     useEffect(() => {
@@ -306,7 +342,8 @@ const Dashboard = () => {
                             <h1 className="text-center-sm text-light f-Staatliches hero-header-font animate__animated animate__fadeInLeft">services
                                 for your
                                 <span className="text-purple"> business</span></h1>
-                            <p className="text-small-extra mt-3 text-light word-break-all sm-none">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
+                            <p className="text-small-extra mt-3 text-light word-break sm-none">In publishing and graphic
+                                design, Lorem ipsum is a placeholder text commonly used to
                                 demonstrate the visual form of a document or a typeface without relying on
                                 meaningful content. Lorem ipsum may be used as a placeholder before final copy is
                                 available.</p>
@@ -314,7 +351,7 @@ const Dashboard = () => {
                                 <motion.button className="btn hero-btn-2 mr-2 clickable">Our services</motion.button>
                                 <motion.button className="btn hero-btn-1 mr-2 clickable">Contact us now</motion.button>
                             </div>
-                            <div className="round-element-3 animate-auto-scale sm-none zindex-minus-1" />
+                            <div className="round-element-3 animate-auto-scale sm-none zindex-minus-1"/>
                         </motion.div>
                     </Col>
                     <Col lg={6} sm={12} className="animated-back sm-none d-center z-index-100">
@@ -330,16 +367,41 @@ const Dashboard = () => {
                             {/*    <source src={video} type="video/mp4"/>*/}
                             {/*</motion.video>*/}
                             <div className="swingimg">
-                                <SubServiceWelcomeSVG />
+                                <SubServiceWelcomeSVG/>
                             </div>
                         </motion.div>
                     </Col>
                 </motion.div>
-                <div className="round-element-1 animate__animated swingimg sm-none" />
-                <div className="round-element-2 swingimg-2 scalable sm-none" />
-                <div className="round-element-4 swingimg scalable sm-none" />
-                <div className="round-element-5 swingimg-2 scalable sm-none" />
-                <div className="round-element-6 swingimg-3 scalable sm-none" />
+                <motion.div
+                    initial={{
+                        opacity: 0
+                    }}
+                    animate={animationControl11}
+                    className="round-element-1 swingimg sm-none"/>
+                <motion.div
+                    initial={{
+                        opacity: 0
+                    }}
+                    animate={animationControl11}
+                    className="round-element-2 swingimg-2 scalable sm-none"/>
+                <motion.div
+                    initial={{
+                        opacity: 0
+                    }}
+                    animate={animationControl11}
+                    className="round-element-4 swingimg scalable sm-none"/>
+                <motion.div
+                    initial={{
+                        opacity: 0
+                    }}
+                    animate={animationControl11}
+                    className="round-element-5 swingimg-2 scalable sm-none"/>
+                <motion.div
+                    initial={{
+                        opacity: 0
+                    }}
+                    animate={animationControl11}
+                    className="round-element-6 swingimg-3 scalable sm-none"/>
             </Row>
             <div ref={ref5} className="mt-5">
                 <motion.div
@@ -552,7 +614,12 @@ const Dashboard = () => {
             <div className="z-index-1000">
                 <AudioBtn/>
             </div>
-            <div className="counter-element d-center overflow-hidden sm-none">
+            <motion.div
+                initial={{
+                    x: 0
+                }}
+                animate={animationControl12}
+                className="counter-element d-center overflow-hidden sm-none">
                 <Col lg={8} className="counter-card p-2 counter-inner-element d-flex justify-content-between">
                     <div className="w-25 d-center flex-column animate__animated animate__bounceInUp">
                         <h1 className="text-light f-Londrina font-large-2">250+</h1>
@@ -571,7 +638,7 @@ const Dashboard = () => {
                         <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                 </Col>
-            </div>
+            </motion.div>
             {/*//////////////////////*/}
             {/*Modal starts form here*/}
             {/*//////////////////////*/}

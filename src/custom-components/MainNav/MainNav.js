@@ -57,7 +57,7 @@ const MainNav = ({index}) => {
                             <NavLink
                                 onClick={() => history.push("/home")}
                                 className='fw-bold' active={linkActive(1)}>
-                                <span className='d-none d-md-block text-light text-medium'>Home</span>
+                                <span className='d-none d-md-block text-light clickable text-large f-Staatliches'>Home</span>
                                 <Home className='d-block d-md-none' size={14}/>
                             </NavLink>
                         </NavItem>
@@ -66,7 +66,7 @@ const MainNav = ({index}) => {
                             <NavLink
                                 onClick={() => history.push("/contact")}
                                 className='fw-bold' active={linkActive(3)}>
-                                <span className='d-none d-md-block text-light text-medium'>Contact</span>
+                                <span className='d-none d-md-block text-light text-large clickable f-Staatliches'>Contact</span>
                                 <Phone className='d-block d-md-none' size={14}/>
                             </NavLink>
                         </NavItem>
@@ -75,9 +75,9 @@ const MainNav = ({index}) => {
                             <NavLink
                                 // onClick={() => history.push("/home#service")}
                                 className='fw-bold' active={linkActive(4)}>
-                            <span className='d-none d-md-block '>
+                            <span className='d-none d-md-block clickable'>
                                 <a href="http://localhost:3000/home#service"
-                                   className="text-decoration-none text-light text-medium">Service</a>
+                                   className="text-decoration-none text-light text-large f-Staatliches">Service</a>
                             </span>
 
                                 <Phone className='d-block d-md-none' size={14}/>
@@ -87,15 +87,17 @@ const MainNav = ({index}) => {
                             <div className="d-flex align-items-center m-0 p-0">
                                 <div className="mr-2">
                                     {
-                                        isUserLoggedIn() && <button className="w-100 clickable cursor-pointer  btn btn-gradient-danger"
-                                                                    onClick={() => HandlesignoutUser()}>
+                                        isUserLoggedIn() && <button
+                                            className="w-100 clickable cursor-pointer text-mid-large f-Staatliches btn btn-gradient-danger"
+                                            onClick={() => HandlesignoutUser()}>
                                             Logout
                                         </button>
                                     }
                                     {
                                         !isUserLoggedIn() &&
-                                        <button className="w-100 clickable btn btn-gradient-success cursor-pointer"
-                                                onClick={() => history.push("/login")}>
+                                        <button
+                                            className="w-100 clickable btn btn-gradient-success text-mid-large cursor-pointer f-Staatliches"
+                                            onClick={() => history.push("/login")}>
                                             Login
                                         </button>
                                     }
