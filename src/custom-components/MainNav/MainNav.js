@@ -56,7 +56,7 @@ const MainNav = ({index}) => {
                         <NavLink
                             onClick={() => history.push("/home")}
                             className='fw-bold' active={linkActive(1)}>
-                            <span className='d-none d-md-block '>Home</span>
+                            <span className='d-none d-md-block text-light'>Home</span>
                             <Home className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
@@ -65,7 +65,7 @@ const MainNav = ({index}) => {
                         <NavLink
                             onClick={() => history.push("/contact")}
                             className='fw-bold' active={linkActive(3)}>
-                            <span className='d-none d-md-block text-black-c'>Contact</span>
+                            <span className='d-none d-md-block text-light'>Contact</span>
                             <Phone className='d-block d-md-none' size={14}/>
                         </NavLink>
                     </NavItem>
@@ -75,7 +75,8 @@ const MainNav = ({index}) => {
                             // onClick={() => history.push("/home#service")}
                             className='fw-bold' active={linkActive(4)}>
                             <span className='d-none d-md-block '>
-                                <a href="http://localhost:3000/home#service" className="text-decoration-none text-black-c">Service</a>
+                                <a href="http://localhost:3000/home#service"
+                                   className="text-decoration-none text-light">Service</a>
                             </span>
 
                             <Phone className='d-block d-md-none' size={14}/>
@@ -85,24 +86,26 @@ const MainNav = ({index}) => {
                 <div className="d-flex align-items-center">
                     <div className="mr-2">
                         {
-                            isUserLoggedIn() && <div className="w-100 clickable cursor-pointer"
-                                                     onClick={() => HandlesignoutUser()}>
-                                <Power color="crimson"/>
-                            </div>
+                            isUserLoggedIn() && <button className="w-100 clickable cursor-pointer"
+                                                        onClick={() => HandlesignoutUser()}>
+                                Logout
+                            </button>
                         }
                         {
                             !isUserLoggedIn() &&
-                            <div className="w-100 clickable cursor-pointer"
-                                 onClick={() => history.push("/login")}>
-                                <LogIn color="#7367f0" size={30}/>
-                            </div>
+                            <button className="w-100 clickable btn btn-gradient-primary cursor-pointer"
+                                    onClick={() => history.push("/login")}>
+                                Login
+                            </button>
                         }
                     </div>
                     <div className="clickable mr-2">
-                        <Avatar
-                            onClick={() => history.push("/pages/profile")}
-                            img={"https://cdn.vox-cdn.com/thumbor/8eRpMBfVFeMnzzTz95UZQnnqqtE=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20103707/Screen_Shot_2020_07_21_at_9.38.25_AM.png"}
-                            imgHeight='40' imgWidth='40' status='online'/>
+                        {
+                            isUserLoggedIn() && <Avatar
+                                onClick={() => history.push("/pages/profile")}
+                                img={"https://cdn.vox-cdn.com/thumbor/8eRpMBfVFeMnzzTz95UZQnnqqtE=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20103707/Screen_Shot_2020_07_21_at_9.38.25_AM.png"}
+                                imgHeight='40' imgWidth='40' status='online'/>
+                        }
                     </div>
                 </div>
             </div>

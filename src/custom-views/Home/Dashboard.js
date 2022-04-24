@@ -38,6 +38,7 @@ import MainServiceSwipper from "../../custom-components/swipers/MainServiceSwipp
 import {motion, useAnimation} from "framer-motion"
 import {useInView} from "react-intersection-observer"
 import BannerSVG from "../../assets/custom_images/svg/BannerSVG"
+import SubServiceWelcomeSVG from "../../assets/custom_images/svg/SubServiceWelcomeSVG"
 
 const Dashboard = () => {
 
@@ -50,6 +51,8 @@ const Dashboard = () => {
     // eslint-disable-next-line no-unused-vars
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
     const {mainServicesLoad} = useSelector(state => state.loginReducer)
+
+    const [projectCount, setProjectCount] = useState(0)
 
     // eslint-disable-next-line no-unused-vars
     const {inView, entry, ref} = useInView({
@@ -129,8 +132,8 @@ const Dashboard = () => {
     useEffect(() => {
         fetchFromUrl()
         setTimeout(function () {
-            setLogoStyle("animate__animated animate__bounce")
-        }, 9500)
+            setShow(!show)
+        }, 5000)
         dispatch(audioModelLoad())
     }, [])
 
@@ -186,12 +189,14 @@ const Dashboard = () => {
         if (inView4) {
             animationControl4.start({
                 filter: "none",
+                scale: 1,
                 rotate: "0deg"
             })
         } else {
             animationControl4.start({
                 filter: "grayscale(100%)",
-                rotate: "-50deg"
+                rotate: "-50deg",
+                scale: 0.7
             })
         }
     }, [inView4])
@@ -276,6 +281,18 @@ const Dashboard = () => {
         }
     }, [inView10])
 
+    const clientCounter = () => {
+        for (let i = 0; i < 250; i++) {
+            setTimeout(() => {
+                setProjectCount(++i)
+            }, 1 * i)
+        }
+    }
+
+    useEffect(() => {
+        requestAnimationFrame(clientCounter)
+    }, [])
+
     return (
         <Row>
             <Row className="hero-header overflow-hidden position-relative">
@@ -294,17 +311,23 @@ const Dashboard = () => {
                                 rotate: "0deg"
                             }}
                             animate={animationControl4}
-                            ref={ref4} className="">
+                            ref={ref4} className="p-2 position-relative">
+                            <h5 className="text-white f-courgette">Service providing agency</h5>
                             <h1 className="text-center-sm text-light f-Staatliches hero-header-font animate__animated animate__fadeInRight">Find
                                 the perfect
-                                <span className="text-purple"> freelance</span></h1>
+                                <span className="text-purple f-lobster"> freelance</span></h1>
                             <h1 className="text-center-sm text-light f-Staatliches hero-header-font animate__animated animate__fadeInLeft">services
                                 for your
-                                <span className="text-danger"> business</span></h1>
-                            <div className="mt-2 w-100 d-flex animate__animated animate__fadeInDown">
-                                <Input/>
-                                <motion.button className="btn btn-purple ml-1">Search</motion.button>
+                                <span className="text-purple"> business</span></h1>
+                            <p className="text-small-extra mt-3 text-light">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
+                                demonstrate the visual form of a document or a typeface without relying on
+                                meaningful content. Lorem ipsum may be used as a placeholder before final copy is
+                                available.</p>
+                            <div className="w-100 mt-2 d-flex animate__animated animate__fadeInDown">
+                                <motion.button className="btn hero-btn-2 mr-2 clickable">Our services</motion.button>
+                                <motion.button className="btn hero-btn-1 mr-2 clickable">Contact us now</motion.button>
                             </div>
+                            <div className="round-element-3 animate-auto-scale sm-none zindex-minus-1" />
                         </motion.div>
                     </Col>
                     <Col lg={6} sm={12} className="animated-back sm-none d-center z-index-100">
@@ -313,17 +336,25 @@ const Dashboard = () => {
                                 filter: "grayscale(100%)"
                             }}
                             animate={animationControl4}
-                            className="animate__animated animate__bounceInUp">
-                            <motion.video autoPlay muted controls="controls" width="700" height="450" loop id="myVideo"
-                                          className="sm-none">
-                                {/*<video width="700" height="450" controls="controls" poster="image" preload="true">*/}
-                                <source src={video} type="video/mp4"/>
-                            </motion.video>
+                            className="w-75">
+                            {/*<motion.video autoPlay muted controls="controls" width="700" height="450" loop id="myVideo"*/}
+                            {/*              className="sm-none">*/}
+                            {/*    /!*<video width="700" height="450" controls="controls" poster="image" preload="true">*!/*/}
+                            {/*    <source src={video} type="video/mp4"/>*/}
+                            {/*</motion.video>*/}
+                            <div className="swingimg">
+                                <SubServiceWelcomeSVG />
+                            </div>
                         </motion.div>
                     </Col>
                 </motion.div>
+                <div className="round-element-1 animate__animated swingimg sm-none" />
+                <div className="round-element-2 swingimg-2 scalable sm-none" />
+                <div className="round-element-4 swingimg scalable sm-none" />
+                <div className="round-element-5 swingimg-2 scalable sm-none" />
+                <div className="round-element-6 swingimg-3 scalable sm-none" />
             </Row>
-            <div ref={ref5}>
+            <div ref={ref5} className="mt-5">
                 <motion.div
                     initial={{
                         filter: "grayscale(100%)"
@@ -531,7 +562,29 @@ const Dashboard = () => {
                     </Col>
                 </div>
             </Row>
-            {/*<AudioBtn/>*/}
+            <div className="z-index-1000">
+                <AudioBtn/>
+            </div>
+            <div className="counter-element d-center">
+                <Col lg={8} className="counter-card p-2 counter-inner-element d-flex justify-content-between">
+                    <div className="w-25 d-center flex-column">
+                        <h1 className="text-light f-Londrina font-large-2">{projectCount}+</h1>
+                        <h3 className="font-bold font-monospace text-light">Clients</h3>
+                    </div>
+                    <div className="w-25 d-center flex-column">
+                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
+                        <h3 className="font-bold font-monospace text-light">Clients</h3>
+                    </div>
+                    <div className="w-25 d-center flex-column">
+                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
+                        <h3 className="font-bold font-monospace text-light">Clients</h3>
+                    </div>
+                    <div className="w-25 d-center flex-column">
+                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
+                        <h3 className="font-bold font-monospace text-light">Clients</h3>
+                    </div>
+                </Col>
+            </div>
             {/*//////////////////////*/}
             {/*Modal starts form here*/}
             {/*//////////////////////*/}
