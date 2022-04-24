@@ -332,4 +332,12 @@
         width: 100%;
         height: 17%;
     }
+
+    .hero-btn-1 {
+        font-size: 20px;
+    }
+
+    .hero-btn-2 {
+        font-size: 20px;
+    }
 }

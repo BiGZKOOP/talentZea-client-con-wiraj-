@@ -52,7 +52,6 @@ const Dashboard = () => {
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
     const {mainServicesLoad} = useSelector(state => state.loginReducer)
 
-    const [projectCount, setProjectCount] = useState(0)
 
     // eslint-disable-next-line no-unused-vars
     const {inView, entry, ref} = useInView({
@@ -281,18 +280,6 @@ const Dashboard = () => {
         }
     }, [inView10])
 
-    const clientCounter = () => {
-        for (let i = 0; i < 250; i++) {
-            setTimeout(() => {
-                setProjectCount(++i)
-            }, 1 * i)
-        }
-    }
-
-    useEffect(() => {
-        requestAnimationFrame(clientCounter)
-    }, [])
-
     return (
         <Row>
             <Row className="hero-header overflow-hidden position-relative">
@@ -311,15 +298,15 @@ const Dashboard = () => {
                                 rotate: "0deg"
                             }}
                             animate={animationControl4}
-                            ref={ref4} className="p-2 position-relative">
+                            ref={ref4} className="p-lg-5 p-1 position-relative">
                             <h5 className="text-white f-courgette">Service providing agency</h5>
-                            <h1 className="text-center-sm text-light f-Staatliches hero-header-font animate__animated animate__fadeInRight">Find
+                            <h1 className="text-center-sm text-light m-0 p-0 f-Staatliches hero-header-font animate__animated animate__fadeInRight">Find
                                 the perfect
                                 <span className="text-purple f-lobster"> freelance</span></h1>
                             <h1 className="text-center-sm text-light f-Staatliches hero-header-font animate__animated animate__fadeInLeft">services
                                 for your
                                 <span className="text-purple"> business</span></h1>
-                            <p className="text-small-extra mt-3 text-light">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
+                            <p className="text-small-extra mt-3 text-light word-break-all sm-none">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
                                 demonstrate the visual form of a document or a typeface without relying on
                                 meaningful content. Lorem ipsum may be used as a placeholder before final copy is
                                 available.</p>
@@ -565,23 +552,23 @@ const Dashboard = () => {
             <div className="z-index-1000">
                 <AudioBtn/>
             </div>
-            <div className="counter-element d-center">
+            <div className="counter-element d-center overflow-hidden sm-none">
                 <Col lg={8} className="counter-card p-2 counter-inner-element d-flex justify-content-between">
-                    <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2">{projectCount}+</h1>
-                        <h3 className="font-bold font-monospace text-light">Clients</h3>
+                    <div className="w-25 d-center flex-column animate__animated animate__bounceInUp">
+                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
+                        <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                     <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
-                        <h3 className="font-bold font-monospace text-light">Clients</h3>
+                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInLeft">250+</h1>
+                        <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                     <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
-                        <h3 className="font-bold font-monospace text-light">Clients</h3>
+                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInDown">250+</h1>
+                        <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                     <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
-                        <h3 className="font-bold font-monospace text-light">Clients</h3>
+                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInRight">250+</h1>
+                        <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                 </Col>
             </div>

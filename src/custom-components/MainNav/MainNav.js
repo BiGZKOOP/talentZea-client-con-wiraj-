@@ -46,67 +46,71 @@ const MainNav = ({index}) => {
         </Button>
         <Collapse isOpen={isOpen} navbar>
             <div className='profile-tabs d-flex justify-content-between w-100 flex-wrap mt-1 mt-md-0'>
-                <div className="ml-2 ml-lg-0 brand-nav-img clickable"
+                <div className="ml-2 mt-0 p-0 ml-lg-0 brand-nav-img clickable"
                      onClick={() => history.push("/")}
                 >
-                    <img width="100px" className="object-fit" src={logo}/>
+                    <img width="120px" className="object-fit" src={logo}/>
                 </div>
-                <Nav className='mb-0' pills>
-                    <NavItem className="ml-5">
-                        <NavLink
-                            onClick={() => history.push("/home")}
-                            className='fw-bold' active={linkActive(1)}>
-                            <span className='d-none d-md-block text-light'>Home</span>
-                            <Home className='d-block d-md-none' size={14}/>
-                        </NavLink>
-                    </NavItem>
+                <div className="d-flex m-0 p-0">
+                    <Nav className='mb-0' pills>
+                        <NavItem className="ml-5">
+                            <NavLink
+                                onClick={() => history.push("/home")}
+                                className='fw-bold' active={linkActive(1)}>
+                                <span className='d-none d-md-block text-light text-medium'>Home</span>
+                                <Home className='d-block d-md-none' size={14}/>
+                            </NavLink>
+                        </NavItem>
 
-                    <NavItem>
-                        <NavLink
-                            onClick={() => history.push("/contact")}
-                            className='fw-bold' active={linkActive(3)}>
-                            <span className='d-none d-md-block text-light'>Contact</span>
-                            <Phone className='d-block d-md-none' size={14}/>
-                        </NavLink>
-                    </NavItem>
+                        <NavItem>
+                            <NavLink
+                                onClick={() => history.push("/contact")}
+                                className='fw-bold' active={linkActive(3)}>
+                                <span className='d-none d-md-block text-light text-medium'>Contact</span>
+                                <Phone className='d-block d-md-none' size={14}/>
+                            </NavLink>
+                        </NavItem>
 
-                    <NavItem>
-                        <NavLink
-                            // onClick={() => history.push("/home#service")}
-                            className='fw-bold' active={linkActive(4)}>
+                        <NavItem>
+                            <NavLink
+                                // onClick={() => history.push("/home#service")}
+                                className='fw-bold' active={linkActive(4)}>
                             <span className='d-none d-md-block '>
                                 <a href="http://localhost:3000/home#service"
-                                   className="text-decoration-none text-light">Service</a>
+                                   className="text-decoration-none text-light text-medium">Service</a>
                             </span>
 
-                            <Phone className='d-block d-md-none' size={14}/>
-                        </NavLink>
-                    </NavItem>
-                </Nav>
-                <div className="d-flex align-items-center">
-                    <div className="mr-2">
-                        {
-                            isUserLoggedIn() && <button className="w-100 clickable cursor-pointer"
-                                                        onClick={() => HandlesignoutUser()}>
-                                Logout
-                            </button>
-                        }
-                        {
-                            !isUserLoggedIn() &&
-                            <button className="w-100 clickable btn btn-gradient-primary cursor-pointer"
-                                    onClick={() => history.push("/login")}>
-                                Login
-                            </button>
-                        }
-                    </div>
-                    <div className="clickable mr-2">
-                        {
-                            isUserLoggedIn() && <Avatar
-                                onClick={() => history.push("/pages/profile")}
-                                img={"https://cdn.vox-cdn.com/thumbor/8eRpMBfVFeMnzzTz95UZQnnqqtE=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20103707/Screen_Shot_2020_07_21_at_9.38.25_AM.png"}
-                                imgHeight='40' imgWidth='40' status='online'/>
-                        }
-                    </div>
+                                <Phone className='d-block d-md-none' size={14}/>
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <div className="d-flex align-items-center m-0 p-0">
+                                <div className="mr-2">
+                                    {
+                                        isUserLoggedIn() && <button className="w-100 clickable cursor-pointer  btn btn-gradient-danger"
+                                                                    onClick={() => HandlesignoutUser()}>
+                                            Logout
+                                        </button>
+                                    }
+                                    {
+                                        !isUserLoggedIn() &&
+                                        <button className="w-100 clickable btn btn-gradient-success cursor-pointer"
+                                                onClick={() => history.push("/login")}>
+                                            Login
+                                        </button>
+                                    }
+                                </div>
+                                <div className="clickable mr-2">
+                                    {
+                                        isUserLoggedIn() && <Avatar
+                                            onClick={() => history.push("/pages/profile")}
+                                            img={"https://cdn.vox-cdn.com/thumbor/8eRpMBfVFeMnzzTz95UZQnnqqtE=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20103707/Screen_Shot_2020_07_21_at_9.38.25_AM.png"}
+                                            imgHeight='40' imgWidth='40' status='online'/>
+                                    }
+                                </div>
+                            </div>
+                        </NavItem>
+                    </Nav>
                 </div>
             </div>
         </Collapse>
