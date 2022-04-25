@@ -10,12 +10,14 @@ import {useHistory} from "react-router-dom"
 // eslint-disable-next-line no-unused-vars
 const MainServiceSwipper = ({isRtl, count}) => {
 
-    const {mainServices, mainServicesLoad} = useSelector(state => state.loginReducer)
+    // eslint-disable-next-line no-unused-vars
+    const {singleSubService, subServiceLoad, singleSubLoad} = useSelector(state => state.mainServiceReducer)
 
     const history = useHistory()
 
+    // eslint-disable-next-line no-unused-vars
     const getImageArray = (e) => {
-
+        console.log(e)
         return [e?.image?.image1, e?.image?.image2, e?.image?.image3]
     }
 
@@ -45,24 +47,25 @@ const MainServiceSwipper = ({isRtl, count}) => {
         }
     }
 
-    return <div className="m-0 p-0">
+    return <div className="m-0 p-0 bg-light">
         <CardBody className="m-0 p-0">
             <Swiper dir={isRtl ? 'rtl' : 'ltr'} {...params}>
                 {
-                    mainServicesLoad && mainServices?.map(e => {
-                        return <SwiperSlide className="sales-card">
+                    !singleSubLoad && singleSubService?.subMainService?.map(e => {
+                        return <SwiperSlide className="sales-card bg-light cursor-pointer">
                             <Card
                                 onClick={() => {
                                     history.push(`/service/${e?._id}`)
                                 }}
-                                className="sales-card m-2 scalable bg-semi-dark m-0 p-0">
+                                className="sales-card m-2 bg-semi-dark m-0 p-0 bg-light">
                                 <CardBody className="p-0">
                                     <div className="w-100">
-                                        <OurWorkMainService count={1} images={getImageArray(e)}/>
+                                        {/*<OurWorkMainService count={1} images={getImageArray(e)}/>*/}
+                                        <img src={e?.image?.image1} width="100%" height="200px" className="object-fit"/>
                                     </div>
                                     <div className="d-flex align-items-end justify-content-between m-1">
                                         <div>
-                                            <h4 className="f-Londrina">{e?.mainTopic}</h4>
+                                            <h4 className="f-Londrina text-black-c">{e?.mainTopic}</h4>
                                         </div>
                                     </div>
                                 </CardBody>

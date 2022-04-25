@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 /*webkit styles*/
 ::-webkit-scrollbar {
@@ -228,6 +229,10 @@
     font-size: 15px;
 }
 
+.text-small-extra {
+    font-size: 13px;
+}
+
 .text-topic {
     font-size: 40px;
 }
@@ -260,6 +265,10 @@
     font-family: 'Indie Flower', cursive;
 }
 
+.f-Staatliches {
+    font-family: 'Staatliches', cursive;
+}
+
 .line-h-3 {
     line-height: 30px;
 }
@@ -267,6 +276,8 @@
 .word-break-all {
     word-break: break-all;
 }
+
+
 
 /*special-animations*/
 .clickable {
@@ -321,16 +332,38 @@
     color: #b756ef !important;
 }
 
+.text-pink {
+    color: #f569ff !important;
+}
+
 .text-purple-dark {
     color: #8912dd !important;
 }
+
+.text-crimson {
+    color: #ff6b81 !important;
+}
+
+
+.text-black-c {
+    color: #464646 !important;
+}
+
+.text-yellow {
+    color: #f6e58d !important;
+}
+
+.text-green {
+    color: #7bed9f !important;
+}
+
 
 .bg-purple {
     background-color: #b756ef;
 }
 
 .bg-purple-dark {
-    background-color: #b756ef !important;
+    background-color: #6b039f !important;
 }
 
 .border-white {
@@ -341,6 +374,15 @@
     display: none;
 }
 
+/*text styles*/
+.letter-space-1 {
+    letter-spacing: 5px;
+}
+
+.text-shadow-sm {
+    text-shadow: 1px 2px 7px #525252;
+}
+
 /*btn styles*/
 .btn-purple {
     background-color: #b756ef !important;
@@ -348,8 +390,16 @@
 }
 
 /*z-index*/
+.z-index-90 {
+    z-index: 90;
+}
+
 .z-index-100 {
     z-index: 100;
+}
+
+.z-index-1000 {
+    z-index: 1000;
 }
 
 /*shadow styles*/
@@ -399,6 +449,10 @@
 
     .text-large {
         font-size: 20px;
+    }
+
+    .text-mid-large {
+        font-size: 18px;
     }
 
     .text-center-sm {

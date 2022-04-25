@@ -4,7 +4,7 @@
 const themeConfig = {
   app: {
     appName: 'talentZea',
-    appLogoImage: require('@src/assets/images/logo/logo.svg').default
+    appLogoImage: require('../assets/custom_images/logo.png').default
   },
   layout: {
     isRTL: false,

@@ -11,11 +11,34 @@
 }
 
 .dash-card {
-    width: 23%;
+    width: 25%;
+    height: 300px;
+    background-size: cover;
 }
 
+.dash-card-1 {
+    background-image: linear-gradient(to left top, #fcffb0, #ffe69d, #ffcc96, #ffb497, #ff9f9f);
+}
+
+.dash-card-2 {
+    background-image: linear-gradient(to left top, #f5ff9c, #dbff9f, #beffa6, #9effb2, #7affc0);
+}
+
+.dash-card-3 {
+    background-image: linear-gradient(to right bottom, #d200ff, #a344fe, #7559f5, #4962e5, #2166d0);
+}
+
+.dash-card-4 {
+    background-image: linear-gradient(to left top, #ff5281, #ff70a6, #ff8cc8, #ffa8e4, #ffc2fb);
+}
+
+.dash-card-5 {
+    background-image: linear-gradient(to right bottom, #aafffd, #5ce6ff, #00caff, #00aaff, #3383ff);
+}
+
+
 .dash-card-v {
-    width: 21%;
+    width: 23%;
 }
 
 .sales-card {
@@ -26,7 +49,6 @@
 
 .sales-card:hover {
     border-radius: 0 30px 0 0;
-    background-color: #020e41;
     transition: 0.5s;
 }
 
@@ -93,8 +115,165 @@
     height: 100vh;
 }
 
+.banner-container {
+    background-image: linear-gradient(to right, #25052c, #34173a, #442848, #543a57, #644c66);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+video {
+    object-fit: cover;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-attachment: fixed;
+}
+
+.main-service-back {
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.8)
+    );
+    background-image: linear-gradient(to right bottom, #1f1129, #250f3b, #290c4f, #2a0764, #25037a);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.video-intro-back {
+    width:100vw;
+    height: 80vh;
+    background: linear-gradient(
+            rgb(37, 15, 59, 0.8),
+            rgb(42, 7, 100, 0.8)
+    ),
+    url(https://wallpaperaccess.com/full/6836721.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/*.main-service-container-back {*/
+/*    background:*/
+/*            linear-gradient(*/
+/*                    rgba(0, 0, 0, 0.8),*/
+/*                    rgba(0, 0, 0, 0.8)*/
+/*            ),*/
+/*            url(https://wallpaperaccess.com/full/17262.jpg);*/
+/*    background-attachment: fixed;*/
+/*    background-size: cover;*/
+/*}*/
+
+.lower-container-back {
+    height: 60vh;
+    background:
+            linear-gradient(
+                    rgb(37, 15, 59, 0.8),
+                    rgb(42, 7, 100, 0.8)
+            ),
+            url(https://i.pinimg.com/originals/c5/45/87/c545876db0c3dd855c7b2d080368247a.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/*.contact-container-back {*/
+/*    background:*/
+/*            linear-gradient(*/
+/*                    rgba(0, 0, 0, 0.8),*/
+/*                    rgba(0, 0, 0, 0.8)*/
+/*            ),*/
+/*            url(https://pluviophile.net/wp-content/uploads/raindrops-umbrella-wallpaper.jpg);*/
+/*    background-attachment: fixed;*/
+/*    background-size: cover;*/
+/*}*/
+
 .hero-header-font {
-    font-size: 40px;
+    font-size: 60px;
+}
+
+.grayscale-black {
+    filter: grayscale(100%);
+}
+
+.round-element-1 {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    bottom: -5%;
+    left: -3%;
+    background-image: linear-gradient(to right bottom, #c249f9, #985ef7, #6f6aef, #4a70e0, #2d72cd);
+    border-radius: 100%;
+}
+
+.round-element-2 {
+    width: 190px;
+    height: 190px;
+    position: absolute;
+    bottom: 7%;
+    left: 13%;
+    background-image: linear-gradient(to right bottom, #c249f9, #985ef7, #6f6aef, #4a70e0, #2d72cd);
+    border-radius: 50%;
+}
+
+.round-element-3 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -20%;
+    right: 30%;
+    background-image: linear-gradient(to left top, #ff5281, #ff70a6, #ff8cc8, #ffa8e4, #ffc2fb);
+    border-radius: 30%;
+}
+
+.round-element-4 {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    bottom: -5%;
+    right: -3%;
+    background-image: linear-gradient(to left top, #fcffb0, #ffe69d, #ffcc96, #ffb497, #ff9f9f);
+    border-radius: 100%;
+}
+
+.round-element-5 {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    bottom: 15%;
+    right: 13%;
+    background-image: linear-gradient(to left top, #fcffb0, #ffe69d, #ffcc96, #ffb497, #ff9f9f);
+    border-radius: 100%;
+}
+
+.round-element-6 {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 15%;
+    right: 4%;
+    background-image: linear-gradient(to left top, #58e580, #89ec82, #aef289, #cdf993, #e9ffa0);
+    border-radius: 100%;
+}
+
+.counter-element {
+    position: absolute;
+    top: 90vh;
+    width: 100vw;
+}
+
+.counter-inner-element {
+    background-image: linear-gradient(to right, #540073, #5a1f91, #5c36b0, #584cd0, #4962f0);
+}
+
+
+.hero-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 5;
+}
+
+.counter-card {
+    border-radius: 10px;
 }
 
 .hero-inner-container {
@@ -102,11 +281,27 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    z-index: 5;
 }
 
-.animated-back {
-    position: absolute;
-    z-index: -1;
+.hero-btn-1 {
+    padding: 10px 50px;
+    color: white;
+    background-image: linear-gradient(to left top, #5966ff, #8363fb, #a360f6, #be5df0, #d55ae9);
+    font-size: 25px;
+    font-family: Staatliches;
+}
+
+.hero-btn-2 {
+    padding: 10px 50px;
+    color: white;
+    background-image: linear-gradient(to right bottom, #ec0a67, #f50087, #f715ab, #f133d1, #e04ff8);
+    font-size: 25px;
+    font-family: Staatliches;
+}
+
+.hero-btn:hover {
+    color: white;
 }
 
 /*This is the hero back div animation*/
@@ -180,5 +375,13 @@
     .sales-card {
         width: 100%;
         height: 17%;
+    }
+
+    .hero-btn-1 {
+        font-size: 20px;
+    }
+
+    .hero-btn-2 {
+        font-size: 20px;
     }
 }
