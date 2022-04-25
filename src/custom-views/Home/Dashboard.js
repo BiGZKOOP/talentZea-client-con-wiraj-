@@ -1,44 +1,37 @@
 import {
     Card,
     CardBody,
-    CardFooter,
-    Col, Input,
-    Modal,
+    Col, Modal,
     ModalBody,
     ModalHeader,
-    Row, Spinner, UncontrolledDropdown
+    Row, Spinner
 } from "reactstrap"
 import "../../assets/css/dashboard.css"
-import AirpodsSvg from "../../assets/custom_images/svg/Airpods.svg"
 import CreativeSvg from "../../assets/custom_images/svg/Creative.svg"
 import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
 import SkillSvg from "../../assets/custom_images/svg/Skill.svg"
 import Contract from "../../assets/custom_images/svg/Contract"
 import ThinkingSvg from "../../assets/custom_images/svg/Thinking.svg"
-import HandcraftsSvg from "../../assets/custom_images/svg/Handcrafts.svg"
-import Faq from "../../views/pages/faq"
 import MainNav from "../../custom-components/MainNav/MainNav"
 import {useHistory} from "react-router-dom"
 import AudioBtn from "../../custom-components/audioControl/AudioBtn"
-import {Check, Facebook, Instagram, Link, Mail, Music, Phone, Users} from "react-feather"
+import {Check, Facebook, Instagram, Link, Mail, Music, Phone, PlayCircle, Users} from "react-feather"
 import {useEffect, useState} from "react"
 import Headset from "../../assets/custom_images/svg/Headset"
 import {useDispatch, useSelector} from "react-redux"
 import {audioHandle, audioModelLoad} from "../../custom-components/audioControl/action"
-// eslint-disable-next-line no-unused-vars
-import logo from "../../assets/custom_images/logo.png"
-// eslint-disable-next-line no-unused-vars
-import video from "../../assets/videos/intro.mp4"
 import Footer from "../../@core/layouts/components/footer"
 import queryString from "query-string"
 import Cookies from 'universal-cookie'
-import OurWorkMainService from "../../custom-components/MainService/OurWorkMainService"
 import MainServiceSwipper from "../../custom-components/swipers/MainServiceSwipper"
 // eslint-disable-next-line no-unused-vars
 import {motion, useAnimation} from "framer-motion"
 import {useInView} from "react-intersection-observer"
 import BannerSVG from "../../assets/custom_images/svg/BannerSVG"
 import SubServiceWelcomeSVG from "../../assets/custom_images/svg/SubServiceWelcomeSVG"
+import business from "../../assets/custom_images/business.png"
+import video from "../../assets/videos/intro.mp4"
+import SignupWelcomeSVG from "../../assets/custom_images/svg/SignupWelcomeSVG"
 
 const Dashboard = () => {
 
@@ -46,11 +39,12 @@ const Dashboard = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const [show, setShow] = useState(false)
+    const [videoModalShow, setVideoModalShow] = useState(false)
     // eslint-disable-next-line no-unused-vars
     const [logoStyle, setLogoStyle] = useState("fadein-anim delay-8")
     // eslint-disable-next-line no-unused-vars
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
-    const {mainServicesLoad} = useSelector(state => state.loginReducer)
+    const {singleSubLoad} = useSelector(state => state.mainServiceReducer)
 
 
     // eslint-disable-next-line no-unused-vars
@@ -79,10 +73,12 @@ const Dashboard = () => {
         threshold: 0.5
     })
 
+    // eslint-disable-next-line no-unused-vars
     const [ref7, inView7] = useInView({
         threshold: 0.5
     })
 
+    // eslint-disable-next-line no-unused-vars
     const [ref8, inView8] = useInView({
         threshold: 0.5
     })
@@ -361,11 +357,6 @@ const Dashboard = () => {
                             }}
                             animate={animationControl4}
                             className="w-75">
-                            {/*<motion.video autoPlay muted controls="controls" width="700" height="450" loop id="myVideo"*/}
-                            {/*              className="sm-none">*/}
-                            {/*    /!*<video width="700" height="450" controls="controls" poster="image" preload="true">*!/*/}
-                            {/*    <source src={video} type="video/mp4"/>*/}
-                            {/*</motion.video>*/}
                             <div className="swingimg">
                                 <SubServiceWelcomeSVG/>
                             </div>
@@ -403,41 +394,69 @@ const Dashboard = () => {
                     animate={animationControl11}
                     className="round-element-6 swingimg-3 scalable sm-none"/>
             </Row>
+            <Row className="w-100 lower-container-back">
+                <Col lg={6} className="h-100">
+                    <div className="h-100 d-flex align-items-end">
+                        <img src={business} className="w-75 z-index-100"/>
+                    </div>
+                </Col>
+                <Col lg={6} className="d-flex flex-column align-items-start justify-content-center">
+                    <h3 className="text-pink f-Staatliches">Home for best designs</h3>
+                    <h1 className="font-large-3 f-Staatliches text-light">THE NEW WAY OF <span
+                        className="text-pink">#DESIGNING</span></h1>
+                    <p className="mt-3 text-light">In publishing and graphic design, Lorem ipsum is a placeholder text
+                        commonly used to demonstrate the visual form of a document or a typeface without relying on
+                        meaningful content. Lorem ipsum may be used as a placeholder before final copy is available</p>
+                </Col>
+            </Row>
             <div ref={ref5} className="mt-5">
-                <motion.div
-                    initial={{
-                        filter: "grayscale(100%)"
-                    }}
-                    animate={animationControl5}
+                <div
+                    // initial={{
+                    //     filter: "grayscale(100%)"
+                    // }}
+                    // animate={animationControl5}
                     className="main-service-container-back p-3" id="service">
                     <div ref={ref3}>
                         <a name="service"/>
                         <div ref={ref9}>
-                            <motion.div
-                                initial={{
-                                    x: "-100vw"
-                                }}
-                                animate={animationControl9}>
-                                <h1 className="f-Londrina font-large-2 text-purple f-Staatliches"><Check/> Check our
+                            <div
+                                // initial={{
+                                //     x: "-100vw"
+                                // }}
+                                // animate={animationControl9}
+                                className="d-center flex-column"
+                            >
+                                <p className="text-center font-monospace text-purple font-bold letter-space-5">DIGITAL
+                                    ART DESIGNING</p>
+                                <h1 className="f-Londrina f-Staatliches text-center hero-header-font text-black-c">
+                                    <Check/> Check our
                                     services</h1>
-                            </motion.div>
+                                <Col lg={7} sm={10} className="mt-2">
+                                    <p className='text-center text-black-c'>In publishing and graphic design, Lorem
+                                        ipsum is a placeholder text commonly used to
+                                        demonstrate the visual form of a document or a typeface without relying on
+                                        meaningful content. Lorem ipsum may be used as a placeholder before final copy
+                                        is
+                                        available.</p>
+                                </Col>
+                            </div>
                         </div>
-                        <Row className="mt-1 radius-10  d-center flex-wrap d-flex">
+                        <Row className="mt-4 radius-10  d-center flex-wrap d-flex">
                             {
-                                !mainServicesLoad &&
+                                singleSubLoad &&
                                 <div className="d-center flex-column animate__animated animate__bounce">
                                     <Spinner className="text-primary mb-2"/>
                                     <h1 className="text-primary">Loading...</h1>
                                 </div>
                             }
-                            <motion.div
-                                initial={{
-                                    opacity: 0
-                                }}
-                                animate={animationControl3}
+                            <div
+                                // initial={{
+                                //     opacity: 0
+                                // }}
+                                // animate={animationControl3}
                             >
                                 <MainServiceSwipper count={5}/>
-                            </motion.div>
+                            </div>
                             {/*<Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">*/}
                             {/*    <div className="pt-2">*/}
                             {/*        <h2 className="text-center f-Londrina text-light ">COMING MORE...</h2>*/}
@@ -450,7 +469,23 @@ const Dashboard = () => {
                             {/*</Card>*/}
                         </Row>
                     </div>
-                </motion.div>
+                </div>
+            </div>
+            <div className="d-center bg-danger video-intro-back flex-column">
+                <button onClick={() => setVideoModalShow(!videoModalShow)}
+                        className="btn btn-danger video-btn full-round p-1 m-0">
+                    <PlayCircle size={50}/>
+                </button>
+                <div className="mt-2">
+                    <h1 className="f-Staatliches text-light hero-header-font">Check our video presentation</h1>
+                    <div className="mt-2">
+                        <h3 className="text-pink f-courgette text-center">"COLORFUL IDEAS CAME FROM PEACEFUL MINDS"</h3>
+                        <h4 className="text-pink f-courgette text-center">~Talent zea~</h4>
+                    </div>
+                </div>
+                <div className="mt-2">
+                    <button className="btn btn-outline-light text-medium">CONTACT US</button>
+                </div>
             </div>
             <div ref={ref6}>
                 <motion.div
@@ -459,7 +494,7 @@ const Dashboard = () => {
                     }}
                     animate={animationControl6}
                 >
-                    <Row className="sticky-top-custom d-center pt-5 pb-5 lower-container-back text-black-c">
+                    <Row className="sticky-top-custom d-center pt-5 pb-5 text-black-c">
                         <Col lg={6} sm={12}>
                             <div
                                 ref={ref}>
@@ -469,7 +504,7 @@ const Dashboard = () => {
                                     }}
                                     animate={animationControl}
                                 >
-                                    <h1 className="f-Londrina font-large-2 text-center text-black-c">Why <span
+                                    <h1 className="f-Staatliches hero-header-font text-center text-black-c">Why <span
                                         className="text-purple">Talent Zea</span> ?</h1>
                                     <p className="text-small f-shippori line-h-3 text-center">
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -483,106 +518,142 @@ const Dashboard = () => {
                                 </motion.div>
                             </div>
                         </Col>
-                        <Row className="mt-5 d-flex justify-content-around w-100 ml-1">
-                            <div ref={ref2} className="dash-card">
-                                <motion.div
-                                    initial={{
-                                        opacity: 0
-                                    }}
-                                    animate={animationControl2}>
-                                    <Card
-                                        className="scalable bg-primary">
-                                        <div
-                                            className="pt-2">
-                                            <h2 className="text-center text-light f-Londrina">#CREATIVE</h2>
-                                        </div>
-                                        <CardBody>
-                                            <CreativeSvg/>
-                                        </CardBody>
-                                    </Card>
-                                </motion.div>
+                        <Row className="mt-5 d-center w-100 pl-1">
+                            <div className="dash-card dash-card-1 m-0 p-0">
+                                <CardBody>
+                                    <CreativeSvg/>
+                                </CardBody>
                             </div>
-                            <div className="dash-card">
-                                <motion.div
-                                    initial={{
-                                        opacity: 0
-                                    }}
-                                    animate={animationControl2}>
-                                    <Card className="scalable bg-foursquare">
-                                        <div className="pt-2">
-                                            <h2 className="text-center f-Londrina text-light">#FRIENDLY</h2>
-                                        </div>
-                                        <CardBody>
-                                            <FriendlySvg/>
-                                        </CardBody>
-                                    </Card>
-                                </motion.div>
+                            <div className="dash-card dash-card-3 m-0 p-0">
+                                <CardBody>
+                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">our motto
+                                        is
+                                        <span className="text-yellow"> creativity</span></h1>
+                                    <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
+                                        ipsum is a placeholder text commonly used
+                                        to demonstrate the visual form.</h5>
+                                </CardBody>
                             </div>
-                            <div className="dash-card">
-                                <motion.div
-                                    initial={{
-                                        opacity: 0
-                                    }}
-                                    animate={animationControl2}>
-                                    <Card className="scalable bg-success">
-                                        <div className="pt-2">
-                                            <h2 className="text-center text-light f-Londrina">#SKILLFUL</h2>
-                                        </div>
-                                        <CardBody>
-                                            <SkillSvg/>
-                                        </CardBody>
-                                    </Card>
-                                </motion.div>
+                            <div className="dash-card dash-card-2 m-0 p-0">
+                                <CardBody className="d-center">
+                                    <div className="w-75 p-0">
+                                        <SignupWelcomeSVG/>
+                                    </div>
+                                </CardBody>
                             </div>
-                            <div className="dash-card">
-                                <motion.div
-                                    initial={{
-                                        opacity: 0
-                                    }}
-                                    animate={animationControl2}>
-                                    <Card className="scalable bg-primary">
-                                        <div className="pt-2">
-                                            <h2 className="text-center f-Londrina">#24/7 AVAILABLE</h2>
-                                        </div>
-                                        <CardBody>
-                                            <Contract/>
-                                        </CardBody>
-                                    </Card>
-                                </motion.div>
+                            <div className="dash-card dash-card-3 m-0 p-0">
+                                <CardBody>
+                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">Group of
+                                        <span className="text-green"> professionals</span></h1>
+                                    <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
+                                        ipsum is a placeholder text commonly used
+                                        to demonstrate the visual form.</h5>
+                                </CardBody>
                             </div>
+                            <br/>
+                            <div className="dash-card dash-card-3 m-0 p-0">
+                                <CardBody>
+                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">Friendly
+                                        <span className="text-info"> communication</span></h1>
+                                    <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
+                                        ipsum is a placeholder text commonly used
+                                        to demonstrate the visual form.</h5>
+                                </CardBody>
+                            </div>
+                            <div className="dash-card dash-card-5 m-0 p-0">
+                                <CardBody>
+                                    <FriendlySvg/>
+                                </CardBody>
+                            </div>
+                            <div className="dash-card dash-card-3 m-0 p-0">
+                                <CardBody>
+                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">we will
+                                        make you <span className="text-crimson">win</span></h1>
+                                    <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
+                                        ipsum is a placeholder text commonly used
+                                        to demonstrate the visual form.</h5>
+                                </CardBody>
+                            </div>
+                            <div className="dash-card dash-card-4 m-0 p-0">
+                                <CardBody className="d-center">
+                                    <SkillSvg/>
+                                </CardBody>
+                            </div>
+                            {/*<div ref={ref2} className="dash-card m-0 p-0">*/}
+                            {/*    <motion.div*/}
+                            {/*        initial={{*/}
+                            {/*            opacity: 0*/}
+                            {/*        }}*/}
+                            {/*        className="m-0 p-0"*/}
+                            {/*        animate={animationControl2}>*/}
+                            {/*        <Card*/}
+                            {/*            className="scalable bg-primary m-0 p-0">*/}
+                            {/*            <div*/}
+                            {/*                className="pt-2 m-0 p-0">*/}
+                            {/*                <h2 className="text-center text-light f-Londrina">#CREATIVE</h2>*/}
+                            {/*            </div>*/}
+                            {/*            <CardBody>*/}
+                            {/*                <CreativeSvg/>*/}
+                            {/*            </CardBody>*/}
+                            {/*        </Card>*/}
+                            {/*    </motion.div>*/}
+                            {/*</div>*/}
+                            {/*<div className="dash-card">*/}
+                            {/*    <motion.div*/}
+                            {/*        className="m-0 p-0"*/}
+                            {/*        initial={{*/}
+                            {/*            opacity: 0*/}
+                            {/*        }}*/}
+                            {/*        animate={animationControl2}>*/}
+                            {/*        <Card className="scalable bg-foursquare m-0 p-0">*/}
+                            {/*            <div className="pt-2">*/}
+                            {/*                <h2 className="text-center f-Londrina text-light">#FRIENDLY</h2>*/}
+                            {/*            </div>*/}
+                            {/*            /!*<CardBody>*!/*/}
+                            {/*            /!*    <FriendlySvg/>*!/*/}
+                            {/*            /!*</CardBody>*!/*/}
+                            {/*        </Card>*/}
+                            {/*    </motion.div>*/}
+                            {/*</div>*/}
+                            {/*<div className="dash-card">*/}
+                            {/*    <motion.div*/}
+                            {/*        className="m-0 p-0"*/}
+                            {/*        initial={{*/}
+                            {/*            opacity: 0*/}
+                            {/*        }}*/}
+                            {/*        animate={animationControl2}>*/}
+                            {/*        <Card className="scalable bg-success m-0 p-0">*/}
+                            {/*            <div className="pt-2">*/}
+                            {/*                <h2 className="text-center text-light f-Londrina">#SKILLFUL</h2>*/}
+                            {/*            </div>*/}
+                            {/*            /!*<CardBody>*!/*/}
+                            {/*            /!*    <SkillSvg/>*!/*/}
+                            {/*            /!*</CardBody>*!/*/}
+                            {/*        </Card>*/}
+                            {/*    </motion.div>*/}
+                            {/*</div>*/}
+                            {/*<div className="dash-card">*/}
+                            {/*    <motion.div*/}
+                            {/*        className="m-0 p-0"*/}
+                            {/*        initial={{*/}
+                            {/*            opacity: 0*/}
+                            {/*        }}*/}
+                            {/*        animate={animationControl2}>*/}
+                            {/*        <Card className="scalable bg-primary m-0 p-0">*/}
+                            {/*            <div className="pt-2">*/}
+                            {/*                <h2 className="text-center f-Londrina">#24/7 AVAILABLE</h2>*/}
+                            {/*            </div>*/}
+                            {/*            /!*<CardBody>*!/*/}
+                            {/*            /!*    <Contract/>*!/*/}
+                            {/*            /!*</CardBody>*!/*/}
+                            {/*        </Card>*/}
+                            {/*    </motion.div>*/}
+                            {/*</div>*/}
                         </Row>
                     </Row>
                 </motion.div>
             </div>
-            <div ref={ref7}>
-                <div
-                    // initial={{
-                    //     filter: "grayscale(100%)"
-                    // }}
-                    // animate={animationControl7}
-                >
-                    <Row className="d-flex flex-column d-center pt-5 pb-5 contact-container-back">
-                        <div ref={ref8}>
-                            <motion.div
-                                initial={{
-                                    opacity: 0
-                                }}
-                                animate={animationControl8}
-                                className="d-center floating-img">
-                                <Col lg={3} sm={10}>
-                                    <ThinkingSvg/>
-                                </Col>
-                            </motion.div>
-                        </div>
-                        <Col className="mt-3">
-                            <h2 className="text-center f-indie-flower text-black-c">"COLORFUL IDEAS CAME FROM PEACEFUL
-                                MINDS"</h2>
-                            <h4 className="text-center f-indie-flower text-black-c">-Talent Zea-</h4>
-                        </Col>
-                    </Row>
-                </div>
-            </div>
-            <Row className="m-4">
+            <Row className="mt-5 mb-5">
                 <div ref={ref10} className="d-center">
                     <Col lg={10} className="m-0 p-0">
                         <motion.div
@@ -611,39 +682,11 @@ const Dashboard = () => {
                     </Col>
                 </div>
             </Row>
-            <div className="z-index-1000">
-                <AudioBtn/>
-            </div>
-            <motion.div
-                initial={{
-                    x: 0
-                }}
-                animate={animationControl12}
-                className="counter-element d-center overflow-hidden sm-none">
-                <Col lg={8} className="counter-card p-2 counter-inner-element d-flex justify-content-between">
-                    <div className="w-25 d-center flex-column animate__animated animate__bounceInUp">
-                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
-                        <h5 className="font-bold font-monospace text-light">Clients</h5>
-                    </div>
-                    <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInLeft">250+</h1>
-                        <h5 className="font-bold font-monospace text-light">Clients</h5>
-                    </div>
-                    <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInDown">250+</h1>
-                        <h5 className="font-bold font-monospace text-light">Clients</h5>
-                    </div>
-                    <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInRight">250+</h1>
-                        <h5 className="font-bold font-monospace text-light">Clients</h5>
-                    </div>
-                </Col>
-            </motion.div>
             {/*//////////////////////*/}
             {/*Modal starts form here*/}
             {/*//////////////////////*/}
             <Modal isOpen={show} toggle={() => setShow(!show)} className='modal-dialog-centered modal-sm'>
-                <ModalHeader className='bg-primary' toggle={() => setShow(!show)}></ModalHeader>
+                <ModalHeader className='bg-primary' toggle={() => setShow(!show)}/>
                 <ModalBody className='px-sm-5 mx-50 pb-4'>
                     <div className="floating-img mt-2">
                         <Headset/>
@@ -659,6 +702,20 @@ const Dashboard = () => {
             </Modal>
             {/*//////////////////////*/}
             {/*Modal ended*/}
+            {/*//////////////////////*/}
+
+            {/*//////////////////////*/}
+            {/*Vide modal*/}
+            {/*//////////////////////*/}
+            <Modal isOpen={videoModalShow} toggle={() => setVideoModalShow(!videoModalShow)}
+                   className='modal-dialog-centered bg-transparent modal-lg'>
+                <motion.video autoPlay controls="controls" loop id="myVideo"
+                              className="video bg-transparent">
+                    <source src={video} type="video/mp4"/>
+                </motion.video>
+            </Modal>
+            {/*//////////////////////*/}
+            {/*Vide modal*/}
             {/*//////////////////////*/}
             <Footer/>
         </Row>

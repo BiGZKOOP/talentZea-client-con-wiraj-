@@ -7,9 +7,10 @@ import awsconfig from "./aws-exports"
 import React, {Fragment, useEffect} from "react"
 import {getAllCountriesListen} from "./custom-views/Signup/actions"
 import {useDispatch} from "react-redux"
-import {getCurrentUserListen, getMainServicesListen} from "./views/pages/authentication/redux/actions"
+import {getCurrentUserListen} from "./views/pages/authentication/redux/actions"
 import {loadStripe} from "@stripe/stripe-js"
 import {Elements} from "@stripe/react-stripe-js"
+import {getMainServiceByIDListen} from "./custom-views/MainService/actions"
 
 Amplify.configure(awsconfig)
 
@@ -20,7 +21,7 @@ const App = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getMainServicesListen())
+        dispatch(getMainServiceByIDListen("8b6e90fb-e52a-4280-bdae-7432c5a8c69e"))
         dispatch(getCurrentUserListen())
         dispatch(getAllCountriesListen())
     }, [])

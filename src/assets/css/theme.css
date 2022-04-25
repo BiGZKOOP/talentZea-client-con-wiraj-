@@ -332,13 +332,31 @@
     color: #b756ef !important;
 }
 
+.text-pink {
+    color: #f569ff !important;
+}
+
 .text-purple-dark {
     color: #8912dd !important;
 }
 
-.text-black-c {
-    color: #707070 !important;
+.text-crimson {
+    color: #ff6b81 !important;
 }
+
+
+.text-black-c {
+    color: #464646 !important;
+}
+
+.text-yellow {
+    color: #f6e58d !important;
+}
+
+.text-green {
+    color: #7bed9f !important;
+}
+
 
 .bg-purple {
     background-color: #b756ef;
@@ -354,6 +372,15 @@
 
 .brand-name {
     display: none;
+}
+
+/*text styles*/
+.letter-space-1 {
+    letter-spacing: 5px;
+}
+
+.text-shadow-sm {
+    text-shadow: 1px 2px 7px #525252;
 }
 
 /*btn styles*/
