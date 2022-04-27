@@ -163,7 +163,7 @@ video {
 /*}*/
 
 .lower-container-back {
-    height: 60vh;
+    height: 50vh;
     background:
             linear-gradient(
                     rgb(37, 15, 59, 0.8),
@@ -323,7 +323,7 @@ video {
     .hero-header {
         width: 100%;
         height: 80vh;
-        background-image: linear-gradient(to right top, #1b1b1c, #1c1b1e, #1e1c20, #201c22, #221c23);
+        /*background-image: linear-gradient(to right top, #1b1b1c, #1c1b1e, #1e1c20, #201c22, #221c23);*/
     }
 
     .hero-header-font {

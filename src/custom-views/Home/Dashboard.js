@@ -397,7 +397,7 @@ const Dashboard = () => {
             <Row className="w-100 lower-container-back">
                 <Col lg={6} className="h-100">
                     <div className="h-100 d-flex align-items-end">
-                        <img src={business} className="w-75 z-index-100"/>
+                        <img width="70%" src={business} className="z-index-100"/>
                     </div>
                 </Col>
                 <Col lg={6} className="d-flex flex-column align-items-start justify-content-center">
