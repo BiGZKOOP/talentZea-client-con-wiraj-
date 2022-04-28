@@ -7,11 +7,12 @@ import EnterPasswordUsername from "../../custom-components/Signup/EnterPasswordU
 import {fireAlertMessage} from "../../utility/custom-util"
 import OtpSend from "../../custom-components/Signup/OtpSend"
 import UserDetails from "../../custom-components/Signup/UserDetails"
+import {useHistory} from "react-router-dom"
 
 const SignUpView = () => {
 
     const {screenIndex, verifySend} = useSelector(state => state.signUpReducer)
-
+    const history = useHistory()
 
     const handleScreens = () => {
         switch (screenIndex) {
@@ -20,7 +21,7 @@ const SignUpView = () => {
             case 1:
                 return <UserDetails />
             case 2:
-                return verifySend ? <OtpSend widthLG={4}/> : <EnterPasswordUsername/>
+                return verifySend ? history.push("/login") : <EnterPasswordUsername/>
             default:
                 fireAlertMessage("An error occurred")
         }

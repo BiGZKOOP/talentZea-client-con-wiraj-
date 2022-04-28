@@ -202,8 +202,6 @@ video {
 
 .header-purple-grad {
     background-image: linear-gradient(to right bottom, #1f1129, #250f3b, #290c4f, #2a0764, #25037a);
-    background-attachment: fixed;
-    background-size: cover;
 }
 
 .crimson-purple-grad {

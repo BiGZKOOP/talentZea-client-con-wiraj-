@@ -43,9 +43,8 @@ const MainServiceView = () => {
     }, [])
 
 
-    const getImageArray = () => {
-
-        return [singleSubService?.requestMainService?.image?.image1, singleSubService?.requestMainService?.image?.image2, singleSubService?.requestMainService?.image?.image3]
+    const getImageArray = (e) => {
+        return [e.image?.image1, e?.image?.image2, e?.image?.image3]
     }
 
 
@@ -90,7 +89,7 @@ const MainServiceView = () => {
                                 key={index} className="dash-card-v m-2 scalable bg-semi-dark m-0 p-0">
                                 <CardBody className="m-0 p-0">
                                     <div className="m-0 p-0">
-                                        <OurWorkMainService count={1} images={getImageArray()}/>
+                                        <OurWorkMainService count={1} images={getImageArray(e)}/>
                                     </div>
                                     <div className="p-1 pb-0 pt-1">
                                         <h3 className="f-Staatliches">{e?.mainTopic}</h3>

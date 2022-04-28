@@ -1,14 +1,24 @@
 .signup-body {
+    background: linear-gradient(
+            rgb(37, 15, 59, 0.5),
+            rgb(42, 7, 100, 0.5)
+    ),
+    url(https://cutewallpaper.org/23/hd-wallpaper-pink/1245919400.jpg);    /*background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);*/
     background-size: cover;
-    background-attachment: fixed;
-    /*background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);*/
-    background-image: url("https://cdn.wallpapersafari.com/18/64/HbXt9T.jpg");
 }
 
 .signup-inner {
     border: 2px dashed #505050;
     background-blend-mode: darken;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))
+}
+
+.signup-inner-container {
+    background: linear-gradient(
+            rgb(37, 15, 59, 0.2),
+            rgb(42, 7, 100, 0.2)
+    ),
+    url(https://i.pinimg.com/originals/72/96/9f/72969fd2668e33d52f215a3573b485a0.jpg);    background-size: cover;
 }
 
 .double-input {
@@ -25,7 +35,7 @@
 }
 
 .sign-topic {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .sign-labels {
