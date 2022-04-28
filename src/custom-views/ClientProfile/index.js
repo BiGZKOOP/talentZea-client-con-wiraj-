@@ -39,7 +39,7 @@ const Profile = () => {
 
     return (
         <Fragment>
-            <div className="p-1 mb-5 mb-lg-0 w-100 position-sticky">
+            <div className="p-1 mb-5 mb-lg-0 w-100 position-sticky main-service-back">
                 <MainNav index={2}/>
             </div>                <div id='user-profile'>
                     <Row>

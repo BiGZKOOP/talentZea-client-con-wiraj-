@@ -389,6 +389,10 @@
     color: white;
 }
 
+.btn-purple:hover {
+    color: white;
+}
+
 /*z-index*/
 .z-index-90 {
     z-index: 90;

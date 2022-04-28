@@ -28,7 +28,7 @@ const ProfileHeader = ({index}) => {
 
     return (
         <Card className='profile-header mb-2'>
-            <label for="coverImg">
+            <label>
                 <CardImg height={"400px"} className="object-fit" src={"https://wallpaperaccess.com/full/967674.jpg"}
                          alt='User Profile Image' top/>
             </label>
