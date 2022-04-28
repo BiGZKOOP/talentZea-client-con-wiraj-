@@ -6,7 +6,7 @@ const ContactComp = () => {
 
     const history = useHistory()
 
-    return <Row className="ml-0 d-center mt-5 mb-5">
+    return <Row className="ml-0 d-center mt-5 mb-5 position-relative">
         <div className="d-center main-img mb-2 floating-img">
             <FriendlySvg/>
         </div>

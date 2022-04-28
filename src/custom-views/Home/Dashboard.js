@@ -1,7 +1,7 @@
 import {
     Card,
     CardBody,
-    Col, Modal,
+    Col, Input, Modal,
     ModalBody,
     ModalHeader,
     Row, Spinner
@@ -429,8 +429,7 @@ const Dashboard = () => {
                                 <p className="text-center font-monospace text-purple font-bold letter-space-5">DIGITAL
                                     ART DESIGNING</p>
                                 <h1 className="f-Londrina f-Staatliches text-center hero-header-font text-black-c">
-                                    <Check/> Check our
-                                    services</h1>
+                                    <Check/> Check our <span className="text-purple">services</span></h1>
                                 <Col lg={7} sm={10} className="mt-2">
                                     <p className='text-center text-black-c'>In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used to
@@ -441,6 +440,14 @@ const Dashboard = () => {
                                 </Col>
                             </div>
                         </div>
+                        {
+                            !singleSubLoad && <div className="mt-5">
+                                <Col lg={5} sm={12} className="d-flex">
+                                    <Input placeholder="search service..."/>
+                                    <button className="btn btn-primary ml-2 f-Staatliches">search</button>
+                                </Col>
+                            </div>
+                        }
                         <Row className="mt-4 radius-10  d-center flex-wrap d-flex">
                             {
                                 singleSubLoad &&
@@ -449,12 +456,7 @@ const Dashboard = () => {
                                     <h1 className="text-primary">Loading...</h1>
                                 </div>
                             }
-                            <div
-                                // initial={{
-                                //     opacity: 0
-                                // }}
-                                // animate={animationControl3}
-                            >
+                            <div>
                                 <MainServiceSwipper count={5}/>
                             </div>
                             {/*<Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">*/}

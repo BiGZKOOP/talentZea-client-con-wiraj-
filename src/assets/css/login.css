@@ -1,6 +1,19 @@
 .login-back {
-    background-image: url("https://cdn.wallpapersafari.com/18/64/HbXt9T.jpg");
-    /*background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);*/
+    background: linear-gradient(
+            rgb(37, 15, 59, 0.3),
+            rgb(42, 7, 100, 0.3)
+    ),
+    url(https://wallpaperaccess.com/full/6836716.png);    /*background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);*/
     background-attachment: fixed;
     background-size: cover;
 }
+
+.login-back-inner {
+    background: linear-gradient(
+            rgb(37, 15, 59, 0.1),
+            rgb(42, 7, 100, 0.1)
+    ),
+    url(https://wallpaperaccess.com/full/6836716.png);    /*background-image: linear-gradient(to right bottom, #381452, #360f51, #340a51, #310550, #2f004f);*/
+    background-size: cover;
+}
+

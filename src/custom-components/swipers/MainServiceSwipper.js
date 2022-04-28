@@ -1,6 +1,6 @@
 import '@styles/react/libs/swiper/swiper.scss'
 import SwiperResponsive from "../../views/extensions/swiper/SwiperResponsive"
-import {Card, CardBody, CardHeader, CardTitle} from "reactstrap"
+import {Card, CardBody, CardHeader, CardTitle, Col, Input} from "reactstrap"
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react"
 import {useSelector} from "react-redux"
 import OurWorkMainService from "../MainService/OurWorkMainService"

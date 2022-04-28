@@ -4,12 +4,12 @@ import {Check, Clock} from "react-feather"
 const OrderCard = () => {
 
     return <Card>
-        <CardHeader className="d-flex justify-content-between">
-            <h4>Logo Designing</h4>
-            <h1 className="text-warning font-bold">$ 250 /=</h1>
+        <CardHeader className="d-flex justify-content-between light-orange-grad">
+            <h4 className="text-black-c">Logo Designing</h4>
+            <h1 className="text-warning font-bold text-black-c">$ 250 /=</h1>
         </CardHeader>
-        <CardBody>
-            <div className="d-flex align-items-center">
+        <CardBody className="light-orange-grad">
+            <div className="d-flex align-items-center font-bold">
                 <Clock size={13} className="mr-1"/> 2 Days delivery
             </div>
         </CardBody>

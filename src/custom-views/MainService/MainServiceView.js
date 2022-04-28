@@ -43,21 +43,20 @@ const MainServiceView = () => {
     }, [])
 
 
-    const getImageArray = () => {
-
-        return [singleSubService?.requestMainService?.image?.image1, singleSubService?.requestMainService?.image?.image2, singleSubService?.requestMainService?.image?.image3]
+    const getImageArray = (e) => {
+        return [e.image?.image1, e?.image?.image2, e?.image?.image3]
     }
 
 
     if (singleSubLoad) return <ServiceCookLoader/>
     else {
         return <Row>
-            <div className="p-1 mb-lg-0 w-100 sticky-top-custom">
+            <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-1000 main-service-back">
                 <MainNav index={4}/>
             </div>
             <div className="ml-2 mt-4 p-1 d-flex justify-content-between flex-column-sm">
                 <div>
-                    <h1 className="font-bold f-Londrina font-large-2 text-primary">{singleSubService?.requestMainService?.mainTopic}</h1>
+                    <h1 className="font-bold f-Staatliches font-large-2 text-black-c">{singleSubService?.requestMainService?.mainTopic}</h1>
                     <h5 className="lead">We create memories here</h5>
                 </div>
                 <div className="d-flex flex-column-sm">
@@ -69,8 +68,9 @@ const MainServiceView = () => {
             </div>
             <hr/>
             <Col className="mt-5">
-                <Col className="text-center">
-                    <h1 className="f-Londrina font-large-1">{singleSubService?.requestMainService?.mainTopic} services</h1>
+                <Col className="text-center f-Staatliches">
+                    <h4 className="text-purple">We provide you the best !</h4>
+                    <h1 className="f-Staatliches font-large-2">{singleSubService?.requestMainService?.mainTopic} services</h1>
                     <p className="">(Services available {singleSubService?.subMainService?.length})</p>
                 </Col>
                 <Row className="p-2 mt-3 radius-10 d-center flex-wrap d-flex">
@@ -89,18 +89,18 @@ const MainServiceView = () => {
                                 key={index} className="dash-card-v m-2 scalable bg-semi-dark m-0 p-0">
                                 <CardBody className="m-0 p-0">
                                     <div className="m-0 p-0">
-                                        <OurWorkMainService count={1} images={getImageArray()}/>
+                                        <OurWorkMainService count={1} images={getImageArray(e)}/>
                                     </div>
                                     <div className="p-1 pb-0 pt-1">
-                                        <h5 className="font-monospace">{e?.mainTopic}</h5>
+                                        <h3 className="f-Staatliches">{e?.mainTopic}</h3>
                                     </div>
                                     <div className="p-1">
-                                        <p className="font-monospace">We provide you the best designs ever.</p>
+                                        <p className="f-shippori">We provide you the best designs ever.</p>
                                     </div>
                                 </CardBody>
                                 <CardFooter className="p-1 pb-0 d-flex justify-content-end">
-                                    <p className="text-small">starting at
-                                        <button className="btn btn-primary ml-1">$ 120</button>
+                                    <p className="text-small text-black-c f-shippori">starting at
+                                        <button className="btn btn-purple ml-1">$ 120</button>
                                     </p>
                                 </CardFooter>
                             </Card>
@@ -120,14 +120,14 @@ const MainServiceView = () => {
                 <hr/>
             </Col>
             <Row className="ml-2 mt-2">
-                <h1>Explore other services</h1>
-                <div className="mt-1 d-flex flex-wrap">
-                    {
-                        mainServices.map((e, index) => {
-                            return <MainServiceTabs key={index} id={e?._id} topic={e?.mainTopic}/>
-                        })
-                    }
-                </div>
+                {/*<h1>Explore other services</h1>*/}
+                {/*<div className="mt-1 d-flex flex-wrap">*/}
+                {/*    {*/}
+                {/*        mainServices.map((e, index) => {*/}
+                {/*            return <MainServiceTabs key={index} id={e?._id} topic={e?.mainTopic}/>*/}
+                {/*        })*/}
+                {/*    }*/}
+                {/*</div>*/}
             </Row>
             <ContactComp/>
             <AudioBtn/>

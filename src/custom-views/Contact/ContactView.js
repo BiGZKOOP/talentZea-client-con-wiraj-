@@ -49,10 +49,10 @@ const ContactView = () => {
     })
 
     return <Row className="">
-        <div className="p-1 mb-5  mb-lg-0">
+        <div className="p-1 mb-5 mb-lg-0 header-purple-grad">
             <MainNav index={3}/>
         </div>
-        <div className="text-center f-Londrina">
+        <div className="text-center f-Staatliches mt-3">
             <h1 className="font-large-2">Get in touch with us</h1>
             <h4>Your <span className="text-primary">ideas</span> truly matters for us !</h4>
         </div>
@@ -61,7 +61,7 @@ const ContactView = () => {
                 <div className="contact-card w-100">
                     <div className="p-2 contact-card-left">
                         <div>
-                            <h3 className="f-shippori">Contact infomation</h3>
+                            <h3 className="f-shippori">Contact information</h3>
                             <h5 className="f-shippori mt-2">Feel free to contact us for any question you have.</h5>
                         </div>
                         <div className="mt-4 floating-img">

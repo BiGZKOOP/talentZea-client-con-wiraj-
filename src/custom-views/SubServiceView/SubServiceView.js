@@ -40,14 +40,15 @@ const SubServiceView = () => {
     if (singleSubLoad) return <ServiceCookLoader/>
     else {
         return <Row>
-            <div className="p-1 mb-lg-0">
-                <MainNav index={4}/>
+            <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-1000 main-service-back">
+                <MainNav index={1}/>
             </div>
             <Row className="mb-5 flex-column-sm mt-5 mt-0-sm">
                 <div style={{width: "60%"}} className="p-2 d-center w-sm-100">
                     <div className="w-75 w-sm-100">
                         <div className="mb-3">
-                            <h3 className="text-medium">Graphics designing {" > "} Logo designing</h3>
+                            <h3 className="text-medium"><span className="text-danger font-bold">Graphics designing</span> {" > "}
+                                <span className="text-primary font-bold">Logo designing</span></h3>
                         </div>
                         <div>
                             <ServiceMainSwiper count={1} images={getImageArray()}/>
@@ -59,20 +60,21 @@ const SubServiceView = () => {
                             </div>
                             <p className="mt-1">{singleSubServiceByID?.description}</p>
                         </Card>
-                        <hr />
+                        <hr/>
                         <SubServicePricing faq={singleSubServiceByID?.faq}/>
                     </div>
                 </div>
-                <div className="w-sm-100" style={{width: "40%", height: "100vh"}} >
-                    <Card className="p-2">
-                        <h3 className="m-0 p-0 text-success">Order Cards (3)</h3>
+                <div className="w-sm-100" style={{width: "40%", height: "100vh"}}>
+                    <Card className="p-2 crimson-purple-grad">
+                        <h3 className="m-0 p-0 text-light font-bold">Order Cards (3)</h3>
                     </Card>
-                    <div className="p-1 dashed-border-dark radius-10 overflow-auto inset-dark" style={{height: "100vh"}}>
+                    <div className="radius-10 overflow-auto inset-dark p-2 shadow-inset"
+                         style={{height: "100vh"}}>
                         <div>
-                            <OrderCard />
-                            <OrderCard />
-                            <OrderCard />
-                            <OrderCard />
+                            <OrderCard/>
+                            <OrderCard/>
+                            <OrderCard/>
+                            <OrderCard/>
                         </div>
                     </div>
                 </div>

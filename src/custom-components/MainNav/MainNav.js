@@ -9,6 +9,7 @@ import {isUserLoggedIn} from '@utils'
 import {useDispatch} from "react-redux"
 // import {handleLogout} from '@store/authentication'
 import {signoutListen} from "../../custom-views/Signup/actions"
+import "../../assets/css/navigation.css"
 
 const MainNav = ({index}) => {
 
@@ -36,8 +37,8 @@ const MainNav = ({index}) => {
     }
 
     return <Navbar container={false}
-                   className='d-flex justify-content-between bg-transparent justify-content-md-between w-100 z-index-1000'
-                   expand='md' light>
+                   className='d-flex justify-content-between justify-content-md-between w-100 z-index-1000'
+                   expand='md'>
         <div className="brand-name ml-2 ml-lg-0">
             <img width="100px" className="object-fit" src={logo}/>
         </div>
@@ -51,13 +52,13 @@ const MainNav = ({index}) => {
                 >
                     <img width="120px" className="object-fit" src={logo}/>
                 </div>
-                <div className="d-flex m-0 p-0">
+                <div className="d-flex m-0 p-0 d-center">
                     <Nav className='mb-0' pills>
                         <NavItem className="ml-5">
                             <NavLink
                                 onClick={() => history.push("/home")}
                                 className='fw-bold' active={linkActive(1)}>
-                                <span className='d-none d-md-block text-light clickable text-large f-Staatliches'>Home</span>
+                                <span className='d-none d-md-block text-light clickable nav-font f-Staatliches'>Home</span>
                                 <Home className='d-block d-md-none' size={14}/>
                             </NavLink>
                         </NavItem>
@@ -66,7 +67,7 @@ const MainNav = ({index}) => {
                             <NavLink
                                 onClick={() => history.push("/contact")}
                                 className='fw-bold' active={linkActive(3)}>
-                                <span className='d-none d-md-block text-light text-large clickable f-Staatliches'>Contact</span>
+                                <span className='d-none d-md-block text-light nav-font clickable f-Staatliches'>Contact</span>
                                 <Phone className='d-block d-md-none' size={14}/>
                             </NavLink>
                         </NavItem>
@@ -77,7 +78,7 @@ const MainNav = ({index}) => {
                                 className='fw-bold' active={linkActive(4)}>
                             <span className='d-none d-md-block clickable'>
                                 <a href="http://localhost:3000/home#service"
-                                   className="text-decoration-none text-light text-large f-Staatliches">Service</a>
+                                   className="text-decoration-none text-light nav-font f-Staatliches">Service</a>
                             </span>
 
                                 <Phone className='d-block d-md-none' size={14}/>
@@ -85,10 +86,10 @@ const MainNav = ({index}) => {
                         </NavItem>
                         <NavItem>
                             <div className="d-flex align-items-center m-0 p-0">
-                                <div className="mr-2">
+                                <div className="ml-2 mr-2">
                                     {
                                         isUserLoggedIn() && <button
-                                            className="w-100 clickable cursor-pointer text-mid-large f-Staatliches btn btn-gradient-danger"
+                                            className="w-100 clickable cursor-pointer text-mid-large f-Staatliches btn btn-outline-danger"
                                             onClick={() => HandlesignoutUser()}>
                                             Logout
                                         </button>
@@ -96,7 +97,7 @@ const MainNav = ({index}) => {
                                     {
                                         !isUserLoggedIn() &&
                                         <button
-                                            className="w-100 clickable btn btn-gradient-success text-mid-large cursor-pointer f-Staatliches"
+                                            className="w-100 clickable btn btn-outline-success text-mid-large cursor-pointer f-Staatliches"
                                             onClick={() => history.push("/login")}>
                                             Login
                                         </button>

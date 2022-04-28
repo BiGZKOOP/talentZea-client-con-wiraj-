@@ -18,9 +18,9 @@ const WelcomeComp = () => {
     }
 
 
-    return <div className='auth-inner signup-body m-0 d-center'>
+    return <div className='auth-inner signup-body m-0 d-center signup-back-inner'>
         <Col
-            className='d-flex align-items-center shadow-lg radius-20 auth-bg px-2 p-5'
+            className='d-flex align-items-center signup-inner-container shadow-lg radius-20 auth-bg px-2 p-5'
             lg='4' sm='2'>
             <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
                 <div className="d-center floating-img">
@@ -31,14 +31,14 @@ const WelcomeComp = () => {
                 <div className="d-center mt-4">
                     <button
                         onClick={changeScreens}
-                        className="btn btn-primary p-1">
+                        className="btn btn-primary p-1 f-shippori">
                         CLICK HERE TO START THE JOURNEY !
                     </button>
                 </div>
                 <div
                     onClick={routeToLogin}
                     className="d-flex justify-content-center pointer mt-2">
-                    <p className="text-primary font-bold clickable">
+                    <p className="text-white lead font-bold clickable">
                         Back to login
                     </p>
                 </div>
