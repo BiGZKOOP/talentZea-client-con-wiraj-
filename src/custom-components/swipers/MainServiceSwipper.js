@@ -55,7 +55,7 @@ const MainServiceSwipper = ({isRtl, count}) => {
                         return <SwiperSlide className="sales-card bg-light cursor-pointer">
                             <Card
                                 onClick={() => {
-                                    history.push(`/service/${e?._id}`)
+                                    history.push(`/sub-service/${e?._id}`)
                                 }}
                                 className="sales-card m-2 bg-semi-dark m-0 p-0 bg-light">
                                 <CardBody className="p-0">
