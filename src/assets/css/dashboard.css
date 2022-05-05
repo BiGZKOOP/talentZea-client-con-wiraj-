@@ -214,6 +214,10 @@ video {
     box-shadow: 1px 1px 10px #727272 inset;
 }
 
+.shadow-inset-light {
+    box-shadow: 1px 1px 6px #797979 inset;
+}
+
 .round-element-1 {
     width: 220px;
     height: 220px;
