@@ -27,7 +27,7 @@ const handleOrderFinisher = (dispatch) => {
     dispatch(handleOrderStateListen(true))
 }
 
-function usePaymentForm(status, user, amount, dispatch, history) {
+function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDelivery, dispatch, history) {
     const stripe = useStripe()
     const elements = useElements()
 
@@ -64,21 +64,30 @@ function usePaymentForm(status, user, amount, dispatch, history) {
                 orderStatus: status,
                 paymentMethodId,
                 stripeCustomerId: user.stripeCustomerId,
-                amount
+                amount: parseInt(amount),
+                revisions,
+                sourceFiles,
+                expressDelivery
             })),
             headers: {
                 'Content-Type': 'application/json'
             }
         }).then((res) => {
             res.json().then(data => {
-                toast.success(<ToastComponent id={"12121XasdD"} />, {
+                alert(data?.data?.statusCode)
+                console.log(data)
+                toast.success(<ToastComponent id={data?.data?._id}/>, {
                     icon: false,
                     autoClose: 2000,
                     hideProgressBar: true,
                     closeButton: false
                 })
                 handleOrderFinisher(dispatch)
-                history.push(`/order/${data.data._id}`)
+                history.push(`/order/${data.data?._id}`)
+            }).catch(err => {
+                handleOrderFinisher(dispatch)
+                console.log(err.message)
+                fireAlertError("Hmm...", "Looks like something went wrong !")
             })
         }).catch(err => {
             handleOrderFinisher(dispatch)
