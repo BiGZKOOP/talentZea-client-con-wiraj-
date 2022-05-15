@@ -65,7 +65,7 @@ function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDel
                 orderStatus: status,
                 paymentMethodId,
                 stripeCustomerId: user.stripeCustomerId,
-                amount: parseInt(amount),
+                amount: parseInt(amount) * 100,
                 revisions,
                 sourceFiles,
                 expressDelivery,

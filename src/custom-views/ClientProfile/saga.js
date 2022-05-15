@@ -5,7 +5,12 @@ import {getIDToken} from "../../utility/Utils"
 import {signupSendingLoadingEnd, signupSendingLoadingStart} from "../Signup/actions"
 import {deleteAttrFromObject, fireAlertCustom, jsonToFormData} from "../../utility/custom-util"
 import {getCurrentUserListen} from "../../views/pages/authentication/redux/actions"
-import {imageUploadProgress} from "./actions"
+import {
+    getAllOrdersByCustomerSuccess, getOrderByIDSuccess,
+    handleGetCustomerAllOrderByIDLoader,
+    handleGetCustomerOrderByIDLoader,
+    imageUploadProgress
+} from "./actions"
 
 // eslint-disable-next-line no-unused-vars
 const profileDetailsUpdateAsync = async (data, id) => {
@@ -52,6 +57,20 @@ export const coverImageUpdateAsync = async (data) => {
         fireAlertCustom("Yeeeha !!", "Your cover image is up to date", "success")
         return res
     }).catch(err => console.error(err))
+}
+
+export const getAllOrdersByCustomerIDAsync = async (id) => {
+
+    return await axios.get(`order-service/customer/${id}`).then(res => res).catch(err => {
+        console.error(err.message)
+    })
+}
+
+export const getOrderByIDAsync = async (id) => {
+
+    return await axios.get(`order-service/order-service/${id}`).then(res => res).catch(err => {
+        console.error(err.message)
+    })
 }
 
 ////////////////////
@@ -101,10 +120,44 @@ export function* profileUpdateCB(action) {
     }
 }
 
+export function* getAllOrdersByCustomerIDCB(action) {
+
+    const {payload} = action
+
+    try {
+        yield put(handleGetCustomerAllOrderByIDLoader(true))
+        const res = yield call(getAllOrdersByCustomerIDAsync, payload)
+        console.log(res.data)
+        yield put(getAllOrdersByCustomerSuccess(res.data))
+    } catch (err) {
+        console.error(err.message)
+    } finally {
+        yield put(handleGetCustomerAllOrderByIDLoader(false))
+    }
+}
+
+export function* getOrderByIDCB(action) {
+
+    const {payload} = action
+
+    try {
+        yield put(handleGetCustomerOrderByIDLoader(true))
+        const res = yield call(getOrderByIDAsync, payload)
+        console.log(res.data)
+        yield put(getOrderByIDSuccess(res.data))
+    } catch (err) {
+        console.error(err.message)
+    } finally {
+        yield put(handleGetCustomerOrderByIDLoader(false))
+    }
+}
+
 function* watchProfileSagas() {
     yield takeLatest(actionTypes.PROFILE_UPDATE_LISTEN, profileUpdateCB)
     yield takeLatest(actionTypes.PROFILE_IMG_UPDATE_LISTEN, profileImageUpdateCB)
     yield takeLatest(actionTypes.COVER_IMG_UPDATE_LISTEN, coverImageUpdateCB)
+    yield takeLatest(actionTypes.GET_ALL_ORDERS_BY_CUSTOMER_LISTEN, getAllOrdersByCustomerIDCB)
+    yield takeLatest(actionTypes.GET_CUSTOMER_ORDER_BY_ID_LISTEN, getOrderByIDCB)
 }
 
 const profileSagas = [watchProfileSagas]

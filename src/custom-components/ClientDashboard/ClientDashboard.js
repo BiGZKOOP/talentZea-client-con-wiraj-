@@ -6,22 +6,30 @@ import CanceledOrderSVG from "../../assets/custom_images/svg/CanceledOrderSVG"
 import "../../assets/css/ClientDashboard.css"
 import Timeline from "../../@core/components/timeline"
 import {time_linedata} from "../../views/apps/user/view/UserTimeline"
-import ClientDashboardOrderCard from "./ClientDashboardOrderCard"
 import {Bell, Copy} from "react-feather"
-import Avatar from "../../@core/components/avatar"
 import {toast} from "react-toastify"
 import {Clipboard_success_toast} from "../../views/extensions/toastify/ToastTypes"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
+import {getAllOrdersByCustomerListen} from "../../custom-views/ClientProfile/actions"
+import ClientDashboardOrderCard from "./ClientDashboardOrderCard"
 
 const ClientDashboard = () => {
 
     const [ref, setRef] = useState("")
 
-    const {allOrder} = useSelector(state => state.clientOrderReducer)
+    const {user} = useSelector(state => state.loginReducer)
+    const {allCustomerOrders} = useSelector(state => state.clientProfileReducer)
+
+    // eslint-disable-next-line no-unused-vars
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        setRef("http://localhost:3000/home?ref=udaraj")
-    })
+        setRef(`http://localhost:3000/home?ref=${user.referralID}`)
+    }, [])
+
+    useEffect(() => {
+        if (user?._id) dispatch(getAllOrdersByCustomerListen(user?._id))
+    }, [user])
 
     const copyToClipBoard = () => {
         toast(<Clipboard_success_toast />, { icon: false, hideProgressBar: true })
@@ -52,15 +60,15 @@ const ClientDashboard = () => {
                 </Col>
                 <Col>
                     <div className="mb-2">
-                        <h3>Order List ({allOrder?.length})</h3>
+                        <h3>Order List ({allCustomerOrders?.length})</h3>
                     </div>
                     <Card className="overflow-auto p-2 bg-semi-dark d-center" style={{height: "310px"}}>
                         {
-                            !allOrder?.length > 0 && <div className="text-center">
+                            !allCustomerOrders?.length > 0 ? <div className="text-center">
                                 <h3 className="f-courgette">No orders yet !</h3>
                                 <h1 className="f-Staatliches text-large">Let's make an order</h1>
                                 <button className="btn btn-danger mt-2 f-Staatliches text-medium">TO SERVICE</button>
-                            </div>
+                            </div> : <ClientDashboardOrderCard />
                         }
                     </Card>
                 </Col>
