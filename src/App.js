@@ -21,7 +21,7 @@ const App = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getMainServiceByIDListen("8b6e90fb-e52a-4280-bdae-7432c5a8c69e"))
+        dispatch(getMainServiceByIDListen("c9d65f9f-a927-4f7a-9cfc-b2f5d7cbacc2"))
         dispatch(getCurrentUserListen())
         dispatch(getAllCountriesListen())
     }, [])

@@ -4,6 +4,9 @@ import ClientNav from "../../custom-components/ClientDashboard/ClientNav"
 import {useDispatch, useSelector} from "react-redux"
 import {profileImageUpdateListen} from "./actions"
 import {fallback} from "./consts"
+import {useEffect} from "react"
+import {getAllOrdersListen} from "../ClientOrders/actions"
+import "../../assets/css/dashboard.css"
 
 const ProfileHeader = ({index}) => {
 
@@ -25,6 +28,10 @@ const ProfileHeader = ({index}) => {
         if (user?.image) return user?.image
         else return fallback
     }
+
+    useEffect(() => {
+        dispatch(getAllOrdersListen(user._id))
+    }, [])
 
     return (
         <Card className='profile-header mb-2'>

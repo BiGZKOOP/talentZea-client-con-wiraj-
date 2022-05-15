@@ -329,6 +329,31 @@ video {
     color: white;
 }
 
+.none-data-back {
+    background:
+            linear-gradient(
+                    rgba(38, 14, 61, 0.2),
+                    rgb(42, 7, 100, 0.2)
+            ),
+            url(https://wallpaperaccess.com/full/3695752.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.none-data-back-inner {
+    background:
+            linear-gradient(
+                    rgba(38, 14, 61, 0.4),
+                    rgb(42, 7, 100, 0.4)
+            ),
+            url(https://wallpaperaccess.com/full/3695752.jpg);
+    background-size: cover;
+}
+
+.shadow-lg-custom {
+    box-shadow: 5px 4px 15px #2a1646;
+}
+
 /*This is the hero back div animation*/
 @keyframes behindSlider {
     from {

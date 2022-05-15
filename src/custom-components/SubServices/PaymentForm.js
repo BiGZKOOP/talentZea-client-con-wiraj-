@@ -8,7 +8,7 @@ import {useHistory} from "react-router-dom"
 const cardElementOptions = {
     style: {
         base: {
-            color: "white",
+            color: "black",
             fontSize: "15px"
         },
         invalid: {
@@ -29,7 +29,7 @@ const ToastComponent = ({ title, icon, color }) => (
     </Fragment>
 )
 
-const PaymentForm = ({price}) => {
+const PaymentForm = ({price, revisions, sourceFiles, expressDelivery, subServiceID}) => {
 
     const {user} = useSelector(state => state.loginReducer)
     // eslint-disable-next-line no-unused-vars
@@ -38,7 +38,7 @@ const PaymentForm = ({price}) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const { handleSubmit } = usePaymentForm(0, user, price, dispatch, history)
+    const { handleSubmit } = usePaymentForm(0, user, price, revisions, sourceFiles, expressDelivery, subServiceID, dispatch, history)
 
     return (
         <form onSubmit={handleSubmit}>
@@ -48,7 +48,7 @@ const PaymentForm = ({price}) => {
                     className="payment-input mt-1"/>
                 <div className="d-flex justify-content-end mt-2">
                     <button className="btn btn-primary">{
-                        orderLoading ? <Spinner /> : "Pay"
+                        orderLoading ? <Spinner size={14}/> : "Pay"
                     }</button>
                 </div>
             </div>
