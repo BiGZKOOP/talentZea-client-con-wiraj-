@@ -144,12 +144,24 @@ const SubServiceView = () => {
                                         <p>{singleSubServiceByID?.orderDescription}</p>
                                     </div>
                                 </CardBody>
+
+                                {(Boolean(singleSubServiceByID?.revisions?.hide) &&
+                                    Boolean(singleSubServiceByID?.sourceFiles?.hide) &&
+                                    Boolean(singleSubServiceByID?.expressDelivery?.hide)) &&
+                                    <div>
+                                        <p className="text-medium f-courgette text-center text-danger">No Extras !!!</p>
+                                    </div>
+                                }
+
+                                {!(Boolean(singleSubServiceByID?.revisions?.hide) &&
+                                    Boolean(singleSubServiceByID?.sourceFiles?.hide) &&
+                                    Boolean(singleSubServiceByID?.expressDelivery?.hide)) &&
                                 <CardBody className="d-flex flex-column justify-content-between mt-0 pt-0">
                                     <div className="mb-2">
                                         <h3 className="f-Staatliches">Add extras</h3>
                                     </div>
                                     <ul>
-                                        <li hidden={Boolean(!singleSubServiceByID?.revisions?.hide)}>
+                                        <li hidden={Boolean(singleSubServiceByID?.revisions?.hide)}>
                                             <div className="d-flex justify-content-between">
                                                 <div>
                                                     <h5>Number of revisions</h5>
@@ -164,7 +176,7 @@ const SubServiceView = () => {
                                                 className="font-bold">$ {singleSubServiceByID?.revisions?.price}</span>)
                                             </p>
                                         </li>
-                                        <li hidden={Boolean(!singleSubServiceByID?.sourceFiles?.hide)} className="mt-3">
+                                        <li hidden={Boolean(singleSubServiceByID?.sourceFiles?.hide)} className="mt-3">
                                             <div className="d-flex justify-content-between">
                                                 <div>
                                                     <h5>Source files included</h5>
@@ -179,7 +191,7 @@ const SubServiceView = () => {
                                                 className="font-bold">$ {singleSubServiceByID?.sourceFiles?.price}</span>)
                                             </p>
                                         </li>
-                                        <li hidden={Boolean(!singleSubServiceByID?.expressDelivery?.hide)}
+                                        <li hidden={Boolean(singleSubServiceByID?.expressDelivery?.hide)}
                                             className="mt-3">
                                             <div className="d-flex justify-content-between">
                                                 <div>
@@ -198,7 +210,7 @@ const SubServiceView = () => {
                                             </p>
                                         </li>
                                     </ul>
-                                </CardBody>
+                                </CardBody>}
                                 <CardFooter className="d-center">
                                     <buton onClick={() => setShow(!show)} className="btn btn-success w-75">Continue
                                     </buton>
@@ -216,17 +228,13 @@ const SubServiceView = () => {
                                             <CardHeader className="mb-0">
                                                 <span className="f-courgette">Talent Zea</span>
                                                 <h1 className="f-Staatliches font-large-1"><span
-                                                    className="text-danger">Graphics desig|ning</span> {">"} <span
-                                                    className="text-primary">LOGO designing</span></h1>
+                                                    className="text-danger">Graphics designing</span> {">"} <span
+                                                    className="text-primary">{singleSubServiceByID?.mainTopic}</span>
+                                                </h1>
                                             </CardHeader>
                                             <CardBody>
                                                 <div>
-                                                    <p>In publishing and graphic design, Lorem ipsum is a placeholder
-                                                        text
-                                                        commonly used to demonstrate the visual form of a document or a
-                                                        typeface without relying on meaningful content. Lorem ipsum may
-                                                        be
-                                                        used as a placeholder before final copy is available.</p>
+                                                    <p>{singleSubServiceByID?.orderDescription}</p>
                                                 </div>
                                                 <div className="mt-5">
                                                     <h3 className="f-courgette">Pricing & features</h3>
@@ -298,11 +306,12 @@ const SubServiceView = () => {
                                                              price: revPrice
                                                          }}
                                                          sourceFiles={{
-                                                             price:sourcePrice
+                                                             price: sourcePrice
                                                          }}
                                                          expressDelivery={{
                                                              price: expressPrice
                                                          }}
+                                                         subServiceID={singleSubServiceByID?._id}
                                             />
                                         </Card>
                                         <p className="text-center f-courgette">"Every great journey, start from one

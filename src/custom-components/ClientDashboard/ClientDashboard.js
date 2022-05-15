@@ -11,10 +11,13 @@ import {Bell, Copy} from "react-feather"
 import Avatar from "../../@core/components/avatar"
 import {toast} from "react-toastify"
 import {Clipboard_success_toast} from "../../views/extensions/toastify/ToastTypes"
+import {useSelector} from "react-redux"
 
 const ClientDashboard = () => {
 
     const [ref, setRef] = useState("")
+
+    const {allOrder} = useSelector(state => state.clientOrderReducer)
 
     useEffect(() => {
         setRef("http://localhost:3000/home?ref=udaraj")
@@ -49,10 +52,16 @@ const ClientDashboard = () => {
                 </Col>
                 <Col>
                     <div className="mb-2">
-                        <h3>Order List (2)</h3>
+                        <h3>Order List ({allOrder?.length})</h3>
                     </div>
-                    <Card className="overflow-auto p-2 bg-semi-dark" style={{height: "310px"}}>
-                        <ClientDashboardOrderCard/>
+                    <Card className="overflow-auto p-2 bg-semi-dark d-center" style={{height: "310px"}}>
+                        {
+                            !allOrder?.length > 0 && <div className="text-center">
+                                <h3 className="f-courgette">No orders yet !</h3>
+                                <h1 className="f-Staatliches text-large">Let's make an order</h1>
+                                <button className="btn btn-danger mt-2 f-Staatliches text-medium">TO SERVICE</button>
+                            </div>
+                        }
                     </Card>
                 </Col>
             </Row>

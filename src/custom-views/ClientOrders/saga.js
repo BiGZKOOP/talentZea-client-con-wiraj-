@@ -3,9 +3,9 @@ import * as actionTypes from "./actionTypes"
 import {getAllOrderSuccess, handleGetAllOrderLoader} from "./actions"
 import axios from "../../axios/axios"
 
-const getAllOrderAsync = async () => {
+const getAllOrderAsync = async (id) => {
 
-    return axios.get("/order-service").then(res => res).catch(err => {
+    return axios.get(`/order-service/customer/${id}`).then(res => res).catch(err => {
         console.error(err.message)
     })
 }
@@ -14,12 +14,13 @@ const getAllOrderAsync = async () => {
 //ASYNC FINISHED
 ////////////////
 
-export function* getAllOrderCB() {
+export function* getAllOrderCB(action) {
+
+    const {payload} = action
 
     try {
         yield put(handleGetAllOrderLoader(false))
-        const res = yield call(getAllOrderAsync)
-        console.log(res)
+        const res = yield call(getAllOrderAsync, payload)
         yield put(getAllOrderSuccess(res.data))
     } catch (err) {
         console.error(err.message)

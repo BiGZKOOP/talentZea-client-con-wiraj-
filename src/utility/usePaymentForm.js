@@ -3,6 +3,7 @@ import {handleOrderLoaderListen, handleOrderStateListen} from "../custom-views/O
 import React, {Fragment} from "react"
 import {toast} from "react-toastify"
 import {fireAlertError} from "./custom-util"
+import {getIDToken} from "./Utils"
 
 const ToastComponent = ({id}) => (
     <Fragment>
@@ -27,7 +28,7 @@ const handleOrderFinisher = (dispatch) => {
     dispatch(handleOrderStateListen(true))
 }
 
-function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDelivery, dispatch, history) {
+function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDelivery, subServiceID, dispatch, history) {
     const stripe = useStripe()
     const elements = useElements()
 
@@ -67,10 +68,12 @@ function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDel
                 amount: parseInt(amount),
                 revisions,
                 sourceFiles,
-                expressDelivery
+                expressDelivery,
+                subServiceID
             })),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${await getIDToken()}`
             }
         }).then((res) => {
             res.json().then(data => {

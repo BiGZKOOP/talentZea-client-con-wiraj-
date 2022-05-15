@@ -1,10 +1,11 @@
 import * as actionTypes from "./actionTypes"
 
 //Use this to handle the get all orders
-export const getAllOrdersListen = () => {
+export const getAllOrdersListen = (id) => {
 
     return {
-        type: actionTypes.GET_ALL_ORDER_LISTEN
+        type: actionTypes.GET_ALL_ORDER_LISTEN,
+        payload: id
     }
 }
 
