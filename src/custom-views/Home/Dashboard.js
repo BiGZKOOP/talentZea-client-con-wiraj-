@@ -424,7 +424,7 @@ const Dashboard = () => {
                     //     filter: "grayscale(100%)"
                     // }}
                     // animate={animationControl5}
-                    className="main-service-container-back p-3" id="service">
+                    className="main-service-container-back p-3 mb-5" id="service">
                     <div ref={ref3}>
                         <a name="service"/>
                         <div ref={ref9}>
@@ -508,7 +508,7 @@ const Dashboard = () => {
                     }}
                     animate={animationControl6}
                 >
-                    <Row className="sticky-top-custom d-center pt-5 pb-5 text-black-c">
+                    <Row className="sticky-top-custom d-center pt-5 pb-5 text-black-c mt-5">
                         <Col lg={6} sm={12}>
                             <div
                                 className="p-2 p-lg-0"
@@ -520,8 +520,8 @@ const Dashboard = () => {
                                     animate={animationControl}
                                 >
                                     <h1 className="f-Staatliches hero-header-font text-center text-black-c">Why <span
-                                        className="text-purple">Talent Zea</span> ?</h1>
-                                    <p className="text-small f-shippori line-h-3 text-center">
+                                        className="text-purple text-shadow-ex-sm">Talent Zea</span> ?</h1>
+                                    <p className="text-medium text-dark f-courgette line-h-3 text-center">
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum has been
                                         the industry's standard dummy text ever since the 1500s, when an unknown printer

@@ -390,6 +390,10 @@
     text-shadow: 1px 2px 7px #525252;
 }
 
+.text-shadow-ex-sm {
+    text-shadow: 1px 2px 4px #484848;
+}
+
 /*btn styles*/
 .btn-purple {
     background-color: #b756ef !important;
