@@ -52,6 +52,15 @@ export const deleteAttrFromObject = (obj, attr) => {
     return obj
 }
 
+export const deleteMultipleAttrFromObject = (obj, ...attr) => {
+
+    attr.map(e => {
+        deleteAttrFromObject(obj, e)
+    })
+
+    return obj
+}
+
 export const jsonToFormData = (obj) => {
     const formData = new FormData()
     Object.keys(obj).map(e => {

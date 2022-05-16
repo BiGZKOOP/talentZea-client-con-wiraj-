@@ -712,11 +712,11 @@ const Dashboard = () => {
                         <h5 className="font-bold font-monospace text-light">Projects</h5>
                     </div>
                     <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInDown">+</h1>
+                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInDown">+130</h1>
                         <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                     <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInRight">250+</h1>
+                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInRight">80+</h1>
                         <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                 </Col>

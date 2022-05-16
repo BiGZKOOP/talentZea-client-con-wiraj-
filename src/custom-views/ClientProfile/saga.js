@@ -3,13 +3,16 @@ import {call, put, takeLatest} from "redux-saga/effects"
 import axios from "../../axios/axios"
 import {getIDToken} from "../../utility/Utils"
 import {signupSendingLoadingEnd, signupSendingLoadingStart} from "../Signup/actions"
-import {deleteAttrFromObject, fireAlertCustom, jsonToFormData} from "../../utility/custom-util"
+import {
+    deleteMultipleAttrFromObject,
+    fireAlertCustom,
+    jsonToFormData
+} from "../../utility/custom-util"
 import {getCurrentUserListen} from "../../views/pages/authentication/redux/actions"
 import {
     getAllOrdersByCustomerSuccess, getOrderByIDSuccess,
     handleGetCustomerAllOrderByIDLoader,
-    handleGetCustomerOrderByIDLoader,
-    imageUploadProgress
+    handleGetCustomerOrderByIDLoader
 } from "./actions"
 
 // eslint-disable-next-line no-unused-vars
@@ -25,24 +28,21 @@ const profileDetailsUpdateAsync = async (data, id) => {
     }).catch(err => console.error(err))
 }
 
-export const profileImageUpdateAsync = async (dispatch, data, id) => {
+export const profileImageUpdateAsync = async (dispatch, user, id) => {
 
-    //Removing the ID
-    deleteAttrFromObject(data, "_id")
+    deleteMultipleAttrFromObject(user, "_id",
+        "referralCount",
+        "referralID",
+        "stripeCustomerId",
+        "__v")
 
     //Converting json to formData
-    const formData = jsonToFormData(data)
+    const formData = jsonToFormData(user)
 
     return await axios.patch(`/customer/update/${id}`, formData, {
         headers: {
             Authorization: `Bearer ${await getIDToken()}`,
             'content-type': 'application/x-www-form-urlencoded'
-        },
-        onUploadProgress: progressEvent => {
-            const size = data.image.size
-            const current = progressEvent.loaded
-            const percent = (current / size) * 100
-            dispatch(imageUploadProgress(Math.round(percent)))
         }
     }).then(res => {
         fireAlertCustom("Yeeeha !!", "Your profile image is up to date", "success")
@@ -94,9 +94,12 @@ export function* coverImageUpdateCB(action) {
 export function* profileImageUpdateCB(action) {
 
     const {data, dispatch} = action
+
+    data.user.image = data.image
+
     try {
         yield put(signupSendingLoadingStart())
-        yield call(profileImageUpdateAsync, dispatch, data, data._id)
+        yield call(profileImageUpdateAsync, dispatch, data.user, data.id)
         yield put(getCurrentUserListen())
     } catch (err) {
         console.error(err)
@@ -109,7 +112,6 @@ export function* profileUpdateCB(action) {
 
     const {data, id} = action
     try {
-        yield put(signupSendingLoadingStart())
         yield put(signupSendingLoadingStart())
         const res = yield call(profileDetailsUpdateAsync, data, id)
         if (res.status === 201) yield put(getCurrentUserListen())
