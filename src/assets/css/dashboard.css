@@ -354,6 +354,10 @@ video {
     box-shadow: 5px 4px 15px #2a1646;
 }
 
+.sm-only {
+    display: none;
+}
+
 /*This is the hero back div animation*/
 @keyframes behindSlider {
     from {
@@ -422,6 +426,10 @@ video {
         display: none !important;
     }
 
+    .sm-only {
+        display: inherit !important;
+    }
+
     .sales-card {
         width: 100%;
         height: 17%;
@@ -433,5 +441,9 @@ video {
 
     .hero-btn-2 {
         font-size: 20px;
+    }
+
+    .lower-container-back {
+        height: inherit;
     }
 }

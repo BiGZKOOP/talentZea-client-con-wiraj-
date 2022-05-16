@@ -314,8 +314,11 @@ const Dashboard = () => {
 
     return (
         <Row>
+            <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-1000 sm-only header-purple-grad">
+                <MainNav index={1}/>
+            </div>
             <Row className="hero-header overflow-hidden position-relative">
-                <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-1000">
+                <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-1000 sm-none">
                     <MainNav index={1}/>
                 </div>
                 <motion.div
@@ -406,9 +409,9 @@ const Dashboard = () => {
                         <img width="70%" src={business} className="z-index-100"/>
                     </div>
                 </Col>
-                <Col lg={6} className="d-flex flex-column align-items-start justify-content-center">
+                <Col lg={6} className="d-flex flex-column align-items-start justify-content-center p-3 p-lg-0">
                     <h3 className="text-pink f-Staatliches">Home for best designs</h3>
-                    <h1 className="font-large-3 f-Staatliches text-light">THE NEW WAY OF <span
+                    <h1 className="font-large-3 f-Staatliches text-light word-break">THE NEW WAY OF <span
                         className="text-pink">#DESIGNING</span></h1>
                     <p className="mt-3 text-light">In publishing and graphic design, Lorem ipsum is a placeholder text
                         commonly used to demonstrate the visual form of a document or a typeface without relying on
@@ -465,6 +468,7 @@ const Dashboard = () => {
                             <div>
                                 <MainServiceSwipper count={5}/>
                             </div>
+                            <p className="mt-1 f-courgette text-purple">*Swipe to see more</p>
                             {/*<Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">*/}
                             {/*    <div className="pt-2">*/}
                             {/*        <h2 className="text-center f-Londrina text-light ">COMING MORE...</h2>*/}
@@ -479,7 +483,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="d-center bg-danger video-intro-back flex-column w-100 m-0">
+            <div className="d-center bg-danger video-intro-back flex-column w-100 m-0 p-2 p-lg-0">
                 <button onClick={() => setVideoModalShow(!videoModalShow)}
                         className="btn btn-danger video-btn full-round p-1 m-0">
                     <PlayCircle size={50}/>
@@ -487,8 +491,8 @@ const Dashboard = () => {
                 <div className="mt-2">
                     <h1 className="f-Staatliches text-light hero-header-font text-center">Check our video presentation</h1>
                     <div className="mt-2">
-                        <h3 className="text-pink f-courgette text-center">"COLORFUL IDEAS CAME FROM PEACEFUL MINDS"</h3>
-                        <h4 className="text-pink f-courgette text-center">~Talent zea~</h4>
+                        <h3 className="text-pink f-courgette text-center text-medium">"COLORFUL IDEAS CAME FROM PEACEFUL MINDS"</h3>
+                        <h4 className="text-pink f-courgette text-medium text-center">~Talent zea~</h4>
                     </div>
                 </div>
                 <div className="mt-2">
@@ -507,6 +511,7 @@ const Dashboard = () => {
                     <Row className="sticky-top-custom d-center pt-5 pb-5 text-black-c">
                         <Col lg={6} sm={12}>
                             <div
+                                className="p-2 p-lg-0"
                                 ref={ref}>
                                 <motion.div
                                     initial={{
@@ -589,81 +594,11 @@ const Dashboard = () => {
                                     <SkillSvg/>
                                 </CardBody>
                             </div>
-                            {/*<div ref={ref2} className="dash-card m-0 p-0">*/}
-                            {/*    <motion.div*/}
-                            {/*        initial={{*/}
-                            {/*            opacity: 0*/}
-                            {/*        }}*/}
-                            {/*        className="m-0 p-0"*/}
-                            {/*        animate={animationControl2}>*/}
-                            {/*        <Card*/}
-                            {/*            className="scalable bg-primary m-0 p-0">*/}
-                            {/*            <div*/}
-                            {/*                className="pt-2 m-0 p-0">*/}
-                            {/*                <h2 className="text-center text-light f-Londrina">#CREATIVE</h2>*/}
-                            {/*            </div>*/}
-                            {/*            <CardBody>*/}
-                            {/*                <CreativeSvg/>*/}
-                            {/*            </CardBody>*/}
-                            {/*        </Card>*/}
-                            {/*    </motion.div>*/}
-                            {/*</div>*/}
-                            {/*<div className="dash-card">*/}
-                            {/*    <motion.div*/}
-                            {/*        className="m-0 p-0"*/}
-                            {/*        initial={{*/}
-                            {/*            opacity: 0*/}
-                            {/*        }}*/}
-                            {/*        animate={animationControl2}>*/}
-                            {/*        <Card className="scalable bg-foursquare m-0 p-0">*/}
-                            {/*            <div className="pt-2">*/}
-                            {/*                <h2 className="text-center f-Londrina text-light">#FRIENDLY</h2>*/}
-                            {/*            </div>*/}
-                            {/*            /!*<CardBody>*!/*/}
-                            {/*            /!*    <FriendlySvg/>*!/*/}
-                            {/*            /!*</CardBody>*!/*/}
-                            {/*        </Card>*/}
-                            {/*    </motion.div>*/}
-                            {/*</div>*/}
-                            {/*<div className="dash-card">*/}
-                            {/*    <motion.div*/}
-                            {/*        className="m-0 p-0"*/}
-                            {/*        initial={{*/}
-                            {/*            opacity: 0*/}
-                            {/*        }}*/}
-                            {/*        animate={animationControl2}>*/}
-                            {/*        <Card className="scalable bg-success m-0 p-0">*/}
-                            {/*            <div className="pt-2">*/}
-                            {/*                <h2 className="text-center text-light f-Londrina">#SKILLFUL</h2>*/}
-                            {/*            </div>*/}
-                            {/*            /!*<CardBody>*!/*/}
-                            {/*            /!*    <SkillSvg/>*!/*/}
-                            {/*            /!*</CardBody>*!/*/}
-                            {/*        </Card>*/}
-                            {/*    </motion.div>*/}
-                            {/*</div>*/}
-                            {/*<div className="dash-card">*/}
-                            {/*    <motion.div*/}
-                            {/*        className="m-0 p-0"*/}
-                            {/*        initial={{*/}
-                            {/*            opacity: 0*/}
-                            {/*        }}*/}
-                            {/*        animate={animationControl2}>*/}
-                            {/*        <Card className="scalable bg-primary m-0 p-0">*/}
-                            {/*            <div className="pt-2">*/}
-                            {/*                <h2 className="text-center f-Londrina">#24/7 AVAILABLE</h2>*/}
-                            {/*            </div>*/}
-                            {/*            /!*<CardBody>*!/*/}
-                            {/*            /!*    <Contract/>*!/*/}
-                            {/*            /!*</CardBody>*!/*/}
-                            {/*        </Card>*/}
-                            {/*    </motion.div>*/}
-                            {/*</div>*/}
                         </Row>
                     </Row>
                 </motion.div>
             </div>
-            <Row className="mt-5 mb-5">
+            <Row className="mt-5 mb-5 w-100 m-0">
                 <div ref={ref10} className="d-center">
                     <Col lg={10} className="m-0 p-0">
                         <motion.div

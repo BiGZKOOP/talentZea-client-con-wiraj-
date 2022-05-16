@@ -69,7 +69,7 @@ const ClientDashboard = () => {
     }
 
     return <div className="m-0 p-1">
-        <Row className="mt-2">
+        <Row className="mt-2 p-1">
             <div className="mb-2">
                 <h4>Personal affliate link</h4>
             </div>
@@ -82,7 +82,7 @@ const ClientDashboard = () => {
                 </button>
             </Col>
             <p className="f-courgette text-medium text-danger">Share this link to get 10% discount from your next order !!!</p>
-            <Row className="d-sm-center">
+            <Row className="d-sm-center m-0 w-100">
                 <Col sm={12} lg={7}>
                     <div className="mb-2">
                         {/*<h3>Order Timeline</h3>*/}
