@@ -1,40 +1,35 @@
-import {Card, Col, Row} from "reactstrap"
+import {Badge, Card, Col, Row} from "reactstrap"
+import {useSelector} from "react-redux"
+import moment from "moment"
+import {useHistory} from "react-router-dom"
 
 const ClientOrders = () => {
-    return <Row>
+
+    const {allCustomerOrders} = useSelector(state => state.clientProfileReducer)
+    const history = useHistory()
+
+    const handleOrderStateBadge = (state) => {
+        switch (state) {
+            case 0:
+                return <Badge color='light-warning' pill>
+                    Pending
+                </Badge>
+            case 1:
+                return <Badge color='light-primary' pill>
+                    On going
+                </Badge>
+            case 2:
+                return <Badge color='light-success' pill>
+                    Completed
+                </Badge>
+            default:
+                break
+        }
+    }
+
+    return <Row className="m-0">
         <Row className="mt-2">
-            <Col lg={3} sm={12}>
-                <div className="mb-1">
-                    <h3>Order details</h3>
-                </div>
-                <Card className="p-2 bg-semi-dark">
-                    <div className="d-flex justify-content-between">
-                        <p>Order date:-</p>
-                        <p className="ml-2 text-success font-bold">2022.01.01</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>End date:-</p>
-                        <p className="ml-2 text-info font-bold">2022.01.01</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>Order status:-</p>
-                        <p className="font-bold text-danger">Pending</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>Category:-</p>
-                        <p className="ml-2">Graphics designing</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>Sub Category:-</p>
-                        <p className="ml-2">Logo Designing</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p>Order cost:-</p>
-                        <p className="ml-2 font-bold">Rs. 12,000 /=</p>
-                    </div>
-                </Card>
-            </Col>
-            <Col lg={9} sm={12}>
+            <Col lg={12} sm={12}>
                 <div className="mb-1">
                     <h3>Order History</h3>
                 </div>
@@ -42,9 +37,7 @@ const ClientOrders = () => {
                     <table className="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col" className="bg-semi-dark">Order ID</th>
                             <th scope="col" className="bg-semi-dark">order date</th>
-                            <th scope="col" className="bg-semi-dark">End date</th>
                             <th scope="col" className="bg-semi-dark">Status</th>
                             <th scope="col" className="bg-semi-dark">Category</th>
                             <th scope="col" className="bg-semi-dark">Sub Category</th>
@@ -53,54 +46,22 @@ const ClientOrders = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">CD12F12</th>
-                            <td>2020.01.01</td>
-                            <td>2020.01.01</td>
-                            <td className="text-purple font-bold">ON GOING</td>
-                            <td>Web designing</td>
-                            <td>Portfolio build</td>
-                            <td>Rs. 120000 /=</td>
-                            <td>
-                                <button className="btn btn-primary">READ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">CD12F12</th>
-                            <td>2020.01.01</td>
-                            <td>2020.01.01</td>
-                            <td className="text-danger font-bold">PENDING</td>
-                            <td>Web designing</td>
-                            <td>Portfolio build</td>
-                            <td>Rs. 120000 /=</td>
-                            <td>
-                                <button className="btn btn-primary">READ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">CD12F12</th>
-                            <td>2020.01.01</td>
-                            <td>2020.01.01</td>
-                            <td className="text-success font-bold">COMPLETE</td>
-                            <td>Web designing</td>
-                            <td>Portfolio build</td>
-                            <td>Rs. 120000 /=</td>
-                            <td>
-                                <button className="btn btn-primary">READ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">CD12F12</th>
-                            <td>2020.01.01</td>
-                            <td>2020.01.01</td>
-                            <td className="text-danger font-bold">PENDING</td>
-                            <td>Web designing</td>
-                            <td>Portfolio build</td>
-                            <td>Rs. 120000 /=</td>
-                            <td>
-                                <button className="btn btn-primary">READ</button>
-                            </td>
-                        </tr>
+                        {
+                            allCustomerOrders.map(e => {
+                                return <tr>
+                                    <td>{moment(e.createdAt).format("LL")}</td>
+                                    <td className="text-purple font-bold">{handleOrderStateBadge(e?.orderStatus)}</td>
+                                    <td>{e?.subServiceID?.mainService?.mainTopic}</td>
+                                    <td>{e?.subServiceID?.mainTopic}</td>
+                                    <td>Rs. {e?.amount} /=</td>
+                                    <td>
+                                        <button
+                                            onClick={() => history.push(`/order/${e._id}`)}
+                                            className="btn btn-primary">READ</button>
+                                    </td>
+                                </tr>
+                            })
+                        }
                         </tbody>
                     </table>
                 </Card>

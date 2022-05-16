@@ -236,11 +236,11 @@ const Dashboard = () => {
     useEffect(() => {
         if (inView5) {
             animationControl5.start({
-                filter: "none"
+                // filter: "none"
             })
         } else {
             animationControl5.start({
-                filter: "grayscale(100%)"
+                // filter: "grayscale(100%)"
             })
         }
     }, [inView5])
@@ -249,11 +249,11 @@ const Dashboard = () => {
     useEffect(() => {
         if (inView6) {
             animationControl6.start({
-                filter: "none"
+                // filter: "none"
             })
         } else {
             animationControl6.start({
-                filter: "grayscale(100%)"
+                // filter: "grayscale(100%)"
             })
         }
     }, [inView6])
@@ -266,7 +266,7 @@ const Dashboard = () => {
             })
         } else {
             animationControl7.start({
-                filter: "grayscale(100%)"
+                // filter: "grayscale(100%)"
             })
         }
     }, [inView7])
@@ -344,8 +344,14 @@ const Dashboard = () => {
                                 meaningful content. Lorem ipsum may be used as a placeholder before final copy is
                                 available.</p>
                             <div className="w-100 mt-2 d-flex animate__animated animate__fadeInDown">
-                                <motion.button className="btn hero-btn-2 mr-2 clickable">Our services</motion.button>
-                                <motion.button className="btn hero-btn-1 mr-2 clickable">Contact us now</motion.button>
+                                <motion.button
+                                    onClick={() => {
+                                        window.location.href = "https://talentzea.com/home#service"
+                                    }}
+                                    className="btn hero-btn-2 mr-2 clickable">Our services</motion.button>
+                                <motion.button
+                                    onClick={() => history.push("/contact")}
+                                    className="btn hero-btn-1 mr-2 clickable">Contact us now</motion.button>
                             </div>
                             <div className="round-element-3 animate-auto-scale sm-none zindex-minus-1"/>
                         </motion.div>
@@ -395,7 +401,7 @@ const Dashboard = () => {
                     className="round-element-6 swingimg-3 scalable sm-none"/>
             </Row>
             <Row className="w-100 lower-container-back">
-                <Col lg={6} className="h-100">
+                <Col lg={6} className="h-100 sm-none">
                     <div className="h-100 d-flex align-items-end">
                         <img width="70%" src={business} className="z-index-100"/>
                     </div>
@@ -473,26 +479,28 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="d-center bg-danger video-intro-back flex-column">
+            <div className="d-center bg-danger video-intro-back flex-column w-100 m-0">
                 <button onClick={() => setVideoModalShow(!videoModalShow)}
                         className="btn btn-danger video-btn full-round p-1 m-0">
                     <PlayCircle size={50}/>
                 </button>
                 <div className="mt-2">
-                    <h1 className="f-Staatliches text-light hero-header-font">Check our video presentation</h1>
+                    <h1 className="f-Staatliches text-light hero-header-font text-center">Check our video presentation</h1>
                     <div className="mt-2">
                         <h3 className="text-pink f-courgette text-center">"COLORFUL IDEAS CAME FROM PEACEFUL MINDS"</h3>
                         <h4 className="text-pink f-courgette text-center">~Talent zea~</h4>
                     </div>
                 </div>
                 <div className="mt-2">
-                    <button className="btn btn-outline-light text-medium">CONTACT US</button>
+                    <button
+                        onClick={() => history.push("/contact")}
+                        className="btn btn-outline-light text-medium">CONTACT US</button>
                 </div>
             </div>
             <div ref={ref6}>
                 <motion.div
                     initial={{
-                        filter: "grayscale(100%)"
+                        // filter: "grayscale(100%)"
                     }}
                     animate={animationControl6}
                 >
@@ -660,8 +668,8 @@ const Dashboard = () => {
                     <Col lg={10} className="m-0 p-0">
                         <motion.div
                             initial={{
-                                x: "100vw",
-                                filter: "grayscale(100%)"
+                                x: "100vw"
+                                // filter: "grayscale(100%)"
                             }}
                             animate={animationControl10}
                         >
@@ -671,7 +679,8 @@ const Dashboard = () => {
                                         <h1 className="text-light font-large-2 f-Staatliches">MAKE YOUR PROJECT <span
                                             className="text-danger">SHINE</span>.</h1>
                                         <h1 className="text-light f-courgette">just one click away <button
-                                            className="btn btn-primary font-monospace">Contact us</button></h1>
+                                            onClick={() => history.push("/contact")}
+                                            className="btn btn-primary font-monospace mt-2 mt-lg-0">Contact us</button></h1>
                                         <p className="text-light mt-3">Get a <span
                                             className="text-success">professional touch</span> into your project.</p>
                                     </div>

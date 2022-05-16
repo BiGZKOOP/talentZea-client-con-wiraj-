@@ -39,10 +39,10 @@ const MainNav = ({index}) => {
     return <Navbar container={false}
                    className='d-flex justify-content-between justify-content-md-between w-100 z-index-1000'
                    expand='md'>
-        <div className="brand-name ml-2 ml-lg-0">
+        <div className="brand-name ml-2 ml-lg-0 ">
             <img width="100px" className="object-fit" src={logo}/>
         </div>
-        <Button color='dark' className='btn-icon navbar-toggler mr-2' onClick={toggle}>
+        <Button color='secondary' className='btn-icon navbar-toggler mr-2 z-index-1000' onClick={toggle}>
             <AlignJustify size={21}/>
         </Button>
         <Collapse isOpen={isOpen} navbar>
@@ -50,7 +50,7 @@ const MainNav = ({index}) => {
                 <div className="ml-2 mt-0 p-0 ml-lg-0 brand-nav-img clickable"
                      onClick={() => history.push("/")}
                 >
-                    <img width="120px" className="object-fit" src={logo}/>
+                    <img width="120px" className="object-fit " src={logo}/>
                 </div>
                 <div className="d-flex m-0 p-0 d-center">
                     <Nav className='mb-0' pills>
@@ -77,7 +77,7 @@ const MainNav = ({index}) => {
                                 // onClick={() => history.push("/home#service")}
                                 className='fw-bold' active={linkActive(4)}>
                             <span className='d-none d-md-block clickable'>
-                                <a href="http://localhost:3000/home#service"
+                                <a href="https://talentzea.com/home#service"
                                    className="text-decoration-none text-light nav-font f-Staatliches">Service</a>
                             </span>
 

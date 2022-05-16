@@ -8,10 +8,6 @@ const ClientDashboardOrderCard = () => {
     const history = useHistory()
     const {allCustomerOrders} = useSelector(state => state.clientProfileReducer)
 
-    const navToOrderDetailsView = () => {
-        history.push("/order/62e86cda-b484-4448-b844-97b99eb88015")
-    }
-
     console.log(allCustomerOrders)
 
     return <div className="w-100 overflow-auto">
@@ -29,7 +25,7 @@ const ClientDashboardOrderCard = () => {
                         <CardFooter className="d-flex justify-content-between">
                             <h5 className="text-small">Amount: ${e?.amount}.00/=</h5>
                             <button
-                                onClick={navToOrderDetailsView}
+                                onClick={() => history.push(`/order/${e._id}`)}
                                 className="btn btn-primary text-small">Show details
                             </button>
                         </CardFooter>

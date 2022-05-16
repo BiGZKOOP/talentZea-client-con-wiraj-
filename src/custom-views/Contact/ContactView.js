@@ -1,6 +1,7 @@
 import {Card, CardBody, CardHeader, Col, Form, Input, Label, Row} from "reactstrap"
 import MainNav from "../../custom-components/MainNav/MainNav"
 import "../../assets/css/contact.css"
+import "../../assets/css/dashboard.css"
 import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
 import {Mail, PhoneCall} from "react-feather"
 import AudioBtn from "../../custom-components/audioControl/AudioBtn"
