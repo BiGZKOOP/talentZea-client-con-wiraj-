@@ -68,7 +68,7 @@ export const getAllOrdersByCustomerIDAsync = async (id) => {
 
 export const getOrderByIDAsync = async (id) => {
 
-    return await axios.get(`order-service/order-service/${id}`).then(res => res).catch(err => {
+    return await axios.get(`order-service/${id}`).then(res => res).catch(err => {
         console.error(err.message)
     })
 }
@@ -143,7 +143,6 @@ export function* getOrderByIDCB(action) {
     try {
         yield put(handleGetCustomerOrderByIDLoader(true))
         const res = yield call(getOrderByIDAsync, payload)
-        console.log(res.data)
         yield put(getOrderByIDSuccess(res.data))
     } catch (err) {
         console.error(err.message)

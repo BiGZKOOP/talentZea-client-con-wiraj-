@@ -77,7 +77,6 @@ function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDel
             }
         }).then((res) => {
             res.json().then(data => {
-                alert(data?.data?.statusCode)
                 console.log(data)
                 toast.success(<ToastComponent id={data?.data?._id}/>, {
                     icon: false,

@@ -4,7 +4,10 @@ const init = {
     allOrder: [],
     allOrderLoader: false,
     singleOrder: {},
-    singleOrderLoader: false
+    singleOrderLoader: false,
+
+    timeLineData: [],
+    timeLineLoader: true
 }
 
 const clientOrderReducer = (state = init, action) => {
@@ -30,6 +33,17 @@ const clientOrderReducer = (state = init, action) => {
                 ...state,
                 singleOrderLoader: action.payload
             }
+        case actionTypes.HANDLE_ORDER_TIME_LINE_LOADER:
+            return {
+                ...state,
+                timeLineLoader: action.payload
+            }
+        case actionTypes.GET_ORDER_TIME_LINE_SUCCESS: {
+            return {
+                ...state,
+                timeLineData: action.payload
+            }
+        }
         default: return state
     }
 }
