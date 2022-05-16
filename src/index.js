@@ -1,16 +1,16 @@
 // ** React Imports
-import { Suspense, lazy } from 'react'
+import {Suspense, lazy} from 'react'
 import ReactDOM from 'react-dom'
 
 // ** Redux Imports
-import { Provider } from 'react-redux'
-import configureStore  from './redux/store'
+import {Provider} from 'react-redux'
+import configureStore from './redux/store'
 
 // ** Intl, CASL & ThemeColors Context
 import ability from './configs/acl/ability'
-import { ToastContainer } from 'react-toastify'
-import { AbilityContext } from './utility/context/Can'
-import { ThemeContext } from './utility/context/ThemeColors'
+import {ToastContainer} from 'react-toastify'
+import {AbilityContext} from './utility/context/Can'
+import {ThemeContext} from './utility/context/ThemeColors'
 
 // ** i18n
 import './configs/i18n'
@@ -48,17 +48,17 @@ const LazyApp = lazy(() => import('./App'))
 const store = configureStore()
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Suspense fallback={<Spinner />}>
-      <AbilityContext.Provider value={ability}>
-        <ThemeContext>
-          <LazyApp />
-          <ToastContainer newestOnTop />
-        </ThemeContext>
-      </AbilityContext.Provider>
-    </Suspense>
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <Suspense fallback={<Spinner/>}>
+            <AbilityContext.Provider value={ability}>
+                <ThemeContext>
+                    <LazyApp/>
+                    <ToastContainer newestOnTop/>
+                </ThemeContext>
+            </AbilityContext.Provider>
+        </Suspense>
+    </Provider>,
+    document.getElementById('root')
 )
 
 // If you want your app to work offline and load faster, you can change
