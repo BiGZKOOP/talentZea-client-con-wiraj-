@@ -704,15 +704,15 @@ const Dashboard = () => {
                 className="counter-element d-flex justify-content-end overflow-hidden sm-none">
                 <Col lg={8} className="counter-card p-2 counter-inner-element d-flex justify-content-between">
                     <div className="w-25 d-center flex-column animate__animated animate__bounceInUp">
-                        <h1 className="text-light f-Londrina font-large-2">250+</h1>
+                        <h1 className="text-light f-Londrina font-large-2">50+</h1>
                         <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                     <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInLeft">250+</h1>
-                        <h5 className="font-bold font-monospace text-light">Clients</h5>
+                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInLeft">200+</h1>
+                        <h5 className="font-bold font-monospace text-light">Projects</h5>
                     </div>
                     <div className="w-25 d-center flex-column">
-                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInDown">250+</h1>
+                        <h1 className="text-light f-Londrina font-large-2 animate__animated animate__bounceInDown">+</h1>
                         <h5 className="font-bold font-monospace text-light">Clients</h5>
                     </div>
                     <div className="w-25 d-center flex-column">

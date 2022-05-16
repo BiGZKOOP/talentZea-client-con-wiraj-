@@ -1,5 +1,5 @@
 import {Button, Collapse, DropdownItem, Nav, Navbar, NavItem, NavLink} from "reactstrap"
-import {AlignJustify, Briefcase, Home, Info, Key, LogIn, LogOut, Phone, Power, Rss} from "react-feather"
+import {AlignJustify, Briefcase, Gift, Home, Info, Key, LogIn, LogOut, Phone, Power, Rss} from "react-feather"
 import {useEffect, useState} from "react"
 import {Link, useHistory} from "react-router-dom"
 import logo from "../../assets/custom_images/logo.png"
@@ -68,7 +68,7 @@ const MainNav = ({index}) => {
                                 onClick={() => history.push("/contact")}
                                 className='fw-bold' active={linkActive(3)}>
                                 <span className='d-none d-md-block text-light nav-font clickable f-Staatliches'>Contact</span>
-                                <Phone className='d-block d-md-none' size={14}/>
+                                <Gift className='d-block d-md-none' size={14}/>
                             </NavLink>
                         </NavItem>
 
@@ -84,8 +84,8 @@ const MainNav = ({index}) => {
                                 <Phone className='d-block d-md-none' size={14}/>
                             </NavLink>
                         </NavItem>
-                        <NavItem>
-                            <div className="d-flex align-items-center m-0 p-0">
+                        <NavItem className="w-sm-100">
+                            <div className="d-flex res-nav-inner w-sm-100 m-0 p-0">
                                 <div className="ml-2 mr-2">
                                     {
                                         isUserLoggedIn() && <button

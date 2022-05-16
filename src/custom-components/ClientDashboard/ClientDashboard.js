@@ -5,6 +5,7 @@ import PendingOrderSVG from "../../assets/custom_images/svg/PendingOrderSVG"
 import CanceledOrderSVG from "../../assets/custom_images/svg/CanceledOrderSVG"
 import "../../assets/css/ClientDashboard.css"
 import Timeline from "../../@core/components/timeline"
+// eslint-disable-next-line no-unused-vars
 import {time_linedata} from "../../views/apps/user/view/UserTimeline"
 import {Bell, Copy} from "react-feather"
 import {toast} from "react-toastify"
@@ -52,10 +53,12 @@ const ClientDashboard = () => {
             <Row className="d-sm-center">
                 <Col sm={12} lg={7}>
                     <div className="mb-2">
-                        <h3>Order Timeline</h3>
+                        {/*<h3>Order Timeline</h3>*/}
                     </div>
-                    <Card className="mb-5 p-2 bg-semi-dark">
-                        <Timeline data={time_linedata}/>
+                    <Card className="mb-5 p-2 bg-semi-dark d-center" style={{height: "335px"}}>
+                        {/*<Timeline data={time_linedata}/>*/}
+                        <h1 className="text-center f-Staatliches">Under construction</h1>
+                        <h5 className="f-courgette">Shh...a new feature is coming soon !!!</h5>
                     </Card>
                 </Col>
                 <Col>
