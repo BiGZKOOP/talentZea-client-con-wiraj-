@@ -86,14 +86,13 @@ function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDel
                 })
                 handleOrderFinisher(dispatch)
                 history.push(`/order/${data.data?._id}`)
-            }).catch(err => {
+            }).catch(() => {
                 handleOrderFinisher(dispatch)
-                console.log(err.message)
                 fireAlertError("Hmm...", "Looks like something went wrong !")
             })
         }).catch(err => {
             handleOrderFinisher(dispatch)
-            console.log(err.message)
+            fireAlertError("Oops !", err.message)
             fireAlertError("Hmm...", "Looks like something went wrong !")
         })
         if (test) {

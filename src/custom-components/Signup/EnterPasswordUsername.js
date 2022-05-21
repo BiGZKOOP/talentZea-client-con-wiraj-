@@ -14,6 +14,9 @@ const EnterPasswordUsername = () => {
     const {signupLoad, userRegDetails} = useSelector(state => state.signUpReducer)
     // eslint-disable-next-line no-unused-vars
     const [load, setLoad] = useState(false)
+    
+    const [passwordType, setPasswordType] = useState("password")
+    const [rePasswordType, setRePasswordType] = useState("password")
 
     //Use to cook the registration object. This will merge the userdetails and the user cred.
     const cookObject = (username, password) => {
@@ -106,30 +109,65 @@ const EnterPasswordUsername = () => {
                         <Col>
                             <Label
                                 for="nic"
-                                className="sign-labels f-shippori text-medium mb-1 text-light">Password</Label>
+                                className="sign-labels f-shippori text-medium mb-1 text-light">Password <span
+                                className="text-grey">(format:- Example@123)</span></Label>
                             <Input
-                                type="password"
+                                type={passwordType}
                                 name="password"
                                 id="password"
                                 placeHolder="Enter your password"
                                 onChange={formik.handleChange}
                                 value={formik.values.nic}
                             />
+                            <div className="d-flex justify-content-end w-100 align-items-end">
+                                <div className="d-flex align-items-end mt-1">
+                                    <Label htmlFor="password" className="text-grey">Show password</Label>
+                                </div>
+                                <div className='form-switch form-check-success ml-2'>
+                                    <div>
+                                        <Input
+                                            onChange={(e) => {
+                                                e.target.checked ? setPasswordType("text") : setPasswordType("password")
+                                            }}
+                                            type='switch' id='password' name='primary'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </Col>
                     </Row>
                     <Row className="mt-2">
                         <Col>
                             <Label
                                 for="nic"
-                                className="sign-labels f-shippori text-medium mb-1 text-light">Re-enter password</Label>
+                                className="sign-labels f-shippori text-medium mb-1 text-light">
+                                Re-enter password
+                                <span
+                                    className="text-grey">(format:- Example@123)</span>
+                            </Label>
                             <Input
-                                type="password"
+                                type={rePasswordType}
                                 name="rePassword"
                                 id="rePassword"
                                 placeHolder="Re enter your password"
                                 onChange={formik.handleChange}
                                 value={formik.values.rePassword}
                             />
+                            <div className="d-flex justify-content-end w-100 align-items-end">
+                                <div className="d-flex align-items-end mt-1">
+                                    <Label htmlFor="password" className="text-grey">Show password</Label>
+                                </div>
+                                <div className='form-switch form-check-success ml-2'>
+                                    <div>
+                                        <Input
+                                            onChange={(e) => {
+                                                e.target.checked ? setRePasswordType("text") : setRePasswordType("password")
+                                            }}
+                                            type='switch' id='password' name='primary'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </Col>
                     </Row>
                     {

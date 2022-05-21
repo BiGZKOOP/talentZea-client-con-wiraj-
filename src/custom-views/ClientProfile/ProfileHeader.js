@@ -19,6 +19,7 @@ const ProfileHeader = ({index}) => {
     const uploadProfileImage = (file) => {
         dispatch(profileImageUpdateListen({
             id: user._id,
+            user,
             image: file
         }, dispatch))
     }
@@ -34,9 +35,9 @@ const ProfileHeader = ({index}) => {
     }, [])
 
     return (
-        <Card className='profile-header mb-2'>
-            <label>
-                <CardImg height={"400px"} className="object-fit" src={"https://wallpaperaccess.com/full/967674.jpg"}
+        <Card className='profile-header radius-0 mb-2'>
+            <label className="m-0">
+                <CardImg height={"400px"} className="object-fit radius-0" src={"https://wallpaperaccess.com/full/967674.jpg"}
                          alt='User Profile Image' top/>
             </label>
             <input hidden type="file" id="coverImg"/>

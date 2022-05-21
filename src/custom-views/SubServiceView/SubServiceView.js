@@ -86,13 +86,16 @@ const SubServiceView = () => {
 
     useEffect(() => {
         dispatch(getSubServiceByIDListen(id))
-        setBasePrice(singleSubServiceByID?.price)
         setPrice(singleSubServiceByID?.price)
     }, [singleSubServiceByID?.price])
 
     useEffect(() => {
         updatePriceTab()
     }, [sourcePrice, revPrice, expressPrice])
+
+    useEffect(() => {
+        setBasePrice(singleSubServiceByID?.price)
+    }, [basePrice])
 
     if (singleSubLoad) return <ServiceCookLoader/>
     else {

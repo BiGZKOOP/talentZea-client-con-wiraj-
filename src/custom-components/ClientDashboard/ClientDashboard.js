@@ -17,6 +17,9 @@ import ClientDashboardOrderCard from "./ClientDashboardOrderCard"
 const ClientDashboard = () => {
 
     const [ref, setRef] = useState("")
+    const [completeOrders, setCompleteOrders] = useState(0)
+    const [pendingOrders, setPendingOrders] = useState(0)
+    const [onGoingOrders, setOnGoingOrders] = useState(0)
 
     const {user} = useSelector(state => state.loginReducer)
     const {allCustomerOrders} = useSelector(state => state.clientProfileReducer)
@@ -24,13 +27,41 @@ const ClientDashboard = () => {
     // eslint-disable-next-line no-unused-vars
     const dispatch = useDispatch()
 
+    const countOrderCats = () => {
+        let comp = 0
+        let ongoing = 0
+        let pending = 0
+        allCustomerOrders.map(e => {
+            switch (e.orderStatus) {
+                case 0:
+                    pending += 1
+                    break
+                case 1:
+                    ongoing +=  1
+                    break
+                case 2:
+                    comp += 1
+                    break
+                default: break
+            }
+        })
+        setCompleteOrders(comp)
+        setOnGoingOrders(ongoing)
+        setPendingOrders(pending)
+    }
+
     useEffect(() => {
-        setRef(`http://localhost:3000/home?ref=${user.referralID}`)
+        setRef(`https://talentzea.com/home?ref=${user.referralID}`)
     }, [])
 
     useEffect(() => {
         if (user?._id) dispatch(getAllOrdersByCustomerListen(user?._id))
     }, [user])
+
+    //Use this effect to handle the order counts by categories
+    useEffect(() => {
+        countOrderCats()
+    }, [])
 
     const copyToClipBoard = () => {
         toast(<Clipboard_success_toast />, { icon: false, hideProgressBar: true })
@@ -38,11 +69,11 @@ const ClientDashboard = () => {
     }
 
     return <div className="m-0 p-1">
-        <Row className="mt-2">
+        <Row className="mt-2 p-1">
             <div className="mb-2">
                 <h4>Personal affliate link</h4>
             </div>
-            <Col className="mb-3 d-flex" lg={5} sm={12}>
+            <Col className="mb-1 d-flex" lg={5} sm={12}>
                 <Input disabled value={ref}/>
                 <button
                     onClick={copyToClipBoard}
@@ -50,7 +81,8 @@ const ClientDashboard = () => {
                                                                                               className="mr-1"/> copy
                 </button>
             </Col>
-            <Row className="d-sm-center">
+            <p className="f-courgette text-medium text-danger">Share this link to get 10% discount from your next order !!!</p>
+            <Row className="d-sm-center m-0 w-100">
                 <Col sm={12} lg={7}>
                     <div className="mb-2">
                         {/*<h3>Order Timeline</h3>*/}
@@ -84,27 +116,33 @@ const ClientDashboard = () => {
                     <Col lg={4} sm={12}>
                         <Card className="scalable bg-semi-dark">
                             <CardBody className="d-center flex-column">
-                                <SuccessOrderSVG/>
-                                <h4 className="f-Londrina mt-2">Complete Order count</h4>
-                                <h1 className="text-success f-Londrina mb-2">12</h1>
+                                <div className="w-75 d-center">
+                                    <SuccessOrderSVG/>
+                                </div>
+                                <h3 className="f-Londrina mt-2">Complete Order count</h3>
+                                <h1 className="text-success f-Londrina mb-2 font-large-2">{completeOrders}</h1>
                             </CardBody>
                         </Card>
                     </Col>
                     <Col className="mt-lg-0 mt-2" lg={4} sm={12}>
                         <Card className="scalable bg-semi-dark">
                             <CardBody className="d-center flex-column">
-                                <PendingOrderSVG/>
-                                <h4 className="f-Londrina mt-2">Pending Order count</h4>
-                                <h1 className="text-warning f-Londrina mb-2">12</h1>
+                                <div className="w-75 d-center">
+                                    <PendingOrderSVG/>
+                                </div>
+                                <h3 className="f-Londrina mt-2">Pending Order count</h3>
+                                <h1 className="text-warning f-Londrina mb-2 font-large-2">{pendingOrders}</h1>
                             </CardBody>
                         </Card>
                     </Col>
                     <Col lg={4} sm={12}>
                         <Card className="scalable bg-semi-dark">
                             <CardBody className="d-center flex-column">
-                                <CanceledOrderSVG/>
-                                <h4 className="f-Londrina mt-2">Canceled Order count</h4>
-                                <h1 className="text-danger f-Londrina mb-2">12</h1>
+                                <div className="w-75 d-center">
+                                    <CanceledOrderSVG/>
+                                </div>
+                                <h3 className="f-Londrina mt-2">On going Order count</h3>
+                                <h1 className="text-danger f-Londrina mb-2 font-large-2">{onGoingOrders}</h1>
                             </CardBody>
                         </Card>
                     </Col>
