@@ -44,8 +44,9 @@ const Dashboard = () => {
     const [logoStyle, setLogoStyle] = useState("fadein-anim delay-8")
     // eslint-disable-next-line no-unused-vars
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
-    const {singleSubLoad} = useSelector(state => state.mainServiceReducer)
+    const {singleSubLoad, allSubServices} = useSelector(state => state.mainServiceReducer)
 
+    console.log(allSubServices)
 
     // eslint-disable-next-line no-unused-vars
     const {inView, entry, ref} = useInView({

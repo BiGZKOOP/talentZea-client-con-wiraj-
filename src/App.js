@@ -10,7 +10,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {getCurrentUserListen} from "./views/pages/authentication/redux/actions"
 import {loadStripe} from "@stripe/stripe-js"
 import {Elements} from "@stripe/react-stripe-js"
-import {getMainServiceByIDListen} from "./custom-views/MainService/actions"
+import {getAllSubServicesListen} from "./custom-views/MainService/actions"
 
 Amplify.configure(awsconfig)
 
@@ -68,12 +68,12 @@ const App = () => {
         }(window, document, [].slice))
     }, [user])
 
-    const stripePromise = loadStripe("pk_test_51KloEqJqrnEu0zMuXbtIqLeXJdYFvvustqhAZwSkVCGeML4toazedwFu3cIlyVj2Gcl7qI8NQSPI0m84MgFmVp9n00RHxbAqDh")
+    const stripePromise = loadStripe("pk_test_51L1PumBxZvnqnYiLWYRg80uqXcBCi6bYkwqJ4YDRlTyeOvyGQqgsjsrwr5RvvoJrKyYOTog4Q4ZHqPoJxvlvanPt00QoTIkUMh")
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getMainServiceByIDListen("c9d65f9f-a927-4f7a-9cfc-b2f5d7cbacc2"))
+        dispatch(getAllSubServicesListen())
         dispatch(getCurrentUserListen())
         dispatch(getAllCountriesListen())
     }, [])

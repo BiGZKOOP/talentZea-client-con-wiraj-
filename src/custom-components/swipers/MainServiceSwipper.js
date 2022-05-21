@@ -11,7 +11,8 @@ import {useHistory} from "react-router-dom"
 const MainServiceSwipper = ({isRtl, count}) => {
 
     // eslint-disable-next-line no-unused-vars
-    const {singleSubService, subServiceLoad, singleSubLoad} = useSelector(state => state.mainServiceReducer)
+    const {singleSubService, allSubServices, singleSubLoad} = useSelector(state => state.mainServiceReducer)
+
 
     const history = useHistory()
 
@@ -51,7 +52,7 @@ const MainServiceSwipper = ({isRtl, count}) => {
         <CardBody className="m-0 p-0">
             <Swiper dir={isRtl ? 'rtl' : 'ltr'} {...params}>
                 {
-                    !singleSubLoad && singleSubService?.subMainService?.map(e => {
+                    !singleSubLoad && allSubServices.map(e => {
                         return <SwiperSlide className="sales-card bg-light cursor-pointer">
                             <Card
                                 onClick={() => {

@@ -58,3 +58,18 @@ export const getSubServiceByIDSuccess = (data) => {
         payload: data
     }
 }
+
+//Use this to get all the sub services
+export const getAllSubServicesListen = () => {
+    return {
+        type: actionTypes.GET_ALL_SUB_SERVICE_LISTEN
+    }
+}
+
+export const getAllSubServiceSuccess = (payload) => {
+
+    return {
+        type: actionTypes.GET_ALL_SUB_SERVICE_SUCCESS,
+        payload
+    }
+}
