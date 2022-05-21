@@ -29,32 +29,33 @@ const Profile = () => {
     const handleScreen = () => {
         switch (screenIndex) {
             case 1:
-                return <ClientDashboard />
+                return <ClientDashboard/>
             case 2:
-                return <ClientOrders />
+                return <ClientOrders/>
             case 3:
-                return <ClientProfile />
+                return <ClientProfile/>
         }
     }
 
     return (
         <Fragment>
-            <div className="p-1 mb-5 mb-lg-0 w-100 position-sticky">
+            <div className="p-1 mb-lg-0 w-100 position-sticky main-service-back">
                 <MainNav index={2}/>
-            </div>                <div id='user-profile'>
-                    <Row>
-                        <Col sm='12'>
-                            <ProfileHeader index={2}/>
-                        </Col>
+            </div>
+            <div id='user-profile'>
+                <Row>
+                    <Col sm='12'>
+                        <ProfileHeader index={2}/>
+                    </Col>
+                </Row>
+                <section id='profile-info'>
+                    <Row className="p-lg-2">
+                        {handleScreen()}
                     </Row>
-                    <section id='profile-info'>
-                        <Row className="p-lg-2">
-                            {handleScreen()}
-                        </Row>
-                    </section>
-                </div>
-            <AudioBtn />
-            <Footer />
+                </section>
+            </div>
+            <AudioBtn/>
+            <Footer/>
         </Fragment>
     )
 }

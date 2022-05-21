@@ -86,13 +86,13 @@ const UserDetails = () => {
     }, [allCountries, userRegDetails])
 
     return <div className="auth-inner signup-body m-0 d-center">
-        <Card lg={6} className="shadow-lg radius-20 p-2">
-            <h1 className="text-center f-Londrina font-large-1 mb-3">We like to know about you...</h1>
+        <Card lg={6} className="shadow-lg radius-20 p-2 signup-inner-container">
+            <h1 className="text-center f-Londrina font-large-1 mb-3 text-light font-large-2 f-Staatliches">We like to know about you...</h1>
             <Form onSubmit={formik.handleSubmit}>
                 <Col className="col-12 mb-3">
                     <Label
                         for="fullName"
-                        className="f-shippori text-medium mb-1 sign-labels">Full Name</Label>
+                        className="f-shippori text-medium mb-1 sign-labels text-light">Full Name</Label>
                     <Input
                         type="text"
                         name="name"
@@ -106,7 +106,7 @@ const UserDetails = () => {
                     <Col className="double-input mb-3">
                         <Label
                             for="email"
-                            className="f-shippori text-medium mb-1 sign-labels">Email</Label>
+                            className="f-shippori text-medium mb-1 sign-labels text-light">Email</Label>
                         <Input
                             type="email"
                             name="email"
@@ -119,7 +119,7 @@ const UserDetails = () => {
                     <Col className="double-input mb-3">
                         <Label
                             for="nicNumber"
-                            className="sign-labels f-shippori text-medium mb-1">NIC</Label>
+                            className="sign-labels f-shippori text-medium mb-1 text-light">NIC</Label>
                         <Input
                             type="text"
                             name="nicNumber"
@@ -134,7 +134,7 @@ const UserDetails = () => {
                     <Col className="double-input mb-3">
                         <Label
                             for="email"
-                            className="sign-labels f-shippori text-medium mb-1">Country code</Label>
+                            className="sign-labels f-shippori text-medium mb-1 text-light">Country code</Label>
                         <Input
                             type="text"
                             name="countryCode"
@@ -147,7 +147,7 @@ const UserDetails = () => {
                     <Col className="double-input mb-3">
                         <Label
                             for="country"
-                            className="sign-labels f-shippori text-medium mb-1">Country</Label>
+                            className="sign-labels f-shippori text-medium mb-1 text-light">Country</Label>
                         <Input
                             type="select"
                             name="country"
@@ -179,7 +179,7 @@ const UserDetails = () => {
                     <Col className="double-input mb-3">
                         <Label
                             for="dob"
-                            className="sign-labels f-shippori text-medium mb-1">DOB</Label>
+                            className="sign-labels f-shippori text-medium mb-1 text-light">DOB</Label>
                         <Input
                             type="date"
                             name="dob"
@@ -192,7 +192,7 @@ const UserDetails = () => {
                     <Col className="double-input mb-3 ml-2">
                         <Label
                             for="email"
-                            className="sign-labels f-shippori text-medium mb-1">Phone number</Label>
+                            className="sign-labels f-shippori text-medium mb-1 text-light">Phone number</Label>
                         <PhoneInput
                             country={'us'}
                             value={formik.values.phoneNumber}
@@ -201,7 +201,7 @@ const UserDetails = () => {
                     </Col>
                 </div>
                 <div className="d-flex justify-content-end">
-                    <input type="submit" className="btn btn-primary" value="Next"/>
+                    <input type="submit" className="btn btn-gradient-primary" value="Next"/>
                 </div>
             </Form>
         </Card>

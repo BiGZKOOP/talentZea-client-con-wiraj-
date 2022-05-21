@@ -14,6 +14,9 @@ const EnterPasswordUsername = () => {
     const {signupLoad, userRegDetails} = useSelector(state => state.signUpReducer)
     // eslint-disable-next-line no-unused-vars
     const [load, setLoad] = useState(false)
+    
+    const [passwordType, setPasswordType] = useState("password")
+    const [rePasswordType, setRePasswordType] = useState("password")
 
     //Use to cook the registration object. This will merge the userdetails and the user cred.
     const cookObject = (username, password) => {
@@ -22,7 +25,7 @@ const EnterPasswordUsername = () => {
 
         return {
             ...userRegDetails,
-            address:"katubedda bodima",
+            address: "katubedda bodima",
             // username,
             password
         }
@@ -76,13 +79,13 @@ const EnterPasswordUsername = () => {
 
     return <div className='auth-inner signup-body m-0 d-center'>
         <Card
-            className='d-flex align-items-center flex-column shadow-lg signup-prev-inner radius-20 auth-bg px-2 p-5 col-lg-4 col-sm-12'>
+            className='d-flex align-items-center flex-column shadow-lg signup-prev-inner signup-inner-container radius-20 auth-bg px-2 p-5 col-lg-4 col-sm-12'>
             <Col className='px-xl-2 mx-auto' sm='12' md='6' lg='8'>
                 <CardTitle tag='h1' className='fw-bold mb-1 text-center f-Londrina w-100'>
-                    <h1 className="sign-topic">LET'S FINISH YOUR ACCOUNT</h1>
+                    <h1 className="sign-topic text-light">LET'S FINISH YOUR ACCOUNT</h1>
                 </CardTitle>
-                <CardText className='mb-2 text-center f-courgette'><h4>Let's get you
-                    started up</h4></CardText>
+                <CardText className='mb-2 text-center f-courgette text-light text-medium'>Let's get you
+                    started up</CardText>
             </Col>
             <Col className="w-100 mt-2">
                 <Form onSubmit={formik.handleSubmit}>
@@ -90,7 +93,7 @@ const EnterPasswordUsername = () => {
                         <Col>
                             <Label
                                 for="nic"
-                                className="sign-labels f-shippori text-medium mb-1">Username</Label>
+                                className="sign-labels f-shippori text-medium text-light mb-1">Username</Label>
                             <Input
                                 disabled
                                 type="text"
@@ -106,30 +109,65 @@ const EnterPasswordUsername = () => {
                         <Col>
                             <Label
                                 for="nic"
-                                className="sign-labels f-shippori text-medium mb-1">Password</Label>
+                                className="sign-labels f-shippori text-medium mb-1 text-light">Password <span
+                                className="text-grey">(format:- Example@123)</span></Label>
                             <Input
-                                type="password"
+                                type={passwordType}
                                 name="password"
                                 id="password"
                                 placeHolder="Enter your password"
                                 onChange={formik.handleChange}
                                 value={formik.values.nic}
                             />
+                            <div className="d-flex justify-content-end w-100 align-items-end">
+                                <div className="d-flex align-items-end mt-1">
+                                    <Label htmlFor="password" className="text-grey">Show password</Label>
+                                </div>
+                                <div className='form-switch form-check-success ml-2'>
+                                    <div>
+                                        <Input
+                                            onChange={(e) => {
+                                                e.target.checked ? setPasswordType("text") : setPasswordType("password")
+                                            }}
+                                            type='switch' id='password' name='primary'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </Col>
                     </Row>
                     <Row className="mt-2">
                         <Col>
                             <Label
                                 for="nic"
-                                className="sign-labels f-shippori text-medium mb-1">Re-enter password</Label>
+                                className="sign-labels f-shippori text-medium mb-1 text-light">
+                                Re-enter password
+                                <span
+                                    className="text-grey">(format:- Example@123)</span>
+                            </Label>
                             <Input
-                                type="password"
+                                type={rePasswordType}
                                 name="rePassword"
                                 id="rePassword"
                                 placeHolder="Re enter your password"
                                 onChange={formik.handleChange}
                                 value={formik.values.rePassword}
                             />
+                            <div className="d-flex justify-content-end w-100 align-items-end">
+                                <div className="d-flex align-items-end mt-1">
+                                    <Label htmlFor="password" className="text-grey">Show password</Label>
+                                </div>
+                                <div className='form-switch form-check-success ml-2'>
+                                    <div>
+                                        <Input
+                                            onChange={(e) => {
+                                                e.target.checked ? setRePasswordType("text") : setRePasswordType("password")
+                                            }}
+                                            type='switch' id='password' name='primary'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </Col>
                     </Row>
                     {
@@ -138,18 +176,18 @@ const EnterPasswordUsername = () => {
                         </Col>
                     }
                     <Col className="d-center mt-4">
-                        <button className="btn btn-danger">CREATE YOUR ACCOUNT</button>
+                        <button className="btn btn-primary">CREATE YOUR ACCOUNT</button>
                     </Col>
                     <Col className="d-flex justify-content-between mt-3">
                         <p
                             onClick={changeScreens}
-                            className="font-bold clickable text-danger">
+                            className="font-bold clickable text-light f-shippori text-small">
                             BACK TO LOGIN
                         </p>
 
                         <p
                             onClick={goToDetails}
-                            className="font-bold clickable text-warning">
+                            className="font-bold clickable text-light f-shippori text-small">
                             BACK TO DETAILS
                         </p>
                     </Col>

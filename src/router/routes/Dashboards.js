@@ -25,6 +25,11 @@ const DashboardRoutes = [
         meta: {
             authRoute: true
         }
+    },
+    {
+        path: '/order/:id',
+        component: lazy(() => import('../../custom-views/OrderDetailsView/OrderDetailsView')),
+        layout: 'BlankLayout'
     }
 ]
 

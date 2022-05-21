@@ -132,19 +132,19 @@ const Login = () => {
     }
 
     return (
-        <div className='auth-wrapper auth-cover login-back'>
-            <div className='auth-inner m-0 d-center'>
+        <div className='auth-wrapper auth-cover login-back p-0 m-0'>
+            <div className='auth-inner m-0 d-center p-0'>
                 <div
-                    className='d-flex align-items-center justify-content-center shadow-lg radius-20 auth-bg px-2 p-5 col-lg-4 col-10'>
+                    className='d-flex align-items-center justify-content-center shadow-lg radius-20 auth-bg px-2 p-1 col-lg-4 col-10 login-back-inner'>
                     <Col className='px-xl-2' sm='12' md='6' lg='12'>
                         <CardTitle tag='h2' className='fw-bold mb-1 text-center text-dark f-Londrina'>
-                            <h1>WELCOME TO THE TALENT ZEA</h1>
+                            <h1 className="f-Staatliches font-large-2 text-black-c">WELCOME TO THE <span className="text-danger">TALENT ZEA</span></h1>
                         </CardTitle>
-                        <CardText className='mb-2 text-center f-courgette'><h4>Creativity awaits...</h4></CardText>
+                        <CardText className='mb-2 text-center f-Londrina text-black-c text-medium'>Creativity awaits...</CardText>
                         <Form className='auth-login-form mt-2' onSubmit={handleSubmit(onSubmit)}>
                             <div className='mb-1 mt-5'>
                                 <Label className='f-shippori' for='login-email'>
-                                    <h6 className="p-0">Email</h6>
+                                    <h6 className="p-0 text-black-c">Email</h6>
                                 </Label>
                                 <Controller
                                     id='loginEmail'
@@ -164,7 +164,7 @@ const Login = () => {
                             <div className='mb-2'>
                                 <div className='d-flex justify-content-between'>
                                     <Label className='f-shippori' for='login-password'>
-                                        <h6 className="mt-1">Password</h6>
+                                        <h6 className="mt-1 text-black-c">Password</h6>
                                     </Label>
                                 </div>
                                 <Controller
@@ -178,34 +178,32 @@ const Login = () => {
                                 />
                             </div>
                             <div className="text-right f-Londrina mt-2 mb-1 pointer">
-                                <h5 className="text-primary">forgot password ?</h5>
+                                <h5 className="text-white">forgot password ?</h5>
                             </div>
                             {
                                 signupLoad && <Col className="d-center mt-2">
                                     <Spinner color="dark"/>
                                 </Col>
                             }
-                            <Button type='submit' color='primary' block className="p-1 mt-2 mb-3">
+                            <Button type='submit' color='primary' block className="p-1 mt-2 mb-3 f-Staatliches" style={{fontSize:"20px"}}>
                                 Sign in
                             </Button>
                             <div className="text-center mt-2 mb-1 f-Londrina">
-                                <h4 className="clickable">New to the talentZea ?
-                                    <span className="text-primary p-0 pointer"
+                                <h4 className="clickable text-light">New to the talentZea ?
+                                    <span className="text-danger p-0 pointer"
                                           onClick={routeToSignup}> signup here.</span>
                                 </h4>
                             </div>
                         </Form>
                         <div className="text-center mt-2 mb-1 f-Londrina">
-                            <h4 className="clickable" onClick={() => history.push("/pages/profile")}>Back to homepage</h4>
-                        </div>
-                        <div className="text-center mt-2 mb-1 f-Londrina">
-                            <h4 className="clickable" onClick={() => setShow(!show)}>Verify User</h4>
+                            <h4 className="clickable text-light" onClick={() => history.push("/pages/profile")}>Back to
+                                homepage</h4>
                         </div>
                     </Col>
                 </div>
             </div>
             <Modal isOpen={show} toggle={() => setShow(!show)} className='modal-dialog-centered modal-md'>
-                <ModalHeader className='bg-primary' toggle={() => setShow(!show)} />
+                <ModalHeader className='bg-primary' toggle={() => setShow(!show)}/>
                 <ModalBody className='px-sm-5 mx-50 pb-4 mt-2'>
                     <OtpSend widthLG={12}/>
                 </ModalBody>

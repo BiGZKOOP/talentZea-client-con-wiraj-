@@ -4,11 +4,11 @@
 const themeConfig = {
   app: {
     appName: 'talentZea',
-    appLogoImage: require('@src/assets/images/logo/logo.svg').default
+    appLogoImage: require('../assets/custom_images/logo.png').default
   },
   layout: {
     isRTL: false,
-    skin: 'dark', // light, dark, bordered, semi-dark
+    skin: 'light', // light, dark, bordered, semi-dark
     routerTransition: 'fadeIn', // fadeIn, fadeInLeft, zoomIn, none or check this for more transition https://animate.style/
     type: 'horizontal', // vertical, horizontal
     contentWidth: 'full', // full, boxed

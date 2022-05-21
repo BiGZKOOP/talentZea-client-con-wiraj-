@@ -2,14 +2,42 @@ import {call, put, takeLatest} from "redux-saga/effects"
 import * as actionTypes from "./actionTypes"
 import axios from "../../axios/axios"
 import {fireAlertCustom} from "../../utility/custom-util"
-import {getMainServiceSuccess} from "./actions"
+import {
+    getAllSubServiceSuccess,
+    getMainServiceByIDSuccess,
+    getMainServiceSuccess,
+    getSubServiceByIDSuccess,
+    handleGetMainServiceByIDLoader
+} from "./actions"
 
-export const getSubServiceByIdAsync = async (id) => {
+const getSubServiceByIdAsync = async (id) => {
     return await axios.get(`/sub-service/main/${id}`, {
     }).then(res => {
         return res
     }).catch(err => console.error(err))
 }
+
+const getMainServiceByIDAsync = async (id) => {
+
+    return await axios.get(`/main-service/${id}`).then(res => res).catch(err => {
+        console.error(err.message)
+    })
+}
+
+const getSingleSubServiceByIDAsync = async (id) => {
+
+    return await axios.get(`/sub-service/${id}`).then(res => res).catch(err => {
+        console.error(err.message)
+    })
+}
+
+const getAllSubserviceAsync = async () => {
+
+    return await axios.get(`/sub-service`).then(res => res).catch(err => {
+        console.error(err.message)
+    })
+}
+
 
 ////////////////////
 ///ASYNC FINISHED///
@@ -30,8 +58,56 @@ export function* getMainServicesCB(action) {
     }
 }
 
+export function* getMainServiceByIDCB(action) {
+
+    const {payload} = action
+
+    try {
+        yield put(handleGetMainServiceByIDLoader(true))
+        const res = yield call(getMainServiceByIDAsync, payload)
+        yield put(getMainServiceByIDSuccess(res.data.data))
+    } catch (err) {
+        console.error(err.message)
+    } finally {
+        yield put(handleGetMainServiceByIDLoader(false))
+    }
+}
+
+export function* getSingleSubServiceByIDCB(action) {
+
+    const {payload} = action
+
+    try {
+        yield put(handleGetMainServiceByIDLoader(true))
+        const res = yield call(getSingleSubServiceByIDAsync, payload)
+        yield put(getSubServiceByIDSuccess(res.data))
+    } catch (err) {
+        console.error(err.message)
+    } finally {
+        yield put(handleGetMainServiceByIDLoader(false))
+    }
+}
+
+export function* getAllSubServiceCB() {
+
+    try {
+        yield put(handleGetMainServiceByIDLoader(true))
+        const res = yield call(getAllSubserviceAsync)
+        console.log(res)
+        yield put(getAllSubServiceSuccess(res.data))
+    } catch (err) {
+        console.error(err.message)
+    } finally {
+        yield put(handleGetMainServiceByIDLoader(false))
+    }
+}
+
+
 function* watchMainServiceSagas() {
     yield takeLatest(actionTypes.GET_SUB_SERVICES_LISTEN, getMainServicesCB)
+    yield takeLatest(actionTypes.GET_MAIN_SERVICE_BY_ID_LISTEN, getMainServiceByIDCB)
+    yield takeLatest(actionTypes.GET_SUB_SERVICE_BY_ID_LISTEN, getSingleSubServiceByIDCB)
+    yield takeLatest(actionTypes.GET_ALL_SUB_SERVICE_LISTEN, getAllSubServiceCB)
 }
 
 const mainServiceSagas = [watchMainServiceSagas]

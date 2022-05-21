@@ -1,5 +1,5 @@
 import MainNav from "../../custom-components/MainNav/MainNav"
-import {Card, CardFooter, Col, Row, Spinner} from "reactstrap"
+import {Card, CardBody, CardFooter, Col, Input, Label, Row, Spinner} from "reactstrap"
 import CreativeSvg from "../../assets/custom_images/svg/Creative.svg"
 import "../../assets/css/serviceViews.css"
 import "../../assets/css/dashboard.css"
@@ -11,9 +11,11 @@ import {useDispatch, useSelector} from "react-redux"
 import SuccessOrderSVG from "../../assets/custom_images/svg/SuccessOrderSVG"
 import FriendlySvg from "../../assets/custom_images/svg/Friendly.svg"
 import {useEffect} from "react"
-import {getMainServicesListen} from "./actions"
+import {getMainServiceByIDListen} from "./actions"
 import Footer from "../../@core/layouts/components/footer"
 import ContactComp from "../../custom-components/contact-comp"
+import ServiceCookLoader from "../../custom-components/loaders/ServiceCookLoader"
+import MainServiceTabs from "../../custom-components/MainService/MainServiceTabs"
 
 const MainServiceView = () => {
 
@@ -26,7 +28,9 @@ const MainServiceView = () => {
 
     const {fairyAudio} = useSelector(state => state.audioReducer)
     // eslint-disable-next-line no-unused-vars
-    const {subServices, subServiceLoad} = useSelector(state => state.mainServiceReducer)
+    const {singleSubService, subServiceLoad, singleSubLoad} = useSelector(state => state.mainServiceReducer)
+    // eslint-disable-next-line no-unused-vars
+    const {mainServices, mainServicesLoad} = useSelector(state => state.loginReducer)
 
     const transitionAudio = () => {
         fairyAudio.play()
@@ -34,96 +38,102 @@ const MainServiceView = () => {
     }
 
     useEffect(() => {
-        dispatch(getMainServicesListen(id))
-        console.log(subServices)
+        console.log(singleSubService)
+        dispatch(getMainServiceByIDListen(id))
     }, [])
 
-    const validateSubService = () => {
 
-        return subServices.length > 0
-    }
-    
-    const getImageArray = () => {
-
-        if (validateSubService()) {
-            const {image1, image2, image3} = subServices[0].mainService.image
-            return [image1, image2, image3]
-        }
+    const getImageArray = (e) => {
+        return [e.image?.image1, e?.image?.image2, e?.image?.image3]
     }
 
 
-    return <Row>
-        <div className="p-1 mb-5 mb-lg-0 w-100 sticky-top-custom">
-            <MainNav index={2}/>
-        </div>
-        <div className="mt-4 mb-5 d-center flex-column">
-            <div className="main-img floating-img">
-                <CreativeSvg/>
+    if (singleSubLoad) return <ServiceCookLoader/>
+    else {
+        return <Row>
+            <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-1000 main-service-back">
+                <MainNav index={4}/>
             </div>
-            <h1 className="text-center mt-4 f-Londrina text-primary topic-header">{
-                subServices.length > 0 ? subServices[0].mainService.mainTopic : "...."
-            }</h1>
-            <h2 className="f-indie-flower">We create memories here !</h2>
-        </div>
-        <Col className="mt-5">
-            <Col className="text-center">
-                <h1 className="f-Londrina font-large-2">OUR SERVICES</h1>
+            <div className="ml-2 mt-4 p-1 d-flex justify-content-between flex-column-sm">
+                <div>
+                    <h1 className="font-bold f-Staatliches font-large-2 text-black-c">{singleSubService?.requestMainService?.mainTopic}</h1>
+                    <h5 className="lead">We create memories here</h5>
+                </div>
+                <div className="d-flex flex-column-sm">
+                    <div className="d-flex align-items-end mr-5">
+                        <Input placeholder="search service"/>
+                        <button className="btn btn-purple ml-1">Search</button>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <Col className="mt-5">
+                <Col className="text-center f-Staatliches">
+                    <h4 className="text-purple">We provide you the best !</h4>
+                    <h1 className="f-Staatliches font-large-2">{singleSubService?.requestMainService?.mainTopic} services</h1>
+                    <p className="">(Services available {singleSubService?.subMainService?.length})</p>
+                </Col>
+                <Row className="p-2 mt-3 radius-10 d-center flex-wrap d-flex">
+                    {
+                        singleSubService?.subMainService?.length === 0 && <div className="d-center p-4 dashed-border">
+                            <h1 className="animate__animated animate__bounce text-danger f-Londrina">No Services yet !!!</h1>
+                        </div>
+                    }
+                    {
+                        singleSubService?.subMainService?.map((e, index) => {
+                            return <Card
+                                onClick={() => {
+                                    transitionAudio()
+                                    history.push(`/sub-service/${e._id}`)
+                                }}
+                                key={index} className="dash-card-v m-2 scalable bg-semi-dark m-0 p-0">
+                                <CardBody className="m-0 p-0">
+                                    <div className="m-0 p-0">
+                                        <OurWorkMainService count={1} images={getImageArray(e)}/>
+                                    </div>
+                                    <div className="p-1 pb-0 pt-1">
+                                        <h3 className="f-Staatliches">{e?.mainTopic}</h3>
+                                    </div>
+                                    <div className="p-1">
+                                        <p className="f-shippori">We provide you the best designs ever.</p>
+                                    </div>
+                                </CardBody>
+                                <CardFooter className="p-1 pb-0 d-flex justify-content-end">
+                                    <p className="text-small text-black-c f-shippori">starting at
+                                        <button className="btn btn-purple ml-1">$ 120</button>
+                                    </p>
+                                </CardFooter>
+                            </Card>
+                        })
+                    }
+                    {/*<Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">*/}
+                    {/*    <div className="pt-2">*/}
+                    {/*        <h2 className="text-center f-Londrina text-light ">COMING MORE...</h2>*/}
+                    {/*    </div>*/}
+                    {/*    <CardFooter>*/}
+                    {/*        <p>*/}
+                    {/*            More services are on the way...!!!*/}
+                    {/*        </p>*/}
+                    {/*    </CardFooter>*/}
+                    {/*</Card>*/}
+                </Row>
+                <hr/>
             </Col>
-            <Row className="p-2 mt-3 radius-10  d-center flex-wrap d-flex">
-                {
-                    !subServiceLoad && <div className="d-center flex-column animate__animated animate__bounce">
-                        <Spinner className="text-primary mb-2"/>
-                        <h1 className="text-primary">Loading...</h1>
-                    </div>
-                }
-                {
-                    subServiceLoad && subServices?.map((e, index) => {
-                        return <Card className="dash-card m-2 scalable bg-semi-dark">
-                            <div className="pt-2">
-                                <h2 className="text-center f-Londrina">{e?.mainTopic}</h2>
-                            </div>
-                            <CardFooter>
-                                <p>
-                                    {e?.description}
-                                </p>
-                            </CardFooter>
-                            <CardFooter className="d-center">
-                                <button
-                                    onClick={() => {
-                                        transitionAudio()
-                                        history.push(`/sub-service/${index}`)
-                                    }}
-                                    className="btn btn-outline-foursquare">
-                                    SHOW ME...
-                                </button>
-                            </CardFooter>
-                        </Card>
-                    })
-                }
-                <Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">
-                    <div className="pt-2">
-                        <h2 className="text-center f-Londrina text-light ">COMING MORE...</h2>
-                    </div>
-                    <CardFooter>
-                        <p>
-                            More services are on the way...!!!
-                        </p>
-                    </CardFooter>
-                </Card>
+            <Row className="ml-2 mt-2">
+                {/*<h1>Explore other services</h1>*/}
+                {/*<div className="mt-1 d-flex flex-wrap">*/}
+                {/*    {*/}
+                {/*        mainServices.map((e, index) => {*/}
+                {/*            return <MainServiceTabs key={index} id={e?._id} topic={e?.mainTopic}/>*/}
+                {/*        })*/}
+                {/*    }*/}
+                {/*</div>*/}
             </Row>
-        </Col>
-        <Row className="mt-5">
-            <div className="mt-5">
-                <p className="f-Londrina text-topic text-center">Some of our works...</p>
-            </div>
-            <div>
-                <OurWorkMainService images={getImageArray()}/>
-            </div>
+            <ContactComp/>
+            <AudioBtn/>
+            <Footer/>
         </Row>
-        <ContactComp />
-        <AudioBtn/>
-        <Footer />
-    </Row>
+    }
 }
 
 export default MainServiceView

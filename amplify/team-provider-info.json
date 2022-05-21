@@ -10,10 +10,41 @@
       "StackName": "amplify-talentzeaclient-dev-94300",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:951523937455:stack/amplify-talentzeaclient-dev-94300/1037eca0-99df-11ec-bd0e-0af044506576",
       "AmplifyAppId": "d1c5yscl7d25vf"
+    }
+  },
+  "tntnew": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-talentzeaclient-tntnew-131851-authRole",
+      "UnauthRoleArn": "arn:aws:iam::827252531319:role/amplify-talentzeaclient-tntnew-131851-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::827252531319:role/amplify-talentzeaclient-tntnew-131851-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-talentzeaclient-tntnew-131851-deployment",
+      "UnauthRoleName": "amplify-talentzeaclient-tntnew-131851-unauthRole",
+      "StackName": "amplify-talentzeaclient-tntnew-131851",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:827252531319:stack/amplify-talentzeaclient-tntnew-131851/58145510-b710-11ec-a5c8-02ead06d42e6",
+      "AmplifyAppId": "dgo9xbb4tfwbv"
+    }
+  },
+  "newdawn": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-talentzeaclient-newdawn-102704-authRole",
+      "UnauthRoleArn": "arn:aws:iam::827252531319:role/amplify-talentzeaclient-newdawn-102704-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::827252531319:role/amplify-talentzeaclient-newdawn-102704-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-talentzeaclient-newdawn-102704-deployment",
+      "UnauthRoleName": "amplify-talentzeaclient-newdawn-102704-unauthRole",
+      "StackName": "amplify-talentzeaclient-newdawn-102704",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:827252531319:stack/amplify-talentzeaclient-newdawn-102704/81123cf0-b7c1-11ec-8326-064e453c8486",
+      "AmplifyAppId": "dgo9xbb4tfwbv"
     },
     "categories": {
       "auth": {
-        "talentzeaclient5454fb96": {}
+        "talentzeaclientc4fd4ba2": {
+          "userPoolId": "ap-southeast-1_TTMtBDZVb",
+          "userPoolName": "talentZeaUser",
+          "webClientId": "4mklotklug25hp0e4hoc9rb5i7",
+          "nativeClientId": "4mklotklug25hp0e4hoc9rb5i7"
+        }
       }
     }
   }

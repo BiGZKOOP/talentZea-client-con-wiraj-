@@ -19,6 +19,7 @@ const loginAsync = async (user) => {
 }
 
 const getCurrentUserAsync = async () => {
+
     return await Auth.currentAuthenticatedUser().then(async user => {
         return axios.get(`/customer/${user.attributes.email}`, {
             headers: {Authorization: `Bearer ${await getIDToken()}`}
@@ -30,7 +31,7 @@ const getCurrentUserAsync = async () => {
 
 const getMainServicesAsync = async () => {
 
-    return await axios.get("/main-service").then(res =>  res).catch(err => console.error(err))
+    return await axios.get("/main-service").then(res => res).catch(err => console.error(err))
 }
 //////////////////////////
 //////ASYNC Finished//////

@@ -4,6 +4,9 @@ import ClientNav from "../../custom-components/ClientDashboard/ClientNav"
 import {useDispatch, useSelector} from "react-redux"
 import {profileImageUpdateListen} from "./actions"
 import {fallback} from "./consts"
+import {useEffect} from "react"
+import {getAllOrdersListen} from "../ClientOrders/actions"
+import "../../assets/css/dashboard.css"
 
 const ProfileHeader = ({index}) => {
 
@@ -15,9 +18,10 @@ const ProfileHeader = ({index}) => {
 
     const uploadProfileImage = (file) => {
         dispatch(profileImageUpdateListen({
-            ...user,
+            id: user._id,
+            user,
             image: file
-        }))
+        }, dispatch))
     }
     
     const handleFallBack = () => {
@@ -26,10 +30,14 @@ const ProfileHeader = ({index}) => {
         else return fallback
     }
 
+    useEffect(() => {
+        dispatch(getAllOrdersListen(user._id))
+    }, [])
+
     return (
-        <Card className='profile-header mb-2'>
-            <label for="coverImg">
-                <CardImg height={"400px"} className="object-fit" src={"https://wallpaperaccess.com/full/967674.jpg"}
+        <Card className='profile-header radius-0 mb-2'>
+            <label className="m-0">
+                <CardImg height={"400px"} className="object-fit radius-0" src={"https://wallpaperaccess.com/full/967674.jpg"}
                          alt='User Profile Image' top/>
             </label>
             <input hidden type="file" id="coverImg"/>

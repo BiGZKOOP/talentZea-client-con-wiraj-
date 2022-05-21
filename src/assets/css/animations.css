@@ -19,12 +19,38 @@
 .swingimg {
     -webkit-transform-origin: 50% 0;
     transform-origin: 50% 0;
+    -webkit-animation: swingingImg 5s ease-in-out forwards infinite;
+    animation: swingingImg 6s ease-in-out forwards infinite;
+}
+
+.swingimg-2 {
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-animation: swingingImg 8s ease-in-out forwards infinite;
+    animation: swingingImg 7s ease-in-out forwards infinite;
+}
+
+.swingimg-3 {
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-animation: swingingImg 4s ease-in-out forwards infinite;
+    animation: swingingImg 7s ease-in-out forwards infinite;
+}
+
+
+.transform-img {
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
     -webkit-animation: swingingImg 3.5s ease-in-out forwards infinite;
     animation: swingingImg 3.5s ease-in-out forwards infinite;
 }
 
 .scaleImg {
     animation: scaleImg infinite 5s alternate;
+}
+
+.animate-auto-scale {
+    animation: autoScale infinite 15s alternate ease-in;
 }
 
 .shivering-anim {
@@ -247,5 +273,14 @@
     }
     100% {
         transform: rotate(10deg);
+    }
+}
+
+@keyframes autoScale {
+    0% {
+        transform: rotate(0deg) scale(0.6, 0.6);
+    }
+    100% {
+        transform: rotate(-360deg) scale(1.4, 1.4);
     }
 }

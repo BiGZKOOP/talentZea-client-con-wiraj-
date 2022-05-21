@@ -9,7 +9,7 @@ import {
     signupSuccess
 } from "./actions"
 import {Auth} from "aws-amplify"
-import {fireAlertCustom} from "../../utility/custom-util"
+import {fireAlertCustom, jsonToFormData} from "../../utility/custom-util"
 import {getCurrentUserListen} from "../../views/pages/authentication/redux/actions"
 import Cookies from "universal-cookie"
 
@@ -21,15 +21,12 @@ const getAllCountriesAsync = async () => {
 }
 
 const signupAsync = async (details) => {
-    return Auth.signUp({
-        username: details.email,
-        password: details.password
-    }).then(async () => {
-        delete details.password
-        return await axios.post("/customer", details).then(res => res).catch(err => {
-            console.error(err)
-            return false
-        })
+
+    const formData = jsonToFormData(details)
+
+    return await axios.post("/customer", formData).then(res => res).catch(err => {
+        console.error(err)
+        return false
     }).catch((err) => {
         fireAlertCustom("Hmm...", err.message, "error")
         return false
@@ -43,8 +40,8 @@ const sendOTPasync = async (username, otp) => {
     return await Auth.confirmSignUp(username, otp)
 }
 
-const loginUserAsync = async (username, password) => {
-    return await Auth.signIn(username, password).catch((err) => {
+const loginUserAsync = async (name, password) => {
+    return await Auth.signIn(name, password).catch((err) => {
         fireAlertCustom("hmmm...", err.message, "error")
         return false
     })
