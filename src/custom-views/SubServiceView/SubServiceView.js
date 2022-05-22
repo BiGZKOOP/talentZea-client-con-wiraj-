@@ -15,6 +15,7 @@ import OrderCard from "../../custom-components/SubServices/OrderCard"
 import AudioBtn from "../../custom-components/audioControl/AudioBtn"
 import {Clock, Star} from "react-feather"
 import Select from "react-select"
+import {checkBool} from "../../utility/custom-util"
 
 const SubServiceView = () => {
 
@@ -148,23 +149,23 @@ const SubServiceView = () => {
                                     </div>
                                 </CardBody>
 
-                                {(Boolean(singleSubServiceByID?.revisions?.hide) &&
-                                    Boolean(singleSubServiceByID?.sourceFiles?.hide) &&
-                                    Boolean(singleSubServiceByID?.expressDelivery?.hide)) &&
+                                {(checkBool(singleSubServiceByID?.revisions?.hide) &&
+                                    checkBool(singleSubServiceByID?.sourceFiles?.hide) &&
+                                    checkBool(singleSubServiceByID?.expressDelivery?.hide)) &&
                                     <div>
                                         <p className="text-medium f-courgette text-center text-danger">No Extras !!!</p>
                                     </div>
                                 }
 
-                                {!(Boolean(singleSubServiceByID?.revisions?.hide) &&
-                                    Boolean(singleSubServiceByID?.sourceFiles?.hide) &&
-                                    Boolean(singleSubServiceByID?.expressDelivery?.hide)) &&
+                                {!(checkBool(singleSubServiceByID?.revisions?.hide) &&
+                                    checkBool(singleSubServiceByID?.sourceFiles?.hide) &&
+                                    checkBool(singleSubServiceByID?.expressDelivery?.hide)) &&
                                 <CardBody className="d-flex flex-column justify-content-between mt-0 pt-0">
                                     <div className="mb-2">
                                         <h3 className="f-Staatliches">Add extras</h3>
                                     </div>
                                     <ul>
-                                        <li hidden={Boolean(singleSubServiceByID?.revisions?.hide)}>
+                                        <li hidden={checkBool(singleSubServiceByID?.revisions?.hide)}>
                                             <div className="d-flex justify-content-between">
                                                 <div>
                                                     <h5>Number of revisions</h5>
@@ -179,7 +180,7 @@ const SubServiceView = () => {
                                                 className="font-bold">$ {singleSubServiceByID?.revisions?.price}</span>)
                                             </p>
                                         </li>
-                                        <li hidden={Boolean(singleSubServiceByID?.sourceFiles?.hide)} className="mt-3">
+                                        <li hidden={checkBool(singleSubServiceByID?.sourceFiles?.hide)} className="mt-3">
                                             <div className="d-flex justify-content-between">
                                                 <div>
                                                     <h5>Source files included</h5>
@@ -194,7 +195,7 @@ const SubServiceView = () => {
                                                 className="font-bold">$ {singleSubServiceByID?.sourceFiles?.price}</span>)
                                             </p>
                                         </li>
-                                        <li hidden={Boolean(singleSubServiceByID?.expressDelivery?.hide)}
+                                        <li hidden={checkBool(singleSubServiceByID?.expressDelivery?.hide)}
                                             className="mt-3">
                                             <div className="d-flex justify-content-between">
                                                 <div>
