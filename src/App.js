@@ -20,12 +20,13 @@ const App = () => {
 
     const isLogged = async () => {
         return !!(await Auth.currentAuthenticatedUser())
-        
+
     }
 
     useEffect(async () => {
         if (await isLogged()) window.__lc = window.__lc || {}
-        window.__lc.license = 14136435
+        window.__lc = window.__lc || {}
+        window.__lc.license = 14153526
         ;(function (n, t, c) {
             const e = {
                 _q: [],

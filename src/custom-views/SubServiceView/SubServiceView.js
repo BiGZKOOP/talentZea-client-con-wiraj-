@@ -88,7 +88,6 @@ const SubServiceView = () => {
     }, [])
 
     useEffect(() => {
-        alert(basePrice)
         setPrice(parseInt(singleSubServiceByID?.price))
         setBasePrice(parseInt(singleSubServiceByID?.price))
     }, [singleSubServiceByID])
