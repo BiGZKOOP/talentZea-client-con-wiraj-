@@ -24,14 +24,12 @@ const signupAsync = async (details) => {
 
     const formData = jsonToFormData(details)
 
-    return await axios.post("/customer", formData).then(res => res).catch(err => {
-        console.error(err)
-        return false
-    }).catch((err) => {
-        fireAlertCustom("Hmm...", err.message, "error")
-        return false
-    }).catch((err) => {
-        fireAlertCustom("Hmm...", err.message, "error")
+    return await axios.post("/customer", formData).then((res) => {
+        fireAlertCustom("signed up !", "verification link has send to your gmail", "success")
+        return res
+    }).catch(err => {
+        console.log(err)
+        fireAlertCustom("Hmm...", "User already exist !", "error")
         return false
     })
 }
@@ -68,7 +66,7 @@ export function* getAllCountriesCB() {
 
 export function* signupUserCB(action) {
 
-    const {details} = action
+    const {details, history} = action
 
     try {
         yield put(signupSendingLoadingStart())
@@ -83,6 +81,7 @@ export function* signupUserCB(action) {
         const data = yield call(signupAsync, details)
         if (data) {
             yield put(signupSuccess(details.email))
+            history.push("/")
         }
     } catch (err) {
         fireAlertCustom("Hmm...", "Something went wrong", "error")
