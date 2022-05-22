@@ -68,3 +68,9 @@ export const jsonToFormData = (obj) => {
     })
     return formData
 }
+
+//Use this to check string typed boolean
+export const checkBool = (dis) => {
+    // eslint-disable-next-line eqeqeq
+    return dis == "true"
+}
