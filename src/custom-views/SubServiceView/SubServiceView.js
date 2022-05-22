@@ -38,8 +38,6 @@ const SubServiceView = () => {
 
     const dispatch = useDispatch()
 
-    console.log(singleSubServiceByID)
-
     // const history = useHistory()
 
     const getImageArray = () => {
@@ -87,16 +85,18 @@ const SubServiceView = () => {
 
     useEffect(() => {
         dispatch(getSubServiceByIDListen(id))
-        setPrice(singleSubServiceByID?.price)
-    }, [singleSubServiceByID?.price])
+    }, [])
+
+    useEffect(() => {
+        alert(basePrice)
+        setPrice(parseInt(singleSubServiceByID?.price))
+        setBasePrice(parseInt(singleSubServiceByID?.price))
+    }, [singleSubServiceByID])
 
     useEffect(() => {
         updatePriceTab()
     }, [sourcePrice, revPrice, expressPrice])
 
-    useEffect(() => {
-        setBasePrice(singleSubServiceByID?.price)
-    }, [basePrice])
 
     if (singleSubLoad) return <ServiceCookLoader/>
     else {
