@@ -46,7 +46,7 @@ const ServiceMainSwiper = ({ isRtl, images, count }) => {
                     images?.map((image, index) => {
                         return <SwiperSlide>
                             {
-                                image ? <img src={image} height="400px" width="100%" alt={`swiper ${index}`} className='object-fit'/> : <></>
+                                image ? <img src={image} width="100%" alt={`swiper ${index}`} className='object-fit service-card'/> : <></>
                             }
                         </SwiperSlide>
                     })

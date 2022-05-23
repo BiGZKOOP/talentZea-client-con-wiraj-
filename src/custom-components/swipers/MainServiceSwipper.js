@@ -62,7 +62,7 @@ const MainServiceSwipper = ({isRtl, count}) => {
                                 <CardBody className="p-0">
                                     <div className="w-100">
                                         {/*<OurWorkMainService count={1} images={getImageArray(e)}/>*/}
-                                        <img src={e?.image?.image1} width="270px" height="270px" className="object-fit"/>
+                                        <img src={e?.image?.image1} width="100%" height="200px" className="object-fit"/>
                                     </div>
                                     <div className="d-flex align-items-end justify-content-between m-1">
                                         <div>
