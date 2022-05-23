@@ -467,7 +467,7 @@ const Dashboard = () => {
                                 </div>
                             }
                             <div>
-                                <MainServiceSwipper count={5}/>
+                                <MainServiceSwipper count={3}/>
                             </div>
                             <p className="mt-1 f-courgette text-purple">*Swipe to see more</p>
                             {/*<Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">*/}

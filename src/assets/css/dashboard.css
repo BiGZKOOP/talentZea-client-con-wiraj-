@@ -368,7 +368,18 @@ video {
     }
 }
 
+@media (max-width: 1400px) {
+    .service-card {
+        height: 400px;
+    }
+
+}
+
 @media (max-width: 578px) {
+
+    .service-card {
+        height: 200px;
+    }
 
     .dash-card-v {
         width: 100%;
