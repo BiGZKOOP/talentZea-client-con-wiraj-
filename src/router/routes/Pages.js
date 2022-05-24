@@ -22,6 +22,14 @@ const PagesRoutes = [
         }
     },
     {
+        path: '/forgot-password',
+        component: lazy(() => import('../../custom-views/ForgotPassword/ForgotPasswordView')),
+        layout: 'BlankLayout',
+        meta: {
+            authRoute: true
+        }
+    },
+    {
         path: '/contact',
         component: lazy(() => import('../../custom-views/Contact/ContactView')),
         layout: 'BlankLayout',
@@ -60,14 +68,14 @@ const PagesRoutes = [
         component: lazy(() => import('../../views/pages/authentication/RegisterCover')),
         layout: 'BlankLayout'
     },
-    {
-        path: '/forgot-password',
-        component: lazy(() => import('../../views/pages/authentication/ForgotPassword')),
-        layout: 'BlankLayout',
-        meta: {
-            authRoute: true
-        }
-    },
+    // {
+    //     path: '/forgot-password',
+    //     component: lazy(() => import('../../views/pages/authentication/ForgotPassword')),
+    //     layout: 'BlankLayout',
+    //     meta: {
+    //         authRoute: true
+    //     }
+    // },
     {
         path: '/pages/forgot-password-basic',
         component: lazy(() => import('../../views/pages/authentication/ForgotPasswordBasic')),

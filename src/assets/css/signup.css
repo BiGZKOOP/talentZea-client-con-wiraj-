@@ -18,7 +18,17 @@
             rgb(37, 15, 59, 0.2),
             rgb(42, 7, 100, 0.2)
     ),
-    url(https://i.pinimg.com/originals/72/96/9f/72969fd2668e33d52f215a3573b485a0.jpg);    background-size: cover;
+    url(https://free4kwallpapers.com/uploads/originals/2020/11/15/sunset-vector-wallpaper.jpg);
+    background-size: cover;
+}
+
+.forgot-pw-inner-container {
+    background: linear-gradient(
+            rgb(37, 15, 59, 0.2),
+            rgb(42, 7, 100, 0.2)
+    ),
+    url(https://free4kwallpapers.com/uploads/originals/2020/11/15/sunset-vector-wallpaper.jpg);
+    background-size: cover;
 }
 
 .double-input {
