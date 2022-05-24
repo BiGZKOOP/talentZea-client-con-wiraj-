@@ -2,14 +2,19 @@ import axios from "../../axios/axios"
 import {call, takeLatest, put} from "redux-saga/effects"
 import * as actionTypes from "./actionTypes"
 import {
-    getAllCountriesSuccess, handlePwCodeSendloader, sendForgotPwCodeSuccess,
-    sendOtpSuccess, signoutSuccess,
+    getAllCountriesSuccess,
+    handleFWPresetLoader,
+    handlePasswordResetSuccess,
+    handlePwCodeSendloader,
+    sendForgotPwCodeSuccess,
+    sendOtpSuccess,
+    signoutSuccess,
     signupSendingLoadingEnd,
     signupSendingLoadingStart,
     signupSuccess
 } from "./actions"
 import {Auth} from "aws-amplify"
-import {fireAlertCustom, jsonToFormData} from "../../utility/custom-util"
+import {fireAlertCustom, fireAlertError, jsonToFormData} from "../../utility/custom-util"
 import {getCurrentUserListen} from "../../views/pages/authentication/redux/actions"
 import Cookies from "universal-cookie"
 
@@ -51,7 +56,16 @@ const signoutAsync = async () => {
 
 const fwpCodeSendAsync = async (username) => {
 
-    return await Auth.forgotPasswordSubmit(username)
+    return await Auth.forgotPassword(username).catch(err => {
+        fireAlertError("Oops !", err.message)
+    })
+}
+
+const fwpResetAsync = async (username, code, password) => {
+
+    return await Auth.forgotPasswordSubmit(username, code, password).catch(err => {
+        fireAlertError("Oops !", err.message)
+    })
 }
 
 ///ASYNC FINISHED///
@@ -149,8 +163,6 @@ export function* fwpCodeSendCB(action) {
 
     const {payload} = action
 
-    alert(payload)
-
     try {
         yield put(handlePwCodeSendloader(false))
         yield call(fwpCodeSendAsync, payload)
@@ -162,6 +174,21 @@ export function* fwpCodeSendCB(action) {
     }
 }
 
+export function* fwpResetCB(action) {
+
+    const {username, code, password} = action.payload
+
+    try {
+        yield put(handleFWPresetLoader(false))
+        yield call(fwpResetAsync, username, code.toString(), password)
+        yield put(handlePasswordResetSuccess())
+    } catch (err) {
+        console.log(err)
+    }  finally {
+        yield put(handleFWPresetLoader(false))
+    }
+}
+
 function* watchSignupSagas() {
     yield takeLatest(actionTypes.GET_ALL_COUNTRIES_LISTEN, getAllCountriesCB)
     yield takeLatest(actionTypes.SIGNUP_LISTEN, signupUserCB)
@@ -169,6 +196,7 @@ function* watchSignupSagas() {
     yield takeLatest(actionTypes.LOGIN_LISTEN, loginListenCB)
     yield takeLatest(actionTypes.SIGNOUT_LISTEN, signoutListenCB)
     yield takeLatest(actionTypes.FORGOT_PW_CODE_LISTEN, fwpCodeSendCB)
+    yield takeLatest(actionTypes.FORGOT_PW_RESET_LISTEN, fwpResetCB)
 }
 
 const signupSagas = [watchSignupSagas]
