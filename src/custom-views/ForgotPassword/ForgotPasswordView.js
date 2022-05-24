@@ -23,20 +23,13 @@ const ForgotPasswordView = () => {
     const [passwordType, setPasswordType] = useState("password")
     const [rePasswordType, setRePasswordType] = useState("password")
 
-    //Use to cook the registration object. This will merge the userdetails and the user cred.
-    const cookObject = (username, password) => {
-
-        delete Object(userRegDetails).country
-
-        return {
-            ...userRegDetails,
-            address: "katubedda bodima",
-            // username,
-            password
-        }
-    }
 
     const validate = (values) => {
+
+        if (!values.code) {
+            fireAlertMessage("code is required !!!")
+            return
+        }
         if (!values.password) {
             fireAlertMessage("password is required !!!")
             return
@@ -56,6 +49,7 @@ const ForgotPasswordView = () => {
     // eslint-disable-next-line no-unused-vars
     const formik = useFormik({
         initialValues: {
+            code: "",
             password: "",
             rePassword: ""
         },
