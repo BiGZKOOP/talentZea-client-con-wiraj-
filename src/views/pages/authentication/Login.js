@@ -178,7 +178,9 @@ const Login = () => {
                                 />
                             </div>
                             <div className="text-right f-Londrina mt-2 mb-1 pointer">
-                                <h5 className="text-white">forgot password ?</h5>
+                                <h5
+                                    onClick={() => history.push("/forgot-password")}
+                                    className="text-white">forgot password ?</h5>
                             </div>
                             {
                                 signupLoad && <Col className="d-center mt-2">
