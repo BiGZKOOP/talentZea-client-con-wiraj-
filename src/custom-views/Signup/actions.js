@@ -145,13 +145,10 @@ export const userDetailsAddListen = (userData) => {
 }
 
 //Use this to forgot password code send
-export const sendForgotPwCodeListen = (username, code) => {
+export const sendForgotPwCodeListen = (payload) => {
     return {
         type: actionTypes.FORGOT_PW_CODE_LISTEN,
-        payload: {
-            username,
-            code
-        }
+        payload
     }
 }
 

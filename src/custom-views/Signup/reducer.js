@@ -77,6 +77,11 @@ const signUpReducer = (state = init, action) => {
                 ...state,
                 pwCodeSend: true
             }
+        case actionTypes.FORGOT_PW_RESET_SUCCESS:
+            return {
+                ...state,
+                pwCodeSend: false
+            }
         default:
             return state
     }
