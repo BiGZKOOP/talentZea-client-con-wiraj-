@@ -2,7 +2,7 @@ import axios from "../../axios/axios"
 import {call, takeLatest, put} from "redux-saga/effects"
 import * as actionTypes from "./actionTypes"
 import {
-    getAllCountriesSuccess,
+    getAllCountriesSuccess, handlePwCodeSendloader, sendForgotPwCodeSuccess,
     sendOtpSuccess, signoutSuccess,
     signupSendingLoadingEnd,
     signupSendingLoadingStart,
@@ -47,6 +47,11 @@ const loginUserAsync = async (name, password) => {
 
 const signoutAsync = async () => {
     return await Auth.signOut()
+}
+
+const fwpCodeSendAsync = async (username) => {
+
+    return await Auth.forgotPasswordSubmit(username)
 }
 
 ///ASYNC FINISHED///
@@ -140,12 +145,30 @@ export function* signoutListenCB(action) {
     }
 }
 
+export function* fwpCodeSendCB(action) {
+
+    const {payload} = action
+
+    alert(payload)
+
+    try {
+        yield put(handlePwCodeSendloader(false))
+        yield call(fwpCodeSendAsync, payload)
+        yield put(sendForgotPwCodeSuccess())
+    } catch (err) {
+        console.log(err)
+    }  finally {
+        yield put(handlePwCodeSendloader(false))
+    }
+}
+
 function* watchSignupSagas() {
     yield takeLatest(actionTypes.GET_ALL_COUNTRIES_LISTEN, getAllCountriesCB)
     yield takeLatest(actionTypes.SIGNUP_LISTEN, signupUserCB)
     yield takeLatest(actionTypes.SEND_OTP_LISTEN, sendOtpCB)
     yield takeLatest(actionTypes.LOGIN_LISTEN, loginListenCB)
     yield takeLatest(actionTypes.SIGNOUT_LISTEN, signoutListenCB)
+    yield takeLatest(actionTypes.FORGOT_PW_CODE_LISTEN, fwpCodeSendCB)
 }
 
 const signupSagas = [watchSignupSagas]
