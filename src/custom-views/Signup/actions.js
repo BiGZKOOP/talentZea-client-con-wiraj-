@@ -143,3 +143,52 @@ export const userDetailsAddListen = (userData) => {
         userData
     }
 }
+
+//Use this to forgot password code send
+export const sendForgotPwCodeListen = (username, code) => {
+    return {
+        type: actionTypes.FORGOT_PW_CODE_LISTEN,
+        payload: {
+            username,
+            code
+        }
+    }
+}
+
+export const sendForgotPwCodeSuccess = () => {
+    return {
+        type: actionTypes.FORGOT_PW_CODE_SUCCESS
+    }
+}
+
+//Use this to handle the pw code loader
+export const handlePwCodeSendloader = (payload) => {
+
+    return {
+        type: actionTypes.HANDLE_PW_CODE_SEND_LOADER,
+        payload
+    }
+}
+
+//Use this to handle the password reset
+export const handlePasswordResetListen = (payload) => {
+
+    return {
+        type: actionTypes.FORGOT_PW_RESET_LISTEN,
+        payload
+    }
+}
+
+export const handlePasswordResetSuccess = () => {
+    return {
+        type: actionTypes.FORGOT_PW_RESET_SUCCESS
+    }
+}
+
+//Use this to handle the forgot password reset loader
+export const handleFWPresetLoader = (payload) => {
+    return {
+        type: actionTypes.HANDLE_FORGOT_PW_RESET_LOADER,
+        payload
+    }
+}

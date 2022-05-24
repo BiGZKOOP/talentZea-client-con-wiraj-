@@ -6,7 +6,12 @@ const init = {
     verifySend: false,
     username: "",
     signupLoad: false,
-    userRegDetails: {}
+    userRegDetails: {},
+
+    pwCodeSend: false,
+    pwCodeSendLoader: false,
+
+    pwResetLoader: false
 }
 
 const signUpReducer = (state = init, action) => {
@@ -56,6 +61,21 @@ const signUpReducer = (state = init, action) => {
             return {
                 ...state,
                 userRegDetails: action.userData
+            }
+        case actionTypes.HANDLE_PW_CODE_SEND_LOADER:
+            return {
+                ...state,
+                pwCodeSendLoader: action.payload
+            }
+        case actionTypes.HANDLE_FORGOT_PW_RESET_LOADER:
+            return {
+                ...state,
+                pwResetLoader: action.payload
+            }
+        case actionTypes.FORGOT_PW_CODE_SUCCESS:
+            return {
+                ...state,
+                pwCodeSend: true
             }
         default:
             return state
