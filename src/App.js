@@ -11,6 +11,7 @@ import {getCurrentUserListen} from "./views/pages/authentication/redux/actions"
 import {loadStripe} from "@stripe/stripe-js"
 import {Elements} from "@stripe/react-stripe-js"
 import {getAllSubServicesListen} from "./custom-views/MainService/actions"
+import ChatButton from "./custom-components/ChatButton/ChatButton"
 
 Amplify.configure(awsconfig)
 
@@ -81,6 +82,7 @@ const App = () => {
 
     return <Elements stripe={stripePromise}>
         <Router/>
+        <ChatButton />
     </Elements>
 }
 

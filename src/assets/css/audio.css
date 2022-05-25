@@ -17,3 +17,24 @@
     color: white;
     border: none;
 }
+
+.chat-btn {
+    z-index: 1000;
+    border-radius: 100px;
+    padding: 10px;
+    position: fixed;
+    bottom: -12px;
+    right: 9px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: rgb(111 15 255);
+}
+
+.chat-btn:hover {
+    transition: 0.3s;
+    background-color: #057be1;
+    color: white;
+    border: none;
+}
