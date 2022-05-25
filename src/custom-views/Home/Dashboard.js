@@ -342,11 +342,8 @@ const Dashboard = () => {
                             <h1 className="text-center-sm text-light f-Staatliches hero-header-font animate__animated animate__fadeInLeft">services
                                 for your
                                 <span className="text-purple"> business</span></h1>
-                            <p className="text-small-extra mt-3 text-light word-break sm-none">In publishing and graphic
-                                design, Lorem ipsum is a placeholder text commonly used to
-                                demonstrate the visual form of a document or a typeface without relying on
-                                meaningful content. Lorem ipsum may be used as a placeholder before final copy is
-                                available.</p>
+                            <p className="text-small-extra mt-3 text-light word-break sm-none">The goal of a designer is to listen, observe, understand, sympathize, empathize, synthesize,
+                                and glean insights that enable him or her to ‘make the invisible visible</p>
                             <div className="w-100 mt-2 d-flex animate__animated animate__fadeInDown">
                                 <motion.button
                                     onClick={() => {
@@ -414,9 +411,8 @@ const Dashboard = () => {
                     <h3 className="text-pink f-Staatliches">Home for best designs</h3>
                     <h1 className="font-large-3 f-Staatliches text-light word-break">THE NEW WAY OF <span
                         className="text-pink">#DESIGNING</span></h1>
-                    <p className="mt-3 text-light">In publishing and graphic design, Lorem ipsum is a placeholder text
-                        commonly used to demonstrate the visual form of a document or a typeface without relying on
-                        meaningful content. Lorem ipsum may be used as a placeholder before final copy is available</p>
+                    <p className="mt-3 text-light">Design is in everything we make, but it’s also between those things.
+                        It’s a mix of craft, science, storytelling, propaganda, and philosophy.</p>
                 </Col>
             </Row>
             <div ref={ref5} className="mt-5">
@@ -441,12 +437,9 @@ const Dashboard = () => {
                                 <h1 className="f-Londrina f-Staatliches text-center hero-header-font text-black-c">
                                     <Check/> Check our <span className="text-purple">services</span></h1>
                                 <Col lg={7} sm={10} className="mt-2">
-                                    <p className='text-center text-black-c'>In publishing and graphic design, Lorem
-                                        ipsum is a placeholder text commonly used to
-                                        demonstrate the visual form of a document or a typeface without relying on
-                                        meaningful content. Lorem ipsum may be used as a placeholder before final copy
-                                        is
-                                        available.</p>
+                                    <p className='text-center text-black-c'>We shape your brands, Artistically Inspired, Perfect from beginning to end.
+                                        Exceptional value, Here's the super easy platform to find the perfect designs.
+                                        Connect and make it beautiful....</p>
                                 </Col>
                             </div>
                         </div>
@@ -523,13 +516,11 @@ const Dashboard = () => {
                                     <h1 className="f-Staatliches hero-header-font text-center text-black-c">Why <span
                                         className="text-purple text-shadow-ex-sm">Talent Zea</span> ?</h1>
                                     <p className="text-medium text-dark f-courgette line-h-3 text-center">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been
-                                        the industry's standard dummy text ever since the 1500s, when an unknown printer
-                                        took a galley
-                                        of type and scrambled it to make a type specimen book. It has survived not only
-                                        five centuries,
-                                        but also the leap into electronic typesetting,
+                                        In a very real way, designers create the human environment; they make the things we use, the places we live and work, our modes of communication and mobility.
+                                        Simply put, design matters.
+                                        And at a moment in our history in which the scientific community has issued serious warnings about the negative impacts of our flawed designs-from global
+                                        warming and water pollution to the loss of biodiversity and natural resources-designers have a critical role to play in the creation of
+                                        a more just, healthful and sustainable world.
                                     </p>
                                 </motion.div>
                             </div>
@@ -542,9 +533,8 @@ const Dashboard = () => {
                             </div>
                             <div className="dash-card dash-card-3 m-0 p-0">
                                 <CardBody>
-                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">our motto
-                                        is
-                                        <span className="text-yellow"> creativity</span></h1>
+                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm"> 8 hours
+                                        <span className="text-yellow"> delivery</span></h1>
                                     <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used
                                         to demonstrate the visual form.</h5>
@@ -559,8 +549,8 @@ const Dashboard = () => {
                             </div>
                             <div className="dash-card dash-card-3 m-0 p-0">
                                 <CardBody>
-                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">Group of
-                                        <span className="text-green"> professionals</span></h1>
+                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">12yr+
+                                        <span className="text-green">  experience</span></h1>
                                     <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used
                                         to demonstrate the visual form.</h5>
@@ -569,8 +559,8 @@ const Dashboard = () => {
                             <br/>
                             <div className="dash-card dash-card-3 m-0 p-0">
                                 <CardBody>
-                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">Friendly
-                                        <span className="text-info"> communication</span></h1>
+                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">Premium
+                                        <span className="text-info">  support 24/7</span></h1>
                                     <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used
                                         to demonstrate the visual form.</h5>
@@ -583,8 +573,8 @@ const Dashboard = () => {
                             </div>
                             <div className="dash-card dash-card-3 m-0 p-0">
                                 <CardBody>
-                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">we will
-                                        make you <span className="text-crimson">win</span></h1>
+                                    <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">Money back
+                                        <span className="text-crimson"> guarantee</span></h1>
                                     <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used
                                         to demonstrate the visual form.</h5>
