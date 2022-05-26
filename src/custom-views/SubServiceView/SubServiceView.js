@@ -42,7 +42,12 @@ const SubServiceView = () => {
 
     const getImageArray = () => {
 
-        return [singleSubServiceByID?.image?.image1, singleSubServiceByID?.image?.image2, singleSubServiceByID?.image?.image3]
+        return [
+            singleSubServiceByID?.image?.image1, singleSubServiceByID?.image?.image2, singleSubServiceByID?.image?.image3,
+            singleSubServiceByID?.image?.image4, singleSubServiceByID?.image?.image5, singleSubServiceByID?.image?.image6,
+            singleSubServiceByID?.image?.image7, singleSubServiceByID?.image?.image8, singleSubServiceByID?.image?.image9,
+            singleSubServiceByID?.image?.image10
+        ]
     }
 
     const getRevisions = () => {
@@ -151,9 +156,9 @@ const SubServiceView = () => {
                                 {(checkBool(singleSubServiceByID?.revisions?.hide) &&
                                     checkBool(singleSubServiceByID?.sourceFiles?.hide) &&
                                     checkBool(singleSubServiceByID?.expressDelivery?.hide)) &&
-                                    <div>
-                                        <p className="text-medium f-courgette text-center text-danger">No Extras !!!</p>
-                                    </div>
+                                <div>
+                                    <p className="text-medium f-courgette text-center text-danger">No Extras !!!</p>
+                                </div>
                                 }
 
                                 {!(checkBool(singleSubServiceByID?.revisions?.hide) &&
@@ -179,7 +184,8 @@ const SubServiceView = () => {
                                                 className="font-bold">$ {singleSubServiceByID?.revisions?.price}</span>)
                                             </p>
                                         </li>
-                                        <li hidden={checkBool(singleSubServiceByID?.sourceFiles?.hide)} className="mt-3">
+                                        <li hidden={checkBool(singleSubServiceByID?.sourceFiles?.hide)}
+                                            className="mt-3">
                                             <div className="d-flex justify-content-between">
                                                 <div>
                                                     <h5>Source files included</h5>
