@@ -460,7 +460,7 @@ const Dashboard = () => {
                                 </div>
                             }
                             <div>
-                                <MainServiceSwipper count={3}/>
+                                <MainServiceSwipper count={5}/>
                             </div>
                             <p className="mt-1 f-courgette text-purple">*Swipe to see more</p>
                             {/*<Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">*/}
@@ -535,7 +535,7 @@ const Dashboard = () => {
                                 <CardBody>
                                     <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm"> 8 hours
                                         <span className="text-yellow"> delivery</span></h1>
-                                    <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
+                                    <h5 className="text-light f-courgette mt-2">In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used
                                         to demonstrate the visual form.</h5>
                                 </CardBody>
@@ -551,7 +551,7 @@ const Dashboard = () => {
                                 <CardBody>
                                     <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">12yr+
                                         <span className="text-green">  experience</span></h1>
-                                    <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
+                                    <h5 className="text-light f-courgette mt-2">In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used
                                         to demonstrate the visual form.</h5>
                                 </CardBody>
@@ -561,7 +561,7 @@ const Dashboard = () => {
                                 <CardBody>
                                     <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">Premium
                                         <span className="text-info">  support 24/7</span></h1>
-                                    <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
+                                    <h5 className="text-light f-courgette mt-2">In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used
                                         to demonstrate the visual form.</h5>
                                 </CardBody>
@@ -575,7 +575,7 @@ const Dashboard = () => {
                                 <CardBody>
                                     <h1 className="text-light hero-header-font f-Staatliches text-shadow-sm">Money back
                                         <span className="text-crimson"> guarantee</span></h1>
-                                    <h5 className="text-light f-Londrina mt-2">In publishing and graphic design, Lorem
+                                    <h5 className="text-light f-courgette mt-2">In publishing and graphic design, Lorem
                                         ipsum is a placeholder text commonly used
                                         to demonstrate the visual form.</h5>
                                 </CardBody>
