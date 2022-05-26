@@ -65,7 +65,7 @@ const fwpResetAsync = async (username, code, password) => {
 
     return await Auth.forgotPasswordSubmit(username, code, password).catch(err => {
         fireAlertError("Oops !", err.message)
-    })
+    }).then(() => fireAlertCustom("Passowrd changed", "You have successfully changed your password", "success"))
 }
 
 ///ASYNC FINISHED///
