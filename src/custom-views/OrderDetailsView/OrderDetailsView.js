@@ -11,6 +11,8 @@ import {getOrderTimeLineByIDListen, getSingleOrderByIDListen} from "../ClientOrd
 import MainNav from "../../custom-components/MainNav/MainNav"
 import "../../assets/css/dashboard.css"
 import Footer from "../../@core/layouts/components/footer"
+import SourceFileCard from "../../custom-components/orderDetails/SourceFileCard"
+import {getAllOrderSourceFilesListen} from "./actions"
 
 const OrderDetailsView = () => {
 
@@ -22,6 +24,7 @@ const OrderDetailsView = () => {
     const dispatch = useDispatch()
 
     const {singleOrder, singleOrderLoader, timeLineData, timeLineLoader} = useSelector(state => state.clientOrderReducer)
+    const {sourceFiles, sourceFilesLoader} = useSelector(state => state.orderDetailsViewReducer)
 
     const handleStatusPointer = (num) => {
         switch (num) {
@@ -42,6 +45,11 @@ const OrderDetailsView = () => {
         dispatch(getSingleOrderByIDListen(id))
         dispatch(getOrderTimeLineByIDListen(id))
     }, [])
+
+    //Use this effect to get the source files
+    useEffect(() => {
+        dispatch(getAllOrderSourceFilesListen(singleOrder._id))
+    }, [singleOrder])
 
     const timelineMsgHandler = (orderLog) => {
 
@@ -105,12 +113,17 @@ const OrderDetailsView = () => {
         dispatch(getOrderTimeLineByIDListen(id))
     }, [])
 
+    //Use this effect to get the source files
+    useEffect(() => {
+        dispatch(getAllOrderSourceFilesListen(singleOrder._id))
+    }, [singleOrder])
+
     if (!singleOrderLoader) {
         return <div className="m-0 p-0">
             <div className="m-0 mb-lg-0 p-1 w-100 position-sticky z-index-1000 header-purple-grad">
                 <MainNav index={1}/>
             </div>
-            <Card className="m-1">
+            <Card className="m-1 mt-3">
                 <CardHeader className="d-flex justify-content-between">
                     <div>
                         <h1 className="f-Staatliches font-large-1"><span
@@ -180,7 +193,7 @@ const OrderDetailsView = () => {
                     </div>
                 </CardBody>
             </Card>
-            <Row className="m-1">
+            <Row className="m-1 mt-5">
                 <Col sm={12} lg={7}>
                     <div className="mb-2">
                         <h3>Order Timeline</h3>
@@ -203,6 +216,25 @@ const OrderDetailsView = () => {
                         </Card>
                     </div>
                 </Col>
+            </Row>
+            <Row className="mt-5 m-1 mb-5">
+                <div className="d-flex align-items-baseline mb-2">
+                    <h1 className="f-Staatliches">Source files</h1>
+                </div>
+                {
+                    sourceFilesLoader ? <div className="w-100 d-center flex-column animate__animated animate__bounce mt-2">
+                        <Spinner className="text-primary"/>
+                        <p className="text-small text-primary f-courgette mt-1">cooking data...</p>
+                    </div> : sourceFiles.length > 0 ? <Row className="mt-1 d-flex flex-wrap">
+                        {
+                            sourceFiles.map((e, index) => {
+                                return <SourceFileCard key={index} data={e}/>
+                            })
+                        }
+                    </Row> : <div className="w-100 d-center mt-2">
+                        <h3 className="f-courgette text-danger">No source files shared yet !</h3>
+                    </div>
+                }
             </Row>
             {/*<Row className="m-1">*/}
             {/*    <div className="p-1">*/}
