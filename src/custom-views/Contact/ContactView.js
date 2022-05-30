@@ -75,7 +75,7 @@ const ContactView = () => {
                                         <PhoneCall size={25}/>
                                     </div>
                                     <div className="w-75">
-                                        <h4>+9411 112 34 56</h4>
+                                        <h4>+94 70 440 7500</h4>
                                     </div>
                                 </div>
                             </Card>
@@ -85,7 +85,7 @@ const ContactView = () => {
                                         <Mail size={25}/>
                                     </div>
                                     <div className="w-75">
-                                        <h4>123@example.com</h4>
+                                        <h4>talentzea@gmail.com</h4>
                                     </div>
                                 </div>
                             </Card>
