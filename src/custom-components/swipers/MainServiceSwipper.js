@@ -1,18 +1,18 @@
 import '@styles/react/libs/swiper/swiper.scss'
 import SwiperResponsive from "../../views/extensions/swiper/SwiperResponsive"
-import {Card, CardBody, CardHeader, CardTitle, Col, Input} from "reactstrap"
+import {Card, CardBody, CardFooter, CardHeader, CardTitle, Col, Input} from "reactstrap"
 import {Swiper, SwiperSlide} from "swiper/react/swiper-react"
 import {useSelector} from "react-redux"
-import OurWorkMainService from "../MainService/OurWorkMainService"
 import {useHistory} from "react-router-dom"
 import {useState} from "react"
-
-
+import Avatar from "../../@core/components/avatar"
 // eslint-disable-next-line no-unused-vars
+import logo from "../../assets/custom_images/logo.png"
+
 const MainServiceSwipper = ({isRtl, count}) => {
 
     // eslint-disable-next-line no-unused-vars
-    const {singleSubService, allSubServices, singleSubLoad} = useSelector(state => state.mainServiceReducer)
+    const {allSubServices, singleSubLoad} = useSelector(state => state.mainServiceReducer)
     // eslint-disable-next-line no-unused-vars
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
@@ -79,12 +79,24 @@ const MainServiceSwipper = ({isRtl, count}) => {
                                         {/*<OurWorkMainService count={1} images={getImageArray(e)}/>*/}
                                         <img src={e?.image?.image1} width="100%" height="200px" className="object-fit"/>
                                     </div>
-                                    <div className="d-flex align-items-end justify-content-between m-1">
+                                    <div className="m-1">
+                                        <div className="mb-1 d-flex align-items-center">
+                                            <div>
+                                                <Avatar className="bg-dark" img={"https://static.vecteezy.com/system/resources/thumbnails/007/249/604/small_2x/led-blue-glow-neon-font-realistic-neon-explosion-letter-t-alphabet-of-night-show-among-the-stars-illustration-uppercase-font-3d-render-isolated-on-white-background-vector.jpg"}/>
+                                            </div>
+                                            <div className="ml-1 f-Staatliches">
+                                                <p className="m-0 p-0 text-small">Talent zea</p>
+                                                <p className="m-0 p-0 text-silver text-small-extra">Premium seller</p>
+                                            </div>
+                                        </div>
                                         <div>
-                                            <h4 className="f-Londrina text-black-c">{e?.mainTopic}</h4>
+                                            <h4 className="f-Staatliches text-medium-extra text-black-c">{e?.mainTopic}</h4>
                                         </div>
                                     </div>
                                 </CardBody>
+                                <CardFooter className="d-flex justify-content-end">
+                                    <p className="text-small-xxx font-bold">STARTING AT <span className="text-medium-extra text-black">${e.price}</span></p>
+                                </CardFooter>
                             </Card>
                         </SwiperSlide>
                     })
