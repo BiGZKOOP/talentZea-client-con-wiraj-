@@ -169,6 +169,7 @@ const SubServiceView = () => {
                                         <h3 className="f-Staatliches">Add extras</h3>
                                     </div>
                                     <ul>
+                                        <li className="f-courgette text-danger text-medium">Infinite number of revisions 😍</li>
                                         <li hidden={checkBool(singleSubServiceByID?.revisions?.hide)}>
                                             <div className="d-flex justify-content-between">
                                                 <div>
@@ -204,9 +205,7 @@ const SubServiceView = () => {
                                             className="mt-3">
                                             <div className="d-flex justify-content-between">
                                                 <div>
-                                                    <h5>Express delivery within <span
-                                                        className="font-bold">{singleSubServiceByID?.expressDelivery?.count} days</span>
-                                                    </h5>
+                                                    <h5>8 hour Express delivery </h5>
                                                 </div>
                                                 <Input
                                                     onChange={(e) => {
