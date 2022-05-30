@@ -10,10 +10,10 @@ import Avatar from "../../@core/components/avatar"
 import logo from "../../assets/custom_images/logo.png"
 
 // eslint-disable-next-line no-unused-vars
-const MainServiceSwipper = ({isRtl, count}) => {
+const MainServiceSwipper = ({isRtl, count, allSubServices}) => {
 
     // eslint-disable-next-line no-unused-vars
-    const {allSubServices, singleSubLoad} = useSelector(state => state.mainServiceReducer)
+    const {singleSubLoad} = useSelector(state => state.mainServiceReducer)
     // eslint-disable-next-line no-unused-vars
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
