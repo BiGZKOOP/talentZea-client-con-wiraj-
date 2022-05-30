@@ -51,7 +51,7 @@ const ClientDashboard = () => {
     }
 
     useEffect(() => {
-        setRef(`https://talentzea.com/home?ref=${user.referralID}`)
+        setRef(`https://talentzea.com/home?ref=${user._id}`)
     }, [])
 
     useEffect(() => {
