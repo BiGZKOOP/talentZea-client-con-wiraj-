@@ -32,6 +32,8 @@ import SubServiceWelcomeSVG from "../../assets/custom_images/svg/SubServiceWelco
 import business from "../../assets/custom_images/business.png"
 import video from "../../assets/videos/intro.mp4"
 import SignupWelcomeSVG from "../../assets/custom_images/svg/SignupWelcomeSVG"
+// eslint-disable-next-line no-unused-vars
+import team from  "../../assets/custom_images/team.png"
 
 const Dashboard = () => {
 
@@ -40,16 +42,14 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const [show, setShow] = useState(false)
     const [videoModalShow, setVideoModalShow] = useState(false)
+    const [searchValue, setSearchValue] = useState('')
     // eslint-disable-next-line no-unused-vars
-    const [logoStyle, setLogoStyle] = useState("fadein-anim delay-8")
-    // eslint-disable-next-line no-unused-vars
-    const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
+    const [filteredData, setFilteredData] = useState([])
+    const {welcomeAudio, playAudio} = useSelector(state => state.audioReducer)
     const {singleSubLoad, allSubServices} = useSelector(state => state.mainServiceReducer)
 
-    console.log(allSubServices)
-
     // eslint-disable-next-line no-unused-vars
-    const {inView, entry, ref} = useInView({
+    const {inView, ref} = useInView({
         threshold: 0
     })
 
@@ -313,6 +313,38 @@ const Dashboard = () => {
         }
     }, [inView10])
 
+    //Use this to filter the data <Temporary solution>
+    const handleFilter = e => {
+        const value = e.target.value
+        let updatedData = []
+        setSearchValue(value)
+
+        if (value.length) {
+            updatedData = allSubServices.filter(item => {
+                const startsWith =
+                    item.mainTopic.toString().toLowerCase().startsWith(value.toLowerCase())
+
+                const includes =
+                    item.mainTopic.toString().toLowerCase().includes(value.toLowerCase())
+
+                console.log(includes)
+                if (startsWith) {
+                    return startsWith
+                } else if (!startsWith && includes) {
+                    return includes
+                } else return null
+            })
+            setFilteredData(updatedData)
+            setSearchValue(value)
+        } else {
+            setFilteredData(allSubServices)
+        }
+    }
+
+    useEffect(() => {
+        setFilteredData(allSubServices)
+    }, [allSubServices])
+
     return (
         <Row>
             <div className="p-1 mb-lg-0 w-100 ml-1 position-sticky z-index-1000 sm-only header-purple-grad">
@@ -364,8 +396,8 @@ const Dashboard = () => {
                             }}
                             animate={animationControl4}
                             className="w-75">
-                            <div className="swingimg">
-                                <SubServiceWelcomeSVG/>
+                            <div className="">
+                                <img width="110%" src={team}/>
                             </div>
                         </motion.div>
                     </Col>
@@ -446,8 +478,12 @@ const Dashboard = () => {
                         {
                             !singleSubLoad && <div className="mt-5">
                                 <Col lg={5} sm={12} className="d-flex">
-                                    <Input placeholder="search service..."/>
-                                    <button className="btn btn-primary ml-2 f-Staatliches">search</button>
+                                    <Input
+                                        value={searchValue}
+                                        onChange={(e) => { handleFilter(e) } }
+                                        placeholder="search service..."/>
+                                    <button
+                                        className="btn btn-primary ml-2 f-Staatliches">search</button>
                                 </Col>
                             </div>
                         }
@@ -460,19 +496,8 @@ const Dashboard = () => {
                                 </div>
                             }
                             <div>
-                                <MainServiceSwipper count={5}/>
+                                <MainServiceSwipper count={5} allSubServices={filteredData}/>
                             </div>
-                            <p className="mt-1 f-courgette text-purple">*Swipe to see more</p>
-                            {/*<Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">*/}
-                            {/*    <div className="pt-2">*/}
-                            {/*        <h2 className="text-center f-Londrina text-light ">COMING MORE...</h2>*/}
-                            {/*    </div>*/}
-                            {/*    <CardFooter>*/}
-                            {/*        <p>*/}
-                            {/*            More services are on the way...!!!*/}
-                            {/*        </p>*/}
-                            {/*    </CardFooter>*/}
-                            {/*</Card>*/}
                         </Row>
                     </div>
                 </div>

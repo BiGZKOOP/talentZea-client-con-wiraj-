@@ -9,10 +9,11 @@ import Avatar from "../../@core/components/avatar"
 // eslint-disable-next-line no-unused-vars
 import logo from "../../assets/custom_images/logo.png"
 
-const MainServiceSwipper = ({isRtl, count}) => {
+// eslint-disable-next-line no-unused-vars
+const MainServiceSwipper = ({isRtl, count, allSubServices}) => {
 
     // eslint-disable-next-line no-unused-vars
-    const {allSubServices, singleSubLoad} = useSelector(state => state.mainServiceReducer)
+    const {singleSubLoad} = useSelector(state => state.mainServiceReducer)
     // eslint-disable-next-line no-unused-vars
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
@@ -25,6 +26,7 @@ const MainServiceSwipper = ({isRtl, count}) => {
         return [e?.image?.image1, e?.image?.image2, e?.image?.image3]
     }
 
+    // eslint-disable-next-line no-unused-vars
     const params = {
         className: 'swiper-gallery',
         slidesPerView: count,
@@ -65,10 +67,10 @@ const MainServiceSwipper = ({isRtl, count}) => {
 
     return <div className="m-0 p-0 bg-light">
         <div className="m-0 p-0">
-            <Swiper dir={isRtl ? 'rtl' : 'ltr'} {...params}>
+            <div className="d-flex flex-wrap">
                 {
                     !singleSubLoad && allSubServices.map(e => {
-                        return <SwiperSlide className="sales-card bg-light cursor-pointer">
+                        return <div className="sales-card bg-light cursor-pointer mr-3">
                             <Card
                                 onClick={() => {
                                     history.push(`/sub-service/${e?._id}`)
@@ -98,26 +100,26 @@ const MainServiceSwipper = ({isRtl, count}) => {
                                     <p className="text-small-xxx font-bold">STARTING AT <span className="text-medium-extra text-black">${e.price}</span></p>
                                 </CardFooter>
                             </Card>
-                        </SwiperSlide>
+                        </div>
                     })
                 }
-            </Swiper>
-            <Swiper dir={isRtl ? 'rtl' : 'ltr'} {...paramsThumbs}>
-                {
-                    !singleSubLoad && allSubServices.map(e => {
-                        return <SwiperSlide className="sales-card bg-light cursor-pointer opacity-75">
-                            <Card
-                                className="sales-card m-2 bg-semi-dark m-0 p-0 bg-light clickable">
-                                <CardBody className="p-0">
-                                    <div className="w-100">
-                                        <img src={e?.image?.image1} width="100%" height="80px" className="object-fit"/>
-                                    </div>
-                                </CardBody>
-                            </Card>
-                        </SwiperSlide>
-                    })
-                }
-            </Swiper>
+            </div>
+            {/*<Swiper dir={isRtl ? 'rtl' : 'ltr'} {...paramsThumbs}>*/}
+            {/*    {*/}
+            {/*        !singleSubLoad && allSubServices.map(e => {*/}
+            {/*            return <SwiperSlide className="sales-card bg-light cursor-pointer opacity-75">*/}
+            {/*                <Card*/}
+            {/*                    className="sales-card m-2 bg-semi-dark m-0 p-0 bg-light clickable">*/}
+            {/*                    <CardBody className="p-0">*/}
+            {/*                        <div className="w-100">*/}
+            {/*                            <img src={e?.image?.image1} width="100%" height="80px" className="object-fit"/>*/}
+            {/*                        </div>*/}
+            {/*                    </CardBody>*/}
+            {/*                </Card>*/}
+            {/*            </SwiperSlide>*/}
+            {/*        })*/}
+            {/*    }*/}
+            {/*</Swiper>*/}
         </div>
     </div>
 }
