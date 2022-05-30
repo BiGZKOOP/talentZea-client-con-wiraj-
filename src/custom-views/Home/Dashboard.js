@@ -46,9 +46,7 @@ const Dashboard = () => {
     const [logoStyle, setLogoStyle] = useState("fadein-anim delay-8")
     // eslint-disable-next-line no-unused-vars
     const {welcomeAudio, loaded, playAudio, fairyAudio} = useSelector(state => state.audioReducer)
-    const {singleSubLoad, allSubServices} = useSelector(state => state.mainServiceReducer)
-
-    console.log(allSubServices)
+    const {singleSubLoad} = useSelector(state => state.mainServiceReducer)
 
     // eslint-disable-next-line no-unused-vars
     const {inView, entry, ref} = useInView({
@@ -465,17 +463,6 @@ const Dashboard = () => {
                             <div>
                                 <MainServiceSwipper count={5}/>
                             </div>
-                            <p className="mt-1 f-courgette text-purple">*Swipe to see more</p>
-                            {/*<Card className="dash-card m-2 bg-instagram text-light rotatable bg-black">*/}
-                            {/*    <div className="pt-2">*/}
-                            {/*        <h2 className="text-center f-Londrina text-light ">COMING MORE...</h2>*/}
-                            {/*    </div>*/}
-                            {/*    <CardFooter>*/}
-                            {/*        <p>*/}
-                            {/*            More services are on the way...!!!*/}
-                            {/*        </p>*/}
-                            {/*    </CardFooter>*/}
-                            {/*</Card>*/}
                         </Row>
                     </div>
                 </div>
