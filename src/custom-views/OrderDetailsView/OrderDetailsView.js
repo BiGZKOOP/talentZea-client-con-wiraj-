@@ -129,8 +129,8 @@ const OrderDetailsView = () => {
                         <h1 className="f-Staatliches font-large-1"><span
                             className="text-danger">{singleOrder?.subServiceID?.mainService?.mainTopic}</span> {">"}
                             <span className="text-primary">{singleOrder?.subServiceID?.mainTopic}</span></h1>
-                        <p className="text-grey mt-1">Created at:- {moment(singleOrder?.createdAt).format("L")}</p>
-                        <p className="text-grey">
+                        <p className="text-silver mt-1">Created at:- {moment(singleOrder?.createdAt).format("MMMM Do YYYY, h:mm:ss a")}</p>
+                        <p className="text-silver">
                             {singleOrder?.subServiceID?.deliveryTime} days delivery</p>
                     </div>
                     <div className="mr-1">
@@ -236,16 +236,6 @@ const OrderDetailsView = () => {
                     </div>
                 }
             </Row>
-            {/*<Row className="m-1">*/}
-            {/*    <div className="p-1">*/}
-            {/*        <h1 className="font-large-1 f-Staatliches p-0">What customer think about the order ?</h1>*/}
-            {/*    </div>*/}
-            {/*    <div className="w-100 d-flex flex-wrap">*/}
-            {/*        <ReviewCard />*/}
-            {/*        <ReviewCard />*/}
-            {/*        <ReviewCard />*/}
-            {/*    </div>*/}
-            {/*</Row>*/}
             <Footer/>
         </div>
     } else {

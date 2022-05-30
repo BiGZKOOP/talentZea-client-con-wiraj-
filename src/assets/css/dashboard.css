@@ -42,7 +42,7 @@
 }
 
 .sales-card {
-    width: 270px;
+    width: 325px;
     height: 17%;
     transition: 0.5s;
 }
@@ -366,10 +366,6 @@ video {
     to {
         right: 0;
     }
-}
-
-.service-card {
-    height: 400px;
 }
 
 @media (max-width: 1400px) {
