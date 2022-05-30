@@ -58,7 +58,7 @@ const OrderCard = () => {
                 <li className="mt-3">
                     <div className="d-flex justify-content-between">
                         <div>
-                            <h5>Express delivery within <span className="font-bold">12 days</span></h5>
+                            <h5>8 hour Express delivery</h5>
                         </div>
                         <Input type="checkbox"/>
                     </div>
