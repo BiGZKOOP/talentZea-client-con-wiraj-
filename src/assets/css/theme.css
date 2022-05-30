@@ -225,12 +225,19 @@
     font-size: 30px;
 }
 
+.text-medium-extra {
+    font-size: 20px;
+}
+
 .text-medium {
     font-size: 16px;
 }
 
 .text-small {
     font-size: 15px;
+}
+.text-small-xxx {
+    font-size: 10px;
 }
 
 .text-small-extra {
@@ -363,6 +370,10 @@
 
 .text-grey {
     color: #cecece !important;
+}
+
+.text-silver {
+    color: #afafaf !important;
 }
 
 .bg-purple {
