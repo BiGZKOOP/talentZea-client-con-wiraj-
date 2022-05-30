@@ -32,6 +32,8 @@ import SubServiceWelcomeSVG from "../../assets/custom_images/svg/SubServiceWelco
 import business from "../../assets/custom_images/business.png"
 import video from "../../assets/videos/intro.mp4"
 import SignupWelcomeSVG from "../../assets/custom_images/svg/SignupWelcomeSVG"
+// eslint-disable-next-line no-unused-vars
+import team from  "../../assets/custom_images/team.png"
 
 const Dashboard = () => {
 
@@ -364,8 +366,9 @@ const Dashboard = () => {
                             }}
                             animate={animationControl4}
                             className="w-75">
-                            <div className="swingimg">
-                                <SubServiceWelcomeSVG/>
+                            <div className="">
+                                {/*<SubServiceWelcomeSVG/>*/}
+                                <img width="110%" src={team}/>
                             </div>
                         </motion.div>
                     </Col>

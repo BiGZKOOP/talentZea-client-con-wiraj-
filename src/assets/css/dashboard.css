@@ -368,10 +368,6 @@ video {
     }
 }
 
-.service-card {
-    height: 400px;
-}
-
 @media (max-width: 1400px) {
     .service-card {
         height: 400px;
