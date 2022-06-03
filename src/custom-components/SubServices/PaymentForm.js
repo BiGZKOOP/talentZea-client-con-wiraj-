@@ -42,11 +42,11 @@ const PaymentForm = ({price, revisions, sourceFiles, expressDelivery, subService
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="mt-3">
+            <div>
                 <CardElement
                     options={cardElementOptions}
                     className="payment-input mt-1"/>
-                <div className="d-flex justify-content-end mt-2">
+                <div className="d-flex justify-content-end mt-3">
                     <button className="btn btn-primary">{
                         orderLoading ? <Spinner size={14}/> : "Pay"
                     }</button>
