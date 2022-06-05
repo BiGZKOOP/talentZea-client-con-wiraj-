@@ -50,6 +50,18 @@ const SubServiceView = () => {
         ]
     }
 
+    const cookRequiredForm = () => {
+        const dataArr = []
+
+        singleSubServiceByID?.requiredPage?.meta_data?.map(e => {
+            dataArr.push({
+                key: e.id,
+                value: document.getElementById(e.id)?.value
+            })
+        })
+        return dataArr
+    }
+
     const getRevisions = () => {
 
         const revisionsArr = [{value: 0, label: 'none'}]
@@ -100,7 +112,6 @@ const SubServiceView = () => {
     useEffect(() => {
         updatePriceTab()
     }, [sourcePrice, revPrice, expressPrice])
-
 
     if (singleSubLoad) return <ServiceCookLoader/>
     else {
@@ -244,33 +255,34 @@ const SubServiceView = () => {
                                         </div>
                                     </CardHeader>
                                     <ModalBody className='px-sm-5 mx-50 pb-4'>
-                                        <Card className="mb-2">
-                                            <CardHeader className="bg-gradient-primary">
-                                                <h3 className="f-Staatliches text-light">Fill the required details
-                                                    before place the order.</h3>
-                                            </CardHeader>
-                                            <CardBody className="mt-2">
-                                                <Col>
-                                                    <Label className="text-medium f-Staatliches">Company name</Label>
-                                                    <Input placeholder="add your company name"/>
-                                                </Col>
-                                                <Col className="mt-2">
-                                                    <Label className="text-medium f-Staatliches">design name</Label>
-                                                    <Input placeholder="design name here..."/>
-                                                </Col>
-                                                <Col className="mt-2">
-                                                    <Label className="text-medium f-Staatliches">Add a brief description
-                                                        about the design</Label>
-                                                    <Input
-                                                        type="textarea"
-                                                        placeholder="Your description here..."/>
-                                                </Col>
-                                            </CardBody>
-                                        </Card>
+                                        {
+                                            <Card className="mb-2">
+                                                <CardHeader className="bg-gradient-primary">
+                                                    <h3 className="f-Staatliches text-light">Fill the required details
+                                                        before place the order.</h3>
+                                                </CardHeader>
+                                                <CardBody className="mt-2">
+                                                    {
+                                                        singleSubServiceByID?.requiredPage?.meta_data?.map((e, index) => {
+                                                            return <Col key={index} className="mb-2">
+                                                                <Label
+                                                                    className="text-medium f-Staatliches">{e.label}</Label>
+                                                                <Input
+                                                                    type={e.type}
+                                                                    id={e.id}
+                                                                    name={e.id}
+                                                                    placeholder={e.placeholder}/>
+                                                            </Col>
+                                                        })
+                                                    }
+                                                </CardBody>
+                                            </Card>
+                                        }
                                         <Card>
                                             <div>
                                                 <CardHeader className="bg-gradient-primary">
-                                                    <h3 className="f-courgette m-0 text-light f-Staatliches">Pricing & features</h3>
+                                                    <h3 className="f-courgette m-0 text-light f-Staatliches">Pricing &
+                                                        features</h3>
                                                 </CardHeader>
                                                 <CardBody>
                                                     <div className="mt-2">
@@ -335,18 +347,20 @@ const SubServiceView = () => {
                                                 </CardBody>
                                             </div>
                                             <Card className="p-2">
-                                                <PaymentForm price={price}
-                                                             revisions={{
-                                                                 count: revCount,
-                                                                 price: revPrice
-                                                             }}
-                                                             sourceFiles={{
-                                                                 price: sourcePrice
-                                                             }}
-                                                             expressDelivery={{
-                                                                 price: expressPrice
-                                                             }}
-                                                             subServiceID={singleSubServiceByID?._id}
+                                                <PaymentForm
+                                                    meta_data={cookRequiredForm()}
+                                                    price={price}
+                                                    revisions={{
+                                                        count: revCount,
+                                                        price: revPrice
+                                                    }}
+                                                    sourceFiles={{
+                                                        price: sourcePrice
+                                                    }}
+                                                    expressDelivery={{
+                                                        price: expressPrice
+                                                    }}
+                                                    subServiceID={singleSubServiceByID?._id}
                                                 />
                                             </Card>
                                         </Card>

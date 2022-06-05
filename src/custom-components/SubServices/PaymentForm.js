@@ -29,7 +29,7 @@ const ToastComponent = ({ title, icon, color }) => (
     </Fragment>
 )
 
-const PaymentForm = ({price, revisions, sourceFiles, expressDelivery, subServiceID}) => {
+const PaymentForm = ({meta_data, price, revisions, sourceFiles, expressDelivery, subServiceID}) => {
 
     const {user} = useSelector(state => state.loginReducer)
     // eslint-disable-next-line no-unused-vars
@@ -38,7 +38,7 @@ const PaymentForm = ({price, revisions, sourceFiles, expressDelivery, subService
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const { handleSubmit } = usePaymentForm(0, user, price, revisions, sourceFiles, expressDelivery, subServiceID, dispatch, history)
+    const { handleSubmit } = usePaymentForm(0, user, price, revisions, sourceFiles, expressDelivery, subServiceID, dispatch, history, meta_data)
 
     return (
         <form onSubmit={handleSubmit}>
