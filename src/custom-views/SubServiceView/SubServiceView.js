@@ -30,6 +30,8 @@ const SubServiceView = () => {
     const [expressPrice, setExpressPrice] = useState(0)
     const [revCount, setRevCount] = useState(0)
 
+    const [formArr, setFormArr] = useState([])
+
     const pathname = window.location.pathname
 
     const id = pathname.split("/sub-service/")[1]
@@ -52,14 +54,15 @@ const SubServiceView = () => {
 
     const cookRequiredForm = () => {
         const dataArr = []
-
         singleSubServiceByID?.requiredPage?.meta_data?.map(e => {
             dataArr.push({
                 key: e.id,
                 value: document.getElementById(e.id)?.value
             })
         })
-        return dataArr
+
+        setFormArr(dataArr)
+        console.log(dataArr)
     }
 
     const getRevisions = () => {
@@ -98,6 +101,30 @@ const SubServiceView = () => {
         } else {
             setExpressPrice(parseInt(expressPrice) - parseInt(singleSubServiceByID?.expressDelivery?.price))
         }
+    }
+    
+    const renderPaymentForm = () => {
+        return <PaymentForm
+            meta_data={formArr}
+            price={price}
+            revisions={{
+                count: revCount,
+                price: revPrice
+            }}
+            sourceFiles={{
+                price: sourcePrice
+            }}
+            expressDelivery={{
+                price: expressPrice
+            }}
+            subServiceID={singleSubServiceByID?._id}
+        />
+    }
+
+    const handleRenderPaymentForm = () => {
+        if (singleSubServiceByID.requiredPage) {
+            if (formArr.length > 0) return renderPaymentForm()
+        } else return renderPaymentForm()
     }
 
     useEffect(() => {
@@ -272,10 +299,16 @@ const SubServiceView = () => {
                                                                     id={e.id}
                                                                     name={e.id}
                                                                     placeholder={e.placeholder}/>
+                                                                <p className="mt-1">* {e.description}</p>
                                                             </Col>
                                                         })
                                                     }
                                                 </CardBody>
+                                                <CardFooter className="d-flex justify-content-end">
+                                                    <button
+                                                        onClick={cookRequiredForm}
+                                                        className="btn btn-gradient-success f-Staatliches text-medium">ADD REQUIRED DETAILS</button>
+                                                </CardFooter>
                                             </Card>
                                         }
                                         <Card>
@@ -347,21 +380,9 @@ const SubServiceView = () => {
                                                 </CardBody>
                                             </div>
                                             <Card className="p-2">
-                                                <PaymentForm
-                                                    meta_data={cookRequiredForm()}
-                                                    price={price}
-                                                    revisions={{
-                                                        count: revCount,
-                                                        price: revPrice
-                                                    }}
-                                                    sourceFiles={{
-                                                        price: sourcePrice
-                                                    }}
-                                                    expressDelivery={{
-                                                        price: expressPrice
-                                                    }}
-                                                    subServiceID={singleSubServiceByID?._id}
-                                                />
+                                                {
+                                                    handleRenderPaymentForm()
+                                                }
                                             </Card>
                                         </Card>
                                         <p className="text-center f-courgette">"Every great journey, start from one
