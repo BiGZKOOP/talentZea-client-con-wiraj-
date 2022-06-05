@@ -61,7 +61,7 @@ const ClientDashboard = () => {
     //Use this effect to handle the order counts by categories
     useEffect(() => {
         countOrderCats()
-    }, [])
+    }, [allCustomerOrders])
 
     const copyToClipBoard = () => {
         toast(<Clipboard_success_toast />, { icon: false, hideProgressBar: true })
