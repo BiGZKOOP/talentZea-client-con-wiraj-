@@ -51,18 +51,15 @@ const SubServiceView = () => {
             singleSubServiceByID?.image?.image10
         ]
     }
-
     const cookRequiredForm = () => {
         const dataArr = []
         singleSubServiceByID?.requiredPage?.meta_data?.map(e => {
             dataArr.push({
-                key: e.id,
+                key: e.label,
                 value: document.getElementById(e.id)?.value
             })
         })
-
         setFormArr(dataArr)
-        console.log(dataArr)
     }
 
     const getRevisions = () => {
