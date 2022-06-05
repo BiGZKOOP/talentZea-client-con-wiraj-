@@ -1,5 +1,5 @@
 import MainNav from "../../custom-components/MainNav/MainNav"
-import {Card, CardBody, CardFooter, CardHeader, Input, Modal, ModalBody, ModalHeader, Row} from "reactstrap"
+import {Card, CardBody, CardFooter, CardHeader, Col, Input, Label, Modal, ModalBody, ModalHeader, Row} from "reactstrap"
 import "../../assets/css/serviceViews.css"
 import "../../assets/css/dashboard.css"
 import SubServicePricing from "../../custom-components/SubServices/SubServicePricing"
@@ -30,6 +30,8 @@ const SubServiceView = () => {
     const [expressPrice, setExpressPrice] = useState(0)
     const [revCount, setRevCount] = useState(0)
 
+    const [formArr, setFormArr] = useState([])
+
     const pathname = window.location.pathname
 
     const id = pathname.split("/sub-service/")[1]
@@ -48,6 +50,16 @@ const SubServiceView = () => {
             singleSubServiceByID?.image?.image7, singleSubServiceByID?.image?.image8, singleSubServiceByID?.image?.image9,
             singleSubServiceByID?.image?.image10
         ]
+    }
+    const cookRequiredForm = () => {
+        const dataArr = []
+        singleSubServiceByID?.requiredPage?.meta_data?.map(e => {
+            dataArr.push({
+                key: e.label,
+                value: document.getElementById(e.id)?.value
+            })
+        })
+        setFormArr(dataArr)
     }
 
     const getRevisions = () => {
@@ -87,6 +99,30 @@ const SubServiceView = () => {
             setExpressPrice(parseInt(expressPrice) - parseInt(singleSubServiceByID?.expressDelivery?.price))
         }
     }
+    
+    const renderPaymentForm = () => {
+        return <PaymentForm
+            meta_data={formArr}
+            price={price}
+            revisions={{
+                count: revCount,
+                price: revPrice
+            }}
+            sourceFiles={{
+                price: sourcePrice
+            }}
+            expressDelivery={{
+                price: expressPrice
+            }}
+            subServiceID={singleSubServiceByID?._id}
+        />
+    }
+
+    const handleRenderPaymentForm = () => {
+        if (singleSubServiceByID.requiredPage) {
+            if (formArr.length > 0) return renderPaymentForm()
+        } else return renderPaymentForm()
+    }
 
     useEffect(() => {
         dispatch(getSubServiceByIDListen(id))
@@ -100,7 +136,6 @@ const SubServiceView = () => {
     useEffect(() => {
         updatePriceTab()
     }, [sourcePrice, revPrice, expressPrice])
-
 
     if (singleSubLoad) return <ServiceCookLoader/>
     else {
@@ -169,7 +204,9 @@ const SubServiceView = () => {
                                         <h3 className="f-Staatliches">Add extras</h3>
                                     </div>
                                     <ul>
-                                        <li className="f-courgette text-danger text-medium">Infinite number of revisions 😍</li>
+                                        <li className="f-courgette text-danger text-medium">Infinite number of revisions
+                                            😍
+                                        </li>
                                         <li hidden={checkBool(singleSubServiceByID?.revisions?.hide)}>
                                             <div className="d-flex justify-content-between">
                                                 <div>
@@ -231,96 +268,119 @@ const SubServiceView = () => {
                                     <ModalHeader className='bg-primary' toggle={() => setShow(!show)}>
                                         <h1 className="text-light f-Staatliches">Place your order</h1>
                                     </ModalHeader>
+                                    <CardHeader className="mb-0 bg-transparent">
+                                        <span className="f-courgette">Talent Zea</span>
+                                        <h1 className="f-Staatliches font-large-1"><span
+                                            className="text-danger">Graphics designing</span> {">"} <span
+                                            className="text-primary">{singleSubServiceByID?.mainTopic}</span>
+                                        </h1>
+                                        <div className="mt-2">
+                                            <p>{singleSubServiceByID?.orderDescription}</p>
+                                        </div>
+                                    </CardHeader>
                                     <ModalBody className='px-sm-5 mx-50 pb-4'>
-                                        <div>
-                                            <CardHeader className="mb-0">
-                                                <span className="f-courgette">Talent Zea</span>
-                                                <h1 className="f-Staatliches font-large-1"><span
-                                                    className="text-danger">Graphics designing</span> {">"} <span
-                                                    className="text-primary">{singleSubServiceByID?.mainTopic}</span>
-                                                </h1>
-                                            </CardHeader>
-                                            <CardBody>
-                                                <div>
-                                                    <p>{singleSubServiceByID?.orderDescription}</p>
-                                                </div>
-                                                <div className="mt-5">
-                                                    <h3 className="f-courgette">Pricing & features</h3>
-                                                </div>
-                                                <div className="mt-2">
-                                                    <div className="d-flex justify-content-between">
-                                                        <div className="d-flex align-items-center">
-                                                            <Star size={15}/> <span className="ml-1 text-primary">Base price</span>
-                                                        </div>
-                                                        <div className="d-flex align-items-center">
-                                                            <span className="ml-1 font-bold text-primary">$ {basePrice}.00 /=</span>
-                                                        </div>
-                                                    </div>
+                                        {
+                                            <Card className="mb-2">
+                                                <CardHeader className="bg-gradient-primary">
+                                                    <h3 className="f-Staatliches text-light">Fill the required details
+                                                        before place the order.</h3>
+                                                </CardHeader>
+                                                <CardBody className="mt-2">
                                                     {
-                                                        parseInt(revPrice) > 0 &&
-                                                        <div className="mt-1 d-flex justify-content-between">
+                                                        singleSubServiceByID?.requiredPage?.meta_data?.map((e, index) => {
+                                                            return <Col key={index} className="mb-2">
+                                                                <Label
+                                                                    className="text-medium f-Staatliches">{e.label}</Label>
+                                                                <Input
+                                                                    type={e.type}
+                                                                    id={e.id}
+                                                                    name={e.id}
+                                                                    placeholder={e.placeholder}/>
+                                                                <p className="mt-1">* {e.description}</p>
+                                                            </Col>
+                                                        })
+                                                    }
+                                                </CardBody>
+                                                <CardFooter className="d-flex justify-content-end">
+                                                    <button
+                                                        onClick={cookRequiredForm}
+                                                        className="btn btn-gradient-success f-Staatliches text-medium">ADD REQUIRED DETAILS</button>
+                                                </CardFooter>
+                                            </Card>
+                                        }
+                                        <Card>
+                                            <div>
+                                                <CardHeader className="bg-gradient-primary">
+                                                    <h3 className="f-courgette m-0 text-light f-Staatliches">Pricing &
+                                                        features</h3>
+                                                </CardHeader>
+                                                <CardBody>
+                                                    <div className="mt-2">
+                                                        <div className="d-flex justify-content-between">
                                                             <div className="d-flex align-items-center">
-                                                                <Star size={15}/> <span
-                                                                className="ml-1">{revCount} revisions (per revision <span
-                                                                className="font-bold">${singleSubServiceByID?.revisions?.price}.00/=</span>)</span>
+                                                                <Star size={15}/> <span className="ml-1 text-primary">Base price</span>
                                                             </div>
                                                             <div className="d-flex align-items-center">
+                                                                <span
+                                                                    className="ml-1 font-bold text-primary">$ {basePrice}.00 /=</span>
+                                                            </div>
+                                                        </div>
+                                                        {
+                                                            parseInt(revPrice) > 0 &&
+                                                            <div className="mt-1 d-flex justify-content-between">
+                                                                <div className="d-flex align-items-center">
+                                                                    <Star size={15}/> <span
+                                                                    className="ml-1">{revCount} revisions (per revision <span
+                                                                    className="font-bold">${singleSubServiceByID?.revisions?.price}.00/=</span>)</span>
+                                                                </div>
+                                                                <div className="d-flex align-items-center">
                                                                 <span
                                                                     className="ml-1 font-bold">$ {revPrice}.00 /=</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    }
-                                                    {
-                                                        parseInt(sourcePrice) > 0 &&
-                                                        <div className="mt-1 d-flex justify-content-between">
-                                                            <div className="d-flex align-items-center">
-                                                                <Star size={15}/> <span className="ml-1">Source files included</span>
-                                                            </div>
-                                                            <div className="d-flex align-items-center">
+                                                        }
+                                                        {
+                                                            parseInt(sourcePrice) > 0 &&
+                                                            <div className="mt-1 d-flex justify-content-between">
+                                                                <div className="d-flex align-items-center">
+                                                                    <Star size={15}/> <span className="ml-1">Source files included</span>
+                                                                </div>
+                                                                <div className="d-flex align-items-center">
                                                                 <span
                                                                     className="ml-1 font-bold">$ {sourcePrice}.00 /=</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    }
-                                                    {
-                                                        parseInt(expressPrice) > 0 &&
-                                                        <div className="mt-1 d-flex justify-content-between">
-                                                            <div className="d-flex align-items-center">
-                                                                <Star size={15}/> <span className="ml-1">Express delivery <span
-                                                                className="font-bold">({singleSubServiceByID?.expressDelivery?.price} days delivery)</span></span>
-                                                            </div>
-                                                            <div className="d-flex align-items-center">
+                                                        }
+                                                        {
+                                                            parseInt(expressPrice) > 0 &&
+                                                            <div className="mt-1 d-flex justify-content-between">
+                                                                <div className="d-flex align-items-center">
+                                                                    <Star size={15}/> <span className="ml-1">Express delivery <span
+                                                                    className="font-bold">({singleSubServiceByID?.expressDelivery?.price} days delivery)</span></span>
+                                                                </div>
+                                                                <div className="d-flex align-items-center">
                                                                 <span
                                                                     className="ml-1 font-bold">$ {expressPrice}.00 /=</span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        <hr className="mb-2 mt-1"/>
+                                                        <div className="mt-1 d-flex justify-content-between">
+                                                            <div className="d-flex align-items-center">
+                                                                <h3 className="f-courgette">Total:</h3>
+                                                            </div>
+                                                            <div className="d-flex align-items-center">
+                                                                <h2 className="font-bold">$ {price}.00 /=</h2>
                                                             </div>
                                                         </div>
-                                                    }
-                                                    <hr/>
-                                                    <div className="mt-1 d-flex justify-content-between">
-                                                        <div className="d-flex align-items-center">
-                                                            <h3 className="f-courgette">Total:</h3>
-                                                        </div>
-                                                        <div className="d-flex align-items-center">
-                                                            <h2 className="font-bold">$ {price}.00 /=</h2>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </CardBody>
-                                        </div>
-                                        <Card className="p-2">
-                                            <PaymentForm price={price}
-                                                         revisions={{
-                                                             count: revCount,
-                                                             price: revPrice
-                                                         }}
-                                                         sourceFiles={{
-                                                             price: sourcePrice
-                                                         }}
-                                                         expressDelivery={{
-                                                             price: expressPrice
-                                                         }}
-                                                         subServiceID={singleSubServiceByID?._id}
-                                            />
+                                                </CardBody>
+                                            </div>
+                                            <Card className="p-2">
+                                                {
+                                                    handleRenderPaymentForm()
+                                                }
+                                            </Card>
                                         </Card>
                                         <p className="text-center f-courgette">"Every great journey, start from one
                                             little step"</p>

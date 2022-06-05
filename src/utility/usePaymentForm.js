@@ -28,7 +28,7 @@ const handleOrderFinisher = (dispatch) => {
     dispatch(handleOrderStateListen(true))
 }
 
-function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDelivery, subServiceID, dispatch, history) {
+function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDelivery, subServiceID, dispatch, history, meta_data) {
     const stripe = useStripe()
     const elements = useElements()
 
@@ -69,7 +69,8 @@ function usePaymentForm(status, user, amount, revisions, sourceFiles, expressDel
                 revisions,
                 sourceFiles,
                 expressDelivery,
-                subServiceID
+                subServiceID,
+                meta_data
             })),
             headers: {
                 'Content-Type': 'application/json',
